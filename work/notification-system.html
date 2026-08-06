@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notification System · Javier Díaz</title>
+<meta name="description" content="Caso de estudio: sistema de notificaciones push para escritorio y email de las acciones que ocurren en la plataforma.">
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#1A1917',
+          slate: '#6E6A64',
+          paper: '#FFFFFF',
+          mist: '#FAF9F7',
+          latte: '#E5D9C5',
+          'latte-dark': '#D4C4B7',
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+        },
+        letterSpacing: {
+          tightest: '-0.04em',
+        },
+      },
+    },
+  }
+</script>
+
+<!-- Google Fonts: Inter -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  html { font-family: 'Inter', sans-serif; }
+  ::selection { background-color: #E5D9C5; color: #1A1917; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  .focus-ring:focus-visible {
+    outline: 2px solid #1A1917;
+    outline-offset: 3px;
+  }
+
+  .card-img {
+    background-image:
+      linear-gradient(135deg, #F0EBE1 0%, #E5D9C5 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .card-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.5), transparent 60%);
+  }
+
+  body {
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+  body.is-ready {
+    opacity: 1;
+  }
+</style>
+</head>
+
+<body class="bg-paper text-ink antialiased min-h-screen flex flex-col">
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-paper/80 backdrop-blur-md border-b border-ink/[0.06]">
+    <nav class="max-w-6xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
+      <button type="button" id="mobile-menu-toggle" class="sm:hidden focus-ring rounded-md p-1 -ml-1 text-ink" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <svg id="menu-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg id="menu-icon-close" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <a href="../index.html" class="text-lg font-semibold tracking-tight focus-ring rounded absolute left-1/2 -translate-x-1/2 sm:static sm:translate-x-0">
+        Javier Díaz<span class="text-latte-dark">.</span>
+      </a>
+
+      <ul class="hidden sm:flex items-center gap-10 text-base text-slate">
+        <li><a href="../sobre-mi.html" class="hover:text-ink transition-colors focus-ring rounded">Sobre mí</a></li>
+        <li><a href="../contacto.html" class="hover:text-ink transition-colors focus-ring rounded">Contacto</a></li>
+      </ul>
+
+      <span class="sm:hidden w-[22px]" aria-hidden="true"></span>
+    </nav>
+
+    <div id="mobile-menu" class="sm:hidden hidden border-t border-ink/[0.06] bg-paper">
+      <ul class="flex flex-col px-6 py-2 text-base font-medium text-ink">
+        <li><a href="../sobre-mi.html" class="block py-3 focus-ring rounded">Sobre mí</a></li>
+        <li><a href="../contacto.html" class="block py-3 focus-ring rounded">Contacto</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="flex-1">
+
+    <!-- ===== HERO ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 pt-[104px]">
+      <a href="../index.html#work" class="reveal is-visible inline-flex items-center gap-2 text-xs font-medium tracking-widest uppercase text-slate hover:text-ink transition-colors focus-ring rounded">
+        ← Todos los proyectos
+      </a>
+
+      <h1 class="reveal is-visible mt-6 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tightest leading-[1.08] max-w-4xl">
+        Notification System
+      </h1>
+
+      <p class="reveal is-visible mt-6 text-lg text-slate leading-relaxed max-w-2xl">
+        Diseño de un sistema de notificaciones push para escritorio y email que avisa a los usuarios de las acciones relevantes que ocurren en la plataforma.
+      </p>
+
+      <div class="reveal is-visible mt-12 pt-8 border-t border-ink/[0.08] grid sm:grid-cols-4 gap-8">
+        <div>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Rol</p>
+          <p class="text-sm font-medium text-ink">Product Designer</p>
+        </div>
+        <div>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Cliente</p>
+          <p class="text-sm font-medium text-ink">[Nombre del cliente]</p>
+        </div>
+        <div>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Año</p>
+          <p class="text-sm font-medium text-ink">2023</p>
+        </div>
+        <div>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Equipo</p>
+          <p class="text-sm font-medium text-ink">PM, Ingeniería, Research</p>
+        </div>
+      </div>
+
+      <div class="reveal is-visible mt-8 flex flex-wrap gap-2">
+        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70">Product Design</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70">Push Notifications</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70">Email</span>
+      </div>
+
+      <div id="cover-carousel" class="reveal group mt-16 md:mt-20 relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+        <div id="carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="notification-system-cover.png" alt="Tooltip de notificaciones activas sobre un contacto de envío en la plataforma" class="w-full h-full object-cover shrink-0">
+          <img src="notification-system-cover-2.png" alt="Estado del envío marcado como En tránsito con el icono de notificaciones" class="w-full h-full object-cover shrink-0">
+          <img src="notification-system-cover-3.png" alt="Panel de configuración de notificaciones, con Mis notificaciones y Notificar a otros" class="w-full h-full object-cover shrink-0">
+        </div>
+
+        <button type="button" id="carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div id="carousel-dots" class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="carousel-dot focus-ring w-2 h-2 rounded-full bg-paper/60 transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="carousel-dot focus-ring w-2 h-2 rounded-full bg-paper/60 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+          <button type="button" class="carousel-dot focus-ring w-2 h-2 rounded-full bg-paper/60 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 01 · STARTING POINT ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">01</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Punto de partida</span>
+      </div>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight max-w-2xl mb-14 md:mb-16">
+        Por qué necesitábamos un nuevo enfoque
+      </h2>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Contexto</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          En la plataforma ocurrían constantemente acciones relevantes para los usuarios — cambios de estado, mensajes, alertas — pero no existía ningún sistema centralizado para avisarles. La única vía era que el propio usuario entrara y comprobara manualmente si algo había cambiado.
+        </p>
+      </div>
+
+      <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 pt-10 border-t border-ink/[0.08]">
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
+          <h3 class="text-lg font-medium mb-2">Falta de visibilidad</h3>
+          <p class="text-sm text-slate leading-relaxed">
+            Los usuarios debían refrescar manualmente la plataforma para enterarse de cambios importantes.
+          </p>
+        </div>
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+          <h3 class="text-lg font-medium mb-2">Canales desconectados</h3>
+          <p class="text-sm text-slate leading-relaxed">
+            El email era la única vía de aviso, y no siempre reflejaba lo que ocurría dentro de la plataforma.
+          </p>
+        </div>
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+          <h3 class="text-lg font-medium mb-2">Riesgo de sobrecarga</h3>
+          <p class="text-sm text-slate leading-relaxed">
+            Sin un sistema de prioridades, cualquier notificación futura corría el riesgo de saturar al usuario.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 02 · RESEARCH ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">02</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Research</span>
+      </div>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+        Cómo investigamos antes de diseñar las notificaciones
+      </h2>
+
+      <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 mb-16">
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
+          <h3 class="text-lg font-medium mb-2">Entrevistas con usuarios y soporte</h3>
+          <p class="text-sm text-slate leading-relaxed">[Placeholder] Sesiones para entender qué tipo de eventos consideraban realmente urgentes los usuarios, y cuáles preferían recibir de forma más pausada.</p>
+        </div>
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+          <h3 class="text-lg font-medium mb-2">Análisis de tickets de soporte</h3>
+          <p class="text-sm text-slate leading-relaxed">[Placeholder] Revisión de incidencias relacionadas con cambios importantes que los usuarios no habían visto a tiempo.</p>
+        </div>
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+          <h3 class="text-lg font-medium mb-2">Benchmark de sistemas de notificaciones</h3>
+          <p class="text-sm text-slate leading-relaxed">[Placeholder] Estudio de cómo otras plataformas del sector gestionaban sus propios centros de notificaciones y alertas.</p>
+        </div>
+      </div>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Técnicas de investigación</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          [Placeholder — antes de plantear una solución, explica aquí cómo se combinaron las entrevistas con el análisis de tickets de soporte para entender qué eventos merecían un aviso inmediato y cuáles no.]
+        </p>
+      </div>
+
+      <div id="research-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+        <div id="research-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real de la investigación 1]</p>
+          </div>
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real de la investigación 2]</p>
+          </div>
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real de la investigación 3]</p>
+          </div>
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real de la investigación 4]</p>
+          </div>
+        </div>
+
+        <button type="button" id="research-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="research-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+          <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+          <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="3" aria-label="Ir a la imagen 4"></button>
+        </div>
+      </div>
+      <p class="reveal text-xs text-slate mt-3">[Placeholder] Resultados de las entrevistas y del análisis de tickets de soporte.</p>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16 mt-16 md:mt-20">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Workshops con equipos internos</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          [Placeholder — describe aquí los workshops con soporte, PM e ingeniería que sirvieron para definir las reglas de prioridad y los canales de notificación: cuánto duraron, quién participó y qué se decidió en conjunto.]
+        </p>
+      </div>
+
+      <div id="workshops-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+        <div id="workshops-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real del workshop 1]</p>
+          </div>
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real del workshop 2]</p>
+          </div>
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real del workshop 3]</p>
+          </div>
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real del workshop 4]</p>
+          </div>
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real del workshop 5]</p>
+          </div>
+        </div>
+
+        <button type="button" id="workshops-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="workshops-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="workshops-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="workshops-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+          <button type="button" class="workshops-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+          <button type="button" class="workshops-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="3" aria-label="Ir a la imagen 4"></button>
+          <button type="button" class="workshops-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="4" aria-label="Ir a la imagen 5"></button>
+        </div>
+      </div>
+      <p class="reveal text-xs text-slate mt-3">[Placeholder] Workshops presenciales con los equipos internos de soporte, PM e ingeniería.</p>
+    </section>
+
+    <!-- ===== 03 · DEL PAPEL A LA PANTALLA ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">03</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Del papel a la pantalla</span>
+      </div>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+        De los primeros bocetos a las primeras interacciones
+      </h2>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Enfoque</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          [Placeholder — antes de lanzarnos a los primeros bocetos, explica aquí qué otros sistemas de notificaciones se estudiaron como referencia: qué patrones de priorización, agrupación y canales ya existían en el mercado.]
+        </p>
+      </div>
+
+      <div id="sketches-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+        <div id="sketches-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real de los primeros bocetos 1]</p>
+          </div>
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real de los primeros bocetos 2]</p>
+          </div>
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real de los primeros bocetos 3]</p>
+          </div>
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real de los primeros bocetos 4]</p>
+          </div>
+        </div>
+
+        <button type="button" id="sketches-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="sketches-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="sketches-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="sketches-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+          <button type="button" class="sketches-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+          <button type="button" class="sketches-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="3" aria-label="Ir a la imagen 4"></button>
+        </div>
+      </div>
+      <p class="reveal text-xs text-slate mt-3">[Placeholder] Primeros bocetos del sistema de notificaciones y benchmark de referencias del mercado.</p>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16 mt-16 md:mt-20">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Centro de notificaciones</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          [Placeholder — describe aquí cómo se diseñó el panel persistente de escritorio: qué información se mostraba por notificación, cómo se agrupaban los eventos y cómo se marcaban como leídos.]
+        </p>
+      </div>
+
+      <div id="notifcenter-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+        <div id="notifcenter-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real del centro de notificaciones 1]</p>
+          </div>
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real del centro de notificaciones 2]</p>
+          </div>
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real del centro de notificaciones 3]</p>
+          </div>
+        </div>
+
+        <button type="button" id="notifcenter-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="notifcenter-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="notifcenter-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="notifcenter-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+          <button type="button" class="notifcenter-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+        </div>
+      </div>
+      <p class="reveal text-xs text-slate mt-3">[Placeholder] Referencias del centro de notificaciones y su solución final.</p>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16 mt-16 md:mt-20">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Notificación push</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          [Placeholder — describe aquí cómo se diseñó el aviso push en tiempo real: cómo aparecía en pantalla, cuánto tiempo permanecía visible y qué pasaba al hacer clic sobre él.]
+        </p>
+      </div>
+
+      <div id="push-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+        <div id="push-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real de la notificación push 1]</p>
+          </div>
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real de la notificación push 2]</p>
+          </div>
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real de la notificación push 3]</p>
+          </div>
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real de la notificación push 4]</p>
+          </div>
+        </div>
+
+        <button type="button" id="push-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="push-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="push-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="push-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+          <button type="button" class="push-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+          <button type="button" class="push-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="3" aria-label="Ir a la imagen 4"></button>
+        </div>
+      </div>
+      <p class="reveal text-xs text-slate mt-3">[Placeholder] Referencias del comportamiento de la notificación push.</p>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16 mt-16 md:mt-20">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Preferencias de notificación</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          [Placeholder — describe aquí la propuesta final de la pantalla de preferencias: qué eventos podía activar o desactivar el usuario por canal, y qué validaciones se hicieron con los equipos de producto.]
+        </p>
+      </div>
+
+      <div id="preferences-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+        <div id="preferences-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real de las preferencias de notificación 1]</p>
+          </div>
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real de las preferencias de notificación 2]</p>
+          </div>
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real de las preferencias de notificación 3]</p>
+          </div>
+        </div>
+
+        <button type="button" id="preferences-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="preferences-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="preferences-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="preferences-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+          <button type="button" class="preferences-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+        </div>
+      </div>
+      <p class="reveal text-xs text-slate mt-3">[Placeholder] Referencias de la propuesta final de preferencias de notificación.</p>
+    </section>
+
+    <!-- ===== 04 · INTERACCIONES Y PROTOTIPOS ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">04</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Interacciones / Prototipos</span>
+      </div>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+        Cómo tomó forma la interacción final
+      </h2>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Del boceto al prototipo</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          [Placeholder — con las reglas de prioridad ya validadas, explica aquí cómo se construyeron los prototipos interactivos de alta fidelidad: qué herramientas se usaron, cuántas iteraciones hubo y qué cambió respecto a los primeros borradores.]
+        </p>
+      </div>
+
+      <div class="reveal card-img aspect-[16/9] rounded-2xl mb-14"></div>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1">Valoración del equipo</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          [Placeholder — resume aquí cómo se presentaron los prototipos al equipo, qué feedback se recogió de PMs, ingeniería y soporte, y qué decisiones de diseño cambiaron a raíz de esas valoraciones antes de dar el sistema por cerrado.]
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== 05 · SOLUTION ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">05</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Solución</span>
+      </div>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+        Dos canales, con reglas de prioridad claras
+      </h2>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Enfoque</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          [Placeholder] En vez de enviar cualquier evento por cualquier canal, diseñamos un sistema con dos canales — escritorio y email — y reglas de prioridad, para que cada acción llegara al usuario de la forma más adecuada según su urgencia.
+        </p>
+      </div>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1">Funcionalidades<br class="hidden md:block"> entregadas</p>
+        <ul class="border-t border-ink/[0.08]">
+          <li class="py-5 border-b border-ink/[0.08] flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
+            <span class="text-sm font-medium text-latte-dark shrink-0">01</span>
+            <div>
+              <h3 class="text-base font-medium mb-1">Centro de notificaciones en escritorio</h3>
+              <p class="text-sm text-slate leading-relaxed max-w-lg">[Placeholder] Panel persistente con historial de eventos y estados de lectura.</p>
+            </div>
+          </li>
+          <li class="py-5 border-b border-ink/[0.08] flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
+            <span class="text-sm font-medium text-latte-dark shrink-0">02</span>
+            <div>
+              <h3 class="text-base font-medium mb-1">Notificaciones push en tiempo real</h3>
+              <p class="text-sm text-slate leading-relaxed max-w-lg">[Placeholder] Avisos inmediatos para las acciones más urgentes, visibles al instante.</p>
+            </div>
+          </li>
+          <li class="py-5 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
+            <span class="text-sm font-medium text-latte-dark shrink-0">03</span>
+            <div>
+              <h3 class="text-base font-medium mb-1">Resumen configurable por email</h3>
+              <p class="text-sm text-slate leading-relaxed max-w-lg">[Placeholder] Digest periódico para las acciones menos urgentes, con preferencias por usuario.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1">Resultados</p>
+        <ul class="space-y-4 max-w-2xl">
+          <li class="pl-4 border-l-2 border-latte text-ink/80 leading-relaxed">[Placeholder] Los usuarios empezaron a reaccionar a eventos importantes sin necesidad de refrescar la plataforma.</li>
+          <li class="pl-4 border-l-2 border-latte text-ink/80 leading-relaxed">[Placeholder] El tiempo de respuesta ante acciones urgentes se redujo de forma notable.</li>
+          <li class="pl-4 border-l-2 border-latte text-ink/80 leading-relaxed">[Placeholder] Las quejas por falta de visibilidad sobre cambios en la plataforma disminuyeron de forma sostenida.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== 06 · PROJECT DETAILS ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">06</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Detalle del proyecto</span>
+      </div>
+
+      <p class="reveal text-xs font-medium tracking-widest uppercase text-slate mb-4">La funcionalidad en profundidad</p>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-3">
+        El centro de notificaciones, en profundidad
+      </h2>
+      <p class="reveal text-lg text-slate mb-14 md:mb-16">
+        Cómo diseñamos un sistema de prioridades que el propio usuario pudiera controlar
+      </p>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Contexto y problema</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          [Placeholder — explica aquí la parte más difícil del diseño: cómo decidir qué eventos merecen una notificación inmediata y cuáles pueden esperar, sin que la decisión final recaiga solo en el equipo de producto.]
+        </p>
+      </div>
+
+      <blockquote class="reveal border-l-2 border-latte-dark pl-6 md:pl-8 my-14 md:my-16">
+        <p class="text-xl md:text-2xl font-medium tracking-tight leading-snug text-ink">
+          "[Placeholder — sustituye esta cita por un testimonio real de un usuario o stakeholder del proyecto.]"
+        </p>
+        <cite class="not-italic text-sm text-slate mt-4 block">— [Cargo, empresa — placeholder]</cite>
+      </blockquote>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Proceso</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          [Placeholder — resume aquí cómo validaste los niveles de prioridad y las preferencias de notificación con usuarios reales, y qué cambió a raíz de ese feedback.]
+        </p>
+      </div>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1">Detrás de<br class="hidden md:block"> escena</p>
+        <ol class="space-y-6 max-w-xl">
+          <li class="flex gap-4">
+            <span class="text-sm font-medium text-latte-dark shrink-0">01</span>
+            <p class="text-ink/80 leading-relaxed">[Placeholder] Ocurre una acción relevante en la plataforma para el usuario.</p>
+          </li>
+          <li class="flex gap-4">
+            <span class="text-sm font-medium text-latte-dark shrink-0">02</span>
+            <p class="text-ink/80 leading-relaxed">[Placeholder] El sistema evalúa la prioridad del evento según reglas configurables.</p>
+          </li>
+          <li class="flex gap-4">
+            <span class="text-sm font-medium text-latte-dark shrink-0">03</span>
+            <p class="text-ink/80 leading-relaxed">[Placeholder] El usuario recibe el aviso por el canal correspondiente: push inmediato o resumen por email.</p>
+          </li>
+          <li class="flex gap-4">
+            <span class="text-sm font-medium text-latte-dark shrink-0">04</span>
+            <p class="text-ink/80 leading-relaxed">[Placeholder] El usuario puede ajustar sus preferencias de notificación en cualquier momento.</p>
+          </li>
+        </ol>
+      </div>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1">Resultados</p>
+        <div>
+          <div class="grid sm:grid-cols-3 gap-8 mb-10 pb-10 border-b border-ink/[0.08]">
+            <div>
+              <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2">XX%</p>
+              <p class="text-sm font-medium text-ink mb-1">Más rapidez de respuesta</p>
+              <p class="text-sm text-slate leading-relaxed">[Placeholder descripción]</p>
+            </div>
+            <div>
+              <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2">XX%</p>
+              <p class="text-sm font-medium text-ink mb-1">Adopción del centro de notificaciones</p>
+              <p class="text-sm text-slate leading-relaxed">[Placeholder descripción]</p>
+            </div>
+            <div>
+              <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2">XX%</p>
+              <p class="text-sm font-medium text-ink mb-1">Menos tickets de soporte</p>
+              <p class="text-sm text-slate leading-relaxed">[Placeholder descripción]</p>
+            </div>
+          </div>
+          <p class="text-ink/80 leading-relaxed max-w-2xl">
+            [Placeholder — cierra esta sección con una reflexión breve sobre lo que hizo funcionar este sistema en concreto.]
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 07 · KEY LEARNINGS ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">07</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Aprendizajes clave</span>
+      </div>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-8">
+        Qué me dejó este proyecto
+      </h2>
+      <p class="reveal text-ink/80 leading-relaxed max-w-2xl">
+        [Placeholder — comparte una o dos lecciones honestas del proyecto: algo que aprendiste sobre diseñar sistemas de prioridad, o sobre el equilibrio entre mantener informado al usuario y no saturarlo.]
+      </p>
+    </section>
+
+    <!-- ===== END OF CASE STUDY ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08] text-center">
+      <p class="reveal text-xs font-medium tracking-widest uppercase text-slate mb-4">Has llegado al final</p>
+      <p class="reveal text-xl md:text-2xl font-medium tracking-tight mb-10">
+        Gracias por leer. ¿Quieres ver más?
+      </p>
+      <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="wizard-rate-management.html" class="focus-ring inline-flex items-center gap-2 bg-ink text-paper text-sm font-medium px-6 py-3.5 rounded-full hover:bg-slate transition-colors">
+          Siguiente proyecto · Wizard for Rate Management
+        </a>
+        <a href="../index.html#work" class="focus-ring inline-flex items-center gap-2 text-sm font-medium px-6 py-3.5 rounded-full border border-ink/15 hover:bg-latte/40 hover:border-latte-dark transition-colors">
+          ← Volver a todos los proyectos
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="contact" class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-10">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight mb-4">¿Hablamos?</h2>
+        <p class="text-slate max-w-sm leading-relaxed">
+          Siempre abierto a conocer nuevos proyectos y equipos. Escríbeme y te respondo en poco tiempo.
+        </p>
+      </div>
+      <div class="flex flex-col gap-3 text-sm">
+        <a href="mailto:hola@javierdr.com" class="focus-ring inline-flex items-center gap-2 hover:text-slate transition-colors w-fit">
+          hola@javierdr.com
+        </a>
+        <a href="https://www.linkedin.com/in/javierdiazrodriguez/" target="_blank" rel="noopener noreferrer" class="focus-ring inline-flex items-center gap-2 hover:text-slate transition-colors w-fit">
+          LinkedIn ↗
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-20 pt-8 border-t border-ink/[0.08] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate">
+      <p>© 2026 Javier Díaz. Diseñado con cuidado.</p>
+      <p>Hasta la próxima ✦</p>
+    </div>
+  </footer>
+
+  <script>
+    document.body.classList.add('is-ready');
+
+    // Menú móvil (hamburguesa)
+    (function () {
+      const toggleBtn = document.getElementById('mobile-menu-toggle');
+      const menu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('menu-icon-open');
+      const iconClose = document.getElementById('menu-icon-close');
+      if (!toggleBtn || !menu) return;
+
+      function closeMenu() {
+        menu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      }
+
+      function openMenu() {
+        menu.classList.remove('hidden');
+        iconOpen.classList.add('hidden');
+        iconClose.classList.remove('hidden');
+        toggleBtn.setAttribute('aria-expanded', 'true');
+      }
+
+      toggleBtn.addEventListener('click', () => {
+        const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
+        isOpen ? closeMenu() : openMenu();
+      });
+
+      menu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeMenu);
+      });
+    })();
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal:not(.is-visible)');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      revealEls.forEach((el) => observer.observe(el));
+    } else {
+      revealEls.forEach((el) => el.classList.add('is-visible'));
+    }
+
+    // ===== Carruseles =====
+    function initCarousel({ containerId, trackId, prevId, nextId, dotClass, activeDotClass, inactiveDotClass }) {
+      const container = document.getElementById(containerId);
+      const track = document.getElementById(trackId);
+      const prevBtn = document.getElementById(prevId);
+      const nextBtn = document.getElementById(nextId);
+      const dots = Array.from(document.querySelectorAll('.' + dotClass));
+      if (!track) return;
+
+      const slideCount = track.children.length;
+
+      // Carrusel con una sola imagen: sin flechas ni puntos, solo la imagen estática
+      if (slideCount <= 1) {
+        if (prevBtn) prevBtn.remove();
+        if (nextBtn) nextBtn.remove();
+        if (dots.length && dots[0].parentElement) dots[0].parentElement.remove();
+        return;
+      }
+      if (!dots.length) return;
+
+      const autoplayMs = 5000;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let index = 0;
+      let timer = null;
+      let hasEnteredView = false;
+
+      function goTo(i) {
+        index = (i + slideCount) % slideCount;
+        track.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((dot, dotIndex) => {
+          dot.classList.toggle(activeDotClass, dotIndex === index);
+          dot.classList.toggle(inactiveDotClass, dotIndex !== index);
+        });
+      }
+
+      function startAutoplay() {
+        if (reducedMotion || !hasEnteredView) return;
+        stopAutoplay();
+        timer = setInterval(() => goTo(index + 1), autoplayMs);
+      }
+
+      function stopAutoplay() {
+        if (timer) clearInterval(timer);
+        timer = null;
+      }
+
+      function goToManual(i) {
+        goTo(i);
+        startAutoplay();
+      }
+
+      prevBtn.addEventListener('click', () => goToManual(index - 1));
+      nextBtn.addEventListener('click', () => goToManual(index + 1));
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => goToManual(Number(dot.dataset.index)));
+      });
+
+      if (container) {
+        container.addEventListener('mouseenter', stopAutoplay);
+        container.addEventListener('mouseleave', startAutoplay);
+
+        // Swipe táctil (móvil / tablet)
+        let touchStartX = null;
+        container.addEventListener('touchstart', (e) => {
+          touchStartX = e.touches[0].clientX;
+          stopAutoplay();
+        }, { passive: true });
+        container.addEventListener('touchend', (e) => {
+          if (touchStartX === null) return;
+          const dx = e.changedTouches[0].clientX - touchStartX;
+          if (Math.abs(dx) > 40) {
+            goToManual(dx < 0 ? index + 1 : index - 1);
+          } else {
+            startAutoplay();
+          }
+          touchStartX = null;
+        }, { passive: true });
+
+        // Scroll horizontal de trackpad (dos dedos). El scroll con inercia de macOS
+        // sigue disparando eventos "wheel" durante bastante después del gesto físico,
+        // así que tratamos toda la ráfaga (inercia incluida) como un único gesto:
+        // solo navegamos en el primer evento y reiniciamos el cronómetro con cada
+        // evento nuevo, hasta que haya una pausa real sin eventos.
+        let wheelActive = false;
+        let wheelEndTimer = null;
+        container.addEventListener('wheel', (e) => {
+          if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+          e.preventDefault();
+          clearTimeout(wheelEndTimer);
+          if (!wheelActive) {
+            wheelActive = true;
+            stopAutoplay();
+            goTo(e.deltaX > 0 ? index + 1 : index - 1);
+          }
+          wheelEndTimer = setTimeout(() => {
+            wheelActive = false;
+            startAutoplay();
+          }, 200);
+        }, { passive: false });
+      }
+
+      goTo(0);
+
+      // No arrancar el autoplay hasta que el usuario llegue a este carrusel
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              hasEnteredView = true;
+              startAutoplay();
+              observer.disconnect();
+            }
+          });
+        }, { threshold: 0.4 });
+        observer.observe(container || track);
+      } else {
+        hasEnteredView = true;
+        startAutoplay();
+      }
+    }
+
+    initCarousel({
+      containerId: 'cover-carousel',
+      trackId: 'carousel-track',
+      prevId: 'carousel-prev',
+      nextId: 'carousel-next',
+      dotClass: 'carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-paper/60',
+    });
+
+    initCarousel({
+      containerId: 'research-carousel',
+      trackId: 'research-carousel-track',
+      prevId: 'research-carousel-prev',
+      nextId: 'research-carousel-next',
+      dotClass: 'research-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'workshops-carousel',
+      trackId: 'workshops-carousel-track',
+      prevId: 'workshops-carousel-prev',
+      nextId: 'workshops-carousel-next',
+      dotClass: 'workshops-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'sketches-carousel',
+      trackId: 'sketches-carousel-track',
+      prevId: 'sketches-carousel-prev',
+      nextId: 'sketches-carousel-next',
+      dotClass: 'sketches-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'notifcenter-carousel',
+      trackId: 'notifcenter-carousel-track',
+      prevId: 'notifcenter-carousel-prev',
+      nextId: 'notifcenter-carousel-next',
+      dotClass: 'notifcenter-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'push-carousel',
+      trackId: 'push-carousel-track',
+      prevId: 'push-carousel-prev',
+      nextId: 'push-carousel-next',
+      dotClass: 'push-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'preferences-carousel',
+      trackId: 'preferences-carousel-track',
+      prevId: 'preferences-carousel-prev',
+      nextId: 'preferences-carousel-next',
+      dotClass: 'preferences-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+  </script>
+
+</body>
+</html>

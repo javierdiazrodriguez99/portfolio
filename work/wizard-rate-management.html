@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wizard for Rate Management · Javier Díaz</title>
+<meta name="description" content="Caso de estudio: gestor masivo de datos de Excel con millones de registros de tarifas entre transportistas y shippers.">
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#1A1917',
+          slate: '#6E6A64',
+          paper: '#FFFFFF',
+          mist: '#FAF9F7',
+          latte: '#E5D9C5',
+          'latte-dark': '#D4C4B7',
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+        },
+        letterSpacing: {
+          tightest: '-0.04em',
+        },
+      },
+    },
+  }
+</script>
+
+<!-- Google Fonts: Inter -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  html { font-family: 'Inter', sans-serif; }
+  ::selection { background-color: #E5D9C5; color: #1A1917; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  .focus-ring:focus-visible {
+    outline: 2px solid #1A1917;
+    outline-offset: 3px;
+  }
+
+  .card-img {
+    background-image:
+      linear-gradient(135deg, #F0EBE1 0%, #E5D9C5 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .card-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.5), transparent 60%);
+  }
+
+  body {
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+  body.is-ready {
+    opacity: 1;
+  }
+</style>
+</head>
+
+<body class="bg-paper text-ink antialiased">
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-paper/80 backdrop-blur-md border-b border-ink/[0.06]">
+    <nav class="max-w-6xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
+      <button type="button" id="mobile-menu-toggle" class="sm:hidden focus-ring rounded-md p-1 -ml-1 text-ink" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <svg id="menu-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg id="menu-icon-close" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <a href="../index.html" class="text-lg font-semibold tracking-tight focus-ring rounded absolute left-1/2 -translate-x-1/2 sm:static sm:translate-x-0">
+        Javier Díaz<span class="text-latte-dark">.</span>
+      </a>
+
+      <ul class="hidden sm:flex items-center gap-10 text-base text-slate">
+        <li><a href="../sobre-mi.html" class="hover:text-ink transition-colors focus-ring rounded">Sobre mí</a></li>
+        <li><a href="../contacto.html" class="hover:text-ink transition-colors focus-ring rounded">Contacto</a></li>
+      </ul>
+
+      <span class="sm:hidden w-[22px]" aria-hidden="true"></span>
+    </nav>
+
+    <div id="mobile-menu" class="sm:hidden hidden border-t border-ink/[0.06] bg-paper">
+      <ul class="flex flex-col px-6 py-2 text-base font-medium text-ink">
+        <li><a href="../sobre-mi.html" class="block py-3 focus-ring rounded">Sobre mí</a></li>
+        <li><a href="../contacto.html" class="block py-3 focus-ring rounded">Contacto</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 pt-[104px]">
+      <a href="../index.html#work" class="reveal is-visible inline-flex items-center gap-2 text-xs font-medium tracking-widest uppercase text-slate hover:text-ink transition-colors focus-ring rounded">
+        ← Todos los proyectos
+      </a>
+
+      <h1 class="reveal is-visible mt-6 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tightest leading-[1.08]">
+        Wizard For Rate Management: cómo procesar miles de tarifas en tres sencillos pasos
+      </h1>
+
+      <p class="reveal is-visible mt-6 text-lg text-slate leading-relaxed">
+        Diseño de un wizard para gestionar de forma masiva las tarifas de compraventa entre transportistas y shippers, sobre bases de datos de millones de registros.
+      </p>
+
+      <div class="reveal is-visible mt-12 pt-8 border-t border-ink/[0.08] grid sm:grid-cols-4 gap-8">
+        <div>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Rol</p>
+          <p class="text-sm font-medium text-ink">Product Designer</p>
+        </div>
+        <div>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Cliente</p>
+          <p class="text-sm font-medium text-ink">Transportistas</p>
+        </div>
+        <div>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Año</p>
+          <p class="text-sm font-medium text-ink">2024</p>
+        </div>
+        <div>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Equipo</p>
+          <p class="text-sm font-medium text-ink">Product Managers, Developers, QA</p>
+        </div>
+      </div>
+
+      <div class="reveal is-visible mt-8 flex flex-wrap gap-2">
+        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70">Data Management</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70">Enterprise UX</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70">Excel</span>
+      </div>
+
+      <div id="cover-carousel" class="reveal group mt-16 md:mt-20 relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+        <div id="carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="wizard-rate-management-cover.png" alt="Tariff Manager: listado de archivos de tarifas con su estado de validación" class="w-full h-full object-cover shrink-0">
+          <img src="wizard-rate-management-cover-2.png" alt="Pantalla de revisión de datos del wizard, con detección de errores por fila" class="w-full h-full object-cover shrink-0">
+        </div>
+
+        <button type="button" id="carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div id="carousel-dots" class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="carousel-dot focus-ring w-2 h-2 rounded-full bg-paper/60 transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="carousel-dot focus-ring w-2 h-2 rounded-full bg-paper/60 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 01 · STARTING POINT ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">01</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Punto de partida</span>
+      </div>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+        Por qué necesitábamos un nuevo enfoque
+      </h2>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Contexto</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          Los equipos de operaciones gestionaban las tarifas de compraventa entre transportistas y shippers a través de archivos de Excel de millones de filas, sin validación automática ni trazabilidad de los cambios. Cualquier actualización masiva de tarifas era un proceso manual, lento y arriesgado.
+        </p>
+      </div>
+
+      <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 pt-10 border-t border-ink/[0.08]">
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
+          <h3 class="text-lg font-medium mb-2">Errores silenciosos</h3>
+          <p class="text-sm text-slate leading-relaxed">
+            Un error de tipeo en una celda podía afectar a miles de tarifas sin que nadie lo notara hasta más tarde.
+          </p>
+        </div>
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+          <h3 class="text-lg font-medium mb-2">Sin trazabilidad</h3>
+          <p class="text-sm text-slate leading-relaxed">
+            No había forma de saber quién había cambiado una tarifa concreta, ni cuándo, ni por qué.
+          </p>
+        </div>
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+          <h3 class="text-lg font-medium mb-2">Procesos manuales</h3>
+          <p class="text-sm text-slate leading-relaxed">
+            Cargar y validar un archivo de tarifas podía llevar horas de trabajo manual y repetitivo.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 02 · RESEARCH ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">02</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Research</span>
+      </div>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+        Cómo investigamos antes de diseñar el wizard
+      </h2>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Técnicas de investigación</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          Debido a la urgencia que tenía la compañía en arreglar este proceso, ya que estaba dando muchos errores tanto a nivel interno como a nivel de nuestros clientes, las técnicas de investigación previas antes de llegar al concepto final fueron casi nulas. Básicamente lo que se hizo fue un refresh de la interfaz de usuario y se añadieron algunas funcionalidades nuevas en comparación a la UI anterior.
+        </p>
+      </div>
+
+      <div id="research-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-[#FAFAFA]">
+        <div id="research-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="wizard-rate-management-research-1.png" alt="Wireframe del refresh de la interfaz de subida de tarifas, con anotaciones de mejoras a implementar" class="w-full h-full object-contain p-8 md:p-12 shrink-0">
+          <img src="wizard-rate-management-research-2.png" alt="Wireframe del refresh de la interfaz de edición de tarifas" class="w-full h-full object-contain p-8 md:p-12 shrink-0">
+        </div>
+
+        <button type="button" id="research-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="research-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+        </div>
+      </div>
+      <p class="reveal text-xs text-slate mt-3">Captura de pantalla con sus correspondientes anotaciones sobre la interfaz que estaba implementada en ese momento.</p>
+    </section>
+
+    <!-- ===== 03 · DEL PAPEL A LA PANTALLA ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">03</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Del papel a la pantalla</span>
+      </div>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+        De los primeros bocetos a las primeras interacciones
+      </h2>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Enfoque</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          Para llevar a cabo este proyecto se tuvo en cuenta referencias de proyectos anteriores en los que tuve la oportunidad de trabajar, tanto a nivel de user experience como a nivel de user interface.
+        </p>
+      </div>
+
+      <div id="sketches-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-[#FAFAFA]">
+        <div id="sketches-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="wizard-rate-management-sketches-1.png" alt="Diagrama de flujo del componente de arquitectura de la información para la carga automática de unidades (Autofill Units)" class="w-full h-full object-contain p-8 md:p-12 shrink-0">
+          <img src="wizard-rate-management-sketches-2.png" alt="Referencias de las pantallas de éxito de carga, borrado masivo y selección masiva del wizard" class="w-full h-full object-contain p-8 md:p-12 shrink-0">
+        </div>
+
+        <button type="button" id="sketches-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="sketches-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="sketches-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="sketches-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+        </div>
+      </div>
+      <p class="reveal text-xs text-slate mt-3">Referencias de proyectos anteriores utilizadas como punto de partida del flujo y la interfaz.</p>
+
+      <div class="reveal mb-16 mt-16 md:mt-20">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate mb-8">Carga de archivos</p>
+
+        <div class="flex flex-col gap-8 md:flex-row md:items-stretch md:gap-0">
+          <div class="md:flex-1 md:pr-6">
+            <span class="w-7 h-7 rounded-full bg-latte text-ink text-xs font-medium flex items-center justify-center mb-4">1</span>
+            <h3 class="text-base md:text-sm font-medium text-ink mb-2">Landing page de archivos</h3>
+            <p class="text-sm md:text-xs text-slate leading-relaxed">Una página donde se podían ver todas las tarifas y archivos que se habían subido al sistema. Si no existía ninguno, aparecía un empty state.</p>
+          </div>
+          <div class="hidden md:flex items-start pt-3 text-ink/20 shrink-0">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </div>
+          <div class="md:flex-1 md:px-6">
+            <span class="w-7 h-7 rounded-full bg-latte text-ink text-xs font-medium flex items-center justify-center mb-4">2</span>
+            <h3 class="text-base md:text-sm font-medium text-ink mb-2">Subida del archivo</h3>
+            <p class="text-sm md:text-xs text-slate leading-relaxed">Dos formas de subirlo: haciendo clic en el botón de subir archivos, o arrastrándolo directamente a la pantalla.</p>
+          </div>
+          <div class="hidden md:flex items-start pt-3 text-ink/20 shrink-0">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </div>
+          <div class="md:flex-1 md:px-6">
+            <span class="w-7 h-7 rounded-full bg-latte text-ink text-xs font-medium flex items-center justify-center mb-4">3</span>
+            <h3 class="text-base md:text-sm font-medium text-ink mb-2">Procesamiento en segundo plano</h3>
+            <p class="text-sm md:text-xs text-slate leading-relaxed">Al ser una fase beta, la carga era algo más lenta de lo habitual: el archivo se procesaba mientras el usuario seguía trabajando en otras páginas, y una notificación push avisaba cuando terminaba y había que revisarlo.</p>
+          </div>
+          <div class="hidden md:flex items-start pt-3 text-ink/20 shrink-0">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </div>
+          <div class="md:flex-1 md:px-6">
+            <span class="w-7 h-7 rounded-full bg-latte text-ink text-xs font-medium flex items-center justify-center mb-4">4</span>
+            <h3 class="text-base md:text-sm font-medium text-ink mb-2">Revisión con IA</h3>
+            <p class="text-sm md:text-xs text-slate leading-relaxed">En la página de revisión se visualizaba todo el contenido subido, y la IA identificaba errores o posibles confusiones al introducir los datos en el Excel — uno de los primeros proyectos donde empezamos a implementar IA, detectando errores mientras el archivo aún se estaba procesando.</p>
+          </div>
+          <div class="hidden md:flex items-start pt-3 text-ink/20 shrink-0">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </div>
+          <div class="md:flex-1 md:pl-6">
+            <span class="w-7 h-7 rounded-full bg-latte text-ink text-xs font-medium flex items-center justify-center mb-4">5</span>
+            <h3 class="text-base md:text-sm font-medium text-ink mb-2">Confirmación</h3>
+            <p class="text-sm md:text-xs text-slate leading-relaxed">Una vez revisados los errores, se completaba la subida y el archivo quedaba añadido correctamente al sistema.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="upload-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-[#FAFAFA]">
+        <div id="upload-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="wizard-rate-management-upload-1.png" alt="Pantalla de subida de archivo, con la zona de arrastrar y soltar y las instrucciones de uso" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="wizard-rate-management-upload-2.png" alt="Arrastrando el archivo directamente sobre el Tariff Manager para subirlo" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="wizard-rate-management-upload-3.png" alt="Pantalla de revisión de datos (Check data) antes de confirmar la subida" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="wizard-rate-management-upload-4.png" alt="Barra de progreso de la subida en segundo plano, con el usuario pudiendo seguir navegando por el sistema" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="wizard-rate-management-upload-5.png" alt="Notificación de confirmación de que el archivo se ha subido correctamente" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+        </div>
+
+        <button type="button" id="upload-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="upload-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="upload-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="upload-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+          <button type="button" class="upload-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+          <button type="button" class="upload-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="3" aria-label="Ir a la imagen 4"></button>
+          <button type="button" class="upload-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="4" aria-label="Ir a la imagen 5"></button>
+        </div>
+      </div>
+      <p class="reveal text-xs text-slate mt-3">Capturas del flujo de carga de archivos: desde la subida hasta la confirmación de que el archivo se ha añadido correctamente.</p>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16 mt-16">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Flujo de trabajo y validación con el equipo técnico</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          A medida que íbamos desarrollando las diferentes funcionalidades y procesos de la subida de archivos, recibíamos feedback constante — por no decir diario — del equipo técnico, que validaba las propuestas del equipo de diseño de producto. Muchas veces había cosas que se podían realizar y otras que no, y teníamos que adaptarnos a las condiciones técnicas limitadas que ofrecía la empresa en ese momento.
+        </p>
+      </div>
+
+      <div id="validation-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-[#FAFAFA]">
+        <div id="validation-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="wizard-rate-management-validation-1.webp" alt="Mapa completo del flujo del wizard (Select file + Processing, Check data page, Add… y Edit page), con los distintos escenarios y validaciones anotados" class="w-full h-full object-contain p-4 md:p-6 shrink-0">
+        </div>
+
+        <button type="button" id="validation-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="validation-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="validation-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+        </div>
+      </div>
+      <p class="reveal text-xs text-slate mt-3">Mapa del flujo completo del wizard, con los distintos escenarios y validaciones que se fueron acordando con el equipo técnico.</p>
+    </section>
+
+    <!-- ===== 04 · SOLUTION ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">04</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Solución</span>
+      </div>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+        Un wizard guiado = mil dolores de cabeza menos
+      </h2>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Enfoque</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          En vez de seguir dependiendo de archivos de Excel sueltos, diseñamos un wizard paso a paso que guía al usuario desde la carga del archivo hasta la validación y confirmación de los cambios, detectando errores automáticamente antes de que lleguen a producción. A pesar de no haber podido testear la propuesta con usuarios reales, el resultado fue bastante óptimo: nuestros transportistas quedaron conformes con la nueva funcionalidad y destacaron que la interfaz se veía mucho más limpia, y que el proceso podía ser más íntimo entre el usuario y la plataforma, en vez de tener que pasar por una revisión del soporte interno de la empresa.
+        </p>
+      </div>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1">Funcionalidades<br class="hidden md:block"> entregadas</p>
+        <ul class="border-t border-ink/[0.08]">
+          <li class="py-5 border-b border-ink/[0.08] flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
+            <span class="text-sm font-medium text-latte-dark shrink-0">01</span>
+            <div>
+              <h3 class="text-base font-medium mb-1">Carga guiada de archivos</h3>
+              <p class="text-sm text-slate leading-relaxed max-w-lg">[Placeholder] Importación de Excel con detección automática de columnas y formato.</p>
+            </div>
+          </li>
+          <li class="py-5 border-b border-ink/[0.08] flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
+            <span class="text-sm font-medium text-latte-dark shrink-0">02</span>
+            <div>
+              <h3 class="text-base font-medium mb-1">Validación automática</h3>
+              <p class="text-sm text-slate leading-relaxed max-w-lg">[Placeholder] El sistema detecta errores e inconsistencias antes de aplicar los cambios.</p>
+            </div>
+          </li>
+          <li class="py-5 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
+            <span class="text-sm font-medium text-latte-dark shrink-0">03</span>
+            <div>
+              <h3 class="text-base font-medium mb-1">Menos carga de trabajo a nivel interno</h3>
+              <p class="text-sm text-slate leading-relaxed max-w-lg">Los equipos internos de la empresa se descargaron de bastante trabajo y pudieron enfocarse en la mejora de otras funcionalidades.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1">Resultados</p>
+        <div>
+          <ul class="space-y-4 max-w-2xl mb-10">
+            <li class="pl-4 border-l-2 border-latte text-ink/80 leading-relaxed">El proceso de subida de tarifas y archivos de grandes dimensiones se hizo muchísimo más ágil.</li>
+            <li class="pl-4 border-l-2 border-latte text-ink/80 leading-relaxed">El usuario ganó mayor autonomía y control sobre sus propias tarifas.</li>
+            <li class="pl-4 border-l-2 border-latte text-ink/80 leading-relaxed">Conseguimos nuevos clientes gracias a esta nueva funcionalidad: otras empresas que ya contaban con un sistema similar decidieron unirse a nosotros al ver que también lo teníamos.</li>
+          </ul>
+
+          <div class="grid sm:grid-cols-2 gap-8 pt-10 border-t border-ink/[0.08]">
+            <div>
+              <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2">+1M</p>
+              <p class="text-sm font-medium text-ink mb-1">Filas procesadas</p>
+              <p class="text-sm text-slate leading-relaxed">Cada uno de los archivos contenía aproximadamente más de 5.000 líneas, y trabajamos con más de 50 transportistas en aquel momento.</p>
+            </div>
+            <div>
+              <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2">90%</p>
+              <p class="text-sm font-medium text-ink mb-1">Errores detectados antes de producción</p>
+              <p class="text-sm text-slate leading-relaxed">[Placeholder descripción]</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal bg-mist rounded-2xl p-8 md:p-10 my-14 md:my-16">
+        <p class="text-lg md:text-xl leading-relaxed text-ink/90">
+          "La agilidad con la que puedo procesar miles de tarifas en un momento es increíble."
+        </p>
+        <div class="flex items-center gap-3 mt-8">
+          <div class="w-10 h-10 rounded-full overflow-hidden shrink-0 bg-paper flex items-center justify-center"><img src="cma-cgm-logo.webp" alt="" class="w-full h-full object-contain p-1.5"></div>
+          <div>
+            <p class="text-sm font-medium text-ink">CMA CGM</p>
+            <p class="text-sm text-slate">Transportista</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 05 · KEY LEARNINGS ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">05</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Aprendizajes clave</span>
+      </div>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-8">
+        Qué me dejó este proyecto
+      </h2>
+      <p class="reveal text-ink/80 leading-relaxed max-w-2xl">
+        Este proyecto me permitió visualizar una nueva rama del diseño de producto: la de trabajar con funcionalidades que manejan archivos muy pesados, con muchísimos datos y cargas de información constantes. Esto me dejó como resultado una habilidad más a nivel personal y profesional como Product Designer: la de poder simplificar incluso los procesos de experiencia de usuario más complejos del mercado.
+      </p>
+    </section>
+
+    <!-- ===== END OF CASE STUDY ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08] text-center">
+      <p class="reveal text-xs font-medium tracking-widest uppercase text-slate mb-4">Has llegado al final</p>
+      <p class="reveal text-xl md:text-2xl font-medium tracking-tight mb-10">
+        Gracias por leer. ¿Quieres ver más?
+      </p>
+      <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="sisdeva.html" class="focus-ring inline-flex items-center gap-2 bg-ink text-paper text-sm font-medium px-6 py-3.5 rounded-full hover:bg-slate transition-colors">
+          Siguiente proyecto · SISDEVA
+        </a>
+        <a href="../index.html#work" class="focus-ring inline-flex items-center gap-2 text-sm font-medium px-6 py-3.5 rounded-full border border-ink/15 hover:bg-latte/40 hover:border-latte-dark transition-colors">
+          ← Volver a todos los proyectos
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    document.body.classList.add('is-ready');
+
+    // Menú móvil (hamburguesa)
+    (function () {
+      const toggleBtn = document.getElementById('mobile-menu-toggle');
+      const menu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('menu-icon-open');
+      const iconClose = document.getElementById('menu-icon-close');
+      if (!toggleBtn || !menu) return;
+
+      function closeMenu() {
+        menu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      }
+
+      function openMenu() {
+        menu.classList.remove('hidden');
+        iconOpen.classList.add('hidden');
+        iconClose.classList.remove('hidden');
+        toggleBtn.setAttribute('aria-expanded', 'true');
+      }
+
+      toggleBtn.addEventListener('click', () => {
+        const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
+        isOpen ? closeMenu() : openMenu();
+      });
+
+      menu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeMenu);
+      });
+    })();
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal:not(.is-visible)');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      revealEls.forEach((el) => observer.observe(el));
+    } else {
+      revealEls.forEach((el) => el.classList.add('is-visible'));
+    }
+
+    // ===== Carruseles =====
+    function initCarousel({ containerId, trackId, prevId, nextId, dotClass, activeDotClass, inactiveDotClass }) {
+      const container = document.getElementById(containerId);
+      const track = document.getElementById(trackId);
+      const prevBtn = document.getElementById(prevId);
+      const nextBtn = document.getElementById(nextId);
+      const dots = Array.from(document.querySelectorAll('.' + dotClass));
+      if (!track) return;
+
+      const slideCount = track.children.length;
+
+      // Carrusel con una sola imagen: sin flechas ni puntos, solo la imagen estática
+      if (slideCount <= 1) {
+        if (prevBtn) prevBtn.remove();
+        if (nextBtn) nextBtn.remove();
+        if (dots.length && dots[0].parentElement) dots[0].parentElement.remove();
+        return;
+      }
+      if (!dots.length) return;
+
+      const autoplayMs = 5000;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let index = 0;
+      let timer = null;
+      let hasEnteredView = false;
+
+      function goTo(i) {
+        index = (i + slideCount) % slideCount;
+        track.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((dot, dotIndex) => {
+          dot.classList.toggle(activeDotClass, dotIndex === index);
+          dot.classList.toggle(inactiveDotClass, dotIndex !== index);
+        });
+      }
+
+      function startAutoplay() {
+        if (reducedMotion || !hasEnteredView) return;
+        stopAutoplay();
+        timer = setInterval(() => goTo(index + 1), autoplayMs);
+      }
+
+      function stopAutoplay() {
+        if (timer) clearInterval(timer);
+        timer = null;
+      }
+
+      function goToManual(i) {
+        goTo(i);
+        startAutoplay();
+      }
+
+      prevBtn.addEventListener('click', () => goToManual(index - 1));
+      nextBtn.addEventListener('click', () => goToManual(index + 1));
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => goToManual(Number(dot.dataset.index)));
+      });
+
+      if (container) {
+        container.addEventListener('mouseenter', stopAutoplay);
+        container.addEventListener('mouseleave', startAutoplay);
+
+        // Swipe táctil (móvil / tablet)
+        let touchStartX = null;
+        container.addEventListener('touchstart', (e) => {
+          touchStartX = e.touches[0].clientX;
+          stopAutoplay();
+        }, { passive: true });
+        container.addEventListener('touchend', (e) => {
+          if (touchStartX === null) return;
+          const dx = e.changedTouches[0].clientX - touchStartX;
+          if (Math.abs(dx) > 40) {
+            goToManual(dx < 0 ? index + 1 : index - 1);
+          } else {
+            startAutoplay();
+          }
+          touchStartX = null;
+        }, { passive: true });
+
+        // Scroll horizontal de trackpad (dos dedos). El scroll con inercia de macOS
+        // sigue disparando eventos "wheel" durante bastante después del gesto físico,
+        // así que tratamos toda la ráfaga (inercia incluida) como un único gesto:
+        // solo navegamos en el primer evento y reiniciamos el cronómetro con cada
+        // evento nuevo, hasta que haya una pausa real sin eventos.
+        let wheelActive = false;
+        let wheelEndTimer = null;
+        container.addEventListener('wheel', (e) => {
+          if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+          e.preventDefault();
+          clearTimeout(wheelEndTimer);
+          if (!wheelActive) {
+            wheelActive = true;
+            stopAutoplay();
+            goTo(e.deltaX > 0 ? index + 1 : index - 1);
+          }
+          wheelEndTimer = setTimeout(() => {
+            wheelActive = false;
+            startAutoplay();
+          }, 200);
+        }, { passive: false });
+      }
+
+      goTo(0);
+
+      // No arrancar el autoplay hasta que el usuario llegue a este carrusel
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              hasEnteredView = true;
+              startAutoplay();
+              observer.disconnect();
+            }
+          });
+        }, { threshold: 0.4 });
+        observer.observe(container || track);
+      } else {
+        hasEnteredView = true;
+        startAutoplay();
+      }
+    }
+
+    initCarousel({
+      containerId: 'cover-carousel',
+      trackId: 'carousel-track',
+      prevId: 'carousel-prev',
+      nextId: 'carousel-next',
+      dotClass: 'carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-paper/60',
+    });
+
+    initCarousel({
+      containerId: 'research-carousel',
+      trackId: 'research-carousel-track',
+      prevId: 'research-carousel-prev',
+      nextId: 'research-carousel-next',
+      dotClass: 'research-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'sketches-carousel',
+      trackId: 'sketches-carousel-track',
+      prevId: 'sketches-carousel-prev',
+      nextId: 'sketches-carousel-next',
+      dotClass: 'sketches-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'upload-carousel',
+      trackId: 'upload-carousel-track',
+      prevId: 'upload-carousel-prev',
+      nextId: 'upload-carousel-next',
+      dotClass: 'upload-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'validation-carousel',
+      trackId: 'validation-carousel-track',
+      prevId: 'validation-carousel-prev',
+      nextId: 'validation-carousel-next',
+      dotClass: 'validation-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+  </script>
+
+</body>
+</html>

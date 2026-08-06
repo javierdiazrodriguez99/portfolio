@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sobre mí · Javier Díaz</title>
+<meta name="description" content="Sobre Javier Díaz, Product Designer — experiencia, testimonios, premios y educación.">
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#1A1917',
+          slate: '#6E6A64',
+          paper: '#FFFFFF',
+          mist: '#FAF9F7',
+          latte: '#E5D9C5',
+          'latte-dark': '#D4C4B7',
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+        },
+        letterSpacing: {
+          tightest: '-0.04em',
+        },
+      },
+    },
+  }
+</script>
+
+<!-- Google Fonts: Inter -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  html { font-family: 'Inter', sans-serif; }
+  ::selection { background-color: #E5D9C5; color: #1A1917; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  .focus-ring:focus-visible {
+    outline: 2px solid #1A1917;
+    outline-offset: 3px;
+  }
+
+  .card-img {
+    background-image:
+      linear-gradient(135deg, #F0EBE1 0%, #E5D9C5 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .card-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.5), transparent 60%);
+  }
+
+  body {
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+  body.is-ready {
+    opacity: 1;
+  }
+
+  /* Los recortes de origen de los testimonios incluyen algo de fondo/texto
+     sobrante junto a la cara; ampliamos y desplazamos la imagen dentro del
+     círculo para que solo se vea la cara. */
+  .avatar-img {
+    transform: scale(1.8);
+    transform-origin: 28% 32%;
+  }
+
+  /* Logos de universidades en gris, igual que el carrusel de marcas. */
+  .edu-logo {
+    object-fit: contain;
+    filter: grayscale(1) opacity(0.6);
+  }
+</style>
+</head>
+
+<body class="bg-paper text-ink antialiased min-h-screen flex flex-col">
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-paper/80 backdrop-blur-md border-b border-ink/[0.06]">
+    <nav class="max-w-6xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
+      <button type="button" id="mobile-menu-toggle" class="sm:hidden focus-ring rounded-md p-1 -ml-1 text-ink" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <svg id="menu-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg id="menu-icon-close" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <a href="index.html" class="text-lg font-semibold tracking-tight focus-ring rounded absolute left-1/2 -translate-x-1/2 sm:static sm:translate-x-0">
+        Javier Díaz<span class="text-latte-dark">.</span>
+      </a>
+
+      <ul class="hidden sm:flex items-center gap-10 text-base text-slate">
+        <li><a href="sobre-mi.html" class="text-ink focus-ring rounded" aria-current="page" data-i18n="nav.about">Sobre mí</a></li>
+        <li><a href="contacto.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
+      </ul>
+
+      <span class="sm:hidden w-[22px]" aria-hidden="true"></span>
+    </nav>
+
+    <div id="mobile-menu" class="sm:hidden hidden border-t border-ink/[0.06] bg-paper">
+      <ul class="flex flex-col px-6 py-2 text-base font-medium text-ink">
+        <li><a href="sobre-mi.html" class="block py-3 focus-ring rounded" aria-current="page" data-i18n="nav.about">Sobre mí</a></li>
+        <li><a href="contacto.html" class="block py-3 focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="flex-1">
+
+    <!-- ===== HERO / INTRO ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 pt-[104px]">
+      <a href="index.html" class="reveal is-visible inline-flex items-center gap-2 text-xs font-medium tracking-widest uppercase text-slate hover:text-ink transition-colors focus-ring rounded" data-i18n="back.home">
+        ← Volver al inicio
+      </a>
+
+      <h1 class="reveal is-visible mt-10 text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tightest leading-[1.05]" data-i18n="hero.heading">
+        Sobre mí
+      </h1>
+
+      <div class="reveal is-visible mt-14 grid md:grid-cols-2 gap-10 md:gap-16">
+        <div>
+          <p class="text-2xl md:text-3xl font-medium tracking-tight leading-snug" data-i18n="hero.intro">
+            Soy Javier — Product Designer con 4 años de experiencia diseñando productos digitales dentro de la industria de la logística. Me apasiona simplificar la complejidad a través del diseño. Actualmente en Freightos.
+          </p>
+          <div class="aspect-[3/4] max-w-xs rounded-2xl mt-8 overflow-hidden">
+            <img src="javier-diaz.jpeg" alt="Javier Díaz" class="w-full h-full object-cover">
+          </div>
+        </div>
+        <div class="space-y-5 text-lg text-slate leading-relaxed">
+          <p data-i18n="hero.p1">
+            En Freightos he tenido la oportunidad de crecer desde becario hasta Product Designer, trabajando en sistemas de navegación, notificaciones y herramientas de gestión de datos a gran escala para una plataforma usada por miles de transportistas, aerolíneas y navieras en todo el mundo.
+          </p>
+          <p data-i18n="hero.p2">
+            Antes de eso trabajé en Horizon Training como Graphic Designer &amp; Creative Direction. Estudié el Grado en Diseño en la Universidad de La Laguna, donde descubrí mi interés por el diseño de producto, y más tarde completé el Máster en Dirección en Diseño de Experiencias y Servicios Digitales en Elisava, en Barcelona.
+          </p>
+          <p data-i18n="hero.p3">
+            A lo largo de estos años he trabajado en sistemas de diseño, arquitectura de la información, investigación de usuarios y prototipado, siempre con el mismo objetivo: convertir problemas complejos en interfaces que la gente entiende a la primera.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-sm px-4 py-2 rounded-full bg-latte/50 text-ink/70" data-i18n="hobby1">Deporte</span>
+            <span class="text-sm px-4 py-2 rounded-full bg-latte/50 text-ink/70" data-i18n="hobby2">DJ / Mezclar música</span>
+            <span class="text-sm px-4 py-2 rounded-full bg-latte/50 text-ink/70" data-i18n="hobby3">Videojuegos</span>
+            <span class="text-sm px-4 py-2 rounded-full bg-latte/50 text-ink/70" data-i18n="hobby4">Vinilos</span>
+            <span class="text-sm px-4 py-2 rounded-full bg-latte/50 text-ink/70" data-i18n="hobby5">Conciertos y festivales</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EXPERIENCIA ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="experience.heading">Experiencia</h2>
+
+      <div class="reveal">
+        <ul>
+          <li class="py-8 border-b border-ink/[0.08] flex items-start gap-5">
+            <div class="w-14 h-14 flex items-center justify-center shrink-0">
+              <img src="freightos-icon.svg" alt="" class="max-w-full max-h-full w-auto h-auto object-contain">
+            </div>
+            <div>
+              <p class="text-lg font-semibold text-ink">Freightos</p>
+              <div class="text-base mt-1 space-y-0.5">
+                <p class="text-slate">Product Designer</p>
+                <p class="text-slate/50">Junior UX/UI Designer</p>
+                <p class="text-slate/50">UX/UI Intern</p>
+              </div>
+              <p class="text-sm text-slate/60 mt-4">May 2022 → Mar 2026</p>
+            </div>
+          </li>
+          <li class="py-8 flex items-start gap-5">
+            <div class="w-14 h-14 flex items-center justify-center shrink-0">
+              <img src="horizon-training.jpeg" alt="" class="max-w-full max-h-full w-auto h-auto rounded-sm object-contain">
+            </div>
+            <div>
+              <p class="text-lg font-semibold text-ink">Horizon Training</p>
+              <p class="text-base text-slate mt-1">Graphic Designer &amp; Creative Direction</p>
+              <p class="text-sm text-slate/60 mt-4">Jun 2020 → May 2022</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== EDUCACIÓN ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="education.heading">Educación</h2>
+
+      <ul class="reveal border-t border-ink/[0.08]">
+        <li class="py-6 border-b border-ink/[0.08] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+          <div>
+            <p class="text-base font-medium text-ink" data-i18n="edu1.title">Máster en Dirección en Diseño de Experiencias y Servicios Digitales</p>
+            <div class="flex items-center gap-2 mt-1">
+              <img src="logo-elisava.webp" alt="" class="edu-logo h-4 w-auto shrink-0">
+              <p class="text-sm text-slate">Elisava</p>
+            </div>
+          </div>
+          <span class="text-sm text-slate shrink-0">2021 — 2022</span>
+        </li>
+        <li class="py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+          <div>
+            <p class="text-base font-medium text-ink" data-i18n="edu2.title">Grado en Diseño</p>
+            <div class="flex items-center gap-2 mt-1">
+              <img src="logo-ull.png" alt="" class="edu-logo h-5 w-auto shrink-0">
+              <p class="text-sm text-slate">Universidad de La Laguna</p>
+            </div>
+          </div>
+          <span class="text-sm text-slate shrink-0">2017 — 2021</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== PREMIOS Y RECONOCIMIENTOS ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="awards.heading">Reconocimientos y premios</h2>
+
+      <div class="reveal grid sm:grid-cols-2 gap-x-10 gap-y-12">
+        <div>
+          <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+            <h3 class="text-base font-medium text-ink">Premios Laus &amp; Elisava Master Awards</h3>
+            <span class="text-xs text-slate shrink-0">2022 — 2023</span>
+          </div>
+          <p class="text-sm text-slate mt-1">Elisava Escola Universitària de Disseny i Enginyeria de Barcelona</p>
+          <p class="text-sm text-ink/80 leading-relaxed mt-3" data-i18n="award1.desc">
+            Doble nominación — a los Premios Laus 2023 y a los Elisava Master Awards 2022 — con el proyecto 'SWAP', desarrollado durante el Máster en Dirección en Diseño de Experiencias y Servicios Digitales.
+          </p>
+          <div class="aspect-[16/9] rounded-2xl mt-5 overflow-hidden">
+            <img src="award-nominaciones.jpeg" alt="Nominación a los Premios Laus y Elisava Master Awards con el proyecto SWAP" class="w-full h-full object-cover">
+          </div>
+        </div>
+        <div>
+          <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+            <h3 class="text-base font-medium text-ink">Diseño de señalética COVID-19</h3>
+            <span class="text-xs text-slate shrink-0">Feb 2021</span>
+          </div>
+          <p class="text-sm text-slate mt-1" data-i18n="award2.org">Publicación para el periódico de la Universidad de La Laguna</p>
+          <p class="text-sm text-ink/80 leading-relaxed mt-3" data-i18n="award2.desc">
+            Proyecto de señalización para comunicar la información sobre la Covid-19 en el transporte público, desarrollado junto a otros alumnos del Grado en Diseño de la ULL.
+          </p>
+          <a href="https://www.ull.es/portal/noticias/2021/alumnado-ull-disena-senaletica-sobre-covid-19-transporte-publico/" target="_blank" rel="noopener noreferrer" class="focus-ring inline-flex items-center gap-1 text-sm text-slate hover:text-ink transition-colors mt-3" data-i18n="award2.link">
+            Leer la publicación ↗
+          </a>
+          <a href="https://www.ull.es/portal/noticias/2021/alumnado-ull-disena-senaletica-sobre-covid-19-transporte-publico/" target="_blank" rel="noopener noreferrer" class="focus-ring group/tooltip relative block aspect-[16/9] rounded-2xl mt-5 overflow-hidden">
+            <img src="award-articulo-periodico.png" alt="Artículo de periódico sobre el proyecto de señalética COVID-19" class="w-full h-full object-cover transition-transform duration-500 group-hover/tooltip:scale-[1.015]">
+            <span class="pointer-events-none absolute top-4 left-4 whitespace-nowrap bg-ink text-paper text-xs font-medium px-2.5 py-1.5 rounded opacity-0 group-hover/tooltip:opacity-100 transition-opacity">Ver artículo de prensa</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-end justify-between mb-14 md:mb-16">
+        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight" data-i18n="testimonials.heading">Testimonios</h2>
+        <a href="https://www.linkedin.com/in/javierdiazrodriguez/details/recommendations/" target="_blank" rel="noopener noreferrer" class="focus-ring inline-flex items-center text-sm font-medium px-4 py-1.5 rounded-full border border-ink/15 text-ink/70 hover:bg-latte/40 hover:border-latte-dark hover:text-ink transition-colors" data-i18n="testimonials.more">
+          Ver más
+        </a>
+      </div>
+
+      <div id="testimonial-carousel" class="reveal group relative overflow-hidden">
+        <div id="testimonial-track" class="flex transition-transform duration-500 ease-out">
+          <div class="w-full shrink-0 px-1">
+            <div class="bg-mist rounded-2xl p-8 md:p-10 min-h-[220px] flex flex-col justify-between">
+              <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t1.quote">
+                "I met Javi when I hired him as an intern, and over the following 4 years I had the chance to see him grow into a Product Designer within the team. He shows up with the same level of commitment regardless of the task at hand, approaching everything with ownership and a positive, solution-oriented mindset."
+              </p>
+              <div class="flex items-center gap-3 mt-8">
+                <div class="w-10 h-10 rounded-full overflow-hidden shrink-0 bg-latte"><img src="testimonials/cristina-sampaio.png" alt="" class="avatar-img w-full h-full object-cover"></div>
+                <div>
+                  <p class="text-sm font-medium text-ink">Cristina Sampaio</p>
+                  <p class="text-sm text-slate" data-i18n="t1.role">Senior Product Design Manager at Freightos</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full shrink-0 px-1">
+            <div class="bg-mist rounded-2xl p-8 md:p-10 min-h-[220px] flex flex-col justify-between">
+              <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t2.quote">
+                "I had the pleasure of working with Javi for over two years as a UX designer, and I can confidently say he is a great person to have on any team. He is kind, easy to work with, and always brings a positive attitude to his work."
+              </p>
+              <div class="flex items-center gap-3 mt-8">
+                <div class="w-10 h-10 rounded-full overflow-hidden shrink-0 bg-latte"><img src="testimonials/isra-anabtawi.png" alt="" class="avatar-img w-full h-full object-cover"></div>
+                <div>
+                  <p class="text-sm font-medium text-ink">Isra Anabtawi</p>
+                  <p class="text-sm text-slate" data-i18n="t2.role">Senior Product Manager at Freightos</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full shrink-0 px-1">
+            <div class="bg-mist rounded-2xl p-8 md:p-10 min-h-[220px] flex flex-col justify-between">
+              <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t3.quote">
+                "I had the pleasure of working with Javier for over two years on the same UX team, and I can say without hesitation that he's one of those designers you genuinely want on every project. He brings a rare combination of craft and strategic thinking."
+              </p>
+              <div class="flex items-center gap-3 mt-8">
+                <div class="w-10 h-10 rounded-full overflow-hidden shrink-0 bg-latte"><img src="testimonials/sebastian-piai.png" alt="" class="avatar-img w-full h-full object-cover"></div>
+                <div>
+                  <p class="text-sm font-medium text-ink">Sebastián Piai</p>
+                  <p class="text-sm text-slate" data-i18n="t3.role">Expert Product Designer at Freightos</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full shrink-0 px-1">
+            <div class="bg-mist rounded-2xl p-8 md:p-10 min-h-[220px] flex flex-col justify-between">
+              <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t4.quote">
+                "Trabajar con Javier codo con codo en el Grado en Diseño de la Universidad de La Laguna fue una experiencia gratificante que sin duda repetiría más veces en mi trayectoria profesional. Siempre mostraba una actitud proactiva y desarrollaba un punto de vista innovador."
+              </p>
+              <div class="flex items-center gap-3 mt-8">
+                <div class="w-10 h-10 rounded-full overflow-hidden shrink-0 bg-latte"><img src="testimonials/yerimay-bethencourt.png" alt="" class="avatar-img w-full h-full object-cover"></div>
+                <div>
+                  <p class="text-sm font-medium text-ink">Yerimay Bethencourt Hernández</p>
+                  <p class="text-sm text-slate" data-i18n="t4.role">Diseñadora e Ilustradora</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full shrink-0 px-1">
+            <div class="bg-mist rounded-2xl p-8 md:p-10 min-h-[220px] flex flex-col justify-between">
+              <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t5.quote">
+                "Estudié con Javier en el Máster de dirección en diseño de experiencias y servicios digitales en Elisava. Es una persona muy proactiva, con amplia visión para nuevos proyectos, creativo, alegre y responsable."
+              </p>
+              <div class="flex items-center gap-3 mt-8">
+                <div class="w-10 h-10 rounded-full overflow-hidden shrink-0 bg-latte"><img src="testimonials/valentina-garcia.png" alt="" class="avatar-img w-full h-full object-cover"></div>
+                <div>
+                  <p class="text-sm font-medium text-ink">Valentina García Ruiz</p>
+                  <p class="text-sm text-slate" data-i18n="t5.role">Product Designer · Functional Analyst at Volkswagen Group Services</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full shrink-0 px-1">
+            <div class="bg-mist rounded-2xl p-8 md:p-10 min-h-[220px] flex flex-col justify-between">
+              <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t6.quote">
+                "Tuve la suerte de trabajar con Javi y, más allá de lo profesional, es de esas personas que hacen que el día a día sea mucho mejor. Como UX Designer, tiene una sensibilidad especial para entender a las personas: no solo a los usuarios, sino también al equipo."
+              </p>
+              <div class="flex items-center gap-3 mt-8">
+                <div class="w-10 h-10 rounded-full overflow-hidden shrink-0 bg-latte"><img src="testimonials/daniella-alamo.png" alt="" class="avatar-img w-full h-full object-cover"></div>
+                <div>
+                  <p class="text-sm font-medium text-ink">Daniella Álamo</p>
+                  <p class="text-sm text-slate" data-i18n="t6.role">Software Development Engineer at Freightos</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full shrink-0 px-1">
+            <div class="bg-mist rounded-2xl p-8 md:p-10 min-h-[220px] flex flex-col justify-between">
+              <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t7.quote">
+                "Javier joined Freightos as an intern, and it has been a real joy to watch his growth over the past four years. He stands out not only for the excellent quality of his work and his exceptional technical skill set, but also for his attitude."
+              </p>
+              <div class="flex items-center gap-3 mt-8">
+                <div class="w-10 h-10 rounded-full overflow-hidden shrink-0 bg-latte"><img src="testimonials/veronica-minniti.png" alt="" class="avatar-img w-full h-full object-cover"></div>
+                <div>
+                  <p class="text-sm font-medium text-ink">Veronica Minniti</p>
+                  <p class="text-sm text-slate" data-i18n="t7.role">HR Business Partner at Freightos</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full shrink-0 px-1">
+            <div class="bg-mist rounded-2xl p-8 md:p-10 min-h-[220px] flex flex-col justify-between">
+              <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t8.quote">
+                "I worked with Javi at Freightos for many years and on many projects. Javi is a pleasure to work with — always friendly, dedicated and focused on achieving a great product for our customers."
+              </p>
+              <div class="flex items-center gap-3 mt-8">
+                <div class="w-10 h-10 rounded-full overflow-hidden shrink-0 bg-latte"><img src="testimonials/sharon-schamroth.png" alt="" class="avatar-img w-full h-full object-cover"></div>
+                <div>
+                  <p class="text-sm font-medium text-ink">Sharon Schamroth</p>
+                  <p class="text-sm text-slate" data-i18n="t8.role">Product Director at Freightos</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" id="testimonial-prev" aria-label="Testimonio anterior" class="focus-ring absolute top-1/2 -left-2 sm:-left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper border border-ink/10 text-ink hover:bg-latte/40 transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="testimonial-next" aria-label="Siguiente testimonio" class="focus-ring absolute top-1/2 -right-2 sm:-right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper border border-ink/10 text-ink hover:bg-latte/40 transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="flex items-center justify-center gap-2 mt-6">
+          <button type="button" class="testimonial-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir al testimonio 1"></button>
+          <button type="button" class="testimonial-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir al testimonio 2"></button>
+          <button type="button" class="testimonial-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir al testimonio 3"></button>
+          <button type="button" class="testimonial-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="3" aria-label="Ir al testimonio 4"></button>
+          <button type="button" class="testimonial-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="4" aria-label="Ir al testimonio 5"></button>
+          <button type="button" class="testimonial-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="5" aria-label="Ir al testimonio 6"></button>
+          <button type="button" class="testimonial-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="6" aria-label="Ir al testimonio 7"></button>
+          <button type="button" class="testimonial-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="7" aria-label="Ir al testimonio 8"></button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="max-w-6xl mx-auto px-6 md:px-10 py-10 border-t border-ink/[0.08]">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate">
+      <p>© 2026 Javier Díaz. Diseñado con cuidado.</p>
+      <p>Hasta la próxima ✦</p>
+    </div>
+  </footer>
+
+  <script>
+    // ===== Traducción automática según el idioma del navegador =====
+    const translations = {
+      es: {
+        'nav.about': 'Sobre mí',
+        'nav.contact': 'Contacto',
+        'back.home': '← Volver al inicio',
+        'hero.heading': 'Sobre mí',
+        'hero.intro': 'Soy Javier — Product Designer con 4 años de experiencia diseñando productos digitales dentro de la industria de la logística. Me apasiona simplificar la complejidad a través del diseño. Actualmente en Freightos.',
+        'hero.p1': 'En Freightos he tenido la oportunidad de crecer desde becario hasta Product Designer, trabajando en sistemas de navegación, notificaciones y herramientas de gestión de datos a gran escala para una plataforma usada por miles de transportistas, aerolíneas y navieras en todo el mundo.',
+        'hero.p2': 'Antes de eso trabajé en Horizon Training como Graphic Designer & Creative Direction. Estudié el Grado en Diseño en la Universidad de La Laguna, donde descubrí mi interés por el diseño de producto, y más tarde completé el Máster en Dirección en Diseño de Experiencias y Servicios Digitales en Elisava, en Barcelona.',
+        'hero.p3': 'A lo largo de estos años he trabajado en sistemas de diseño, arquitectura de la información, investigación de usuarios y prototipado, siempre con el mismo objetivo: convertir problemas complejos en interfaces que la gente entiende a la primera.',
+        'experience.heading': 'Experiencia',
+        'testimonials.heading': 'Testimonios',
+        'testimonials.more': 'Ver más',
+        't1.quote': '"Conocí a Javi cuando lo contraté como becario y, a lo largo de los 4 años siguientes, tuve la oportunidad de verlo crecer hasta convertirse en Product Designer dentro del equipo. Mantiene el mismo nivel de compromiso sin importar la tarea, afrontando todo con responsabilidad y una mentalidad positiva y orientada a soluciones."',
+        't1.role': 'Senior Product Design Manager at Freightos',
+        't2.quote': '"Tuve el placer de trabajar con Javi durante más de dos años como diseñador UX, y puedo decir con confianza que es una gran persona para tener en cualquier equipo. Es amable, fácil de tratar y siempre aporta una actitud positiva a su trabajo."',
+        't2.role': 'Senior Product Manager at Freightos',
+        't3.quote': '"Tuve el placer de trabajar con Javier durante más de dos años en el mismo equipo de UX, y puedo decir sin dudarlo que es de esos diseñadores que realmente quieres tener en cada proyecto. Aporta una combinación poco común de oficio y pensamiento estratégico."',
+        't3.role': 'Expert Product Designer at Freightos',
+        't4.quote': '"Trabajar con Javier codo con codo en el Grado en Diseño de la Universidad de La Laguna fue una experiencia gratificante que sin duda repetiría más veces en mi trayectoria profesional. Siempre mostraba una actitud proactiva y desarrollaba un punto de vista innovador."',
+        't4.role': 'Diseñadora e Ilustradora',
+        't5.quote': '"Estudié con Javier en el Máster de dirección en diseño de experiencias y servicios digitales en Elisava. Es una persona muy proactiva, con amplia visión para nuevos proyectos, creativo, alegre y responsable."',
+        't5.role': 'Product Designer · Functional Analyst at Volkswagen Group Services',
+        't6.quote': '"Tuve la suerte de trabajar con Javi y, más allá de lo profesional, es de esas personas que hacen que el día a día sea mucho mejor. Como UX Designer, tiene una sensibilidad especial para entender a las personas: no solo a los usuarios, sino también al equipo."',
+        't6.role': 'Software Development Engineer at Freightos',
+        't7.quote': '"Javier se incorporó a Freightos como becario, y ha sido un verdadero placer ver su crecimiento durante estos cuatro años. Destaca no solo por la excelente calidad de su trabajo y su excepcional nivel técnico, sino también por su actitud."',
+        't7.role': 'HR Business Partner at Freightos',
+        't8.quote': '"Trabajé con Javi en Freightos durante muchos años y en muchos proyectos. Javi es un placer con el que trabajar: siempre cercano, dedicado y centrado en conseguir un gran producto para nuestros clientes."',
+        't8.role': 'Product Director at Freightos',
+        'hobby1': 'Deporte',
+        'hobby2': 'DJ / Mezclar música',
+        'hobby3': 'Videojuegos',
+        'hobby4': 'Vinilos',
+        'hobby5': 'Conciertos y festivales',
+        'awards.heading': 'Reconocimientos y premios',
+        'award1.desc': "Doble nominación — a los Premios Laus 2023 y a los Elisava Master Awards 2022 — con el proyecto 'SWAP', desarrollado durante el Máster en Dirección en Diseño de Experiencias y Servicios Digitales.",
+        'award2.org': 'Publicación para el periódico de la Universidad de La Laguna',
+        'award2.desc': 'Proyecto de señalización para comunicar la información sobre la Covid-19 en el transporte público, desarrollado junto a otros alumnos del Grado en Diseño de la ULL.',
+        'award2.link': 'Leer la publicación ↗',
+        'education.heading': 'Educación',
+        'edu1.title': 'Máster en Dirección en Diseño de Experiencias y Servicios Digitales',
+        'edu2.title': 'Grado en Diseño',
+      },
+      en: {
+        'nav.about': 'About',
+        'nav.contact': 'Contact',
+        'back.home': '← Back to home',
+        'hero.heading': 'About me',
+        'hero.intro': "I'm Javier — a Product Designer with 4 years of experience designing digital products within the logistics industry. I'm passionate about simplifying complexity through design. Currently at Freightos.",
+        'hero.p1': 'At Freightos I had the chance to grow from intern to Product Designer, working on navigation systems, notifications and large-scale data management tools for a platform used by thousands of carriers, airlines and shipping lines worldwide.',
+        'hero.p2': 'Before that I worked at Horizon Training as Graphic Designer & Creative Direction. I studied a Design degree at Universidad de La Laguna, where I discovered my interest in product design, and later completed a Master\'s in Digital Experience and Service Design Direction at Elisava, in Barcelona.',
+        'hero.p3': "Over the years I've worked across design systems, information architecture, user research and prototyping, always with the same goal: turning complex problems into interfaces people understand right away.",
+        'experience.heading': 'Experience',
+        'testimonials.heading': 'Testimonials',
+        'testimonials.more': 'See more',
+        't1.quote': '"I met Javi when I hired him as an intern, and over the following 4 years I had the chance to see him grow into a Product Designer within the team. He shows up with the same level of commitment regardless of the task at hand, approaching everything with ownership and a positive, solution-oriented mindset."',
+        't1.role': 'Senior Product Design Manager at Freightos',
+        't2.quote': '"I had the pleasure of working with Javi for over two years as a UX designer, and I can confidently say he is a great person to have on any team. He is kind, easy to work with, and always brings a positive attitude to his work."',
+        't2.role': 'Senior Product Manager at Freightos',
+        't3.quote': '"I had the pleasure of working with Javier for over two years on the same UX team, and I can say without hesitation that he\'s one of those designers you genuinely want on every project. He brings a rare combination of craft and strategic thinking."',
+        't3.role': 'Expert Product Designer at Freightos',
+        't4.quote': '"Working closely with Javier during the Design degree at Universidad de La Laguna was a rewarding experience I would gladly repeat throughout my career. He always showed a proactive attitude and brought an innovative point of view."',
+        't4.role': 'Designer & Illustrator',
+        't5.quote': '"I studied with Javier in the Master\'s in Digital Experience and Service Design Direction at Elisava. He\'s a very proactive person, with a broad vision for new projects — creative, upbeat and responsible."',
+        't5.role': 'Product Designer · Functional Analyst at Volkswagen Group Services',
+        't6.quote': '"I was lucky enough to work with Javi and, beyond the professional side, he\'s one of those people who make everyday work so much better. As a UX Designer, he has a special sensitivity for understanding people — not just users, but the team too."',
+        't6.role': 'Software Development Engineer at Freightos',
+        't7.quote': '"Javier joined Freightos as an intern, and it has been a real joy to watch his growth over the past four years. He stands out not only for the excellent quality of his work and his exceptional technical skill set, but also for his attitude."',
+        't7.role': 'HR Business Partner at Freightos',
+        't8.quote': '"I worked with Javi at Freightos for many years and on many projects. Javi is a pleasure to work with — always friendly, dedicated and focused on achieving a great product for our customers."',
+        't8.role': 'Product Director at Freightos',
+        'hobby1': 'Sport',
+        'hobby2': 'DJing / Mixing music',
+        'hobby3': 'Video games',
+        'hobby4': 'Vinyl records',
+        'hobby5': 'Concerts & festivals',
+        'awards.heading': 'Awards & recognition',
+        'award1.desc': "Double nomination — for the Laus Awards 2023 and the Elisava Master Awards 2022 — with the project 'SWAP', developed during the Master's in Digital Experience and Service Design Direction.",
+        'award2.org': 'Feature in the Universidad de La Laguna newspaper',
+        'award2.desc': 'Signage design project to communicate Covid-19 information across public transport, developed together with other ULL Design degree students.',
+        'award2.link': 'Read the feature ↗',
+        'education.heading': 'Education',
+        'edu1.title': "Master's in Digital Experience and Service Design Direction",
+        'edu2.title': 'Design Degree',
+      },
+    };
+
+    function detectLang() {
+      const supported = Object.keys(translations);
+      const candidates = (navigator.languages && navigator.languages.length)
+        ? navigator.languages
+        : [navigator.language || 'en'];
+      for (const candidate of candidates) {
+        const short = candidate.slice(0, 2).toLowerCase();
+        if (supported.includes(short)) return short;
+      }
+      return 'en';
+    }
+
+    function applyTranslations(lang) {
+      const dict = translations[lang] || translations.en;
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        const value = dict[key];
+        if (value === undefined) return;
+        el.textContent = value;
+      });
+    }
+
+    applyTranslations(detectLang());
+    document.body.classList.add('is-ready');
+
+    // Menú móvil (hamburguesa)
+    (function () {
+      const toggleBtn = document.getElementById('mobile-menu-toggle');
+      const menu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('menu-icon-open');
+      const iconClose = document.getElementById('menu-icon-close');
+      if (!toggleBtn || !menu) return;
+
+      function closeMenu() {
+        menu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      }
+
+      function openMenu() {
+        menu.classList.remove('hidden');
+        iconOpen.classList.add('hidden');
+        iconClose.classList.remove('hidden');
+        toggleBtn.setAttribute('aria-expanded', 'true');
+      }
+
+      toggleBtn.addEventListener('click', () => {
+        const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
+        isOpen ? closeMenu() : openMenu();
+      });
+
+      menu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeMenu);
+      });
+    })();
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal:not(.is-visible)');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      revealEls.forEach((el) => observer.observe(el));
+    } else {
+      revealEls.forEach((el) => el.classList.add('is-visible'));
+    }
+
+    // ===== Carrusel de testimonios =====
+    function initCarousel({ containerId, trackId, prevId, nextId, dotClass, activeDotClass, inactiveDotClass }) {
+      const container = document.getElementById(containerId);
+      const track = document.getElementById(trackId);
+      const prevBtn = document.getElementById(prevId);
+      const nextBtn = document.getElementById(nextId);
+      const dots = Array.from(document.querySelectorAll('.' + dotClass));
+      if (!track || !dots.length) return;
+
+      const slideCount = track.children.length;
+      const autoplayMs = 10000;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let index = 0;
+      let timer = null;
+
+      function goTo(i) {
+        index = (i + slideCount) % slideCount;
+        track.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((dot, dotIndex) => {
+          dot.classList.toggle(activeDotClass, dotIndex === index);
+          dot.classList.toggle(inactiveDotClass, dotIndex !== index);
+        });
+      }
+
+      function startAutoplay() {
+        if (reducedMotion) return;
+        stopAutoplay();
+        timer = setInterval(() => goTo(index + 1), autoplayMs);
+      }
+
+      function stopAutoplay() {
+        if (timer) clearInterval(timer);
+      }
+
+      function goToManual(i) {
+        goTo(i);
+        startAutoplay();
+      }
+
+      prevBtn.addEventListener('click', () => goToManual(index - 1));
+      nextBtn.addEventListener('click', () => goToManual(index + 1));
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => goToManual(Number(dot.dataset.index)));
+      });
+
+      if (container) {
+        container.addEventListener('mouseenter', stopAutoplay);
+        container.addEventListener('mouseleave', startAutoplay);
+
+        // Swipe táctil (móvil / tablet)
+        let touchStartX = null;
+        container.addEventListener('touchstart', (e) => {
+          touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+        container.addEventListener('touchend', (e) => {
+          if (touchStartX === null) return;
+          const dx = e.changedTouches[0].clientX - touchStartX;
+          if (Math.abs(dx) > 40) {
+            goToManual(dx < 0 ? index + 1 : index - 1);
+          }
+          touchStartX = null;
+        }, { passive: true });
+
+        // Scroll horizontal de trackpad (dos dedos)
+        let wheelCooldown = false;
+        container.addEventListener('wheel', (e) => {
+          if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+          e.preventDefault();
+          if (wheelCooldown) return;
+          wheelCooldown = true;
+          goToManual(e.deltaX > 0 ? index + 1 : index - 1);
+          setTimeout(() => { wheelCooldown = false; }, 500);
+        }, { passive: false });
+      }
+
+      goTo(0);
+      startAutoplay();
+    }
+
+    initCarousel({
+      containerId: 'testimonial-carousel',
+      trackId: 'testimonial-track',
+      prevId: 'testimonial-prev',
+      nextId: 'testimonial-next',
+      dotClass: 'testimonial-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+  </script>
+
+</body>
+</html>

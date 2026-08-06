@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SWAP · Javier Díaz</title>
+<meta name="description" content="Caso de estudio: proyecto SWAP, desarrollado durante el Máster en Dirección en Diseño de Experiencias y Servicios Digitales en Elisava.">
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#1A1917',
+          slate: '#6E6A64',
+          paper: '#FFFFFF',
+          mist: '#FAF9F7',
+          latte: '#E5D9C5',
+          'latte-dark': '#D4C4B7',
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+        },
+        letterSpacing: {
+          tightest: '-0.04em',
+        },
+      },
+    },
+  }
+</script>
+
+<!-- Google Fonts: Inter -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  html { font-family: 'Inter', sans-serif; }
+  ::selection { background-color: #E5D9C5; color: #1A1917; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  .focus-ring:focus-visible {
+    outline: 2px solid #1A1917;
+    outline-offset: 3px;
+  }
+
+  .card-img {
+    background-image:
+      linear-gradient(135deg, #F0EBE1 0%, #E5D9C5 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .card-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.5), transparent 60%);
+  }
+
+  body {
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+  body.is-ready {
+    opacity: 1;
+  }
+</style>
+</head>
+
+<body class="bg-paper text-ink antialiased">
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-paper/80 backdrop-blur-md border-b border-ink/[0.06]">
+    <nav class="max-w-6xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
+      <button type="button" id="mobile-menu-toggle" class="sm:hidden focus-ring rounded-md p-1 -ml-1 text-ink" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <svg id="menu-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg id="menu-icon-close" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <a href="../index.html" class="text-lg font-semibold tracking-tight focus-ring rounded absolute left-1/2 -translate-x-1/2 sm:static sm:translate-x-0">
+        Javier Díaz<span class="text-latte-dark">.</span>
+      </a>
+
+      <ul class="hidden sm:flex items-center gap-10 text-base text-slate">
+        <li><a href="../sobre-mi.html" class="hover:text-ink transition-colors focus-ring rounded">Sobre mí</a></li>
+        <li><a href="../contacto.html" class="hover:text-ink transition-colors focus-ring rounded">Contacto</a></li>
+      </ul>
+
+      <span class="sm:hidden w-[22px]" aria-hidden="true"></span>
+    </nav>
+
+    <div id="mobile-menu" class="sm:hidden hidden border-t border-ink/[0.06] bg-paper">
+      <ul class="flex flex-col px-6 py-2 text-base font-medium text-ink">
+        <li><a href="../sobre-mi.html" class="block py-3 focus-ring rounded">Sobre mí</a></li>
+        <li><a href="../contacto.html" class="block py-3 focus-ring rounded">Contacto</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 pt-[104px]">
+      <a href="../index.html#work" class="reveal is-visible inline-flex items-center gap-2 text-xs font-medium tracking-widest uppercase text-slate hover:text-ink transition-colors focus-ring rounded">
+        ← Todos los proyectos
+      </a>
+
+      <h1 class="reveal is-visible mt-6 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tightest leading-[1.08]">
+        SWAP
+      </h1>
+
+      <p class="reveal is-visible mt-6 text-lg text-slate leading-relaxed">
+        Diseño de un servicio digital de innovación social para Inditex, enfocado en la ODS nº 12 para garantizar los modelos de consumo y producción sostenible.
+      </p>
+
+      <a href="https://www.elisava.net/proyectos/smart/" target="_blank" rel="noopener noreferrer" class="reveal is-visible mt-6 focus-ring inline-flex items-center gap-2 text-sm font-medium px-5 py-2.5 rounded-full border border-ink/15 hover:bg-latte/40 hover:border-latte-dark transition-colors">
+        Ver artículo en Elisava
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+
+      <div class="reveal is-visible mt-12 pt-8 border-t border-ink/[0.08] grid sm:grid-cols-4 gap-8">
+        <div>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Rol</p>
+          <p class="text-sm font-medium text-ink">Estudiante</p>
+        </div>
+        <div>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Cliente</p>
+          <p class="text-sm font-medium text-ink">Inditex (ficticio)</p>
+        </div>
+        <div>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Año</p>
+          <p class="text-sm font-medium text-ink">2022</p>
+        </div>
+        <div>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Equipo</p>
+          <p class="text-sm font-medium text-ink">Oriol Colchón, Javier Díaz, Berta Junyent y Júlia Sala</p>
+        </div>
+      </div>
+
+      <div class="reveal is-visible mt-8 flex flex-wrap items-center gap-2">
+        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70">UX Research</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70">Service Design</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70">Prototipado</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70">TFM</span>
+      </div>
+
+      <div id="cover-carousel" class="reveal group mt-16 md:mt-20 relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+        <div id="carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="swap-cover-1.jpg" alt="Pantallas de conexión de armario virtual, mapa de búsqueda cercana, tienda y comunidad de la app Swap" class="w-full h-full object-cover shrink-0">
+          <img src="swap-cover-2.jpg" alt="Pantallas de comunidad y tienda de la app Swap, con producto personalizado e Inditex" class="w-full h-full object-cover shrink-0">
+          <img src="swap-cover-3.jpg" alt="Notificaciones push, escaneo del QR de la etiqueta de una prenda y etiqueta física de la prenda con QR de Swap" class="w-full h-full object-cover shrink-0">
+        </div>
+
+        <button type="button" id="carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div id="carousel-dots" class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="carousel-dot focus-ring w-2 h-2 rounded-full bg-paper/60 transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="carousel-dot focus-ring w-2 h-2 rounded-full bg-paper/60 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+          <button type="button" class="carousel-dot focus-ring w-2 h-2 rounded-full bg-paper/60 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 01 · STARTING POINT ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">01</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Punto de partida</span>
+      </div>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+        Por qué necesitábamos un nuevo enfoque
+      </h2>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Contexto</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          SWAP es una propuesta para la compañía Inditex enfocándonos en una de sus ODS, concretamente la número 12: "Garantizar los modelos de consumo y producción sostenibles". Empezamos nuestro proyecto con una pregunta de investigación sobre la cual trabajamos para extraer ideas disruptivas. En esa fase de ideación partimos de una idea clara: posicionar a Inditex como una marca que apuesta por modelos de circularidad de sus productos. Todo ello para posicionarse como el primer holding de empresas de moda en adoptar una propuesta tan valiente y comprometida hacia una transición de modelo de consumo.
+        </p>
+      </div>
+
+      <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 pt-10 border-t border-ink/[0.08]">
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
+          <h3 class="text-lg font-medium mb-2">El placer de lo nuevo</h3>
+          <p class="text-sm text-slate leading-relaxed">
+            "A la gente le encanta comprar y tener ropa nueva, le hace sentir bien".
+          </p>
+        </div>
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+          <h3 class="text-lg font-medium mb-2">Urgencia de temporada</h3>
+          <p class="text-sm text-slate leading-relaxed">
+            "Cambios de temporada = urgencia y consumismo".
+          </p>
+        </div>
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+          <h3 class="text-lg font-medium mb-2">Reciclaje sin prioridad institucional</h3>
+          <p class="text-sm text-slate leading-relaxed">
+            "No se prioriza a nivel institucional el reciclaje de la ropa".
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 02 · RESEARCH ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">02</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Research</span>
+      </div>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+        Cómo investigamos antes de tocar el diseño
+      </h2>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Técnicas de investigación</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          Partimos de una pregunta de investigación clara: "la ropa producida por Inditex genera muchos residuos que no se reutilizan y dañan el medio ambiente". Para explorarla utilizamos el método Basadur, que nos permitió transformar esa pregunta en una propuesta concreta a través de un volcado de hechos, retos e ideas — cada etapa nos permitió bajar el concepto de forma más precisa y enfocar mejor cuál iba a ser la mejor solución.
+        </p>
+      </div>
+
+      <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 mb-14">
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
+          <h3 class="text-lg font-medium mb-2">Hechos</h3>
+          <p class="text-sm text-slate leading-relaxed">Recopilamos hechos observados sobre cómo se relaciona la gente con la ropa y el consumo: desde el placer de comprar algo nuevo hasta la falta de prioridad institucional en el reciclaje textil.</p>
+        </div>
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+          <h3 class="text-lg font-medium mb-2">Retos</h3>
+          <p class="text-sm text-slate leading-relaxed">Reformulamos esos hechos en preguntas de tipo "¿cómo podríamos...?", para abrir el abanico de posibles soluciones sin cerrarnos a una única dirección.</p>
+        </div>
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+          <h3 class="text-lg font-medium mb-2">Ideas</h3>
+          <p class="text-sm text-slate leading-relaxed">A partir de los retos, generamos ideas disruptivas: desde una nueva línea de ropa de segunda mano hasta un servicio de suscripción que sustituyera la venta tradicional.</p>
+        </div>
+      </div>
+
+      <div id="research-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-white">
+        <div id="research-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="swap-sessions-1.webp" alt="Sesión de trabajo en equipo, volcando hechos y retos en un mural de papel" class="w-full h-full object-cover shrink-0">
+          <img src="swap-sessions-5.webp" alt="Equipo revisando el mural de hechos, retos e ideas" class="w-full h-full object-cover shrink-0">
+          <img src="swap-sessions-6.webp" alt="Equipo revisando conjuntamente el mural con hechos, retos e ideas" class="w-full h-full object-cover shrink-0">
+          <img src="swap-sessions-3.webp" alt="Esquema de la metodología Basadur: hechos, retos e ideas" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+        </div>
+
+        <button type="button" id="research-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="research-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+          <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+          <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="3" aria-label="Ir a la imagen 4"></button>
+        </div>
+      </div>
+      <p class="reveal text-xs text-slate mt-3">Sesiones de trabajo en equipo, volcando hechos, retos e ideas en un mural de papel.</p>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16 mt-16 md:mt-20">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Sesiones de trabajo en equipo</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          Una vez trabajada la idea empezamos a investigar de una forma macro y micro. Analizando aspectos económicos, sociales y legales para entender el contexto de mercado. Creando encuestas para consumidores que nos ayudaran a entender cómo adoptan los consumidores el consumo responsable y finalmente sacando información cualitativa a partir de entrevistas a perfiles estratégicos. Realizamos una encuesta a 160 personas con el objetivo de disponer de datos sobre el modelo de consumo, hábitos de compra, así como conocimiento de proyectos sostenibles.
+        </p>
+      </div>
+
+      <div class="reveal aspect-[16/9] rounded-2xl overflow-hidden bg-white">
+        <img src="swap-sessions-4.webp" alt="Resultados de la encuesta a 160 personas sobre hábitos de consumo y sostenibilidad" class="w-full h-full object-contain p-6 md:p-10">
+      </div>
+      <p class="reveal text-xs text-slate mt-3">Resultados de la encuesta a 160 personas sobre hábitos de consumo y sostenibilidad.</p>
+
+      <div class="reveal mb-16 mt-16 md:mt-20">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate mb-8">Conclusiones</p>
+
+        <div class="grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 pt-10 border-t border-ink/[0.08]">
+          <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
+            <h3 class="text-lg font-medium mb-2">Ingresos bajos en jóvenes</h3>
+            <p class="text-sm text-slate leading-relaxed">"La mayoría de jóvenes menores de 30 años tienen menos de 20.000€ de ingresos anuales".</p>
+          </div>
+          <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+            <h3 class="text-lg font-medium mb-2">Online y físico, sin preferencia clara</h3>
+            <p class="text-sm text-slate leading-relaxed">"No hay una clara preferencia entre comprar en tienda online y en tienda física".</p>
+          </div>
+          <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+            <h3 class="text-lg font-medium mb-2">Compra por temporada</h3>
+            <p class="text-sm text-slate leading-relaxed">"La mayoría de usuarios compra una vez por temporada".</p>
+          </div>
+          <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
+            <h3 class="text-lg font-medium mb-2">Apps de moda muy extendidas</h3>
+            <p class="text-sm text-slate leading-relaxed">"Más de la mitad de usuarios tiene apps de moda".</p>
+          </div>
+          <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+            <h3 class="text-lg font-medium mb-2">Precio y diseño ante todo</h3>
+            <p class="text-sm text-slate leading-relaxed">"Los factores que más se tienen en cuenta a la hora de comprar ropa son, principalmente, el precio y, después, el diseño".</p>
+          </div>
+          <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+            <h3 class="text-lg font-medium mb-2">Poco consumo de segunda mano</h3>
+            <p class="text-sm text-slate leading-relaxed">"La mayoría de usuarios no consume ropa de segunda mano".</p>
+          </div>
+          <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
+            <h3 class="text-lg font-medium mb-2">Casi nadie fabrica su propia ropa</h3>
+            <p class="text-sm text-slate leading-relaxed">"Casi ningún usuario se ha fabricado alguna prenda".</p>
+          </div>
+          <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+            <h3 class="text-lg font-medium mb-2">Desconocimiento de la línea sostenible</h3>
+            <p class="text-sm text-slate leading-relaxed">"La mayoría desconoce que Inditex tiene una línea sostenible".</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16 mt-16 md:mt-20">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Benchmark</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          Determinamos un benchmark de la competencia y encontramos 4 grandes grupos que son competencia directa de Inditex a nivel mundial: Gap, H&amp;M, Uniqlo y Mango. Llevamos a cabo una investigación para averiguar qué tipo de proyectos o iniciativas sobre modelos de consumo y producción sostenibles están llevando a cabo en la actualidad.
+        </p>
+      </div>
+
+      <div id="benchmark-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-white">
+        <div id="benchmark-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="swap-benchmark-1.webp" alt="Benchmark de Uniqlo (Down Recycling) y Mango (Commited): objetivos, acciones y futuro de sus iniciativas de sostenibilidad" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="swap-benchmark-2.webp" alt="Benchmark de Gap (Circularity) y H&amp;M (Turning waste into fashion): objetivos, acciones y futuro de sus iniciativas de sostenibilidad" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+        </div>
+
+        <button type="button" id="benchmark-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="benchmark-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="benchmark-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="benchmark-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+        </div>
+      </div>
+      <p class="reveal text-xs text-slate mt-3">Benchmark de las iniciativas de sostenibilidad de Uniqlo, Mango, Gap y H&amp;M.</p>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16 mt-16 md:mt-20">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Benchmark digital</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          En el ámbito de servicio digital, hicimos un benchmark sobre las 4 apps más relevantes de compra y venta de ropa de segunda mano para ver qué funcionalidades tienen y cómo se posicionan. Las marcas digitales que hemos seleccionado son: Vinted, Zalando, Depop y Wallapop. Para analizar el posicionamiento estratégico utilizamos la matriz de la competencia, trazando dos ejes cualitativos: comunidad y calidad del producto. Vemos que, con respecto a las funcionalidades, no encontramos competencia con las mismas características que queremos implementar en la aplicación.
+        </p>
+      </div>
+
+      <div id="benchmark-digital-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-white">
+        <div id="benchmark-digital-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="swap-benchmark-3.png" alt="Tabla comparativa de Vinted, Wallapop, Zalando, Depop y Swap: claim, tipo de productos, seguridad, marcas, usuarios, vendedores, comunidad, calidad, precio, países y plataforma" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="swap-benchmark-4.png" alt="Matriz de posicionamiento de la competencia según comunidad y calidad del producto, con Swap, Vinted, Wallapop, Depop y Zalando" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+        </div>
+
+        <button type="button" id="benchmark-digital-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="benchmark-digital-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="benchmark-digital-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="benchmark-digital-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+        </div>
+      </div>
+      <p class="reveal text-xs text-slate mt-3">Tabla comparativa y matriz de posicionamiento frente a Vinted, Wallapop, Zalando y Depop.</p>
+    </section>
+
+    <!-- ===== 03 · PROPUESTA DE VALOR Y PERSONAS ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">03</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Propuesta de valor y personas</span>
+      </div>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+        A quién nos dirigíamos y qué le ofrecíamos
+      </h2>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Propuesta de valor</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          Nuestro servicio digital se centra en el consumo responsable, para un público joven concienciado con la sostenibilidad y economía circular, pero sin el poder adquisitivo suficiente para poderlo aplicar. Inditex crea esta herramienta para que el consumidor pueda tener información sobre su armario, sus compras, alargar la vida útil de las mismas y comprar sus prendas de segunda mano en la app. La aplicación es una oportunidad para el posicionamiento de Inditex como la primera gran marca de fast fashion en adoptar modelos de circularidad de esta envergadura.
+        </p>
+      </div>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Persona 1 — María Timonet</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          28 años, ingeniera medioambiental en Barcelona, de arquetipo "Consciente": quiere vestir acorde a sus valores sin perder personalidad ni sentido estético, pero le frustra que la ropa sostenible sea cara, que no sepa cuidar su ropa a largo plazo y que perciba greenwashing en la sostenibilidad de las grandes marcas. Representa al usuario más concienciado con los valores y el estilo de vida sostenible.
+        </p>
+      </div>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Persona 2 — Carlos Rodríguez</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          29 años, director de arte en publicidad en Barcelona, de arquetipo "Consumista": le gusta comprar ropa constantemente porque le hace sentir bien, quiere tener mucha variedad y vestir como sus referentes, aunque empieza a querer cambiar sus hábitos hacia un consumo más responsable. Representa al usuario más consumista de fast fashion, no concienciado con la sostenibilidad — nuestro gran reto.
+        </p>
+      </div>
+
+      <div id="personas-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-white">
+        <div id="personas-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="swap-persona-1.png" alt="Persona 1: María Timonet, 28 años, ingeniera medioambiental, arquetipo Consciente" class="w-full h-full object-contain p-4 md:p-6 shrink-0">
+          <img src="swap-persona-1-flow.webp" alt="User flow de María Timonet: desde Home hasta reservar cita en una tienda de reparación" class="w-full h-full object-contain p-4 md:p-6 shrink-0">
+          <img src="swap-persona-2.png" alt="Persona 2: Carlos Rodríguez, 29 años, director de arte, arquetipo Consumista" class="w-full h-full object-contain p-4 md:p-6 shrink-0">
+          <img src="swap-persona-2-flow.webp" alt="User flow de Carlos Rodríguez: desde Splash hasta completar una compra con Apple Pay" class="w-full h-full object-contain p-4 md:p-6 shrink-0">
+        </div>
+
+        <button type="button" id="personas-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="personas-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="personas-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="personas-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+          <button type="button" class="personas-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+          <button type="button" class="personas-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="3" aria-label="Ir a la imagen 4"></button>
+        </div>
+      </div>
+      <p class="reveal text-xs text-slate mt-3">Las dos personas definidas a partir del research y la encuesta, con sus user flows: María Timonet y Carlos Rodríguez.</p>
+    </section>
+
+    <!-- ===== 04 · ARQUITECTURA DE LA INFORMACIÓN Y WIREFRAMES ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">04</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Arquitectura de la información y wireframes</span>
+      </div>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+        De la arquitectura a los primeros wireframes
+      </h2>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Conclusión general</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          Planteamos una arquitectura en forma de hub, con "Tienda" como nodo central que conecta de forma horizontal con Comunidad, Favoritos, Mensajes y Cuidados, mientras que el armario personal y el perfil se acceden directamente desde el splash inicial como un espacio propio y diferenciado. Los distintos caminos de descubrimiento de producto — por categorías, por buscador, desde favoritos o desde la inspiración de la comunidad — convergen siempre en la misma ficha de producto, lo que nos permite mantener un único patrón de navegación aunque el usuario llegue por vías muy distintas. El armario es la rama más profunda del árbol, reflejando que gestionar las prendas propias (añadir, limpiar, reparar, poner en venta) es la funcionalidad más compleja de la aplicación.
+        </p>
+      </div>
+
+      <div class="reveal aspect-[16/9] rounded-2xl overflow-hidden bg-white mb-3">
+        <img src="swap-ia-diagram.webp" alt="Mapa de arquitectura de la información de la app, con Tienda como hub central y Mi Armario como rama más profunda" class="w-full h-full object-contain p-6 md:p-10">
+      </div>
+      <p class="reveal text-xs text-slate mb-14">Mapa de arquitectura de la información de la app.</p>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Desde los átomos hasta los componentes finales</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          [Placeholder — explica aquí el proceso de creación del sistema de interfaz, desde los elementos más pequeños (átomos: colores, tipografías, iconos, botones) hasta su combinación progresiva en componentes cada vez más grandes y complejos, hasta llegar a las pantallas finales.]
+        </p>
+      </div>
+
+      <div id="wireframes-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-white">
+        <div id="wireframes-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="swap-wireframes-1.png" alt="Wireframe 1 de la app SWAP" class="w-full h-full object-contain p-4 md:p-6 shrink-0">
+          <img src="swap-wireframes-2.png" alt="Wireframe 2 de la app SWAP" class="w-full h-full object-contain p-4 md:p-6 shrink-0">
+          <img src="swap-wireframes-3.png" alt="Wireframe 3 de la app SWAP" class="w-full h-full object-contain p-4 md:p-6 shrink-0">
+          <img src="swap-wireframes-4.png" alt="Wireframe 4 de la app SWAP" class="w-full h-full object-contain p-4 md:p-6 shrink-0">
+          <img src="swap-wireframes-5.png" alt="Wireframe 5 de la app SWAP" class="w-full h-full object-contain p-4 md:p-6 shrink-0">
+          <img src="swap-wireframes-6.png" alt="Wireframe 6 de la app SWAP" class="w-full h-full object-contain p-4 md:p-6 shrink-0">
+          <img src="swap-wireframes-7.png" alt="Wireframe 7 de la app SWAP" class="w-full h-full object-contain p-4 md:p-6 shrink-0">
+        </div>
+
+        <button type="button" id="wireframes-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="wireframes-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="wireframes-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="wireframes-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+          <button type="button" class="wireframes-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+          <button type="button" class="wireframes-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="3" aria-label="Ir a la imagen 4"></button>
+          <button type="button" class="wireframes-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="4" aria-label="Ir a la imagen 5"></button>
+          <button type="button" class="wireframes-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="5" aria-label="Ir a la imagen 6"></button>
+          <button type="button" class="wireframes-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="6" aria-label="Ir a la imagen 7"></button>
+        </div>
+      </div>
+      <p class="reveal text-xs text-slate mt-3">Wireframes de la app SWAP, del 1 al 7.</p>
+    </section>
+
+    <!-- ===== 05 · MODELO DE NEGOCIO Y GO TO MARKET ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">05</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Modelo de negocio y Go to Market</span>
+      </div>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+        Plan de estrategia dividido en tres etapas
+      </h2>
+
+      <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10">
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
+          <h3 class="text-lg font-medium mb-3">Descubrimiento</h3>
+          <ul class="text-sm text-slate leading-relaxed space-y-3 list-disc list-outside pl-4 marker:text-latte-dark">
+            <li>Acciones para todos aquellos usuarios que son potencial target de la app, para que se interesen y quieran saber más sobre cómo funciona y qué beneficios tiene.</li>
+            <li>Para todos ellos realizaremos campañas de paid media vía Meta y TikTok. Participando con influencers y haciendo que las mismas marcas del grupo hagan eco del lanzamiento.</li>
+            <li>Paid media / moppies / contenido con influencers / promoción en las apps de las marcas.</li>
+          </ul>
+        </div>
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+          <h3 class="text-lg font-medium mb-3">Consideración</h3>
+          <ul class="text-sm text-slate leading-relaxed space-y-3 list-disc list-outside pl-4 marker:text-latte-dark">
+            <li>Para aquellos usuarios que ya son clientes de Inditex, pero no tienen la app, vamos a ofrecerles un código de descuento como lead magnet para que se descarguen y prueben ellos mismos las funcionalidades de la app.</li>
+            <li>De esta forma conseguimos atraer tráfico a la app para que el sistema de compra venta de segunda mano empiece a funcionar.</li>
+          </ul>
+        </div>
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+          <h3 class="text-lg font-medium mb-3">Decisión</h3>
+          <ul class="text-sm text-slate leading-relaxed space-y-3 list-disc list-outside pl-4 marker:text-latte-dark">
+            <li>Para super usuarios, es decir, el público más fidelizado y que se descarga la app de forma inmediata, se realizarán acciones de pro users para que ellos mismos puedan recomendar la marca a otros amigos, teniendo así beneficios en las compras, ventas y mejores resultados a nivel de visibilidad en la app.</li>
+            <li>Así conseguimos crear líderes de comunidad que se encarguen de convencer a nuevos públicos y generar contenido.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="reveal mt-16 md:mt-20 pt-14 border-t border-ink/[0.08]">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate mb-8">KPIs de ODS</p>
+        <div class="grid sm:grid-cols-3 gap-x-8 gap-y-10">
+          <div>
+            <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2">5%</p>
+            <p class="text-sm font-medium text-ink mb-1">Volumen de producciones anuales</p>
+            <p class="text-sm text-slate leading-relaxed">Reducción de la producción de colecciones estacionales durante el primer año.</p>
+          </div>
+          <div>
+            <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2">10%</p>
+            <p class="text-sm font-medium text-ink mb-1">Número de toneladas de ropa que se distribuye</p>
+            <p class="text-sm text-slate leading-relaxed">Menos residuos generados durante la cadena de suministro en los primeros 12 meses.</p>
+          </div>
+          <div>
+            <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2">20%</p>
+            <p class="text-sm font-medium text-ink mb-1">Número de prendas que se revenden en la App</p>
+            <p class="text-sm text-slate leading-relaxed">Aumento de la vida útil de los productos que genera Inditex durante el primer año.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal mt-14 pt-14 border-t border-ink/[0.08]">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate mb-8">KPIs de Negocio</p>
+        <div class="grid sm:grid-cols-3 gap-x-8 gap-y-10">
+          <div>
+            <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2">15%</p>
+            <p class="text-sm font-medium text-ink mb-1">Número de nuevos registros</p>
+            <p class="text-sm text-slate leading-relaxed">Del total de usuarios de las apps del grupo Inditex durante los primeros 6 meses.</p>
+          </div>
+          <div>
+            <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2">10%</p>
+            <p class="text-sm font-medium text-ink mb-1">Compras en la app por mes</p>
+            <p class="text-sm text-slate leading-relaxed">Aumento mensual de las ventas de ropa de segunda mano durante el primer año de lanzamiento.</p>
+          </div>
+          <div>
+            <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2">75%</p>
+            <p class="text-sm font-medium text-ink mb-1">Artículos en el armario por usuario</p>
+            <p class="text-sm text-slate leading-relaxed">De los usuarios registrados suben artículos al armario durante los primeros 12 meses.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 06 · SOLUTION ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">06</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Solución</span>
+      </div>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+        [Placeholder — titular de la solución de SWAP]
+      </h2>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Enfoque</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          Como resultado final, este proyecto fue presentado a la profesora del Máster de la Universidad Elisava, escuela de ingeniería y diseño de Barcelona donde tuve el placer de realizar mi Máster. Se nos dio un feedback bastante positivo y la nota final del proyecto fue un 9/10.
+        </p>
+      </div>
+
+      <div class="reveal aspect-[16/9] rounded-2xl overflow-hidden mb-6">
+        <img src="swap-solution-3.jpg" alt="Pantalla de bienvenida de SWAP junto a las pantallas de Comunidad y Tienda" class="w-full h-full object-cover">
+      </div>
+
+      <div class="reveal aspect-[16/9] rounded-2xl overflow-hidden mb-6">
+        <img src="swap-solution-2.jpg" alt="Collage de pantallas de la app SWAP: armario, tienda, comunidad y perfil de vendedor" class="w-full h-full object-cover">
+      </div>
+
+      <div class="reveal aspect-[16/9] rounded-2xl overflow-hidden mb-6">
+        <img src="swap-solution-4.jpg" alt="Pantallas de Tu Armario, Tienda y Comunidad de la app SWAP" class="w-full h-full object-cover">
+      </div>
+
+      <div class="reveal aspect-[16/9] rounded-2xl overflow-hidden mb-6">
+        <img src="swap-solution-1.jpg" alt="Pantalla de la app SWAP en un display de tienda: sección Comunidad y Tienda" class="w-full h-full object-cover">
+      </div>
+
+      <div class="reveal aspect-[16/9] rounded-2xl overflow-hidden mb-16">
+        <img src="swap-solution-5.jpg" alt="Mockup de la app SWAP en portátil y móviles: pantalla de bienvenida, Inspírate y Conecta" class="w-full h-full object-cover">
+      </div>
+
+      <div class="reveal mb-16">
+        <div id="delivery-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-white">
+          <div id="delivery-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+            <img src="swap-team-1.jpg" alt="Equipo de SWAP junto a la pantalla de presentación del proyecto: Oriol Colchón, Javier Díaz, Berta Junyent y Júlia Sala" class="w-full h-full object-cover shrink-0">
+            <img src="swap-team-2.jpg" alt="Javier Díaz presentando SWAP ante el tribunal en Elisava" class="w-full h-full object-cover shrink-0">
+            <img src="swap-team-3.jpg" alt="Sala de presentación en Elisava con la pantalla mostrando la app SWAP" class="w-full h-full object-cover shrink-0">
+          </div>
+
+          <button type="button" id="delivery-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button type="button" id="delivery-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+
+          <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+            <button type="button" class="delivery-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+            <button type="button" class="delivery-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+            <button type="button" class="delivery-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+          </div>
+        </div>
+        <p class="reveal text-xs text-slate mt-3">Presentación final del proyecto SWAP en Elisava, junto al equipo: Oriol Colchón, Javier Díaz, Berta Junyent y Júlia Sala.</p>
+      </div>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1">Resultados</p>
+        <ul class="space-y-4 max-w-2xl">
+          <li class="pl-4 border-l-2 border-latte text-ink/80 leading-relaxed">[Placeholder] Primer resultado del proyecto.</li>
+          <li class="pl-4 border-l-2 border-latte text-ink/80 leading-relaxed">[Placeholder] Segundo resultado del proyecto.</li>
+          <li class="pl-4 border-l-2 border-latte text-ink/80 leading-relaxed">[Placeholder] Tercer resultado del proyecto.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== 07 · KEY LEARNINGS ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">07</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Aprendizajes clave</span>
+      </div>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-8">
+        Qué me dejó este proyecto
+      </h2>
+      <p class="reveal text-ink/80 leading-relaxed max-w-2xl">
+        [Placeholder — comparte una o dos lecciones honestas del proyecto: algo que aprendiste durante el Máster gracias a SWAP, a nivel de proceso, de diseño o de trabajo en equipo.]
+      </p>
+    </section>
+
+    <!-- ===== 08 · RECONOCIMIENTOS Y PREMIOS ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">08</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Reconocimientos y premios</span>
+      </div>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+        Reconocimientos y premios
+      </h2>
+
+      <div class="reveal">
+        <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+          <h3 class="text-base font-medium text-ink">Premios Laus &amp; Elisava Master Awards</h3>
+          <span class="text-xs text-slate shrink-0">2022 — 2023</span>
+        </div>
+        <p class="text-sm text-slate mt-1">Elisava Escola Universitària de Disseny i Enginyeria de Barcelona</p>
+        <p class="text-sm text-ink/80 leading-relaxed mt-3 max-w-2xl">
+          Doble nominación — a los Premios Laus 2023 y a los Elisava Master Awards 2022 — con el proyecto 'SWAP', desarrollado durante el Máster en Dirección en Diseño de Experiencias y Servicios Digitales.
+        </p>
+        <div class="aspect-[16/9] rounded-2xl mt-5 overflow-hidden max-w-2xl">
+          <img src="../award-nominaciones.jpeg" alt="Nominación a los Premios Laus y Elisava Master Awards con el proyecto SWAP" class="w-full h-full object-cover">
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== END OF CASE STUDY ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08] text-center">
+      <p class="reveal text-xs font-medium tracking-widest uppercase text-slate mb-4">Has llegado al final</p>
+      <p class="reveal text-xl md:text-2xl font-medium tracking-tight mb-10">
+        Gracias por leer. ¿Quieres ver más?
+      </p>
+      <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="vertical-menus.html" class="focus-ring inline-flex items-center gap-2 bg-ink text-paper text-sm font-medium px-6 py-3.5 rounded-full hover:bg-slate transition-colors">
+          Siguiente proyecto · Vertical Menu
+        </a>
+        <a href="../index.html#work" class="focus-ring inline-flex items-center gap-2 text-sm font-medium px-6 py-3.5 rounded-full border border-ink/15 hover:bg-latte/40 hover:border-latte-dark transition-colors">
+          ← Volver a todos los proyectos
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    document.body.classList.add('is-ready');
+
+    // Menú móvil (hamburguesa)
+    (function () {
+      const toggleBtn = document.getElementById('mobile-menu-toggle');
+      const menu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('menu-icon-open');
+      const iconClose = document.getElementById('menu-icon-close');
+      if (!toggleBtn || !menu) return;
+
+      function closeMenu() {
+        menu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      }
+
+      function openMenu() {
+        menu.classList.remove('hidden');
+        iconOpen.classList.add('hidden');
+        iconClose.classList.remove('hidden');
+        toggleBtn.setAttribute('aria-expanded', 'true');
+      }
+
+      toggleBtn.addEventListener('click', () => {
+        const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
+        isOpen ? closeMenu() : openMenu();
+      });
+
+      menu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeMenu);
+      });
+    })();
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal:not(.is-visible)');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      revealEls.forEach((el) => observer.observe(el));
+    } else {
+      revealEls.forEach((el) => el.classList.add('is-visible'));
+    }
+
+    // ===== Carruseles =====
+    function initCarousel({ containerId, trackId, prevId, nextId, dotClass, activeDotClass, inactiveDotClass }) {
+      const container = document.getElementById(containerId);
+      const track = document.getElementById(trackId);
+      const prevBtn = document.getElementById(prevId);
+      const nextBtn = document.getElementById(nextId);
+      const dots = Array.from(document.querySelectorAll('.' + dotClass));
+      if (!track) return;
+
+      const slideCount = track.children.length;
+
+      // Carrusel con una sola imagen: sin flechas ni puntos, solo la imagen estática
+      if (slideCount <= 1) {
+        if (prevBtn) prevBtn.remove();
+        if (nextBtn) nextBtn.remove();
+        if (dots.length && dots[0].parentElement) dots[0].parentElement.remove();
+        return;
+      }
+      if (!dots.length) return;
+
+      const autoplayMs = 5000;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let index = 0;
+      let timer = null;
+      let hasEnteredView = false;
+
+      function goTo(i) {
+        index = (i + slideCount) % slideCount;
+        track.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((dot, dotIndex) => {
+          dot.classList.toggle(activeDotClass, dotIndex === index);
+          dot.classList.toggle(inactiveDotClass, dotIndex !== index);
+        });
+      }
+
+      function startAutoplay() {
+        if (reducedMotion || !hasEnteredView) return;
+        stopAutoplay();
+        timer = setInterval(() => goTo(index + 1), autoplayMs);
+      }
+
+      function stopAutoplay() {
+        if (timer) clearInterval(timer);
+        timer = null;
+      }
+
+      function goToManual(i) {
+        goTo(i);
+        startAutoplay();
+      }
+
+      prevBtn.addEventListener('click', () => goToManual(index - 1));
+      nextBtn.addEventListener('click', () => goToManual(index + 1));
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => goToManual(Number(dot.dataset.index)));
+      });
+
+      if (container) {
+        container.addEventListener('mouseenter', stopAutoplay);
+        container.addEventListener('mouseleave', startAutoplay);
+
+        // Swipe táctil (móvil / tablet)
+        let touchStartX = null;
+        container.addEventListener('touchstart', (e) => {
+          touchStartX = e.touches[0].clientX;
+          stopAutoplay();
+        }, { passive: true });
+        container.addEventListener('touchend', (e) => {
+          if (touchStartX === null) return;
+          const dx = e.changedTouches[0].clientX - touchStartX;
+          if (Math.abs(dx) > 40) {
+            goToManual(dx < 0 ? index + 1 : index - 1);
+          } else {
+            startAutoplay();
+          }
+          touchStartX = null;
+        }, { passive: true });
+
+        // Scroll horizontal de trackpad (dos dedos). El scroll con inercia de macOS
+        // sigue disparando eventos "wheel" durante bastante después del gesto físico,
+        // así que tratamos toda la ráfaga (inercia incluida) como un único gesto:
+        // solo navegamos en el primer evento y reiniciamos el cronómetro con cada
+        // evento nuevo, hasta que haya una pausa real sin eventos.
+        let wheelActive = false;
+        let wheelEndTimer = null;
+        container.addEventListener('wheel', (e) => {
+          if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+          e.preventDefault();
+          clearTimeout(wheelEndTimer);
+          if (!wheelActive) {
+            wheelActive = true;
+            stopAutoplay();
+            goTo(e.deltaX > 0 ? index + 1 : index - 1);
+          }
+          wheelEndTimer = setTimeout(() => {
+            wheelActive = false;
+            startAutoplay();
+          }, 200);
+        }, { passive: false });
+      }
+
+      goTo(0);
+
+      // No arrancar el autoplay hasta que el usuario llegue a este carrusel
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              hasEnteredView = true;
+              startAutoplay();
+              observer.disconnect();
+            }
+          });
+        }, { threshold: 0.4 });
+        observer.observe(container || track);
+      } else {
+        hasEnteredView = true;
+        startAutoplay();
+      }
+    }
+
+    initCarousel({
+      containerId: 'cover-carousel',
+      trackId: 'carousel-track',
+      prevId: 'carousel-prev',
+      nextId: 'carousel-next',
+      dotClass: 'carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-paper/60',
+    });
+
+    initCarousel({
+      containerId: 'research-carousel',
+      trackId: 'research-carousel-track',
+      prevId: 'research-carousel-prev',
+      nextId: 'research-carousel-next',
+      dotClass: 'research-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'benchmark-carousel',
+      trackId: 'benchmark-carousel-track',
+      prevId: 'benchmark-carousel-prev',
+      nextId: 'benchmark-carousel-next',
+      dotClass: 'benchmark-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'benchmark-digital-carousel',
+      trackId: 'benchmark-digital-carousel-track',
+      prevId: 'benchmark-digital-carousel-prev',
+      nextId: 'benchmark-digital-carousel-next',
+      dotClass: 'benchmark-digital-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'personas-carousel',
+      trackId: 'personas-carousel-track',
+      prevId: 'personas-carousel-prev',
+      nextId: 'personas-carousel-next',
+      dotClass: 'personas-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'wireframes-carousel',
+      trackId: 'wireframes-carousel-track',
+      prevId: 'wireframes-carousel-prev',
+      nextId: 'wireframes-carousel-next',
+      dotClass: 'wireframes-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'delivery-carousel',
+      trackId: 'delivery-carousel-track',
+      prevId: 'delivery-carousel-prev',
+      nextId: 'delivery-carousel-next',
+      dotClass: 'delivery-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+  </script>
+
+</body>
+</html>

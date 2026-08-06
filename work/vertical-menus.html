@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vertical Menus — One Stack · Javier Díaz</title>
+<meta name="description" content="Caso de estudio: unificación de los menús de distintos productos en un único sistema de navegación global.">
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#1A1917',
+          slate: '#6E6A64',
+          paper: '#FFFFFF',
+          mist: '#FAF9F7',
+          latte: '#E5D9C5',
+          'latte-dark': '#D4C4B7',
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+        },
+        letterSpacing: {
+          tightest: '-0.04em',
+        },
+      },
+    },
+  }
+</script>
+
+<!-- Google Fonts: Inter -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  html { font-family: 'Inter', sans-serif; }
+  ::selection { background-color: #E5D9C5; color: #1A1917; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  .focus-ring:focus-visible {
+    outline: 2px solid #1A1917;
+    outline-offset: 3px;
+  }
+
+  .card-img {
+    background-image:
+      linear-gradient(135deg, #F0EBE1 0%, #E5D9C5 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .card-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.5), transparent 60%);
+  }
+
+  body {
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+  body.is-ready {
+    opacity: 1;
+  }
+</style>
+</head>
+
+<body class="bg-paper text-ink antialiased">
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-paper/80 backdrop-blur-md border-b border-ink/[0.06]">
+    <nav class="max-w-6xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
+      <button type="button" id="mobile-menu-toggle" class="sm:hidden focus-ring rounded-md p-1 -ml-1 text-ink" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <svg id="menu-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg id="menu-icon-close" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <a href="../index.html" class="text-lg font-semibold tracking-tight focus-ring rounded absolute left-1/2 -translate-x-1/2 sm:static sm:translate-x-0">
+        Javier Díaz<span class="text-latte-dark">.</span>
+      </a>
+
+      <ul class="hidden sm:flex items-center gap-10 text-base text-slate">
+        <li><a href="../sobre-mi.html" class="hover:text-ink transition-colors focus-ring rounded">Sobre mí</a></li>
+        <li><a href="../contacto.html" class="hover:text-ink transition-colors focus-ring rounded">Contacto</a></li>
+      </ul>
+
+      <span class="sm:hidden w-[22px]" aria-hidden="true"></span>
+    </nav>
+
+    <div id="mobile-menu" class="sm:hidden hidden border-t border-ink/[0.06] bg-paper">
+      <ul class="flex flex-col px-6 py-2 text-base font-medium text-ink">
+        <li><a href="../sobre-mi.html" class="block py-3 focus-ring rounded">Sobre mí</a></li>
+        <li><a href="../contacto.html" class="block py-3 focus-ring rounded">Contacto</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 pt-[104px]">
+      <a href="../index.html#work" class="reveal is-visible inline-flex items-center gap-2 text-xs font-medium tracking-widest uppercase text-slate hover:text-ink transition-colors focus-ring rounded">
+        ← Todos los proyectos
+      </a>
+
+      <h1 class="reveal is-visible mt-6 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tightest leading-[1.08]">
+        Vertical Menu: la unión de cinco menús en uno.
+      </h1>
+
+      <p class="reveal is-visible mt-6 text-lg text-slate leading-relaxed">
+        Rediseño de la arquitectura de navegación para unificar los diferentes menús de los múltiples productos de la empresa en un único formato, a nivel de experiencia de usuario y de interfaz.
+        <a href="https://www.freightos.com/freight-resources/webcargos-new-menu-redesign/?utm_content=303815178&amp;utm_medium=social&amp;utm_source=linkedin&amp;hss_channel=lcp-3486795" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 align-middle text-xs font-medium px-4 py-1.5 rounded-full border border-ink/15 text-ink/70 hover:bg-latte/40 hover:border-latte-dark hover:text-ink transition-colors focus-ring">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Ver artículo de prensa
+        </a>
+      </p>
+
+      <div class="reveal is-visible mt-12 pt-8 border-t border-ink/[0.08] grid sm:grid-cols-4 gap-8">
+        <div>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Rol</p>
+          <p class="text-sm font-medium text-ink">Junior UX/UI Designer</p>
+        </div>
+        <div>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Cliente</p>
+          <p class="text-sm font-medium text-ink">Freightos</p>
+        </div>
+        <div>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Año</p>
+          <p class="text-sm font-medium text-ink">2023</p>
+        </div>
+        <div>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Equipo</p>
+          <p class="text-sm font-medium text-ink">Directivos (CEO + Main Managers), PMs, Developers, QA</p>
+        </div>
+      </div>
+
+      <div class="reveal is-visible mt-8 flex flex-wrap items-center gap-2">
+        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70">Design System</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70">Information Architecture</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70">Figma</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70">User Testing</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70">Research</span>
+      </div>
+
+      <div id="cover-carousel" class="reveal group mt-16 md:mt-20 relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+        <div id="carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="vertical-menus-cover.png" alt="Menú vertical de Freightos unificado en un único sistema de navegación" class="w-full h-full object-cover shrink-0">
+          <img src="vertical-menus-cover-2.png" alt="Submenú de creación rápida (New) desplegado sobre la plataforma de Freightos" class="w-full h-full object-cover shrink-0">
+        </div>
+
+        <button type="button" id="carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div id="carousel-dots" class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="carousel-dot focus-ring w-2 h-2 rounded-full bg-paper/60 transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="carousel-dot focus-ring w-2 h-2 rounded-full bg-paper/60 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 01 · STARTING POINT ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">01</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Punto de partida</span>
+      </div>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+        Por qué necesitábamos un nuevo enfoque
+      </h2>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Contexto</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          La empresa contaba con diferentes productos y cada uno tenía un sistema de navegación diferente. Por ende, tuvimos que rediseñar y reestructurar toda la arquitectura de la información de cada uno de los productos de la empresa.
+        </p>
+      </div>
+
+      <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 pt-10 border-t border-ink/[0.08]">
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
+          <h3 class="text-lg font-medium mb-2">Los usuarios no encontraban la información que necesitaban</h3>
+          <p class="text-sm text-slate leading-relaxed">
+            Recibíamos muchas quejas hacia soporte técnico, ya que los usuarios no lograban completar sus acciones una vez dentro de la plataforma: no conocían bien el producto porque el producto en sí no era intuitivo.
+          </p>
+        </div>
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+          <h3 class="text-lg font-medium mb-2">Costes de mantenimiento</h3>
+          <p class="text-sm text-slate leading-relaxed">
+            Para aplicar cualquier cambio de navegación había que coordinarse con varios equipos distintos, lo que alargaba mucho los tiempos de resolución — a veces tanto que, cuando el cambio por fin se implementaba, el cliente que lo había pedido ya se había dado de baja.
+          </p>
+        </div>
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+          <h3 class="text-lg font-medium mb-2">Confusión entre productos</h3>
+          <p class="text-sm text-slate leading-relaxed">
+            Tanto a nivel de arquitectura de la información como de UX e interfaz, los distintos tipos de usuario que saltaban entre productos se perdían con la información y no conseguían acceder correctamente a funcionalidades que debían funcionar de forma conjunta entre productos.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 02 · RESEARCH ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">02</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Research</span>
+      </div>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+        Cómo investigamos antes de tocar el diseño
+      </h2>
+
+      <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 mb-16">
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
+          <h3 class="text-lg font-medium mb-2">Card sorting con usuarios reales</h3>
+          <p class="text-sm text-slate leading-relaxed">Los usuarios dedicaron una semana a acceder a un link de card sorting totalmente remoto, donde ellos mismos realizaban una serie de tareas que les permitían agrupar los diferentes conceptos en una misma carpeta.</p>
+        </div>
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+          <h3 class="text-lg font-medium mb-2">Árboles de arquitectura de la información</h3>
+          <p class="text-sm text-slate leading-relaxed">Mapeo de la estructura actual de cada producto frente a la estructura ideal que emergía de las sesiones.</p>
+        </div>
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+          <h3 class="text-lg font-medium mb-2">Síntesis y validación de patrones</h3>
+          <p class="text-sm text-slate leading-relaxed">Extracción de conclusiones a través del card sorting, combinado con sesiones internas con los product managers y directivos, para consolidar los futuros patrones de la nueva arquitectura de la información.</p>
+        </div>
+      </div>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Técnicas de investigación</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          Antes de plantear una solución global, necesitábamos entender cómo pensaban los usuarios sobre la información de cada producto. Combinamos sesiones de card sorting con la construcción de árboles de arquitectura de la información, para contrastar cómo agrupaban mentalmente el contenido frente a cómo estaba estructurado realmente en cada plataforma.
+        </p>
+      </div>
+
+      <div id="research-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+        <div id="research-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="vertical-menus-cardsorting-4.png" alt="Detalle adicional de los resultados del card sorting" class="w-full h-full object-contain p-8 md:p-12 shrink-0">
+          <img src="vertical-menus-cardsorting-1.png" alt="Resultados generales de la sesión de card sorting: respuestas completadas, tiempo empleado y ubicación de los participantes" class="w-full h-full object-contain p-8 md:p-12 shrink-0">
+          <img src="vertical-menus-cardsorting-2.png" alt="Matrices de resultados del card sorting mostrando cómo los usuarios agruparon cada tarjeta y los emplazamientos más populares" class="w-full h-full object-contain p-8 md:p-12 shrink-0">
+          <img src="vertical-menus-cardsorting-3.png" alt="Árbol de arquitectura de la información resultante, con la navegación completa organizada por secciones" class="w-full h-full object-cover shrink-0">
+        </div>
+
+        <button type="button" id="research-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="research-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+          <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+          <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="3" aria-label="Ir a la imagen 4"></button>
+        </div>
+      </div>
+      <p class="reveal text-xs text-slate mt-3">Resultados de las sesiones de card sorting y árbol de arquitectura de la información resultante.</p>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16 mt-16 md:mt-20">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Workshops con equipos internos</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          Una vez recogida toda la información del research, y con una idea clara de cómo nuestros usuarios visualizaban la información de Freightos en general, el equipo de producto pasó dos semanas seguidas trabajando codo con codo en la misma sala de reuniones siempre que fue posible, construyendo entre todos un modelo final de arquitectura de la información alineado tanto con la postura de los stakeholders como con la de los usuarios finales. Tuve la oportunidad de colaborar con todo el equipo y con mi manager, que aportaba una visión más global de los productos y nos ayudaba a validar si estábamos ubicando cada sección en el lugar correcto.
+        </p>
+      </div>
+
+      <div id="workshops-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+        <div id="workshops-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="vertical-menus-workshop-team.jpeg" alt="Equipo de producto celebrando frente al whiteboard con la arquitectura de la información del workshop" class="w-full h-full object-cover shrink-0">
+          <img src="vertical-menus-workshop-1.png" alt="Workshop con equipos internos sobre el nuevo sistema de navegación" class="w-full h-full object-cover shrink-0">
+          <img src="vertical-menus-workshop-2.png" alt="Workshop con equipos internos sobre el nuevo sistema de navegación" class="w-full h-full object-cover shrink-0">
+          <img src="vertical-menus-workshop-3.png" alt="Workshop con equipos internos sobre el nuevo sistema de navegación" class="w-full h-full object-cover shrink-0">
+          <img src="vertical-menus-workshop-4.png" alt="Workshop con equipos internos sobre el nuevo sistema de navegación" class="w-full h-full object-cover shrink-0">
+        </div>
+
+        <button type="button" id="workshops-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="workshops-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="workshops-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="workshops-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+          <button type="button" class="workshops-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+          <button type="button" class="workshops-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="3" aria-label="Ir a la imagen 4"></button>
+          <button type="button" class="workshops-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="4" aria-label="Ir a la imagen 5"></button>
+        </div>
+      </div>
+      <p class="reveal text-xs text-slate mt-3">Workshops presenciales con los equipos internos de producto.</p>
+    </section>
+
+    <!-- ===== 03 · DEL PAPEL A LA PANTALLA ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">03</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Del papel a la pantalla</span>
+      </div>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+        De los primeros bocetos a las primeras interacciones
+      </h2>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Enfoque</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          Antes de lanzarnos a los primeros bocetos, dedicamos tiempo a investigar cómo resolvían el menú vertical otros productos y software del mercado digital. Hicimos un benchmark exhaustivo revisando distintas plataformas, analizando no solo la estructura general de sus menús sino también el detalle: qué microinteracciones ocurrían cuando el usuario empezaba a interactuar con ellos y cómo clasificaban la información en un primer, segundo y tercer nivel.
+        </p>
+      </div>
+
+      <div id="sketches-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+        <div id="sketches-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="vertical-menus-sketches-1.png" alt="Primeros bocetos del menú vertical y exploración de la información." class="w-full h-full object-cover shrink-0">
+          <img src="vertical-menus-sketches-2.png" alt="Workshop con equipos de producto sobre los primeros bocetos del menú." class="w-full h-full object-cover shrink-0">
+          <img src="vertical-menus-sketches-3.png" alt="Exploración de microinteracciones del menú vertical." class="w-full h-full object-cover shrink-0">
+          <img src="vertical-menus-sketches-4.png" alt="Clasificación de la información en primer, segundo y tercer nivel." class="w-full h-full object-cover shrink-0">
+        </div>
+
+        <button type="button" id="sketches-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="sketches-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="sketches-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="sketches-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+          <button type="button" class="sketches-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+          <button type="button" class="sketches-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="3" aria-label="Ir a la imagen 4"></button>
+        </div>
+      </div>
+      <p class="reveal text-xs text-slate mt-3">Primeros bocetos del menú vertical y workshop con los equipos de producto.</p>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16 mt-16 md:mt-20">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Header</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          Al estar rediseñando toda la navegación por defecto del sistema, también tuvimos que tocar el header, ya que al final formaba parte del mismo sistema de navegación original. Para cada producto tuvimos que especificar qué elementos del header se iban a incluir y cuáles no, así que construimos una versión global que se desescalaba según el producto en el que se aplicara.
+        </p>
+      </div>
+
+      <div id="header-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+        <div id="header-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="vertical-menus-header-1.png" alt="Referencia de header estudiada durante el rediseño" class="w-full h-full object-cover shrink-0">
+          <img src="vertical-menus-header-2.png" alt="Referencia de header estudiada durante el rediseño" class="w-full h-full object-cover shrink-0">
+          <img src="vertical-menus-header-3.png" alt="Referencia de header estudiada durante el rediseño" class="w-full h-full object-cover shrink-0">
+        </div>
+
+        <button type="button" id="header-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="header-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="header-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="header-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+          <button type="button" class="header-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+        </div>
+      </div>
+      <p class="reveal text-xs text-slate mt-3">Referencias de los diferentes headers que estudiamos y sus soluciones finales.</p>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16 mt-16 md:mt-20">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Menú vertical</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          Mientras trabajábamos en la propuesta final del header que aplicaría a los diferentes productos, íbamos de la mano trabajando en la propuesta final de lo que sería el futuro menú vertical de Freightos. Estudiamos detenidamente los diferentes tipos de interacción: cómo se abriría la información, si esta se desplegaba en horizontal o en vertical, cómo respondería el componente al pasar el ratón por encima y cómo se vería su versión cerrada. Trabajamos con muchísimo cariño cada uno de los componentes y las interacciones que forman, a día de hoy, el producto final.
+        </p>
+      </div>
+
+      <div id="level1-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-[#E1E1E1]">
+        <div id="level1-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="vertical-menus-usecases.webp" alt="Diagrama de los posibles casos de uso del menú vertical en su versión drill-down" class="w-full h-full object-contain p-6 md:p-9 shrink-0">
+          <img src="vertical-menus-level1-1.png" alt="Comportamiento del primer nivel de información del menú vertical" class="w-full h-full object-contain p-6 md:p-9 shrink-0">
+          <img src="vertical-menus-level1-2.png" alt="Comportamiento del primer nivel de información del menú vertical" class="w-full h-full object-contain p-6 md:p-9 shrink-0">
+          <img src="vertical-menus-level1-3.png" alt="Comportamiento del primer nivel de información del menú vertical" class="w-full h-full object-contain p-6 md:p-9 shrink-0">
+        </div>
+
+        <button type="button" id="level1-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="level1-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="level1-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="level1-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+          <button type="button" class="level1-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+          <button type="button" class="level1-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="3" aria-label="Ir a la imagen 4"></button>
+        </div>
+      </div>
+      <p class="reveal text-xs text-slate mt-3">Referencias del comportamiento del menú vertical.</p>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16 mt-16 md:mt-20">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Footer</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          [Placeholder — describe aquí la propuesta final del footer del menú: qué elementos se decidió incluir, cómo se relaciona con el resto del sistema de navegación y qué validaciones se hicieron con los equipos de producto.]
+        </p>
+      </div>
+
+      <div id="footer-proposal-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+        <div id="footer-proposal-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real de la propuesta de footer 1]</p>
+          </div>
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real de la propuesta de footer 2]</p>
+          </div>
+          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
+            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real de la propuesta de footer 3]</p>
+          </div>
+        </div>
+
+        <button type="button" id="footer-proposal-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="footer-proposal-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="footer-proposal-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="footer-proposal-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+          <button type="button" class="footer-proposal-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+        </div>
+      </div>
+      <p class="reveal text-xs text-slate mt-3">Referencias de la propuesta final del footer.</p>
+    </section>
+
+    <!-- ===== 04 · INTERACCIONES Y PROTOTIPOS ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">04</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Interacciones / Prototipos</span>
+      </div>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+        Cómo tomó forma la interacción final
+      </h2>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Del boceto al prototipo</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          [Placeholder — con la arquitectura de la información ya validada, explica aquí cómo se construyeron los prototipos interactivos de alta fidelidad: qué herramientas se usaron, cuántas iteraciones hubo y qué cambió respecto a los primeros borradores.]
+        </p>
+      </div>
+
+      <div class="reveal card-img aspect-[16/9] rounded-2xl mb-14"></div>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1">Valoración del equipo</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          [Placeholder — resume aquí cómo se presentaron los prototipos al equipo, qué feedback se recogió de PMs, developers y QA, y qué decisiones de diseño cambiaron a raíz de esas valoraciones antes de dar el sistema por cerrado.]
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== 05 · SOLUTION ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">05</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Solución</span>
+      </div>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+        Un sistema de navegación modular, no un único menú rígido
+      </h2>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Enfoque</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          [Placeholder] En vez de imponer un único menú fijo a todos los productos, diseñamos un sistema modular de componentes de navegación con reglas claras de composición, para que cada producto pudiera adaptarlo a su contexto sin salirse del lenguaje común.
+        </p>
+      </div>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1">Funcionalidades<br class="hidden md:block"> entregadas</p>
+        <ul class="border-t border-ink/[0.08]">
+          <li class="py-5 border-b border-ink/[0.08] flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
+            <span class="text-sm font-medium text-latte-dark shrink-0">01</span>
+            <div>
+              <h3 class="text-base font-medium mb-1">Sistema de navegación modular</h3>
+              <p class="text-sm text-slate leading-relaxed max-w-lg">[Placeholder] Un conjunto de componentes de menú reutilizables, con reglas claras de composición y jerarquía.</p>
+            </div>
+          </li>
+          <li class="py-5 border-b border-ink/[0.08] flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
+            <span class="text-sm font-medium text-latte-dark shrink-0">02</span>
+            <div>
+              <h3 class="text-base font-medium mb-1">Librería de patrones documentada</h3>
+              <p class="text-sm text-slate leading-relaxed max-w-lg">[Placeholder] Guía de uso en Figma con ejemplos de implementación para cada producto.</p>
+            </div>
+          </li>
+          <li class="py-5 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
+            <span class="text-sm font-medium text-latte-dark shrink-0">03</span>
+            <div>
+              <h3 class="text-base font-medium mb-1">Migración progresiva</h3>
+              <p class="text-sm text-slate leading-relaxed max-w-lg">[Placeholder] Plan de adopción por fases para no bloquear a los equipos de producto durante la transición.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1">Resultados</p>
+        <ul class="space-y-4 max-w-2xl">
+          <li class="pl-4 border-l-2 border-latte text-ink/80 leading-relaxed">[Placeholder] Los equipos de producto empezaron a lanzar cambios de navegación sin rediseñar el menú desde cero.</li>
+          <li class="pl-4 border-l-2 border-latte text-ink/80 leading-relaxed">[Placeholder] El tiempo de incorporación de nuevos productos al sistema se redujo de forma notable.</li>
+          <li class="pl-4 border-l-2 border-latte text-ink/80 leading-relaxed">[Placeholder] Los usuarios que trabajan con varios productos reportaron una navegación más predecible.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== 06 · PROJECT DETAILS ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">06</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Detalle del proyecto</span>
+      </div>
+
+      <p class="reveal text-xs font-medium tracking-widest uppercase text-slate mb-4">La funcionalidad en profundidad</p>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-3">
+        El sistema de navegación modular, en profundidad
+      </h2>
+      <p class="reveal text-lg text-slate mb-14 md:mb-16">
+        Cómo diseñamos un stack de menús que funciona igual en cinco productos distintos
+      </p>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Contexto y problema</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          [Placeholder — explica aquí la parte más difícil del rediseño: qué restricciones técnicas tenía cada producto, qué equipos se resistían al cambio y por qué un único menú rígido no era la solución correcta.]
+        </p>
+      </div>
+
+      <blockquote class="reveal border-l-2 border-latte-dark pl-6 md:pl-8 my-14 md:my-16">
+        <p class="text-xl md:text-2xl font-medium tracking-tight leading-snug text-ink">
+          "[Placeholder — sustituye esta cita por un testimonio real de un usuario o stakeholder del proyecto.]"
+        </p>
+        <cite class="not-italic text-sm text-slate mt-4 block">— [Cargo, empresa — placeholder]</cite>
+      </blockquote>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Proceso</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl">
+          [Placeholder — resume aquí cómo validaste el sistema con los distintos equipos de producto: cuántas rondas de revisión, con quién, y qué decisiones cambiaron a partir de ese feedback.]
+        </p>
+      </div>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1">Detrás de<br class="hidden md:block"> escena</p>
+        <ol class="space-y-6 max-w-xl">
+          <li class="flex gap-4">
+            <span class="text-sm font-medium text-latte-dark shrink-0">01</span>
+            <p class="text-ink/80 leading-relaxed">[Placeholder] Auditamos los menús existentes de cada producto y mapeamos sus patrones comunes.</p>
+          </li>
+          <li class="flex gap-4">
+            <span class="text-sm font-medium text-latte-dark shrink-0">02</span>
+            <p class="text-ink/80 leading-relaxed">[Placeholder] Diseñamos un set de componentes de navegación con reglas de composición documentadas.</p>
+          </li>
+          <li class="flex gap-4">
+            <span class="text-sm font-medium text-latte-dark shrink-0">03</span>
+            <p class="text-ink/80 leading-relaxed">[Placeholder] Probamos el sistema con dos productos piloto antes de extenderlo al resto.</p>
+          </li>
+          <li class="flex gap-4">
+            <span class="text-sm font-medium text-latte-dark shrink-0">04</span>
+            <p class="text-ink/80 leading-relaxed">[Placeholder] Documentamos el sistema y acompañamos a cada equipo en su migración.</p>
+          </li>
+        </ol>
+      </div>
+
+      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1">Resultados</p>
+        <div>
+          <div class="grid sm:grid-cols-3 gap-8 mb-10 pb-10 border-b border-ink/[0.08]">
+            <div>
+              <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2">XX</p>
+              <p class="text-sm font-medium text-ink mb-1">Productos unificados</p>
+              <p class="text-sm text-slate leading-relaxed">[Placeholder descripción]</p>
+            </div>
+            <div>
+              <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2">XX%</p>
+              <p class="text-sm font-medium text-ink mb-1">Menos tiempo de implementación</p>
+              <p class="text-sm text-slate leading-relaxed">[Placeholder descripción]</p>
+            </div>
+            <div>
+              <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2">XX%</p>
+              <p class="text-sm font-medium text-ink mb-1">Componentes reutilizados</p>
+              <p class="text-sm text-slate leading-relaxed">[Placeholder descripción]</p>
+            </div>
+          </div>
+          <p class="text-ink/80 leading-relaxed max-w-2xl">
+            [Placeholder — cierra esta sección con una reflexión breve sobre lo que hizo funcionar este sistema en concreto.]
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 07 · KEY LEARNINGS ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="text-sm font-medium text-latte-dark">07</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate">Aprendizajes clave</span>
+      </div>
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-8">
+        Qué me dejó este proyecto
+      </h2>
+      <p class="reveal text-ink/80 leading-relaxed max-w-2xl">
+        Este fue, hasta la fecha, el proyecto más completo de mi etapa en Freightos. Me permitió tocar prácticamente todos los ámbitos de la experiencia de usuario y el diseño de producto digital: desde la comunicación interna dentro de la empresa y las conversaciones directas con distintos directivos, hasta un proceso de research bastante complejo a nivel de UX, interacción e interfaz, apoyado en metodologías como card sorting y workshops con los distintos equipos de la empresa. Ese recorrido me permitió llegar a una solución mucho más actualizada y fresca que la de otros proyectos que había diseñado antes para la empresa.
+      </p>
+    </section>
+
+    <!-- ===== END OF CASE STUDY ===== -->
+    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08] text-center">
+      <p class="reveal text-xs font-medium tracking-widest uppercase text-slate mb-4">Has llegado al final</p>
+      <p class="reveal text-xl md:text-2xl font-medium tracking-tight mb-10">
+        Gracias por leer. ¿Quieres ver más?
+      </p>
+      <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="notification-system.html" class="focus-ring inline-flex items-center gap-2 bg-ink text-paper text-sm font-medium px-6 py-3.5 rounded-full hover:bg-slate transition-colors">
+          Siguiente proyecto · Notification System
+        </a>
+        <a href="../index.html#work" class="focus-ring inline-flex items-center gap-2 text-sm font-medium px-6 py-3.5 rounded-full border border-ink/15 hover:bg-latte/40 hover:border-latte-dark transition-colors">
+          ← Volver a todos los proyectos
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    document.body.classList.add('is-ready');
+
+    // Menú móvil (hamburguesa)
+    (function () {
+      const toggleBtn = document.getElementById('mobile-menu-toggle');
+      const menu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('menu-icon-open');
+      const iconClose = document.getElementById('menu-icon-close');
+      if (!toggleBtn || !menu) return;
+
+      function closeMenu() {
+        menu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      }
+
+      function openMenu() {
+        menu.classList.remove('hidden');
+        iconOpen.classList.add('hidden');
+        iconClose.classList.remove('hidden');
+        toggleBtn.setAttribute('aria-expanded', 'true');
+      }
+
+      toggleBtn.addEventListener('click', () => {
+        const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
+        isOpen ? closeMenu() : openMenu();
+      });
+
+      menu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeMenu);
+      });
+    })();
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal:not(.is-visible)');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      revealEls.forEach((el) => observer.observe(el));
+    } else {
+      revealEls.forEach((el) => el.classList.add('is-visible'));
+    }
+
+    // ===== Carruseles =====
+    function initCarousel({ containerId, trackId, prevId, nextId, dotClass, activeDotClass, inactiveDotClass }) {
+      const container = document.getElementById(containerId);
+      const track = document.getElementById(trackId);
+      const prevBtn = document.getElementById(prevId);
+      const nextBtn = document.getElementById(nextId);
+      const dots = Array.from(document.querySelectorAll('.' + dotClass));
+      if (!track) return;
+
+      const slideCount = track.children.length;
+
+      // Carrusel con una sola imagen: sin flechas ni puntos, solo la imagen estática
+      if (slideCount <= 1) {
+        if (prevBtn) prevBtn.remove();
+        if (nextBtn) nextBtn.remove();
+        if (dots.length && dots[0].parentElement) dots[0].parentElement.remove();
+        return;
+      }
+      if (!dots.length) return;
+
+      const autoplayMs = 5000;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let index = 0;
+      let timer = null;
+      let hasEnteredView = false;
+
+      function goTo(i) {
+        index = (i + slideCount) % slideCount;
+        track.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((dot, dotIndex) => {
+          dot.classList.toggle(activeDotClass, dotIndex === index);
+          dot.classList.toggle(inactiveDotClass, dotIndex !== index);
+        });
+      }
+
+      function startAutoplay() {
+        if (reducedMotion || !hasEnteredView) return;
+        stopAutoplay();
+        timer = setInterval(() => goTo(index + 1), autoplayMs);
+      }
+
+      function stopAutoplay() {
+        if (timer) clearInterval(timer);
+        timer = null;
+      }
+
+      function goToManual(i) {
+        goTo(i);
+        startAutoplay();
+      }
+
+      prevBtn.addEventListener('click', () => goToManual(index - 1));
+      nextBtn.addEventListener('click', () => goToManual(index + 1));
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => goToManual(Number(dot.dataset.index)));
+      });
+
+      if (container) {
+        container.addEventListener('mouseenter', stopAutoplay);
+        container.addEventListener('mouseleave', startAutoplay);
+
+        // Swipe táctil (móvil / tablet)
+        let touchStartX = null;
+        container.addEventListener('touchstart', (e) => {
+          touchStartX = e.touches[0].clientX;
+          stopAutoplay();
+        }, { passive: true });
+        container.addEventListener('touchend', (e) => {
+          if (touchStartX === null) return;
+          const dx = e.changedTouches[0].clientX - touchStartX;
+          if (Math.abs(dx) > 40) {
+            goToManual(dx < 0 ? index + 1 : index - 1);
+          } else {
+            startAutoplay();
+          }
+          touchStartX = null;
+        }, { passive: true });
+
+        // Scroll horizontal de trackpad (dos dedos). El scroll con inercia de macOS
+        // sigue disparando eventos "wheel" durante bastante después del gesto físico,
+        // así que tratamos toda la ráfaga (inercia incluida) como un único gesto:
+        // solo navegamos en el primer evento y reiniciamos el cronómetro con cada
+        // evento nuevo, hasta que haya una pausa real sin eventos.
+        let wheelActive = false;
+        let wheelEndTimer = null;
+        container.addEventListener('wheel', (e) => {
+          if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+          e.preventDefault();
+          clearTimeout(wheelEndTimer);
+          if (!wheelActive) {
+            wheelActive = true;
+            stopAutoplay();
+            goTo(e.deltaX > 0 ? index + 1 : index - 1);
+          }
+          wheelEndTimer = setTimeout(() => {
+            wheelActive = false;
+            startAutoplay();
+          }, 200);
+        }, { passive: false });
+      }
+
+      goTo(0);
+
+      // No arrancar el autoplay hasta que el usuario llegue a este carrusel
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              hasEnteredView = true;
+              startAutoplay();
+              observer.disconnect();
+            }
+          });
+        }, { threshold: 0.4 });
+        observer.observe(container || track);
+      } else {
+        hasEnteredView = true;
+        startAutoplay();
+      }
+    }
+
+    initCarousel({
+      containerId: 'cover-carousel',
+      trackId: 'carousel-track',
+      prevId: 'carousel-prev',
+      nextId: 'carousel-next',
+      dotClass: 'carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-paper/60',
+    });
+
+    initCarousel({
+      containerId: 'research-carousel',
+      trackId: 'research-carousel-track',
+      prevId: 'research-carousel-prev',
+      nextId: 'research-carousel-next',
+      dotClass: 'research-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'sketches-carousel',
+      trackId: 'sketches-carousel-track',
+      prevId: 'sketches-carousel-prev',
+      nextId: 'sketches-carousel-next',
+      dotClass: 'sketches-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'workshops-carousel',
+      trackId: 'workshops-carousel-track',
+      prevId: 'workshops-carousel-prev',
+      nextId: 'workshops-carousel-next',
+      dotClass: 'workshops-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'header-carousel',
+      trackId: 'header-carousel-track',
+      prevId: 'header-carousel-prev',
+      nextId: 'header-carousel-next',
+      dotClass: 'header-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'level1-carousel',
+      trackId: 'level1-carousel-track',
+      prevId: 'level1-carousel-prev',
+      nextId: 'level1-carousel-next',
+      dotClass: 'level1-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'footer-proposal-carousel',
+      trackId: 'footer-proposal-carousel-track',
+      prevId: 'footer-proposal-carousel-prev',
+      nextId: 'footer-proposal-carousel-next',
+      dotClass: 'footer-proposal-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+  </script>
+
+</body>
+</html>
