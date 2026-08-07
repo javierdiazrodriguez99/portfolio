@@ -94,7 +94,7 @@
       </button>
 
       <a href="../index.html" class="text-lg font-semibold tracking-tight focus-ring rounded absolute left-1/2 -translate-x-1/2 sm:static sm:translate-x-0">
-        Javier Díaz<span class="text-latte-dark">.</span>
+        Javier Díaz
       </a>
 
       <ul class="hidden sm:flex items-center gap-10 text-base text-slate">
@@ -105,10 +105,10 @@
       <span class="sm:hidden w-[22px]" aria-hidden="true"></span>
     </nav>
 
-    <div id="mobile-menu" class="sm:hidden hidden border-t border-ink/[0.06] bg-paper">
-      <ul class="flex flex-col px-6 py-2 text-base font-medium text-ink">
-        <li><a href="../sobre-mi.html" class="block py-3 focus-ring rounded">Sobre mí</a></li>
-        <li><a href="../contacto.html" class="block py-3 focus-ring rounded">Contacto</a></li>
+    <div id="mobile-menu" class="sm:hidden max-h-0 opacity-0 blur-sm pointer-events-none overflow-hidden border-t border-ink/[0.06] bg-paper transition-all duration-300 ease-out">
+      <ul class="flex flex-col px-6 py-4 text-base font-medium text-ink">
+        <li><a href="../sobre-mi.html" class="block py-4 focus-ring rounded">Sobre mí</a></li>
+        <li><a href="../contacto.html" class="block py-4 focus-ring rounded">Contacto</a></li>
       </ul>
     </div>
   </header>
@@ -510,14 +510,16 @@
       if (!toggleBtn || !menu) return;
 
       function closeMenu() {
-        menu.classList.add('hidden');
+        menu.classList.add('max-h-0', 'opacity-0', 'blur-sm', 'pointer-events-none');
+        menu.classList.remove('max-h-48', 'opacity-100', 'blur-none', 'pointer-events-auto');
         iconOpen.classList.remove('hidden');
         iconClose.classList.add('hidden');
         toggleBtn.setAttribute('aria-expanded', 'false');
       }
 
       function openMenu() {
-        menu.classList.remove('hidden');
+        menu.classList.add('max-h-48', 'opacity-100', 'blur-none', 'pointer-events-auto');
+        menu.classList.remove('max-h-0', 'opacity-0', 'blur-sm', 'pointer-events-none');
         iconOpen.classList.add('hidden');
         iconClose.classList.remove('hidden');
         toggleBtn.setAttribute('aria-expanded', 'true');

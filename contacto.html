@@ -89,7 +89,7 @@
       </button>
 
       <a href="index.html" class="text-lg font-semibold tracking-tight focus-ring rounded absolute left-1/2 -translate-x-1/2 sm:static sm:translate-x-0">
-        Javier Díaz<span class="text-latte-dark">.</span>
+        Javier Díaz
       </a>
 
       <ul class="hidden sm:flex items-center gap-10 text-base text-slate">
@@ -100,10 +100,10 @@
       <span class="sm:hidden w-[22px]" aria-hidden="true"></span>
     </nav>
 
-    <div id="mobile-menu" class="sm:hidden hidden border-t border-ink/[0.06] bg-paper">
-      <ul class="flex flex-col px-6 py-2 text-base font-medium text-ink">
-        <li><a href="sobre-mi.html" class="block py-3 focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
-        <li><a href="contacto.html" class="block py-3 focus-ring rounded" aria-current="page" data-i18n="nav.contact">Contacto</a></li>
+    <div id="mobile-menu" class="sm:hidden max-h-0 opacity-0 blur-sm pointer-events-none overflow-hidden border-t border-ink/[0.06] bg-paper transition-all duration-300 ease-out">
+      <ul class="flex flex-col px-6 py-4 text-base font-medium text-ink">
+        <li><a href="sobre-mi.html" class="block py-4 focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
+        <li><a href="contacto.html" class="block py-4 focus-ring rounded" aria-current="page" data-i18n="nav.contact">Contacto</a></li>
       </ul>
     </div>
   </header>
@@ -140,8 +140,8 @@
     </section>
 
     <!-- ===== TESTIMONIALS ===== -->
-    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 mt-20 md:mt-24 border-t border-ink/[0.08]">
-      <div class="reveal flex items-end justify-between mb-14 md:mb-16">
+    <section class="max-w-6xl mx-auto px-6 md:px-10 pt-[64px]">
+      <div class="reveal flex items-end justify-between mb-6">
         <h2 class="text-2xl md:text-3xl font-semibold tracking-tight" data-i18n="testimonials.heading">Testimonios</h2>
         <a href="https://www.linkedin.com/in/javierdiazrodriguez/details/recommendations/" target="_blank" rel="noopener noreferrer" class="focus-ring inline-flex items-center text-sm font-medium px-4 py-1.5 rounded-full border border-ink/15 text-ink/70 hover:bg-latte/40 hover:border-latte-dark hover:text-ink transition-colors" data-i18n="testimonials.more">
           Ver más
@@ -155,7 +155,7 @@
               <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t1.quote">
                 "I met Javi when I hired him as an intern, and over the following 4 years I had the chance to see him grow into a Product Designer within the team. He shows up with the same level of commitment regardless of the task at hand, approaching everything with ownership and a positive, solution-oriented mindset."
               </p>
-              <div class="flex items-center gap-3 mt-8">
+              <div class="flex items-center gap-3 mt-6">
                 <div class="w-10 h-10 rounded-full overflow-hidden shrink-0 bg-latte"><img src="testimonials/cristina-sampaio.png" alt="" class="avatar-img w-full h-full object-cover"></div>
                 <div>
                   <p class="text-sm font-medium text-ink">Cristina Sampaio</p>
@@ -169,7 +169,7 @@
               <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t2.quote">
                 "I had the pleasure of working with Javi for over two years as a UX designer, and I can confidently say he is a great person to have on any team. He is kind, easy to work with, and always brings a positive attitude to his work."
               </p>
-              <div class="flex items-center gap-3 mt-8">
+              <div class="flex items-center gap-3 mt-6">
                 <div class="w-10 h-10 rounded-full overflow-hidden shrink-0 bg-latte"><img src="testimonials/isra-anabtawi.png" alt="" class="avatar-img w-full h-full object-cover"></div>
                 <div>
                   <p class="text-sm font-medium text-ink">Isra Anabtawi</p>
@@ -183,7 +183,7 @@
               <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t3.quote">
                 "I had the pleasure of working with Javier for over two years on the same UX team, and I can say without hesitation that he's one of those designers you genuinely want on every project. He brings a rare combination of craft and strategic thinking."
               </p>
-              <div class="flex items-center gap-3 mt-8">
+              <div class="flex items-center gap-3 mt-6">
                 <div class="w-10 h-10 rounded-full overflow-hidden shrink-0 bg-latte"><img src="testimonials/sebastian-piai.png" alt="" class="avatar-img w-full h-full object-cover"></div>
                 <div>
                   <p class="text-sm font-medium text-ink">Sebastián Piai</p>
@@ -197,7 +197,7 @@
               <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t4.quote">
                 "Trabajar con Javier codo con codo en el Grado en Diseño de la Universidad de La Laguna fue una experiencia gratificante que sin duda repetiría más veces en mi trayectoria profesional. Siempre mostraba una actitud proactiva y desarrollaba un punto de vista innovador."
               </p>
-              <div class="flex items-center gap-3 mt-8">
+              <div class="flex items-center gap-3 mt-6">
                 <div class="w-10 h-10 rounded-full overflow-hidden shrink-0 bg-latte"><img src="testimonials/yerimay-bethencourt.png" alt="" class="avatar-img w-full h-full object-cover"></div>
                 <div>
                   <p class="text-sm font-medium text-ink">Yerimay Bethencourt Hernández</p>
@@ -211,7 +211,7 @@
               <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t5.quote">
                 "Estudié con Javier en el Máster de dirección en diseño de experiencias y servicios digitales en Elisava. Es una persona muy proactiva, con amplia visión para nuevos proyectos, creativo, alegre y responsable."
               </p>
-              <div class="flex items-center gap-3 mt-8">
+              <div class="flex items-center gap-3 mt-6">
                 <div class="w-10 h-10 rounded-full overflow-hidden shrink-0 bg-latte"><img src="testimonials/valentina-garcia.png" alt="" class="avatar-img w-full h-full object-cover"></div>
                 <div>
                   <p class="text-sm font-medium text-ink">Valentina García Ruiz</p>
@@ -225,7 +225,7 @@
               <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t6.quote">
                 "Tuve la suerte de trabajar con Javi y, más allá de lo profesional, es de esas personas que hacen que el día a día sea mucho mejor. Como UX Designer, tiene una sensibilidad especial para entender a las personas: no solo a los usuarios, sino también al equipo."
               </p>
-              <div class="flex items-center gap-3 mt-8">
+              <div class="flex items-center gap-3 mt-6">
                 <div class="w-10 h-10 rounded-full overflow-hidden shrink-0 bg-latte"><img src="testimonials/daniella-alamo.png" alt="" class="avatar-img w-full h-full object-cover"></div>
                 <div>
                   <p class="text-sm font-medium text-ink">Daniella Álamo</p>
@@ -239,7 +239,7 @@
               <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t7.quote">
                 "Javier joined Freightos as an intern, and it has been a real joy to watch his growth over the past four years. He stands out not only for the excellent quality of his work and his exceptional technical skill set, but also for his attitude."
               </p>
-              <div class="flex items-center gap-3 mt-8">
+              <div class="flex items-center gap-3 mt-6">
                 <div class="w-10 h-10 rounded-full overflow-hidden shrink-0 bg-latte"><img src="testimonials/veronica-minniti.png" alt="" class="avatar-img w-full h-full object-cover"></div>
                 <div>
                   <p class="text-sm font-medium text-ink">Veronica Minniti</p>
@@ -253,7 +253,7 @@
               <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t8.quote">
                 "I worked with Javi at Freightos for many years and on many projects. Javi is a pleasure to work with — always friendly, dedicated and focused on achieving a great product for our customers."
               </p>
-              <div class="flex items-center gap-3 mt-8">
+              <div class="flex items-center gap-3 mt-6">
                 <div class="w-10 h-10 rounded-full overflow-hidden shrink-0 bg-latte"><img src="testimonials/sharon-schamroth.png" alt="" class="avatar-img w-full h-full object-cover"></div>
                 <div>
                   <p class="text-sm font-medium text-ink">Sharon Schamroth</p>
@@ -287,9 +287,9 @@
   </main>
 
   <!-- ===== FOOTER ===== -->
-  <footer class="max-w-6xl mx-auto px-6 md:px-10 py-10 border-t border-ink/[0.08]">
+  <footer class="max-w-6xl mx-auto px-6 md:px-10 pt-[64px] pb-10 md:pb-14">
     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate">
-      <p>© 2026 Javier Díaz. Diseñado con cuidado.</p>
+      <p>Diseñado con cuidado.</p>
       <p>Hasta la próxima ✦</p>
     </div>
   </footer>
@@ -388,14 +388,16 @@
       if (!toggleBtn || !menu) return;
 
       function closeMenu() {
-        menu.classList.add('hidden');
+        menu.classList.add('max-h-0', 'opacity-0', 'blur-sm', 'pointer-events-none');
+        menu.classList.remove('max-h-48', 'opacity-100', 'blur-none', 'pointer-events-auto');
         iconOpen.classList.remove('hidden');
         iconClose.classList.add('hidden');
         toggleBtn.setAttribute('aria-expanded', 'false');
       }
 
       function openMenu() {
-        menu.classList.remove('hidden');
+        menu.classList.add('max-h-48', 'opacity-100', 'blur-none', 'pointer-events-auto');
+        menu.classList.remove('max-h-0', 'opacity-0', 'blur-sm', 'pointer-events-none');
         iconOpen.classList.add('hidden');
         iconClose.classList.remove('hidden');
         toggleBtn.setAttribute('aria-expanded', 'true');

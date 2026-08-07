@@ -94,7 +94,7 @@
       </button>
 
       <a href="../index.html" class="text-lg font-semibold tracking-tight focus-ring rounded absolute left-1/2 -translate-x-1/2 sm:static sm:translate-x-0">
-        Javier Díaz<span class="text-latte-dark">.</span>
+        Javier Díaz
       </a>
 
       <ul class="hidden sm:flex items-center gap-10 text-base text-slate">
@@ -105,10 +105,10 @@
       <span class="sm:hidden w-[22px]" aria-hidden="true"></span>
     </nav>
 
-    <div id="mobile-menu" class="sm:hidden hidden border-t border-ink/[0.06] bg-paper">
-      <ul class="flex flex-col px-6 py-2 text-base font-medium text-ink">
-        <li><a href="../sobre-mi.html" class="block py-3 focus-ring rounded">Sobre mí</a></li>
-        <li><a href="../contacto.html" class="block py-3 focus-ring rounded">Contacto</a></li>
+    <div id="mobile-menu" class="sm:hidden max-h-0 opacity-0 blur-sm pointer-events-none overflow-hidden border-t border-ink/[0.06] bg-paper transition-all duration-300 ease-out">
+      <ul class="flex flex-col px-6 py-4 text-base font-medium text-ink">
+        <li><a href="../sobre-mi.html" class="block py-4 focus-ring rounded">Sobre mí</a></li>
+        <li><a href="../contacto.html" class="block py-4 focus-ring rounded">Contacto</a></li>
       </ul>
     </div>
   </header>
@@ -413,21 +413,14 @@
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16 mt-16 md:mt-20">
         <p class="text-xs font-medium tracking-widest uppercase text-slate">Footer</p>
         <p class="text-ink/80 leading-relaxed max-w-2xl">
-          [Placeholder — describe aquí la propuesta final del footer del menú: qué elementos se decidió incluir, cómo se relaciona con el resto del sistema de navegación y qué validaciones se hicieron con los equipos de producto.]
+          Al ser un menú vertical que ocupaba toda la altura de la página, en algunas pantallas del sistema quedaba un pequeño footer suelto, desconectado del resto de la navegación. A partir de la investigación realizada, decidimos integrarlo directamente dentro del propio menú, de forma que sus elementos fueran accesibles tanto con el menú abierto como cerrado.
         </p>
       </div>
 
-      <div id="footer-proposal-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+      <div id="footer-proposal-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-[#f5f5f5]">
         <div id="footer-proposal-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
-          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
-            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real de la propuesta de footer 1]</p>
-          </div>
-          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
-            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real de la propuesta de footer 2]</p>
-          </div>
-          <div class="card-img w-full h-full shrink-0 flex items-center justify-center text-center px-8">
-            <p class="text-xs text-slate/70">[Placeholder — sustituye por una imagen real de la propuesta de footer 3]</p>
-          </div>
+          <img src="vertical-menus-footer-1.webp" alt="Estados del menú colapsado con acceso a ayuda, términos de servicio, patente y copyright, incluyendo el hover de Terms of service" class="w-full h-full object-contain p-6 md:p-9 shrink-0">
+          <img src="vertical-menus-footer-2.webp" alt="Footer del menú colapsado y expandido con Legal Notice, Terms of service, EU Design Patent y copyright" class="w-full h-full object-contain p-6 md:p-9 shrink-0">
         </div>
 
         <button type="button" id="footer-proposal-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
@@ -440,7 +433,6 @@
         <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
           <button type="button" class="footer-proposal-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
           <button type="button" class="footer-proposal-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
-          <button type="button" class="footer-proposal-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
         </div>
       </div>
       <p class="reveal text-xs text-slate mt-3">Referencias de la propuesta final del footer.</p>
@@ -459,17 +451,12 @@
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
         <p class="text-xs font-medium tracking-widest uppercase text-slate">Del boceto al prototipo</p>
         <p class="text-ink/80 leading-relaxed max-w-2xl">
-          [Placeholder — con la arquitectura de la información ya validada, explica aquí cómo se construyeron los prototipos interactivos de alta fidelidad: qué herramientas se usaron, cuántas iteraciones hubo y qué cambió respecto a los primeros borradores.]
+          Cuando se validaron las versiones finales a nivel de UX y UI, se fueron generando diferentes prototipos en Figma que se entregaban a distintos stakeholders y cargos directivos para que pudieran interactuar con el nuevo menú y dar su feedback. Además, se fue creando un prototipo distinto para cada tipo de usuario y producto de la compañía, llegando a más de 8-10 prototipos finales.
         </p>
       </div>
 
-      <div class="reveal card-img aspect-[16/9] rounded-2xl mb-14"></div>
-
-      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1">Valoración del equipo</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
-          [Placeholder — resume aquí cómo se presentaron los prototipos al equipo, qué feedback se recogió de PMs, developers y QA, y qué decisiones de diseño cambiaron a raíz de esas valoraciones antes de dar el sistema por cerrado.]
-        </p>
+      <div class="reveal aspect-[16/9] rounded-2xl mb-14 overflow-hidden bg-[#f5f5f5]">
+        <img src="vertical-menus-prototype-userflow.webp" alt="User flows del menú vertical para Hybrid Platform, Enterprise Shippers y Sky eBookings" class="w-full h-full object-contain p-6 md:p-9">
       </div>
     </section>
 
@@ -480,15 +467,22 @@
         <span class="text-xs font-medium tracking-widest uppercase text-slate">Solución</span>
       </div>
       <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
-        Un sistema de navegación modular, no un único menú rígido
+        Un sistema de navegación unificado y fresco
       </h2>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Enfoque</p>
+        <p class="text-xs font-medium tracking-widest uppercase text-slate">Visión</p>
         <p class="text-ink/80 leading-relaxed max-w-2xl">
-          [Placeholder] En vez de imponer un único menú fijo a todos los productos, diseñamos un sistema modular de componentes de navegación con reglas claras de composición, para que cada producto pudiera adaptarlo a su contexto sin salirse del lenguaje común.
+          El nuevo menú vertical suponía una gran revolución a nivel de navegación y de disfrute del día a día para los usuarios de la compañía. Incluso a nivel interno se convirtió en una forma más rápida y eficaz de encontrar información, tanto para los product managers y developers como para los diferentes equipos de finanzas y de servicio al cliente.
         </p>
       </div>
+
+      <blockquote class="reveal border-l-2 border-latte-dark pl-6 md:pl-8 my-14 md:my-16">
+        <p class="text-xl md:text-2xl font-medium tracking-tight leading-snug text-ink">
+          "[Placeholder — sustituye esta cita por un testimonio real de un usuario o stakeholder del proyecto.]"
+        </p>
+        <cite class="not-italic text-sm text-slate mt-4 block">— [Cargo, empresa — placeholder]</cite>
+      </blockquote>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16">
         <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1">Funcionalidades<br class="hidden md:block"> entregadas</p>
@@ -519,90 +513,22 @@
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16">
         <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1">Resultados</p>
-        <ul class="space-y-4 max-w-2xl">
-          <li class="pl-4 border-l-2 border-latte text-ink/80 leading-relaxed">[Placeholder] Los equipos de producto empezaron a lanzar cambios de navegación sin rediseñar el menú desde cero.</li>
-          <li class="pl-4 border-l-2 border-latte text-ink/80 leading-relaxed">[Placeholder] El tiempo de incorporación de nuevos productos al sistema se redujo de forma notable.</li>
-          <li class="pl-4 border-l-2 border-latte text-ink/80 leading-relaxed">[Placeholder] Los usuarios que trabajan con varios productos reportaron una navegación más predecible.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ===== 06 · PROJECT DETAILS ===== -->
-    <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
-      <div class="reveal flex items-center gap-4 mb-5">
-        <span class="text-sm font-medium text-latte-dark">06</span>
-        <span class="text-xs font-medium tracking-widest uppercase text-slate">Detalle del proyecto</span>
-      </div>
-
-      <p class="reveal text-xs font-medium tracking-widest uppercase text-slate mb-4">La funcionalidad en profundidad</p>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-3">
-        El sistema de navegación modular, en profundidad
-      </h2>
-      <p class="reveal text-lg text-slate mb-14 md:mb-16">
-        Cómo diseñamos un stack de menús que funciona igual en cinco productos distintos
-      </p>
-
-      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Contexto y problema</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
-          [Placeholder — explica aquí la parte más difícil del rediseño: qué restricciones técnicas tenía cada producto, qué equipos se resistían al cambio y por qué un único menú rígido no era la solución correcta.]
-        </p>
-      </div>
-
-      <blockquote class="reveal border-l-2 border-latte-dark pl-6 md:pl-8 my-14 md:my-16">
-        <p class="text-xl md:text-2xl font-medium tracking-tight leading-snug text-ink">
-          "[Placeholder — sustituye esta cita por un testimonio real de un usuario o stakeholder del proyecto.]"
-        </p>
-        <cite class="not-italic text-sm text-slate mt-4 block">— [Cargo, empresa — placeholder]</cite>
-      </blockquote>
-
-      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Proceso</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
-          [Placeholder — resume aquí cómo validaste el sistema con los distintos equipos de producto: cuántas rondas de revisión, con quién, y qué decisiones cambiaron a partir de ese feedback.]
-        </p>
-      </div>
-
-      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1">Detrás de<br class="hidden md:block"> escena</p>
-        <ol class="space-y-6 max-w-xl">
-          <li class="flex gap-4">
-            <span class="text-sm font-medium text-latte-dark shrink-0">01</span>
-            <p class="text-ink/80 leading-relaxed">[Placeholder] Auditamos los menús existentes de cada producto y mapeamos sus patrones comunes.</p>
-          </li>
-          <li class="flex gap-4">
-            <span class="text-sm font-medium text-latte-dark shrink-0">02</span>
-            <p class="text-ink/80 leading-relaxed">[Placeholder] Diseñamos un set de componentes de navegación con reglas de composición documentadas.</p>
-          </li>
-          <li class="flex gap-4">
-            <span class="text-sm font-medium text-latte-dark shrink-0">03</span>
-            <p class="text-ink/80 leading-relaxed">[Placeholder] Probamos el sistema con dos productos piloto antes de extenderlo al resto.</p>
-          </li>
-          <li class="flex gap-4">
-            <span class="text-sm font-medium text-latte-dark shrink-0">04</span>
-            <p class="text-ink/80 leading-relaxed">[Placeholder] Documentamos el sistema y acompañamos a cada equipo en su migración.</p>
-          </li>
-        </ol>
-      </div>
-
-      <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1">Resultados</p>
         <div>
           <div class="grid sm:grid-cols-3 gap-8 mb-10 pb-10 border-b border-ink/[0.08]">
             <div>
               <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2">XX</p>
-              <p class="text-sm font-medium text-ink mb-1">Productos unificados</p>
-              <p class="text-sm text-slate leading-relaxed">[Placeholder descripción]</p>
+              <p class="text-sm font-medium text-ink mb-1">Productos con el nuevo menú</p>
+              <p class="text-sm text-slate leading-relaxed">[Placeholder] Los equipos de producto empezaron a lanzar cambios de navegación sin rediseñar el menú desde cero.</p>
             </div>
             <div>
               <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2">XX%</p>
-              <p class="text-sm font-medium text-ink mb-1">Menos tiempo de implementación</p>
-              <p class="text-sm text-slate leading-relaxed">[Placeholder descripción]</p>
+              <p class="text-sm font-medium text-ink mb-1">Menos tiempo de incorporación</p>
+              <p class="text-sm text-slate leading-relaxed">[Placeholder] El tiempo de incorporación de nuevos productos al sistema se redujo de forma notable.</p>
             </div>
             <div>
               <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2">XX%</p>
-              <p class="text-sm font-medium text-ink mb-1">Componentes reutilizados</p>
-              <p class="text-sm text-slate leading-relaxed">[Placeholder descripción]</p>
+              <p class="text-sm font-medium text-ink mb-1">Navegación más predecible</p>
+              <p class="text-sm text-slate leading-relaxed">[Placeholder] Los usuarios que trabajan con varios productos reportaron una navegación más predecible.</p>
             </div>
           </div>
           <p class="text-ink/80 leading-relaxed max-w-2xl">
@@ -612,10 +538,10 @@
       </div>
     </section>
 
-    <!-- ===== 07 · KEY LEARNINGS ===== -->
+    <!-- ===== 06 · KEY LEARNINGS ===== -->
     <section class="max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
-        <span class="text-sm font-medium text-latte-dark">07</span>
+        <span class="text-sm font-medium text-latte-dark">06</span>
         <span class="text-xs font-medium tracking-widest uppercase text-slate">Aprendizajes clave</span>
       </div>
       <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-8">
@@ -656,14 +582,16 @@
       if (!toggleBtn || !menu) return;
 
       function closeMenu() {
-        menu.classList.add('hidden');
+        menu.classList.add('max-h-0', 'opacity-0', 'blur-sm', 'pointer-events-none');
+        menu.classList.remove('max-h-48', 'opacity-100', 'blur-none', 'pointer-events-auto');
         iconOpen.classList.remove('hidden');
         iconClose.classList.add('hidden');
         toggleBtn.setAttribute('aria-expanded', 'false');
       }
 
       function openMenu() {
-        menu.classList.remove('hidden');
+        menu.classList.add('max-h-48', 'opacity-100', 'blur-none', 'pointer-events-auto');
+        menu.classList.remove('max-h-0', 'opacity-0', 'blur-sm', 'pointer-events-none');
         iconOpen.classList.add('hidden');
         iconClose.classList.remove('hidden');
         toggleBtn.setAttribute('aria-expanded', 'true');
