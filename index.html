@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title data-i18n="meta.title">Javier Díaz — Product Designer</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta name="description" content="Portfolio de Javier Díaz, Product Designer con 4 años de experiencia diseñando productos digitales." data-i18n-attr="content" data-i18n="meta.description">
 
 <!-- Tailwind CDN -->
@@ -95,9 +96,6 @@
     .logo-marquee-track {
       animation: logo-marquee 40s linear infinite;
     }
-    .logo-marquee:hover .logo-marquee-track {
-      animation-play-state: paused;
-    }
   }
   @keyframes logo-marquee {
     from { transform: translateX(0); }
@@ -168,10 +166,9 @@
 
   <!-- ===== PRELOADER ===== -->
   <div id="preloader" class="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-paper">
-    <span id="preloader-word" class="text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tightest text-ink transition-opacity duration-[600ms] ease-in-out">Hola</span>
+    <span id="preloader-word" class="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tightest text-ink transition-opacity duration-[600ms] ease-in-out">Hola</span>
     <div class="flex flex-col items-center gap-2 text-slate">
-      <span id="preloader-hint" class="text-sm font-medium tracking-widest uppercase transition-opacity duration-[600ms] ease-in-out">Desliza hacia abajo para continuar</span>
-      <svg class="preloader-hint-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      <svg class="preloader-hint-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     </div>
   </div>
 
@@ -210,7 +207,7 @@
     <!-- ===== HERO ===== -->
     <section class="max-w-6xl mx-auto px-6 md:px-10 pt-[120px]">
       <h1 class="reveal is-visible text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tightest leading-[1.05]" data-i18n="hero.title">
-        Simplificando la complejidad a través del diseño.
+        Simplificando nuestro día a día a través del diseño.
       </h1>
       <p class="reveal is-visible mt-6 text-xl md:text-lg text-slate leading-relaxed" data-i18n="hero.subtitle">
         4 años de experiencia construyendo productos digitales de alto impacto dentro de la industria de la logística, colaborando con transportistas, aerolíneas y navieras globales, y transformando requisitos complejos en interfaces user friendly.
@@ -563,7 +560,7 @@
 
   <!-- ===== FOOTER ===== -->
   <footer id="contact" class="max-w-6xl mx-auto px-6 md:px-10 pt-[64px] pb-10 md:pb-14">
-    <h2 class="reveal text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tightest leading-[1.05]" data-i18n="footer.heading">¿Hablamos?</h2>
+    <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight" data-i18n="footer.heading">¿Hablamos?</h2>
 
     <div class="reveal mt-6">
       <p class="text-lg text-slate leading-relaxed" data-i18n="footer.text">
@@ -593,7 +590,7 @@
         'meta.description': 'Portfolio de Javier Díaz, Product Designer con 4 años de experiencia diseñando productos digitales.',
         'nav.about': 'Sobre mí',
         'nav.contact': 'Contacto',
-        'hero.title': 'Simplificando la complejidad a través del diseño.',
+        'hero.title': 'Simplificando nuestro día a día a través del diseño.',
         'hero.subtitle': '4 años de experiencia construyendo productos digitales de alto impacto dentro de la industria de la logística, colaborando con transportistas, aerolíneas y navieras globales, y transformando requisitos complejos en interfaces user friendly.',
         'experience.heading': 'Experiencia',
         'work.heading': 'Proyectos seleccionados',
@@ -835,15 +832,13 @@
       const spacer = document.getElementById('preloader-spacer');
       if (!preloader || !wordEl) return;
 
-      const hintEl = document.getElementById('preloader-hint');
-
       const greetings = [
-        { text: 'Hola', hint: 'Desliza hacia abajo para continuar', rtl: false },
-        { text: 'Hello', hint: 'Scroll down to continue', rtl: false },
-        { text: 'Bon dia', hint: 'Llisca cap avall per continuar', rtl: false },
-        { text: '你好', hint: '向下滚动以继续', rtl: false },
-        { text: 'こんにちは', hint: '下にスクロールして続ける', rtl: false },
-        { text: 'مرحباً', hint: 'مرّر لأسفل للمتابعة', rtl: true },
+        { text: 'Hola', rtl: false },
+        { text: 'Hello', rtl: false },
+        { text: 'Bon dia', rtl: false },
+        { text: '你好', rtl: false },
+        { text: 'こんにちは', rtl: false },
+        { text: 'مرحباً', rtl: true },
       ];
       const stepMs = 2000;
       const fadeMs = 600;
@@ -857,10 +852,6 @@
         const dir = item.rtl ? 'rtl' : 'ltr';
         wordEl.textContent = item.text;
         wordEl.dir = dir;
-        if (hintEl) {
-          hintEl.textContent = item.hint;
-          hintEl.dir = dir;
-        }
       }
 
       let idx = 0;
@@ -868,12 +859,10 @@
 
       const cycle = setInterval(() => {
         wordEl.style.opacity = '0';
-        if (hintEl) hintEl.style.opacity = '0';
         setTimeout(() => {
           idx = (idx + 1) % greetings.length;
           applyGreeting(greetings[idx]);
           wordEl.style.opacity = '1';
-          if (hintEl) hintEl.style.opacity = '1';
         }, fadeMs);
       }, stepMs);
 
