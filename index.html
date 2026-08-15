@@ -83,16 +83,6 @@
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    .preloader-hint-icon {
-      animation: preloader-bounce 1.6s ease-in-out infinite;
-    }
-  }
-  @keyframes preloader-bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(6px); }
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
     .logo-marquee-track {
       animation: logo-marquee 40s linear infinite;
     }
@@ -167,9 +157,6 @@
   <!-- ===== PRELOADER ===== -->
   <div id="preloader" class="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-paper">
     <span id="preloader-word" class="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tightest text-ink transition-opacity duration-[600ms] ease-in-out">Hola</span>
-    <div class="flex flex-col items-center gap-2 text-slate">
-      <svg class="preloader-hint-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-    </div>
   </div>
 
   <!-- ===== NAVBAR ===== -->
