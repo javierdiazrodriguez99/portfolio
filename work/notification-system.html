@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Notification System · Javier Díaz</title>
+<title data-i18n="meta.title">Notification System · Javier Díaz</title>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-<meta name="description" content="Caso de estudio: sistema de notificaciones push para escritorio y email de las acciones que ocurren en la plataforma.">
+<meta name="description" data-i18n="meta.description" data-i18n-attr="content" content="Caso de estudio: sistema de notificaciones push para escritorio y email de las acciones que ocurren en la plataforma.">
 
 <!-- Tailwind CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
@@ -98,19 +98,29 @@
         Javier Díaz
       </a>
 
-      <ul class="hidden sm:flex items-center gap-10 text-base text-slate">
-        <li><a href="../sobre-mi.html" class="hover:text-ink transition-colors focus-ring rounded">Sobre mí</a></li>
-        <li><a href="../contacto.html" class="hover:text-ink transition-colors focus-ring rounded">Contacto</a></li>
-      </ul>
+      <div class="hidden sm:flex items-center gap-8">
+        <ul class="flex items-center gap-10 text-base text-slate">
+          <li><a href="../sobre-mi.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
+          <li><a href="../contacto.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
+        </ul>
+        <div class="flex items-center gap-0.5 text-xs font-medium border border-ink/15 rounded-full p-0.5" role="group" aria-label="Seleccionar idioma">
+          <button type="button" class="lang-btn px-2.5 py-1 rounded-full transition-colors" data-lang="es">ES</button>
+          <button type="button" class="lang-btn px-2.5 py-1 rounded-full transition-colors" data-lang="en">EN</button>
+        </div>
+      </div>
 
       <span class="sm:hidden w-[22px]" aria-hidden="true"></span>
     </nav>
 
     <div id="mobile-menu" class="sm:hidden max-h-0 opacity-0 blur-sm pointer-events-none overflow-hidden border-t border-ink/[0.06] bg-paper transition-all duration-300 ease-out">
       <ul class="flex flex-col px-6 py-4 text-base font-medium text-ink">
-        <li><a href="../sobre-mi.html" class="block py-4 focus-ring rounded">Sobre mí</a></li>
-        <li><a href="../contacto.html" class="block py-4 focus-ring rounded">Contacto</a></li>
+        <li><a href="../sobre-mi.html" class="block py-4 focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
+        <li><a href="../contacto.html" class="block py-4 focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
       </ul>
+      <div class="flex items-center gap-0.5 text-xs font-medium border border-ink/15 rounded-full p-0.5 mx-6 mb-4 w-fit" role="group" aria-label="Seleccionar idioma">
+        <button type="button" class="lang-btn px-3 py-1.5 rounded-full transition-colors" data-lang="es">ES</button>
+        <button type="button" class="lang-btn px-3 py-1.5 rounded-full transition-colors" data-lang="en">EN</button>
+      </div>
     </div>
   </header>
 
@@ -118,23 +128,23 @@
 
     <!-- ===== PASSWORD GATE ===== -->
     <section id="password-gate" class="max-w-6xl mx-auto px-6 md:px-10 pt-[104px] pb-20 min-h-[60vh] flex flex-col justify-center">
-      <a href="../index.html" class="inline-flex items-center gap-2 text-xs font-medium tracking-widest uppercase text-slate hover:text-ink transition-colors focus-ring rounded mb-10">
+      <a href="../index.html" class="inline-flex items-center gap-2 text-xs font-medium tracking-widest uppercase text-slate hover:text-ink transition-colors focus-ring rounded mb-10" data-i18n="gate.back">
         ← Volver al inicio
       </a>
       <div class="max-w-xl mx-auto text-center w-full">
-      <h1 class="text-3xl sm:text-4xl font-semibold tracking-tightest leading-[1.1] mb-4">
+      <h1 class="text-3xl sm:text-4xl font-semibold tracking-tightest leading-[1.1] mb-4" data-i18n="gate.heading">
         Este proyecto está protegido
       </h1>
-      <p class="text-slate leading-relaxed mb-8">
+      <p class="text-slate leading-relaxed mb-8" data-i18n="gate.instructions">
         Introduce la contraseña para acceder.
       </p>
       <form id="password-form" class="flex flex-col gap-3" autocomplete="off">
-        <label for="password-input" class="sr-only">Contraseña</label>
-        <input type="password" id="password-input" name="password" autocomplete="off" placeholder="Introduce la contraseña" class="focus-ring w-full text-center px-6 py-3.5 rounded-full border border-ink/15 bg-paper text-ink placeholder:text-slate/60">
-        <button type="submit" class="focus-ring inline-flex items-center justify-center gap-2 bg-ink text-paper text-sm font-medium px-6 py-3.5 rounded-full hover:bg-slate transition-colors">
+        <label for="password-input" class="sr-only" data-i18n="gate.label">Contraseña</label>
+        <input type="password" id="password-input" name="password" autocomplete="off" placeholder="Introduce la contraseña" data-i18n="gate.placeholder" data-i18n-attr="placeholder" class="focus-ring w-full text-center px-6 py-3.5 rounded-full border border-ink/15 bg-paper text-ink placeholder:text-slate/60">
+        <button type="submit" class="focus-ring inline-flex items-center justify-center gap-2 bg-ink text-paper text-sm font-medium px-6 py-3.5 rounded-full hover:bg-slate transition-colors" data-i18n="gate.button">
           Acceder
         </button>
-        <p id="password-error" class="hidden text-sm text-red-600/80 mt-1">Contraseña incorrecta. Inténtalo de nuevo.</p>
+        <p id="password-error" class="hidden text-sm text-red-600/80 mt-1" data-i18n="gate.error">Contraseña incorrecta. Inténtalo de nuevo.</p>
       </form>
       </div>
     </section>
@@ -143,48 +153,48 @@
 
     <!-- ===== HERO ===== -->
     <section class="max-w-6xl mx-auto px-6 md:px-10 pt-[104px]">
-      <a href="../index.html#work" class="reveal is-visible inline-flex items-center gap-2 text-xs font-medium tracking-widest uppercase text-slate hover:text-ink transition-colors focus-ring rounded">
+      <a href="../index.html#work" class="reveal is-visible inline-flex items-center gap-2 text-xs font-medium tracking-widest uppercase text-slate hover:text-ink transition-colors focus-ring rounded" data-i18n="breadcrumb.back">
         ← Todos los proyectos
       </a>
 
-      <h1 class="reveal is-visible mt-6 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tightest leading-[1.08] max-w-4xl">
+      <h1 class="reveal is-visible mt-6 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tightest leading-[1.08] max-w-4xl" data-i18n="hero.title">
         Notification System
       </h1>
 
-      <p class="reveal is-visible mt-6 text-lg text-slate leading-relaxed">
+      <p class="reveal is-visible mt-6 text-lg text-slate leading-relaxed" data-i18n="hero.subtitle">
         Diseño de un sistema de notificaciones push para escritorio y email que avisa a los usuarios de las acciones relevantes que ocurren en la plataforma.
       </p>
 
       <div class="reveal is-visible mt-12 pt-8 border-t border-ink/[0.08] grid sm:grid-cols-4 gap-8">
         <div>
-          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Rol</p>
-          <p class="text-sm font-medium text-ink">Product Designer</p>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.role.label">Rol</p>
+          <p class="text-sm font-medium text-ink" data-i18n="hero.role.value">Product Designer</p>
         </div>
         <div>
-          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Tipo de usuario</p>
-          <p class="text-sm font-medium text-ink">Transportistas (Freightos)</p>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.usertype.label">Tipo de usuario</p>
+          <p class="text-sm font-medium text-ink" data-i18n="hero.usertype.value">Transportistas (Freightos)</p>
         </div>
         <div>
-          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Año</p>
-          <p class="text-sm font-medium text-ink">2023</p>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.year.label">Año</p>
+          <p class="text-sm font-medium text-ink" data-i18n="hero.year.value">2023</p>
         </div>
         <div>
-          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Equipo</p>
-          <p class="text-sm font-medium text-ink">PM, Ingeniería, Research</p>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.team.label">Equipo</p>
+          <p class="text-sm font-medium text-ink" data-i18n="hero.team.value">PM, Ingeniería, Research</p>
         </div>
       </div>
 
       <div class="reveal is-visible mt-8 flex flex-wrap gap-2">
-        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70">Product Design</span>
-        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70">Push Notifications</span>
-        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70">Email</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70" data-i18n="hero.tag1">Product Design</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70" data-i18n="hero.tag2">Push Notifications</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70" data-i18n="hero.tag3">Email</span>
       </div>
 
       <div id="cover-carousel" class="reveal group mt-16 md:mt-20 relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
         <div id="carousel-track" class="flex h-full transition-transform duration-500 ease-out">
-          <img src="notification-system-cover.png" alt="Tooltip de notificaciones activas sobre un contacto de envío en la plataforma" class="w-full h-full object-cover shrink-0">
-          <img src="notification-system-cover-2.png" alt="Estado del envío marcado como En tránsito con el icono de notificaciones" class="w-full h-full object-cover shrink-0">
-          <img src="notification-system-cover-3.png" alt="Panel de configuración de notificaciones, con Mis notificaciones y Notificar a otros" class="w-full h-full object-cover shrink-0">
+          <img src="notification-system-cover.png" alt="Tooltip de notificaciones activas sobre un contacto de envío en la plataforma" data-i18n="hero.img1.alt" data-i18n-attr="alt" class="w-full h-full object-cover shrink-0">
+          <img src="notification-system-cover-2.png" alt="Estado del envío marcado como En tránsito con el icono de notificaciones" data-i18n="hero.img2.alt" data-i18n-attr="alt" class="w-full h-full object-cover shrink-0">
+          <img src="notification-system-cover-3.png" alt="Panel de configuración de notificaciones, con Mis notificaciones y Notificar a otros" data-i18n="hero.img3.alt" data-i18n-attr="alt" class="w-full h-full object-cover shrink-0">
         </div>
 
         <button type="button" id="carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
@@ -206,35 +216,35 @@
     <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">01</span>
-        <span class="text-xs font-medium tracking-widest uppercase text-slate">Punto de partida</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s01.eyebrow">Punto de partida</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight max-w-2xl mb-14 md:mb-16">
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight max-w-2xl mb-14 md:mb-16" data-i18n="s01.heading">
         Por qué necesitábamos un nuevo enfoque
       </h2>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Contexto</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s01.context.label">Contexto</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s01.context.p">
           En la plataforma ocurrían constantemente acciones relevantes para los usuarios — cambios de estado, mensajes, alertas — pero no existía ningún sistema centralizado para avisarles. La única vía era que el propio usuario entrara y comprobara manualmente si algo había cambiado.
         </p>
       </div>
 
       <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 pt-10 border-t border-ink/[0.08]">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
-          <h3 class="text-lg font-medium mb-2">Falta de visibilidad</h3>
-          <p class="text-sm text-slate leading-relaxed">
+          <h3 class="text-lg font-medium mb-2" data-i18n="s01.card1.heading">Falta de visibilidad</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s01.card1.p">
             Los usuarios debían refrescar manualmente la plataforma para enterarse de cambios importantes.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg font-medium mb-2">Canales desconectados</h3>
-          <p class="text-sm text-slate leading-relaxed">
+          <h3 class="text-lg font-medium mb-2" data-i18n="s01.card2.heading">Canales desconectados</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s01.card2.p">
             El email era la única vía de aviso, y no siempre reflejaba lo que ocurría dentro de la plataforma.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg font-medium mb-2">Riesgo de sobrecarga</h3>
-          <p class="text-sm text-slate leading-relaxed">
+          <h3 class="text-lg font-medium mb-2" data-i18n="s01.card3.heading">Riesgo de sobrecarga</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s01.card3.p">
             Sin un sistema de prioridades, cualquier notificación futura corría el riesgo de saturar al usuario.
           </p>
         </div>
@@ -245,45 +255,45 @@
     <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">02</span>
-        <span class="text-xs font-medium tracking-widest uppercase text-slate">Research</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s02.eyebrow">Research</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s02.heading">
         Cómo investigamos antes de diseñar las notificaciones
       </h2>
 
       <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 mb-16">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
-          <h3 class="text-lg font-medium mb-2">Entrevistas con usuarios y soporte</h3>
-          <p class="text-sm text-slate leading-relaxed">Nuestros usuarios pedían encarecidamente que, de alguna manera, se pudiera identificar cada uno de los cambios que ocurrían durante su experiencia de usuario en la plataforma.</p>
+          <h3 class="text-lg font-medium mb-2" data-i18n="s02.card1.heading">Entrevistas con usuarios y soporte</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s02.card1.p">Nuestros usuarios pedían encarecidamente que, de alguna manera, se pudiera identificar cada uno de los cambios que ocurrían durante su experiencia de usuario en la plataforma.</p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg font-medium mb-2">Análisis de tickets de soporte</h3>
-          <p class="text-sm text-slate leading-relaxed">Llegaban muchísimos tickets de error reportados por usuarios, porque no podían estar al tanto del proceso de sus bookings o de sus cotizaciones con otros clientes y stakeholders.</p>
+          <h3 class="text-lg font-medium mb-2" data-i18n="s02.card2.heading">Análisis de tickets de soporte</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s02.card2.p">Llegaban muchísimos tickets de error reportados por usuarios, porque no podían estar al tanto del proceso de sus bookings o de sus cotizaciones con otros clientes y stakeholders.</p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg font-medium mb-2">Benchmark de sistemas de notificaciones</h3>
-          <p class="text-sm text-slate leading-relaxed">Intentamos localizar e investigar aquellos sistemas más actualizados a nivel de experiencia de usuario e interfaz, para garantizar una funcionalidad lo más fresca posible.</p>
+          <h3 class="text-lg font-medium mb-2" data-i18n="s02.card3.heading">Benchmark de sistemas de notificaciones</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s02.card3.p">Intentamos localizar e investigar aquellos sistemas más actualizados a nivel de experiencia de usuario e interfaz, para garantizar una funcionalidad lo más fresca posible.</p>
         </div>
       </div>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Requisitos básicos desde product management</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s02.requirements.label">Requisitos básicos desde product management</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s02.requirements.p">
           Desde product management nos plantearon un requisito clave: permitir que forwarders y shippers pudieran configurar notificaciones para cada envío y decidir quién recibía cada tipo de información. Se plantearon dos opciones: mostrar los tipos de notificación y asignar personas a cada uno, o añadir personas y elegir qué tipo de información recibiría cada una.
         </p>
       </div>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16 mt-16 md:mt-20">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Benchmark</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s02.benchmark.label">Benchmark</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s02.benchmark.p">
           Se realizaron diferentes estudios sobre otras propuestas vistas en otros softwares. Predominaban side panels accesibles desde casi cualquier parte de la plataforma, permitiendo a los usuarios seleccionar qué notificaciones se recibirían tanto de un pedido como de todos en general.
         </p>
       </div>
 
       <div id="workshops-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-[#D3DDE5]">
         <div id="workshops-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
-          <img src="notification-system-benchmark-1.webp" alt="Referencias de benchmark: modal de configuración de alertas de AhoyConnect y panel de preferencias de notificaciones de Stratis UI" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
-          <img src="notification-system-benchmark-2.webp" alt="Referencias de benchmark: dashboard de una app de video con modal de añadir miembros, y tabla de gestión de usuarios y permisos con panel para compartir" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="notification-system-benchmark-1.webp" alt="Referencias de benchmark: modal de configuración de alertas de AhoyConnect y panel de preferencias de notificaciones de Stratis UI" data-i18n="s02.img1.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="notification-system-benchmark-2.webp" alt="Referencias de benchmark: dashboard de una app de video con modal de añadir miembros, y tabla de gestión de usuarios y permisos con panel para compartir" data-i18n="s02.img2.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
         </div>
 
         <button type="button" id="workshops-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
@@ -298,50 +308,50 @@
           <button type="button" class="workshops-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
         </div>
       </div>
-      <p class="reveal text-xs text-slate mt-3">Referencias de benchmark de otros sistemas de notificaciones del mercado.</p>
+      <p class="reveal text-xs text-slate mt-3" data-i18n="s02.caption">Referencias de benchmark de otros sistemas de notificaciones del mercado.</p>
     </section>
 
     <!-- ===== 03 · DEL PAPEL A LA PANTALLA ===== -->
     <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">03</span>
-        <span class="text-xs font-medium tracking-widest uppercase text-slate">Del papel a la pantalla</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s03.eyebrow">Del papel a la pantalla</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s03.heading">
         De los primeros bocetos a las primeras interacciones
       </h2>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Enfoque</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s03.approach.label">Enfoque</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s03.approach.p">
           Desde la dirección de producto se promovía buscar soluciones para varios escenarios. Teníamos ventaja porque ya en su momento había planteado una propuesta rápida para los senior product managers, donde daba una idea sobre cómo podríamos apañar esta nueva funcionalidad en un futuro.
         </p>
       </div>
 
       <div class="reveal grid sm:grid-cols-4 gap-x-8 gap-y-10 md:gap-x-10 mb-16">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
-          <h3 class="text-lg font-medium mb-2">Pre-booking</h3>
-          <p class="text-sm text-slate leading-relaxed">Añadir el mismo componente de notificaciones en el lado de pre-booking, antes de confirmar el envío.</p>
+          <h3 class="text-lg font-medium mb-2" data-i18n="s03.card1.heading">Pre-booking</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s03.card1.p">Añadir el mismo componente de notificaciones en el lado de pre-booking, antes de confirmar el envío.</p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg font-medium mb-2">Creación de contacto</h3>
-          <p class="text-sm text-slate leading-relaxed">Permitir añadir notificaciones directamente al crear o seleccionar un contacto.</p>
+          <h3 class="text-lg font-medium mb-2" data-i18n="s03.card2.heading">Creación de contacto</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s03.card2.p">Permitir añadir notificaciones directamente al crear o seleccionar un contacto.</p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg font-medium mb-2">Vista general de envíos</h3>
-          <p class="text-sm text-slate leading-relaxed">Añadir notificaciones desde la vista general de envíos, sin tener que entrar en cada uno.</p>
+          <h3 class="text-lg font-medium mb-2" data-i18n="s03.card3.heading">Vista general de envíos</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s03.card3.p">Añadir notificaciones desde la vista general de envíos, sin tener que entrar en cada uno.</p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg font-medium mb-2">Ficha de contacto</h3>
-          <p class="text-sm text-slate leading-relaxed">Añadir notificaciones haciendo clic directamente sobre cada contacto.</p>
+          <h3 class="text-lg font-medium mb-2" data-i18n="s03.card4.heading">Ficha de contacto</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s03.card4.p">Añadir notificaciones haciendo clic directamente sobre cada contacto.</p>
         </div>
       </div>
 
       <div id="sketches-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-[#E2F5FA]">
         <div id="sketches-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
-          <img src="notification-system-sketches-1.webp" alt="Diagrama de árbol de tipos de notificación (itinerario, detalles del envío) con asignación de usuarios por evento, junto a referencias de modales de configuración de notificaciones" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
-          <img src="notification-system-sketches-2.png" alt="Flujo de creación de un nuevo contacto y asignación de notificaciones por email, con referencias de paneles de notificaciones y autocompletado de contactos" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
-          <img src="notification-system-sketches-3.webp" alt="Boceto sobre dónde ubicar el CTA de notificaciones en la vista general de envíos" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="notification-system-sketches-1.webp" alt="Diagrama de árbol de tipos de notificación (itinerario, detalles del envío) con asignación de usuarios por evento, junto a referencias de modales de configuración de notificaciones" data-i18n="s03.img1.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="notification-system-sketches-2.png" alt="Flujo de creación de un nuevo contacto y asignación de notificaciones por email, con referencias de paneles de notificaciones y autocompletado de contactos" data-i18n="s03.img2.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="notification-system-sketches-3.webp" alt="Boceto sobre dónde ubicar el CTA de notificaciones en la vista general de envíos" data-i18n="s03.img3.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
         </div>
 
         <button type="button" id="sketches-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
@@ -357,18 +367,18 @@
           <button type="button" class="sketches-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
         </div>
       </div>
-      <p class="reveal text-xs text-slate mt-3">Primeros bocetos del sistema de notificaciones y escenarios planteados por producto.</p>
+      <p class="reveal text-xs text-slate mt-3" data-i18n="s03.caption1">Primeros bocetos del sistema de notificaciones y escenarios planteados por producto.</p>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16 mt-16 md:mt-20">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Pre-booking</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s03.prebooking.label">Pre-booking</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s03.prebooking.p">
           Por cuestiones de roadmap, esta sección quedó exenta de rediseño y se mantuvo como estaba hasta el momento.
         </p>
       </div>
 
       <div id="notifcenter-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-[#ECECEC]">
         <div id="notifcenter-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
-          <img src="notification-system-prebooking-flow.webp" alt="Flow de las páginas de pre-booking: árbol de decisiones para activar notificaciones por email, junto al modal de preferencias de notificación" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="notification-system-prebooking-flow.webp" alt="Flow de las páginas de pre-booking: árbol de decisiones para activar notificaciones por email, junto al modal de preferencias de notificación" data-i18n="s03.img4.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
         </div>
 
         <button type="button" id="notifcenter-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
@@ -382,18 +392,18 @@
           <button type="button" class="notifcenter-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
         </div>
       </div>
-      <p class="reveal text-xs text-slate mt-3">Flow actual de las páginas de pre-booking. No tengo capturas de pantalla completas jeje :)</p>
+      <p class="reveal text-xs text-slate mt-3" data-i18n="s03.caption2">Flow actual de las páginas de pre-booking. No tengo capturas de pantalla completas jeje :)</p>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16 mt-16 md:mt-20">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Creación de contacto</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s03.contact.label">Creación de contacto</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s03.contact.p">
           En cuanto a la creación de contacto, también se mantuvo fuera del proyecto final de momento: la propuesta está hecha, pero no se pudo integrar debido a cuestiones técnicas del equipo de desarrollo, y porque para el equipo directivo no era realmente una prioridad finalmente.
         </p>
       </div>
 
       <div id="push-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-white">
         <div id="push-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
-          <img src="notification-system-addcontact-flow.webp" alt="Flow de añadir un nuevo contacto desde el panel de notificaciones: notifications side panel, pop-up de añadir contacto y pop-up relleno" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="notification-system-addcontact-flow.webp" alt="Flow de añadir un nuevo contacto desde el panel de notificaciones: notifications side panel, pop-up de añadir contacto y pop-up relleno" data-i18n="s03.img5.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
         </div>
 
         <button type="button" id="push-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
@@ -407,31 +417,31 @@
           <button type="button" class="push-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
         </div>
       </div>
-      <p class="reveal text-xs text-slate mt-3">Propuesta de flow para añadir un nuevo contacto, finalmente descartada.</p>
+      <p class="reveal text-xs text-slate mt-3" data-i18n="s03.caption3">Propuesta de flow para añadir un nuevo contacto, finalmente descartada.</p>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-10 mt-16 md:mt-20">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1">Cambio de rumbo</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1" data-i18n="s03.pivot.label">Cambio de rumbo</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s03.pivot.p">
           Este proyecto sufrió numerosos cambios de prioridades durante su desarrollo. Así arrancamos, y así terminamos.
         </p>
       </div>
 
       <div class="reveal grid sm:grid-cols-4 gap-x-8 gap-y-10 md:gap-x-10 mb-10">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
-          <h3 class="text-lg font-medium mb-2 text-ink/50">Pre-booking</h3>
-          <p class="text-sm text-slate/50 leading-relaxed">Añadir el mismo componente de notificaciones en el lado de pre-booking, antes de confirmar el envío.</p>
+          <h3 class="text-lg font-medium mb-2 text-ink/50" data-i18n="s03.discarded.card1.heading">Pre-booking</h3>
+          <p class="text-sm text-slate/50 leading-relaxed" data-i18n="s03.discarded.card1.p">Añadir el mismo componente de notificaciones en el lado de pre-booking, antes de confirmar el envío.</p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg font-medium mb-2 text-ink/50">Creación de contacto</h3>
-          <p class="text-sm text-slate/50 leading-relaxed">Permitir añadir notificaciones directamente al crear o seleccionar un contacto.</p>
+          <h3 class="text-lg font-medium mb-2 text-ink/50" data-i18n="s03.discarded.card2.heading">Creación de contacto</h3>
+          <p class="text-sm text-slate/50 leading-relaxed" data-i18n="s03.discarded.card2.p">Permitir añadir notificaciones directamente al crear o seleccionar un contacto.</p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg font-medium mb-2 text-ink/50">Vista general de envíos</h3>
-          <p class="text-sm text-slate/50 leading-relaxed">Añadir notificaciones desde la vista general de envíos, sin tener que entrar en cada uno.</p>
+          <h3 class="text-lg font-medium mb-2 text-ink/50" data-i18n="s03.discarded.card3.heading">Vista general de envíos</h3>
+          <p class="text-sm text-slate/50 leading-relaxed" data-i18n="s03.discarded.card3.p">Añadir notificaciones desde la vista general de envíos, sin tener que entrar en cada uno.</p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg font-medium mb-2 text-ink/50">Ficha de contacto</h3>
-          <p class="text-sm text-slate/50 leading-relaxed">Añadir notificaciones haciendo clic directamente sobre cada contacto.</p>
+          <h3 class="text-lg font-medium mb-2 text-ink/50" data-i18n="s03.discarded.card4.heading">Ficha de contacto</h3>
+          <p class="text-sm text-slate/50 leading-relaxed" data-i18n="s03.discarded.card4.p">Añadir notificaciones haciendo clic directamente sobre cada contacto.</p>
         </div>
       </div>
 
@@ -441,12 +451,12 @@
 
       <div class="reveal grid sm:grid-cols-2 gap-x-8 gap-y-10 md:gap-x-10 mb-16">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
-          <h3 class="text-lg font-medium mb-2">Activar/Desactivar notificaciones</h3>
-          <p class="text-sm text-slate leading-relaxed">Los usuarios podían activar o desactivar las notificaciones directamente desde la vista general de envíos.</p>
+          <h3 class="text-lg font-medium mb-2" data-i18n="s03.final.card1.heading">Activar/Desactivar notificaciones</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s03.final.card1.p">Los usuarios podían activar o desactivar las notificaciones directamente desde la vista general de envíos.</p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg font-medium mb-2">Añadir y modificar tarjetas de contacto del propio envío</h3>
-          <p class="text-sm text-slate leading-relaxed">Se permitía añadir y modificar las tarjetas de contacto asociadas a cada envío, sin salir del flujo principal.</p>
+          <h3 class="text-lg font-medium mb-2" data-i18n="s03.final.card2.heading">Añadir y modificar tarjetas de contacto del propio envío</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s03.final.card2.p">Se permitía añadir y modificar las tarjetas de contacto asociadas a cada envío, sin salir del flujo principal.</p>
         </div>
       </div>
     </section>
@@ -455,27 +465,27 @@
     <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">04</span>
-        <span class="text-xs font-medium tracking-widest uppercase text-slate">Solución</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s04.eyebrow">Solución</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s04.heading">
         Un sistema de notificaciones más sencillo de lo esperado
       </h2>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Enfoque</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s04.approach.label">Enfoque</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s04.approach.p">
           Tras percibir estos cambios de roadmap mientras el proyecto estaba en pleno desarrollo de diseño, me alineé bastante rápido con los diferentes stakeholders y conseguimos sacar en tiempo récord un sistema de notificaciones que pudiera solventar las principales prioridades del equipo de producto.
         </p>
       </div>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-6">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1">Funcionalidades<br class="hidden md:block"> entregadas</p>
+        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1" data-i18n="s04.features.label">Funcionalidades<br class="hidden md:block"> entregadas</p>
         <ul>
           <li class="py-5 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-sm font-medium text-latte-dark shrink-0">01</span>
             <div>
-              <h3 class="text-base font-medium mb-1">Activar y desactivar notificaciones de manera general</h3>
-              <p class="text-sm text-slate leading-relaxed max-w-lg">Se buscaba una solución que permitiera modificar rápidamente si un envío debería de recibir notificaciones o no.</p>
+              <h3 class="text-base font-medium mb-1" data-i18n="s04.feature1.heading">Activar y desactivar notificaciones de manera general</h3>
+              <p class="text-sm text-slate leading-relaxed max-w-lg" data-i18n="s04.feature1.p">Se buscaba una solución que permitiera modificar rápidamente si un envío debería de recibir notificaciones o no.</p>
             </div>
           </li>
         </ul>
@@ -483,7 +493,7 @@
 
       <div id="item01-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-[#FAFAFA]">
         <div id="item01-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
-          <img src="notification-system-results-5.webp" alt="Panel lateral de notificaciones con las secciones My notifications y Notify others" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="notification-system-results-5.webp" alt="Panel lateral de notificaciones con las secciones My notifications y Notify others" data-i18n="s04.item01.img.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
         </div>
 
         <button type="button" id="item01-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
@@ -497,7 +507,7 @@
           <button type="button" class="item01-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
         </div>
       </div>
-      <p class="reveal text-xs text-slate mt-3 mb-10">Panel lateral de notificaciones, con el toggle general de My notifications.</p>
+      <p class="reveal text-xs text-slate mt-3 mb-10" data-i18n="s04.item01.caption">Panel lateral de notificaciones, con el toggle general de My notifications.</p>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-6">
         <div></div>
@@ -505,8 +515,8 @@
           <li class="py-5 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-sm font-medium text-latte-dark shrink-0">02</span>
             <div>
-              <h3 class="text-base font-medium mb-1">Notificar a terceras personas</h3>
-              <p class="text-sm text-slate leading-relaxed max-w-lg">Conseguimos proporcionar una solución donde se permitiera la customización de las notificaciones que recibirían cada uno de los contactos del envío.</p>
+              <h3 class="text-base font-medium mb-1" data-i18n="s04.feature2.heading">Notificar a terceras personas</h3>
+              <p class="text-sm text-slate leading-relaxed max-w-lg" data-i18n="s04.feature2.p">Conseguimos proporcionar una solución donde se permitiera la customización de las notificaciones que recibirían cada uno de los contactos del envío.</p>
             </div>
           </li>
         </ul>
@@ -514,7 +524,7 @@
 
       <div id="item02-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-[#FAFAFA]">
         <div id="item02-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
-          <img src="notification-system-results-4.webp" alt="Comparativa del bloque Notify others, con el desplegable de selección de contactos para el evento Itinerary abierto" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="notification-system-results-4.webp" alt="Comparativa del bloque Notify others, con el desplegable de selección de contactos para el evento Itinerary abierto" data-i18n="s04.item02.img.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
         </div>
 
         <button type="button" id="item02-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
@@ -528,7 +538,7 @@
           <button type="button" class="item02-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
         </div>
       </div>
-      <p class="reveal text-xs text-slate mt-3 mb-10">Selección de contactos por evento dentro del bloque Notify others.</p>
+      <p class="reveal text-xs text-slate mt-3 mb-10" data-i18n="s04.item02.caption">Selección de contactos por evento dentro del bloque Notify others.</p>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16">
         <div></div>
@@ -536,8 +546,8 @@
           <li class="py-5 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-sm font-medium text-latte-dark shrink-0">03</span>
             <div>
-              <h3 class="text-base font-medium mb-1">Añadir y modificar contactos del envío</h3>
-              <p class="text-sm text-slate leading-relaxed max-w-lg">Dentro de la industria logística hay muchas personas involucradas dentro del proceso de envío. Por ello, era interesante poder seleccionar contactos y modificar sus datos, en caso de que fuese necesario.</p>
+              <h3 class="text-base font-medium mb-1" data-i18n="s04.feature3.heading">Añadir y modificar contactos del envío</h3>
+              <p class="text-sm text-slate leading-relaxed max-w-lg" data-i18n="s04.feature3.p">Dentro de la industria logística hay muchas personas involucradas dentro del proceso de envío. Por ello, era interesante poder seleccionar contactos y modificar sus datos, en caso de que fuese necesario.</p>
             </div>
           </li>
         </ul>
@@ -546,13 +556,13 @@
       <div id="item03-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden">
         <div id="item03-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
           <div class="w-full h-full shrink-0 bg-[#FAFAFA]">
-            <img src="notification-system-results-3.png" alt="Detalle del icono de campana con el tooltip 'Notifications are active for this contact'" class="w-full h-full object-contain p-6 md:p-10">
+            <img src="notification-system-results-3.png" alt="Detalle del icono de campana con el tooltip 'Notifications are active for this contact'" data-i18n="s04.item03.img1.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10">
           </div>
           <div class="w-full h-full shrink-0 bg-white">
-            <img src="notification-system-results-2.webp" alt="Contacts v2: tarjeta de contacto Pickup con el icono de campana activo y el tooltip listando los tipos de notificación activados" class="w-full h-full object-contain p-6 md:p-10">
+            <img src="notification-system-results-2.webp" alt="Contacts v2: tarjeta de contacto Pickup con el icono de campana activo y el tooltip listando los tipos de notificación activados" data-i18n="s04.item03.img2.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10">
           </div>
           <div class="w-full h-full shrink-0 bg-white">
-            <img src="notification-system-results-1.webp" alt="Comparativa del modal Update contacts con la pestaña Notify party, mostrando la lista de notify parties y el formulario de edición de compañía" class="w-full h-full object-contain p-6 md:p-10">
+            <img src="notification-system-results-1.webp" alt="Comparativa del modal Update contacts con la pestaña Notify party, mostrando la lista de notify parties y el formulario de edición de compañía" data-i18n="s04.item03.img3.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10">
           </div>
         </div>
 
@@ -569,37 +579,37 @@
           <button type="button" class="item03-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
         </div>
       </div>
-      <p class="reveal text-xs text-slate mt-3">Detalle de campana, tarjeta de contacto en Contacts v2, y modal de edición de Notify party.</p>
+      <p class="reveal text-xs text-slate mt-3" data-i18n="s04.item03.caption">Detalle de campana, tarjeta de contacto en Contacts v2, y modal de edición de Notify party.</p>
     </section>
 
     <!-- ===== 05 · KEY LEARNINGS ===== -->
     <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">05</span>
-        <span class="text-xs font-medium tracking-widest uppercase text-slate">Aprendizajes clave</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s05.eyebrow">Aprendizajes clave</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-8">
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-8" data-i18n="s05.heading">
         Qué me dejó este proyecto
       </h2>
-      <p class="reveal text-ink/80 leading-relaxed">
+      <p class="reveal text-ink/80 leading-relaxed" data-i18n="s05.p1">
         A veces hay proyectos que conllevan más o menos prioridad dentro de un roadmap. Con este en concreto, pude observar cómo los requisitos pueden cambiar de la noche a la mañana y la agilidad que hay que tener para adaptarse a las nuevas visiones externas. Me llevo mucho entrenamiento para futuros proyectos que conlleven situaciones similares.
       </p>
-      <p class="reveal text-ink/80 leading-relaxed mt-6">
+      <p class="reveal text-ink/80 leading-relaxed mt-6" data-i18n="s05.p2">
         También comentar que este proyecto no ha sido publicado aún en el sistema, por eso todo lo que vemos en esta página es estrictamente confidencial.
       </p>
     </section>
 
     <!-- ===== END OF CASE STUDY ===== -->
     <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08] text-center">
-      <p class="reveal text-xs font-medium tracking-widest uppercase text-slate mb-4">Has llegado al final</p>
-      <p class="reveal text-xl md:text-2xl font-medium tracking-tight mb-10">
+      <p class="reveal text-xs font-medium tracking-widest uppercase text-slate mb-4" data-i18n="cta.eyebrow">Has llegado al final</p>
+      <p class="reveal text-xl md:text-2xl font-medium tracking-tight mb-10" data-i18n="cta.heading">
         ¿Quieres ver más proyectos?
       </p>
       <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="wizard-rate-management.html" class="focus-ring inline-flex items-center gap-2 bg-ink text-paper text-sm font-medium px-6 py-3.5 rounded-full hover:bg-slate transition-colors">
+        <a href="wizard-rate-management.html" class="focus-ring inline-flex items-center gap-2 bg-ink text-paper text-sm font-medium px-6 py-3.5 rounded-full hover:bg-slate transition-colors" data-i18n="cta.next">
           Continuar con Wizard for Rate Management
         </a>
-        <a href="../index.html#work" class="focus-ring inline-flex items-center gap-2 text-sm font-medium px-6 py-3.5 rounded-full border border-ink/15 hover:bg-latte/40 hover:border-latte-dark transition-colors">
+        <a href="../index.html#work" class="focus-ring inline-flex items-center gap-2 text-sm font-medium px-6 py-3.5 rounded-full border border-ink/15 hover:bg-latte/40 hover:border-latte-dark transition-colors" data-i18n="cta.back">
           Volver a todos los proyectos
         </a>
       </div>
@@ -610,6 +620,300 @@
   </main>
 
   <script>
+    const translations = {
+      es: {
+        'nav.about': 'Sobre mí',
+        'nav.contact': 'Contacto',
+        'meta.title': 'Notification System · Javier Díaz',
+        'meta.description': 'Caso de estudio: sistema de notificaciones push para escritorio y email de las acciones que ocurren en la plataforma.',
+        'gate.back': '← Volver al inicio',
+        'gate.heading': 'Este proyecto está protegido',
+        'gate.instructions': 'Introduce la contraseña para acceder.',
+        'gate.label': 'Contraseña',
+        'gate.placeholder': 'Introduce la contraseña',
+        'gate.button': 'Acceder',
+        'gate.error': 'Contraseña incorrecta. Inténtalo de nuevo.',
+        'breadcrumb.back': '← Todos los proyectos',
+        'hero.title': 'Notification System',
+        'hero.subtitle': 'Diseño de un sistema de notificaciones push para escritorio y email que avisa a los usuarios de las acciones relevantes que ocurren en la plataforma.',
+        'hero.role.label': 'Rol',
+        'hero.role.value': 'Product Designer',
+        'hero.usertype.label': 'Tipo de usuario',
+        'hero.usertype.value': 'Transportistas (Freightos)',
+        'hero.year.label': 'Año',
+        'hero.year.value': '2023',
+        'hero.team.label': 'Equipo',
+        'hero.team.value': 'PM, Ingeniería, Research',
+        'hero.tag1': 'Product Design',
+        'hero.tag2': 'Push Notifications',
+        'hero.tag3': 'Email',
+        'hero.img1.alt': 'Tooltip de notificaciones activas sobre un contacto de envío en la plataforma',
+        'hero.img2.alt': 'Estado del envío marcado como En tránsito con el icono de notificaciones',
+        'hero.img3.alt': 'Panel de configuración de notificaciones, con Mis notificaciones y Notificar a otros',
+        's01.eyebrow': 'Punto de partida',
+        's01.heading': 'Por qué necesitábamos un nuevo enfoque',
+        's01.context.label': 'Contexto',
+        's01.context.p': 'En la plataforma ocurrían constantemente acciones relevantes para los usuarios — cambios de estado, mensajes, alertas — pero no existía ningún sistema centralizado para avisarles. La única vía era que el propio usuario entrara y comprobara manualmente si algo había cambiado.',
+        's01.card1.heading': 'Falta de visibilidad',
+        's01.card1.p': 'Los usuarios debían refrescar manualmente la plataforma para enterarse de cambios importantes.',
+        's01.card2.heading': 'Canales desconectados',
+        's01.card2.p': 'El email era la única vía de aviso, y no siempre reflejaba lo que ocurría dentro de la plataforma.',
+        's01.card3.heading': 'Riesgo de sobrecarga',
+        's01.card3.p': 'Sin un sistema de prioridades, cualquier notificación futura corría el riesgo de saturar al usuario.',
+        's02.eyebrow': 'Research',
+        's02.heading': 'Cómo investigamos antes de diseñar las notificaciones',
+        's02.card1.heading': 'Entrevistas con usuarios y soporte',
+        's02.card1.p': 'Nuestros usuarios pedían encarecidamente que, de alguna manera, se pudiera identificar cada uno de los cambios que ocurrían durante su experiencia de usuario en la plataforma.',
+        's02.card2.heading': 'Análisis de tickets de soporte',
+        's02.card2.p': 'Llegaban muchísimos tickets de error reportados por usuarios, porque no podían estar al tanto del proceso de sus bookings o de sus cotizaciones con otros clientes y stakeholders.',
+        's02.card3.heading': 'Benchmark de sistemas de notificaciones',
+        's02.card3.p': 'Intentamos localizar e investigar aquellos sistemas más actualizados a nivel de experiencia de usuario e interfaz, para garantizar una funcionalidad lo más fresca posible.',
+        's02.requirements.label': 'Requisitos básicos desde product management',
+        's02.requirements.p': 'Desde product management nos plantearon un requisito clave: permitir que forwarders y shippers pudieran configurar notificaciones para cada envío y decidir quién recibía cada tipo de información. Se plantearon dos opciones: mostrar los tipos de notificación y asignar personas a cada uno, o añadir personas y elegir qué tipo de información recibiría cada una.',
+        's02.benchmark.label': 'Benchmark',
+        's02.benchmark.p': 'Se realizaron diferentes estudios sobre otras propuestas vistas en otros softwares. Predominaban side panels accesibles desde casi cualquier parte de la plataforma, permitiendo a los usuarios seleccionar qué notificaciones se recibirían tanto de un pedido como de todos en general.',
+        's02.img1.alt': 'Referencias de benchmark: modal de configuración de alertas de AhoyConnect y panel de preferencias de notificaciones de Stratis UI',
+        's02.img2.alt': 'Referencias de benchmark: dashboard de una app de video con modal de añadir miembros, y tabla de gestión de usuarios y permisos con panel para compartir',
+        's02.caption': 'Referencias de benchmark de otros sistemas de notificaciones del mercado.',
+        's03.eyebrow': 'Del papel a la pantalla',
+        's03.heading': 'De los primeros bocetos a las primeras interacciones',
+        's03.approach.label': 'Enfoque',
+        's03.approach.p': 'Desde la dirección de producto se promovía buscar soluciones para varios escenarios. Teníamos ventaja porque ya en su momento había planteado una propuesta rápida para los senior product managers, donde daba una idea sobre cómo podríamos apañar esta nueva funcionalidad en un futuro.',
+        's03.card1.heading': 'Pre-booking',
+        's03.card1.p': 'Añadir el mismo componente de notificaciones en el lado de pre-booking, antes de confirmar el envío.',
+        's03.card2.heading': 'Creación de contacto',
+        's03.card2.p': 'Permitir añadir notificaciones directamente al crear o seleccionar un contacto.',
+        's03.card3.heading': 'Vista general de envíos',
+        's03.card3.p': 'Añadir notificaciones desde la vista general de envíos, sin tener que entrar en cada uno.',
+        's03.card4.heading': 'Ficha de contacto',
+        's03.card4.p': 'Añadir notificaciones haciendo clic directamente sobre cada contacto.',
+        's03.img1.alt': 'Diagrama de árbol de tipos de notificación (itinerario, detalles del envío) con asignación de usuarios por evento, junto a referencias de modales de configuración de notificaciones',
+        's03.img2.alt': 'Flujo de creación de un nuevo contacto y asignación de notificaciones por email, con referencias de paneles de notificaciones y autocompletado de contactos',
+        's03.img3.alt': 'Boceto sobre dónde ubicar el CTA de notificaciones en la vista general de envíos',
+        's03.caption1': 'Primeros bocetos del sistema de notificaciones y escenarios planteados por producto.',
+        's03.prebooking.label': 'Pre-booking',
+        's03.prebooking.p': 'Por cuestiones de roadmap, esta sección quedó exenta de rediseño y se mantuvo como estaba hasta el momento.',
+        's03.img4.alt': 'Flow de las páginas de pre-booking: árbol de decisiones para activar notificaciones por email, junto al modal de preferencias de notificación',
+        's03.caption2': 'Flow actual de las páginas de pre-booking. No tengo capturas de pantalla completas jeje :)',
+        's03.contact.label': 'Creación de contacto',
+        's03.contact.p': 'En cuanto a la creación de contacto, también se mantuvo fuera del proyecto final de momento: la propuesta está hecha, pero no se pudo integrar debido a cuestiones técnicas del equipo de desarrollo, y porque para el equipo directivo no era realmente una prioridad finalmente.',
+        's03.img5.alt': 'Flow de añadir un nuevo contacto desde el panel de notificaciones: notifications side panel, pop-up de añadir contacto y pop-up relleno',
+        's03.caption3': 'Propuesta de flow para añadir un nuevo contacto, finalmente descartada.',
+        's03.pivot.label': 'Cambio de rumbo',
+        's03.pivot.p': 'Este proyecto sufrió numerosos cambios de prioridades durante su desarrollo. Así arrancamos, y así terminamos.',
+        's03.discarded.card1.heading': 'Pre-booking',
+        's03.discarded.card1.p': 'Añadir el mismo componente de notificaciones en el lado de pre-booking, antes de confirmar el envío.',
+        's03.discarded.card2.heading': 'Creación de contacto',
+        's03.discarded.card2.p': 'Permitir añadir notificaciones directamente al crear o seleccionar un contacto.',
+        's03.discarded.card3.heading': 'Vista general de envíos',
+        's03.discarded.card3.p': 'Añadir notificaciones desde la vista general de envíos, sin tener que entrar en cada uno.',
+        's03.discarded.card4.heading': 'Ficha de contacto',
+        's03.discarded.card4.p': 'Añadir notificaciones haciendo clic directamente sobre cada contacto.',
+        's03.final.card1.heading': 'Activar/Desactivar notificaciones',
+        's03.final.card1.p': 'Los usuarios podían activar o desactivar las notificaciones directamente desde la vista general de envíos.',
+        's03.final.card2.heading': 'Añadir y modificar tarjetas de contacto del propio envío',
+        's03.final.card2.p': 'Se permitía añadir y modificar las tarjetas de contacto asociadas a cada envío, sin salir del flujo principal.',
+        's04.eyebrow': 'Solución',
+        's04.heading': 'Un sistema de notificaciones más sencillo de lo esperado',
+        's04.approach.label': 'Enfoque',
+        's04.approach.p': 'Tras percibir estos cambios de roadmap mientras el proyecto estaba en pleno desarrollo de diseño, me alineé bastante rápido con los diferentes stakeholders y conseguimos sacar en tiempo récord un sistema de notificaciones que pudiera solventar las principales prioridades del equipo de producto.',
+        's04.features.label': 'Funcionalidades<br class="hidden md:block"> entregadas',
+        's04.feature1.heading': 'Activar y desactivar notificaciones de manera general',
+        's04.feature1.p': 'Se buscaba una solución que permitiera modificar rápidamente si un envío debería de recibir notificaciones o no.',
+        's04.item01.img.alt': 'Panel lateral de notificaciones con las secciones My notifications y Notify others',
+        's04.item01.caption': 'Panel lateral de notificaciones, con el toggle general de My notifications.',
+        's04.feature2.heading': 'Notificar a terceras personas',
+        's04.feature2.p': 'Conseguimos proporcionar una solución donde se permitiera la customización de las notificaciones que recibirían cada uno de los contactos del envío.',
+        's04.item02.img.alt': 'Comparativa del bloque Notify others, con el desplegable de selección de contactos para el evento Itinerary abierto',
+        's04.item02.caption': 'Selección de contactos por evento dentro del bloque Notify others.',
+        's04.feature3.heading': 'Añadir y modificar contactos del envío',
+        's04.feature3.p': 'Dentro de la industria logística hay muchas personas involucradas dentro del proceso de envío. Por ello, era interesante poder seleccionar contactos y modificar sus datos, en caso de que fuese necesario.',
+        's04.item03.img1.alt': "Detalle del icono de campana con el tooltip 'Notifications are active for this contact'",
+        's04.item03.img2.alt': 'Contacts v2: tarjeta de contacto Pickup con el icono de campana activo y el tooltip listando los tipos de notificación activados',
+        's04.item03.img3.alt': 'Comparativa del modal Update contacts con la pestaña Notify party, mostrando la lista de notify parties y el formulario de edición de compañía',
+        's04.item03.caption': 'Detalle de campana, tarjeta de contacto en Contacts v2, y modal de edición de Notify party.',
+        's05.eyebrow': 'Aprendizajes clave',
+        's05.heading': 'Qué me dejó este proyecto',
+        's05.p1': 'A veces hay proyectos que conllevan más o menos prioridad dentro de un roadmap. Con este en concreto, pude observar cómo los requisitos pueden cambiar de la noche a la mañana y la agilidad que hay que tener para adaptarse a las nuevas visiones externas. Me llevo mucho entrenamiento para futuros proyectos que conlleven situaciones similares.',
+        's05.p2': 'También comentar que este proyecto no ha sido publicado aún en el sistema, por eso todo lo que vemos en esta página es estrictamente confidencial.',
+        'cta.eyebrow': 'Has llegado al final',
+        'cta.heading': '¿Quieres ver más proyectos?',
+        'cta.next': 'Continuar con Wizard for Rate Management',
+        'cta.back': 'Volver a todos los proyectos',
+      },
+      en: {
+        'nav.about': 'About',
+        'nav.contact': 'Contact',
+        'meta.title': 'Notification System · Javier Díaz',
+        'meta.description': 'Case study: a push notification system for desktop and email covering the actions that happen on the platform.',
+        'gate.back': '← Back to home',
+        'gate.heading': 'This project is protected',
+        'gate.instructions': 'Enter the password to access it.',
+        'gate.label': 'Password',
+        'gate.placeholder': 'Enter the password',
+        'gate.button': 'Enter',
+        'gate.error': 'Incorrect password. Please try again.',
+        'breadcrumb.back': '← All projects',
+        'hero.title': 'Notification System',
+        'hero.subtitle': 'Design of a push notification system for desktop and email that alerts users to relevant actions happening on the platform.',
+        'hero.role.label': 'Role',
+        'hero.role.value': 'Product Designer',
+        'hero.usertype.label': 'User type',
+        'hero.usertype.value': 'Carriers (Freightos)',
+        'hero.year.label': 'Year',
+        'hero.year.value': '2023',
+        'hero.team.label': 'Team',
+        'hero.team.value': 'PM, Engineering, Research',
+        'hero.tag1': 'Product Design',
+        'hero.tag2': 'Push Notifications',
+        'hero.tag3': 'Email',
+        'hero.img1.alt': 'Tooltip showing active notifications on a shipment contact in the platform',
+        'hero.img2.alt': 'Shipment status marked as In transit with the notifications icon',
+        'hero.img3.alt': 'Notification settings panel, with My notifications and Notify others',
+        's01.eyebrow': 'Starting point',
+        's01.heading': 'Why we needed a new approach',
+        's01.context.label': 'Context',
+        's01.context.p': 'Relevant actions were constantly happening on the platform for users — status changes, messages, alerts — but there was no centralized system to notify them. The only way to find out was for users to log in and manually check whether something had changed.',
+        's01.card1.heading': 'Lack of visibility',
+        's01.card1.p': 'Users had to manually refresh the platform to find out about important changes.',
+        's01.card2.heading': 'Disconnected channels',
+        's01.card2.p': "Email was the only notification channel, and it didn't always reflect what was happening inside the platform.",
+        's01.card3.heading': 'Risk of overload',
+        's01.card3.p': 'Without a priority system, any future notifications risked overwhelming the user.',
+        's02.eyebrow': 'Research',
+        's02.heading': 'How we researched before designing the notifications',
+        's02.card1.heading': 'Interviews with users and support',
+        's02.card1.p': "Our users strongly requested some way to identify every change that occurred during their experience on the platform.",
+        's02.card2.heading': 'Support ticket analysis',
+        's02.card2.p': "We received a large volume of error tickets from users, because they couldn't keep track of the progress of their bookings or quotes with other clients and stakeholders.",
+        's02.card3.heading': 'Benchmark of notification systems',
+        's02.card3.p': 'We tried to identify and research the most up-to-date systems in terms of user experience and interface, to ensure the freshest possible functionality.',
+        's02.requirements.label': 'Basic requirements from product management',
+        's02.requirements.p': 'Product management raised one key requirement: allow forwarders and shippers to configure notifications for each shipment and decide who received each type of information. Two options were considered: show the notification types and assign people to each one, or add people and choose which type of information each one would receive.',
+        's02.benchmark.label': 'Benchmark',
+        's02.benchmark.p': 'We carried out several studies of approaches seen in other software. Side panels accessible from almost anywhere in the platform were the dominant pattern, letting users select which notifications to receive for a single order or for all of them in general.',
+        's02.img1.alt': "Benchmark references: AhoyConnect's alert settings modal and Stratis UI's notification preferences panel",
+        's02.img2.alt': 'Benchmark references: a video app dashboard with an add-members modal, and a user and permissions management table with a share panel',
+        's02.caption': 'Benchmark references from other notification systems on the market.',
+        's03.eyebrow': 'From paper to screen',
+        's03.heading': 'From the first sketches to the first interactions',
+        's03.approach.label': 'Approach',
+        's03.approach.p': 'Product leadership encouraged us to find solutions for several scenarios. We had an advantage, since I had already put together a quick proposal for the senior product managers at the time, outlining how we could put together this new functionality in the future.',
+        's03.card1.heading': 'Pre-booking',
+        's03.card1.p': 'Add the same notifications component on the pre-booking side, before confirming the shipment.',
+        's03.card2.heading': 'Contact creation',
+        's03.card2.p': 'Allow notifications to be added directly when creating or selecting a contact.',
+        's03.card3.heading': 'Shipments overview',
+        's03.card3.p': 'Add notifications from the shipments overview, without having to open each one individually.',
+        's03.card4.heading': 'Contact card',
+        's03.card4.p': 'Add notifications by clicking directly on each contact.',
+        's03.img1.alt': 'Tree diagram of notification types (itinerary, shipment details) with user assignment per event, alongside references for notification settings modals',
+        's03.img2.alt': 'Flow for creating a new contact and assigning email notifications, with references for notification panels and contact autocomplete',
+        's03.img3.alt': 'Sketch exploring where to place the notifications CTA in the shipments overview',
+        's03.caption1': 'Early sketches of the notification system and scenarios proposed by product.',
+        's03.prebooking.label': 'Pre-booking',
+        's03.prebooking.p': 'Due to roadmap constraints, this section was left out of the redesign and stayed as it was up to that point.',
+        's03.img4.alt': 'Pre-booking pages flow: decision tree for enabling email notifications, alongside the notification preferences modal',
+        's03.caption2': "Current flow of the pre-booking pages. I don't have full screenshots of this one, ha :)",
+        's03.contact.label': 'Contact creation',
+        's03.contact.p': "As for contact creation, it was also left out of the final project for now: the proposal is done, but it couldn't be integrated due to technical constraints from the engineering team, and because it ultimately wasn't a real priority for leadership.",
+        's03.img5.alt': 'Flow for adding a new contact from the notifications panel: notifications side panel, add-contact pop-up, and completed pop-up',
+        's03.caption3': 'Proposed flow for adding a new contact, ultimately discarded.',
+        's03.pivot.label': 'Change of direction',
+        's03.pivot.p': 'This project went through numerous shifts in priorities during development. This is how we started, and this is how we ended up.',
+        's03.discarded.card1.heading': 'Pre-booking',
+        's03.discarded.card1.p': 'Add the same notifications component on the pre-booking side, before confirming the shipment.',
+        's03.discarded.card2.heading': 'Contact creation',
+        's03.discarded.card2.p': 'Allow notifications to be added directly when creating or selecting a contact.',
+        's03.discarded.card3.heading': 'Shipments overview',
+        's03.discarded.card3.p': 'Add notifications from the shipments overview, without having to open each one individually.',
+        's03.discarded.card4.heading': 'Contact card',
+        's03.discarded.card4.p': 'Add notifications by clicking directly on each contact.',
+        's03.final.card1.heading': 'Enable/Disable notifications',
+        's03.final.card1.p': 'Users could turn notifications on or off directly from the shipments overview.',
+        's03.final.card2.heading': 'Add and edit contact cards for the shipment itself',
+        's03.final.card2.p': 'Users could add and edit the contact cards associated with each shipment, without leaving the main flow.',
+        's04.eyebrow': 'Solution',
+        's04.heading': 'A notification system simpler than expected',
+        's04.approach.label': 'Approach',
+        's04.approach.p': "After noticing these roadmap changes while the project was in the middle of design development, I aligned quickly with the different stakeholders, and together we shipped, in record time, a notification system that could address product's main priorities.",
+        's04.features.label': 'Features<br class="hidden md:block"> delivered',
+        's04.feature1.heading': 'Turn notifications on and off globally',
+        's04.feature1.p': 'We wanted a solution that would let users quickly change whether a shipment should receive notifications or not.',
+        's04.item01.img.alt': 'Notifications side panel with the My notifications and Notify others sections',
+        's04.item01.caption': 'Notifications side panel, with the global My notifications toggle.',
+        's04.feature2.heading': 'Notify third parties',
+        's04.feature2.p': "We managed to deliver a solution that allowed customizing the notifications each of the shipment's contacts would receive.",
+        's04.item02.img.alt': 'Comparison of the Notify others block, with the contact-selection dropdown open for the Itinerary event',
+        's04.item02.caption': 'Selecting contacts per event within the Notify others block.',
+        's04.feature3.heading': 'Add and edit shipment contacts',
+        's04.feature3.p': 'Many people are involved in the shipping process within the logistics industry. Because of that, it was valuable to be able to select contacts and edit their data whenever necessary.',
+        's04.item03.img1.alt': "Detail of the bell icon with the 'Notifications are active for this contact' tooltip",
+        's04.item03.img2.alt': 'Contacts v2: Pickup contact card with the active bell icon and the tooltip listing the enabled notification types',
+        's04.item03.img3.alt': 'Comparison of the Update contacts modal with the Notify party tab, showing the list of notify parties and the company edit form',
+        's04.item03.caption': 'Bell icon detail, contact card in Contacts v2, and the Notify party edit modal.',
+        's05.eyebrow': 'Key learnings',
+        's05.heading': 'What this project taught me',
+        's05.p1': "Some projects carry more or less priority within a roadmap. With this one specifically, I saw firsthand how requirements can change overnight, and the agility needed to adapt to new external visions. I'm taking a lot of that training with me for future projects with similar situations.",
+        's05.p2': "It's also worth noting that this project hasn't yet been released into the system, which is why everything shown on this page is strictly confidential.",
+        'cta.eyebrow': "You've reached the end",
+        'cta.heading': 'Want to see more projects?',
+        'cta.next': 'Continue to Wizard for Rate Management',
+        'cta.back': 'Back to all projects',
+      },
+    };
+
+    function detectLang() {
+      const supported = Object.keys(translations);
+      const candidates = (navigator.languages && navigator.languages.length)
+        ? navigator.languages
+        : [navigator.language || 'en'];
+      for (const candidate of candidates) {
+        const short = candidate.slice(0, 2).toLowerCase();
+        if (supported.includes(short)) return short;
+      }
+      return 'en';
+    }
+
+    function applyTranslations(lang) {
+      const dict = translations[lang] || translations.en;
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        const value = dict[key];
+        if (value === undefined) return;
+
+        if (el.hasAttribute('data-i18n-attr')) {
+          el.setAttribute(el.getAttribute('data-i18n-attr'), value);
+        } else {
+          el.innerHTML = value;
+        }
+      });
+    }
+
+    function updateLangButtons(lang) {
+      document.querySelectorAll('.lang-btn').forEach((btn) => {
+        const active = btn.getAttribute('data-lang') === lang;
+        btn.classList.toggle('bg-ink', active);
+        btn.classList.toggle('text-paper', active);
+        btn.classList.toggle('text-ink/50', !active);
+        btn.classList.toggle('hover:text-ink', !active);
+        btn.setAttribute('aria-pressed', String(active));
+      });
+    }
+
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      applyTranslations(lang);
+      updateLangButtons(lang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach((btn) => {
+      btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang')));
+    });
+
+    setLang(localStorage.getItem('lang') || detectLang());
     document.body.classList.add('is-ready');
 
     // ===== Contraseña del proyecto =====

@@ -7,6 +7,18 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta name="description" content="Contacta con Javier Díaz, Product Designer — copia el email, escribe por LinkedIn o lee lo que dicen las personas con las que ha trabajado.">
 
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://javierdiazrodriguez.com/contacto.html">
+<meta property="og:title" content="Contacto · Javier Díaz">
+<meta property="og:description" content="Contacta con Javier Díaz, Product Designer — copia el email, escribe por LinkedIn o lee lo que dicen las personas con las que ha trabajado.">
+<meta property="og:image" content="https://javierdiazrodriguez.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contacto · Javier Díaz">
+<meta name="twitter:description" content="Contacta con Javier Díaz, Product Designer — copia el email, escribe por LinkedIn o lee lo que dicen las personas con las que ha trabajado.">
+<meta name="twitter:image" content="https://javierdiazrodriguez.com/og-image.jpg">
+
 <!-- Tailwind CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -93,10 +105,16 @@
         Javier Díaz
       </a>
 
-      <ul class="hidden sm:flex items-center gap-10 text-base text-slate">
-        <li><a href="sobre-mi.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
-        <li><a href="contacto.html" class="text-ink focus-ring rounded" aria-current="page" data-i18n="nav.contact">Contacto</a></li>
-      </ul>
+      <div class="hidden sm:flex items-center gap-8">
+        <ul class="flex items-center gap-10 text-base text-slate">
+          <li><a href="sobre-mi.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
+          <li><a href="contacto.html" class="text-ink focus-ring rounded" aria-current="page" data-i18n="nav.contact">Contacto</a></li>
+        </ul>
+        <div class="flex items-center gap-0.5 text-xs font-medium border border-ink/15 rounded-full p-0.5" role="group" aria-label="Seleccionar idioma">
+          <button type="button" class="lang-btn px-2.5 py-1 rounded-full transition-colors" data-lang="es">ES</button>
+          <button type="button" class="lang-btn px-2.5 py-1 rounded-full transition-colors" data-lang="en">EN</button>
+        </div>
+      </div>
 
       <span class="sm:hidden w-[22px]" aria-hidden="true"></span>
     </nav>
@@ -106,6 +124,10 @@
         <li><a href="sobre-mi.html" class="block py-4 focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
         <li><a href="contacto.html" class="block py-4 focus-ring rounded" aria-current="page" data-i18n="nav.contact">Contacto</a></li>
       </ul>
+      <div class="flex items-center gap-0.5 text-xs font-medium border border-ink/15 rounded-full p-0.5 mx-6 mb-4 w-fit" role="group" aria-label="Seleccionar idioma">
+        <button type="button" class="lang-btn px-3 py-1.5 rounded-full transition-colors" data-lang="es">ES</button>
+        <button type="button" class="lang-btn px-3 py-1.5 rounded-full transition-colors" data-lang="en">EN</button>
+      </div>
     </div>
   </header>
 
@@ -377,7 +399,28 @@
       });
     }
 
-    applyTranslations(detectLang());
+    function updateLangButtons(lang) {
+      document.querySelectorAll('.lang-btn').forEach((btn) => {
+        const active = btn.getAttribute('data-lang') === lang;
+        btn.classList.toggle('bg-ink', active);
+        btn.classList.toggle('text-paper', active);
+        btn.classList.toggle('text-ink/50', !active);
+        btn.classList.toggle('hover:text-ink', !active);
+        btn.setAttribute('aria-pressed', String(active));
+      });
+    }
+
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      applyTranslations(lang);
+      updateLangButtons(lang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach((btn) => {
+      btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang')));
+    });
+
+    setLang(localStorage.getItem('lang') || detectLang());
     document.body.classList.add('is-ready');
 
     // Menú móvil (hamburguesa)

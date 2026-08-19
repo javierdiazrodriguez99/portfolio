@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wizard for Rate Management · Javier Díaz</title>
+<title data-i18n="meta.title">Wizard for Rate Management · Javier Díaz</title>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-<meta name="description" content="Caso de estudio: gestor masivo de datos de Excel con millones de registros de tarifas entre transportistas y shippers.">
+<meta name="description" data-i18n="meta.description" data-i18n-attr="content" content="Caso de estudio: gestor masivo de datos de Excel con millones de registros de tarifas entre transportistas y shippers.">
 
 <!-- Tailwind CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
@@ -89,7 +89,7 @@
   <!-- ===== NAVBAR ===== -->
   <header class="fixed top-0 inset-x-0 z-50 bg-paper/80 backdrop-blur-md border-b border-ink/[0.06]">
     <nav class="max-w-6xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
-      <button type="button" id="mobile-menu-toggle" class="sm:hidden focus-ring rounded-md p-1 -ml-1 text-ink" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+      <button type="button" id="mobile-menu-toggle" class="sm:hidden focus-ring rounded-md p-1 -ml-1 text-ink" data-i18n="nav.menuAria" data-i18n-attr="aria-label" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
         <svg id="menu-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         <svg id="menu-icon-close" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
@@ -98,19 +98,29 @@
         Javier Díaz
       </a>
 
-      <ul class="hidden sm:flex items-center gap-10 text-base text-slate">
-        <li><a href="../sobre-mi.html" class="hover:text-ink transition-colors focus-ring rounded">Sobre mí</a></li>
-        <li><a href="../contacto.html" class="hover:text-ink transition-colors focus-ring rounded">Contacto</a></li>
-      </ul>
+      <div class="hidden sm:flex items-center gap-8">
+        <ul class="flex items-center gap-10 text-base text-slate">
+          <li><a href="../sobre-mi.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
+          <li><a href="../contacto.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
+        </ul>
+        <div class="flex items-center gap-0.5 text-xs font-medium border border-ink/15 rounded-full p-0.5" role="group" aria-label="Seleccionar idioma">
+          <button type="button" class="lang-btn px-2.5 py-1 rounded-full transition-colors" data-lang="es">ES</button>
+          <button type="button" class="lang-btn px-2.5 py-1 rounded-full transition-colors" data-lang="en">EN</button>
+        </div>
+      </div>
 
       <span class="sm:hidden w-[22px]" aria-hidden="true"></span>
     </nav>
 
     <div id="mobile-menu" class="sm:hidden max-h-0 opacity-0 blur-sm pointer-events-none overflow-hidden border-t border-ink/[0.06] bg-paper transition-all duration-300 ease-out">
       <ul class="flex flex-col px-6 py-4 text-base font-medium text-ink">
-        <li><a href="../sobre-mi.html" class="block py-4 focus-ring rounded">Sobre mí</a></li>
-        <li><a href="../contacto.html" class="block py-4 focus-ring rounded">Contacto</a></li>
+        <li><a href="../sobre-mi.html" class="block py-4 focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
+        <li><a href="../contacto.html" class="block py-4 focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
       </ul>
+      <div class="flex items-center gap-0.5 text-xs font-medium border border-ink/15 rounded-full p-0.5 mx-6 mb-4 w-fit" role="group" aria-label="Seleccionar idioma">
+        <button type="button" class="lang-btn px-3 py-1.5 rounded-full transition-colors" data-lang="es">ES</button>
+        <button type="button" class="lang-btn px-3 py-1.5 rounded-full transition-colors" data-lang="en">EN</button>
+      </div>
     </div>
   </header>
 
@@ -118,53 +128,53 @@
 
     <!-- ===== HERO ===== -->
     <section class="max-w-6xl mx-auto px-6 md:px-10 pt-[104px]">
-      <a href="../index.html#work" class="reveal is-visible inline-flex items-center gap-2 text-xs font-medium tracking-widest uppercase text-slate hover:text-ink transition-colors focus-ring rounded">
+      <a href="../index.html#work" class="reveal is-visible inline-flex items-center gap-2 text-xs font-medium tracking-widest uppercase text-slate hover:text-ink transition-colors focus-ring rounded" data-i18n="breadcrumb.back">
         ← Todos los proyectos
       </a>
 
-      <h1 class="reveal is-visible mt-6 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tightest leading-[1.08]">
+      <h1 class="reveal is-visible mt-6 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tightest leading-[1.08]" data-i18n="hero.title">
         Wizard For Rate Management: <span class="font-normal">cómo procesar miles de tarifas en tres sencillos pasos</span>
       </h1>
 
-      <p class="reveal is-visible mt-6 text-lg text-slate leading-relaxed">
+      <p class="reveal is-visible mt-6 text-lg text-slate leading-relaxed" data-i18n="hero.subtitle">
         Diseño de un wizard para gestionar de forma masiva las tarifas de compraventa entre transportistas y shippers, sobre bases de datos de millones de registros.
       </p>
 
       <div class="reveal is-visible mt-12 pt-8 border-t border-ink/[0.08] grid sm:grid-cols-4 gap-8">
         <div>
-          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Rol</p>
-          <p class="text-sm font-medium text-ink">Product Designer</p>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.role.label">Rol</p>
+          <p class="text-sm font-medium text-ink" data-i18n="hero.role.value">Product Designer</p>
         </div>
         <div>
-          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Cliente</p>
-          <p class="text-sm font-medium text-ink">Transportistas</p>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.client.label">Cliente</p>
+          <p class="text-sm font-medium text-ink" data-i18n="hero.client.value">Transportistas</p>
         </div>
         <div>
-          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Año</p>
-          <p class="text-sm font-medium text-ink">2024</p>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.year.label">Año</p>
+          <p class="text-sm font-medium text-ink" data-i18n="hero.year.value">2024</p>
         </div>
         <div>
-          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Equipo</p>
-          <p class="text-sm font-medium text-ink">Product Managers, Developers, QA</p>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.team.label">Equipo</p>
+          <p class="text-sm font-medium text-ink" data-i18n="hero.team.value">Product Managers, Developers, QA</p>
         </div>
       </div>
 
       <div class="reveal is-visible mt-8 flex flex-wrap gap-2">
-        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70">Data Management</span>
-        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70">Enterprise UX</span>
-        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70">Excel</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70" data-i18n="hero.tag1">Data Management</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70" data-i18n="hero.tag2">Enterprise UX</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70" data-i18n="hero.tag3">Excel</span>
       </div>
 
       <div id="cover-carousel" class="reveal group mt-16 md:mt-20 relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
         <div id="carousel-track" class="flex h-full transition-transform duration-500 ease-out">
-          <img src="wizard-rate-management-cover.png" alt="Tariff Manager: listado de archivos de tarifas con su estado de validación" class="w-full h-full object-cover shrink-0">
-          <img src="wizard-rate-management-cover-2.png" alt="Pantalla de revisión de datos del wizard, con detección de errores por fila" class="w-full h-full object-cover shrink-0">
+          <img src="wizard-rate-management-cover.png" data-i18n="hero.carousel.alt1" data-i18n-attr="alt" alt="Tariff Manager: listado de archivos de tarifas con su estado de validación" class="w-full h-full object-cover shrink-0">
+          <img src="wizard-rate-management-cover-2.png" data-i18n="hero.carousel.alt2" data-i18n-attr="alt" alt="Pantalla de revisión de datos del wizard, con detección de errores por fila" class="w-full h-full object-cover shrink-0">
         </div>
 
-        <button type="button" id="carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="carousel-prev" data-i18n="carousel.prevAria" data-i18n-attr="aria-label" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <button type="button" id="carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="carousel-next" data-i18n="carousel.nextAria" data-i18n-attr="aria-label" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </button>
 
@@ -179,35 +189,35 @@
     <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">01</span>
-        <span class="text-xs font-medium tracking-widest uppercase text-slate">Punto de partida</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s01.eyebrow">Punto de partida</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s01.heading">
         Por qué necesitábamos un nuevo enfoque
       </h2>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Contexto</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s01.label1">Contexto</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s01.p1">
           Los equipos de operaciones gestionaban las tarifas de compraventa entre transportistas y shippers a través de archivos de Excel de millones de filas, sin validación automática ni trazabilidad de los cambios. Cualquier actualización masiva de tarifas era un proceso manual, lento y arriesgado.
         </p>
       </div>
 
       <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 pt-10 border-t border-ink/[0.08]">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
-          <h3 class="text-lg font-medium mb-2">Errores silenciosos</h3>
-          <p class="text-sm text-slate leading-relaxed">
+          <h3 class="text-lg font-medium mb-2" data-i18n="s01.card1.title">Errores silenciosos</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s01.card1.body">
             Un error de tipeo en una celda podía afectar a miles de tarifas sin que nadie lo notara hasta más tarde.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg font-medium mb-2">Sin trazabilidad</h3>
-          <p class="text-sm text-slate leading-relaxed">
+          <h3 class="text-lg font-medium mb-2" data-i18n="s01.card2.title">Sin trazabilidad</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s01.card2.body">
             No había forma de saber quién había cambiado una tarifa concreta, ni cuándo, ni por qué.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg font-medium mb-2">Procesos manuales</h3>
-          <p class="text-sm text-slate leading-relaxed">
+          <h3 class="text-lg font-medium mb-2" data-i18n="s01.card3.title">Procesos manuales</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s01.card3.body">
             Cargar y validar un archivo de tarifas podía llevar horas de trabajo manual y repetitivo.
           </p>
         </div>
@@ -218,29 +228,29 @@
     <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">02</span>
-        <span class="text-xs font-medium tracking-widest uppercase text-slate">Research</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s02.eyebrow">Research</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s02.heading">
         Cómo investigamos antes de diseñar el wizard
       </h2>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Técnicas de investigación</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s02.label1">Técnicas de investigación</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s02.p1">
           Debido a la urgencia que tenía la compañía en arreglar este proceso, ya que estaba dando muchos errores tanto a nivel interno como a nivel de nuestros clientes, las técnicas de investigación previas antes de llegar al concepto final fueron casi nulas. Básicamente lo que se hizo fue un refresh de la interfaz de usuario y se añadieron algunas funcionalidades nuevas en comparación a la UI anterior.
         </p>
       </div>
 
       <div id="research-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-[#FAFAFA]">
         <div id="research-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
-          <img src="wizard-rate-management-research-1.png" alt="Wireframe del refresh de la interfaz de subida de tarifas, con anotaciones de mejoras a implementar" class="w-full h-full object-contain p-8 md:p-12 shrink-0">
-          <img src="wizard-rate-management-research-2.png" alt="Wireframe del refresh de la interfaz de edición de tarifas" class="w-full h-full object-contain p-8 md:p-12 shrink-0">
+          <img src="wizard-rate-management-research-1.png" data-i18n="s02.carousel.alt1" data-i18n-attr="alt" alt="Wireframe del refresh de la interfaz de subida de tarifas, con anotaciones de mejoras a implementar" class="w-full h-full object-contain p-8 md:p-12 shrink-0">
+          <img src="wizard-rate-management-research-2.png" data-i18n="s02.carousel.alt2" data-i18n-attr="alt" alt="Wireframe del refresh de la interfaz de edición de tarifas" class="w-full h-full object-contain p-8 md:p-12 shrink-0">
         </div>
 
-        <button type="button" id="research-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="research-carousel-prev" data-i18n="carousel.prevAria" data-i18n-attr="aria-label" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <button type="button" id="research-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="research-carousel-next" data-i18n="carousel.nextAria" data-i18n-attr="aria-label" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </button>
 
@@ -249,36 +259,36 @@
           <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
         </div>
       </div>
-      <p class="reveal text-xs text-slate mt-3">Captura de pantalla con sus correspondientes anotaciones sobre la interfaz que estaba implementada en ese momento.</p>
+      <p class="reveal text-xs text-slate mt-3" data-i18n="s02.caption">Captura de pantalla con sus correspondientes anotaciones sobre la interfaz que estaba implementada en ese momento.</p>
     </section>
 
     <!-- ===== 03 · DEL PAPEL A LA PANTALLA ===== -->
     <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">03</span>
-        <span class="text-xs font-medium tracking-widest uppercase text-slate">Del papel a la pantalla</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s03.eyebrow">Del papel a la pantalla</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s03.heading">
         De los primeros bocetos a las primeras interacciones
       </h2>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Enfoque</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s03.label1">Enfoque</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s03.p1">
           Para llevar a cabo este proyecto se tuvo en cuenta referencias de proyectos anteriores en los que tuve la oportunidad de trabajar, tanto a nivel de user experience como a nivel de user interface.
         </p>
       </div>
 
       <div id="sketches-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-[#FAFAFA]">
         <div id="sketches-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
-          <img src="wizard-rate-management-sketches-1.png" alt="Diagrama de flujo del componente de arquitectura de la información para la carga automática de unidades (Autofill Units)" class="w-full h-full object-contain p-8 md:p-12 shrink-0">
-          <img src="wizard-rate-management-sketches-2.png" alt="Referencias de las pantallas de éxito de carga, borrado masivo y selección masiva del wizard" class="w-full h-full object-contain p-8 md:p-12 shrink-0">
+          <img src="wizard-rate-management-sketches-1.png" data-i18n="s03.carousel1.alt1" data-i18n-attr="alt" alt="Diagrama de flujo del componente de arquitectura de la información para la carga automática de unidades (Autofill Units)" class="w-full h-full object-contain p-8 md:p-12 shrink-0">
+          <img src="wizard-rate-management-sketches-2.png" data-i18n="s03.carousel1.alt2" data-i18n-attr="alt" alt="Referencias de las pantallas de éxito de carga, borrado masivo y selección masiva del wizard" class="w-full h-full object-contain p-8 md:p-12 shrink-0">
         </div>
 
-        <button type="button" id="sketches-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="sketches-carousel-prev" data-i18n="carousel.prevAria" data-i18n-attr="aria-label" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <button type="button" id="sketches-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="sketches-carousel-next" data-i18n="carousel.nextAria" data-i18n-attr="aria-label" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </button>
 
@@ -287,65 +297,65 @@
           <button type="button" class="sketches-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
         </div>
       </div>
-      <p class="reveal text-xs text-slate mt-3">Referencias de proyectos anteriores utilizadas como punto de partida del flujo y la interfaz.</p>
+      <p class="reveal text-xs text-slate mt-3" data-i18n="s03.caption1">Referencias de proyectos anteriores utilizadas como punto de partida del flujo y la interfaz.</p>
 
       <div class="reveal mb-16 mt-16 md:mt-20">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate mb-8">Carga de archivos</p>
+        <p class="text-xs font-medium tracking-widest uppercase text-slate mb-8" data-i18n="s03.label2">Carga de archivos</p>
 
         <div class="flex flex-col gap-8 md:flex-row md:items-stretch md:gap-0">
           <div class="md:flex-1 md:pr-6">
             <span class="w-7 h-7 rounded-full bg-latte text-ink text-xs font-medium flex items-center justify-center mb-4">1</span>
-            <h3 class="text-base md:text-sm font-medium text-ink mb-2">Landing page de archivos</h3>
-            <p class="text-sm md:text-xs text-slate leading-relaxed">Una página donde se podían ver todas las tarifas y archivos que se habían subido al sistema. Si no existía ninguno, aparecía un empty state.</p>
+            <h3 class="text-base md:text-sm font-medium text-ink mb-2" data-i18n="s03.step1.title">Landing page de archivos</h3>
+            <p class="text-sm md:text-xs text-slate leading-relaxed" data-i18n="s03.step1.body">Una página donde se podían ver todas las tarifas y archivos que se habían subido al sistema. Si no existía ninguno, aparecía un empty state.</p>
           </div>
           <div class="hidden md:flex items-start pt-3 text-ink/20 shrink-0">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
           </div>
           <div class="md:flex-1 md:px-6">
             <span class="w-7 h-7 rounded-full bg-latte text-ink text-xs font-medium flex items-center justify-center mb-4">2</span>
-            <h3 class="text-base md:text-sm font-medium text-ink mb-2">Subida del archivo</h3>
-            <p class="text-sm md:text-xs text-slate leading-relaxed">Dos formas de subirlo: haciendo clic en el botón de subir archivos, o arrastrándolo directamente a la pantalla.</p>
+            <h3 class="text-base md:text-sm font-medium text-ink mb-2" data-i18n="s03.step2.title">Subida del archivo</h3>
+            <p class="text-sm md:text-xs text-slate leading-relaxed" data-i18n="s03.step2.body">Dos formas de subirlo: haciendo clic en el botón de subir archivos, o arrastrándolo directamente a la pantalla.</p>
           </div>
           <div class="hidden md:flex items-start pt-3 text-ink/20 shrink-0">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
           </div>
           <div class="md:flex-1 md:px-6">
             <span class="w-7 h-7 rounded-full bg-latte text-ink text-xs font-medium flex items-center justify-center mb-4">3</span>
-            <h3 class="text-base md:text-sm font-medium text-ink mb-2">Procesamiento en segundo plano</h3>
-            <p class="text-sm md:text-xs text-slate leading-relaxed">Al ser una fase beta, la carga era algo más lenta de lo habitual: el archivo se procesaba mientras el usuario seguía trabajando en otras páginas, y una notificación push avisaba cuando terminaba y había que revisarlo.</p>
+            <h3 class="text-base md:text-sm font-medium text-ink mb-2" data-i18n="s03.step3.title">Procesamiento en segundo plano</h3>
+            <p class="text-sm md:text-xs text-slate leading-relaxed" data-i18n="s03.step3.body">Al ser una fase beta, la carga era algo más lenta de lo habitual: el archivo se procesaba mientras el usuario seguía trabajando en otras páginas, y una notificación push avisaba cuando terminaba y había que revisarlo.</p>
           </div>
           <div class="hidden md:flex items-start pt-3 text-ink/20 shrink-0">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
           </div>
           <div class="md:flex-1 md:px-6">
             <span class="w-7 h-7 rounded-full bg-latte text-ink text-xs font-medium flex items-center justify-center mb-4">4</span>
-            <h3 class="text-base md:text-sm font-medium text-ink mb-2">Revisión con IA</h3>
-            <p class="text-sm md:text-xs text-slate leading-relaxed">En la página de revisión se visualizaba todo el contenido subido, y la IA identificaba errores o posibles confusiones al introducir los datos en el Excel — uno de los primeros proyectos donde empezamos a implementar IA, detectando errores mientras el archivo aún se estaba procesando.</p>
+            <h3 class="text-base md:text-sm font-medium text-ink mb-2" data-i18n="s03.step4.title">Revisión con IA</h3>
+            <p class="text-sm md:text-xs text-slate leading-relaxed" data-i18n="s03.step4.body">En la página de revisión se visualizaba todo el contenido subido, y la IA identificaba errores o posibles confusiones al introducir los datos en el Excel — uno de los primeros proyectos donde empezamos a implementar IA, detectando errores mientras el archivo aún se estaba procesando.</p>
           </div>
           <div class="hidden md:flex items-start pt-3 text-ink/20 shrink-0">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
           </div>
           <div class="md:flex-1 md:pl-6">
             <span class="w-7 h-7 rounded-full bg-latte text-ink text-xs font-medium flex items-center justify-center mb-4">5</span>
-            <h3 class="text-base md:text-sm font-medium text-ink mb-2">Confirmación</h3>
-            <p class="text-sm md:text-xs text-slate leading-relaxed">Una vez revisados los errores, se completaba la subida y el archivo quedaba añadido correctamente al sistema.</p>
+            <h3 class="text-base md:text-sm font-medium text-ink mb-2" data-i18n="s03.step5.title">Confirmación</h3>
+            <p class="text-sm md:text-xs text-slate leading-relaxed" data-i18n="s03.step5.body">Una vez revisados los errores, se completaba la subida y el archivo quedaba añadido correctamente al sistema.</p>
           </div>
         </div>
       </div>
 
       <div id="upload-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-[#FAFAFA]">
         <div id="upload-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
-          <img src="wizard-rate-management-upload-1.png" alt="Pantalla de subida de archivo, con la zona de arrastrar y soltar y las instrucciones de uso" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
-          <img src="wizard-rate-management-upload-2.png" alt="Arrastrando el archivo directamente sobre el Tariff Manager para subirlo" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
-          <img src="wizard-rate-management-upload-3.png" alt="Pantalla de revisión de datos (Check data) antes de confirmar la subida" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
-          <img src="wizard-rate-management-upload-4.png" alt="Barra de progreso de la subida en segundo plano, con el usuario pudiendo seguir navegando por el sistema" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
-          <img src="wizard-rate-management-upload-5.png" alt="Notificación de confirmación de que el archivo se ha subido correctamente" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="wizard-rate-management-upload-1.png" data-i18n="s03.carousel2.alt1" data-i18n-attr="alt" alt="Pantalla de subida de archivo, con la zona de arrastrar y soltar y las instrucciones de uso" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="wizard-rate-management-upload-2.png" data-i18n="s03.carousel2.alt2" data-i18n-attr="alt" alt="Arrastrando el archivo directamente sobre el Tariff Manager para subirlo" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="wizard-rate-management-upload-3.png" data-i18n="s03.carousel2.alt3" data-i18n-attr="alt" alt="Pantalla de revisión de datos (Check data) antes de confirmar la subida" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="wizard-rate-management-upload-4.png" data-i18n="s03.carousel2.alt4" data-i18n-attr="alt" alt="Barra de progreso de la subida en segundo plano, con el usuario pudiendo seguir navegando por el sistema" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="wizard-rate-management-upload-5.png" data-i18n="s03.carousel2.alt5" data-i18n-attr="alt" alt="Notificación de confirmación de que el archivo se ha subido correctamente" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
         </div>
 
-        <button type="button" id="upload-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="upload-carousel-prev" data-i18n="carousel.prevAria" data-i18n-attr="aria-label" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <button type="button" id="upload-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="upload-carousel-next" data-i18n="carousel.nextAria" data-i18n-attr="aria-label" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </button>
 
@@ -357,24 +367,24 @@
           <button type="button" class="upload-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="4" aria-label="Ir a la imagen 5"></button>
         </div>
       </div>
-      <p class="reveal text-xs text-slate mt-3">Capturas del flujo de carga de archivos: desde la subida hasta la confirmación de que el archivo se ha añadido correctamente.</p>
+      <p class="reveal text-xs text-slate mt-3" data-i18n="s03.caption2">Capturas del flujo de carga de archivos: desde la subida hasta la confirmación de que el archivo se ha añadido correctamente.</p>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16 mt-16">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Flujo de trabajo y validación con el equipo técnico</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s03.label3">Flujo de trabajo y validación con el equipo técnico</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s03.p2">
           A medida que íbamos desarrollando las diferentes funcionalidades y procesos de la subida de archivos, recibíamos feedback constante — por no decir diario — del equipo técnico, que validaba las propuestas del equipo de diseño de producto. Muchas veces había cosas que se podían realizar y otras que no, y teníamos que adaptarnos a las condiciones técnicas limitadas que ofrecía la empresa en ese momento.
         </p>
       </div>
 
       <div id="validation-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-[#FAFAFA]">
         <div id="validation-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
-          <img src="wizard-rate-management-validation-1.webp" alt="Mapa completo del flujo del wizard (Select file + Processing, Check data page, Add… y Edit page), con los distintos escenarios y validaciones anotados" class="w-full h-full object-contain p-4 md:p-6 shrink-0">
+          <img src="wizard-rate-management-validation-1.webp" data-i18n="s03.carousel3.alt1" data-i18n-attr="alt" alt="Mapa completo del flujo del wizard (Select file + Processing, Check data page, Add… y Edit page), con los distintos escenarios y validaciones anotados" class="w-full h-full object-contain p-4 md:p-6 shrink-0">
         </div>
 
-        <button type="button" id="validation-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="validation-carousel-prev" data-i18n="carousel.prevAria" data-i18n-attr="aria-label" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <button type="button" id="validation-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="validation-carousel-next" data-i18n="carousel.nextAria" data-i18n-attr="aria-label" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </button>
 
@@ -382,86 +392,86 @@
           <button type="button" class="validation-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
         </div>
       </div>
-      <p class="reveal text-xs text-slate mt-3">Mapa del flujo completo del wizard, con los distintos escenarios y validaciones que se fueron acordando con el equipo técnico.</p>
+      <p class="reveal text-xs text-slate mt-3" data-i18n="s03.caption3">Mapa del flujo completo del wizard, con los distintos escenarios y validaciones que se fueron acordando con el equipo técnico.</p>
     </section>
 
     <!-- ===== 04 · SOLUTION ===== -->
     <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">04</span>
-        <span class="text-xs font-medium tracking-widest uppercase text-slate">Solución</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s04.eyebrow">Solución</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s04.heading">
         Un wizard guiado = mil dolores de cabeza menos
       </h2>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Enfoque</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s04.label1">Enfoque</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s04.p1">
           En vez de seguir dependiendo de archivos de Excel sueltos, diseñamos un wizard paso a paso que guía al usuario desde la carga del archivo hasta la validación y confirmación de los cambios, detectando errores automáticamente antes de que lleguen a producción. A pesar de no haber podido testear la propuesta con usuarios reales, el resultado fue bastante óptimo: nuestros transportistas quedaron conformes con la nueva funcionalidad y destacaron que la interfaz se veía mucho más limpia, y que el proceso podía ser más íntimo entre el usuario y la plataforma, en vez de tener que pasar por una revisión del soporte interno de la empresa.
         </p>
       </div>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1">Funcionalidades<br class="hidden md:block"> entregadas</p>
+        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1" data-i18n="s04.label2">Funcionalidades<br class="hidden md:block"> entregadas</p>
         <ul class="border-t border-ink/[0.08]">
           <li class="py-5 border-b border-ink/[0.08] flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-sm font-medium text-latte-dark shrink-0">01</span>
             <div>
-              <h3 class="text-base font-medium mb-1">Rediseño completo a nivel de precio, usuario e interfaz</h3>
-              <p class="text-sm text-slate leading-relaxed max-w-lg">No tenía nada que ver con la versión anterior: se reformula toda la interfaz y las diferentes funcionalidades del sistema para garantizar que el proceso de subida de archivos sea el elemento central a nivel visual.</p>
+              <h3 class="text-base font-medium mb-1" data-i18n="s04.feature1.title">Rediseño completo a nivel de precio, usuario e interfaz</h3>
+              <p class="text-sm text-slate leading-relaxed max-w-lg" data-i18n="s04.feature1.body">No tenía nada que ver con la versión anterior: se reformula toda la interfaz y las diferentes funcionalidades del sistema para garantizar que el proceso de subida de archivos sea el elemento central a nivel visual.</p>
             </div>
           </li>
           <li class="py-5 border-b border-ink/[0.08] flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-sm font-medium text-latte-dark shrink-0">02</span>
             <div>
-              <h3 class="text-base font-medium mb-1">Validación automática</h3>
-              <p class="text-sm text-slate leading-relaxed max-w-lg">El sistema detecta errores e inconsistencias antes de aplicar los cambios gracias a la inteligencia artificial, evitando errores a posteriori y garantizando un resultado mejor que el que estábamos acostumbrados. Este fue uno de los primeros proyectos en los que empezamos a utilizar la IA.</p>
+              <h3 class="text-base font-medium mb-1" data-i18n="s04.feature2.title">Validación automática</h3>
+              <p class="text-sm text-slate leading-relaxed max-w-lg" data-i18n="s04.feature2.body">El sistema detecta errores e inconsistencias antes de aplicar los cambios gracias a la inteligencia artificial, evitando errores a posteriori y garantizando un resultado mejor que el que estábamos acostumbrados. Este fue uno de los primeros proyectos en los que empezamos a utilizar la IA.</p>
             </div>
           </li>
           <li class="py-5 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-sm font-medium text-latte-dark shrink-0">03</span>
             <div>
-              <h3 class="text-base font-medium mb-1">Menos carga de trabajo a nivel interno</h3>
-              <p class="text-sm text-slate leading-relaxed max-w-lg">Los equipos internos de la empresa se descargaron de bastante trabajo y pudieron enfocarse en la mejora de otras funcionalidades.</p>
+              <h3 class="text-base font-medium mb-1" data-i18n="s04.feature3.title">Menos carga de trabajo a nivel interno</h3>
+              <p class="text-sm text-slate leading-relaxed max-w-lg" data-i18n="s04.feature3.body">Los equipos internos de la empresa se descargaron de bastante trabajo y pudieron enfocarse en la mejora de otras funcionalidades.</p>
             </div>
           </li>
         </ul>
       </div>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1">Resultados</p>
+        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1" data-i18n="s04.label3">Resultados</p>
         <div class="grid sm:grid-cols-2 gap-8 md:gap-12">
           <ul class="space-y-4">
-            <li class="pl-4 border-l-2 border-latte text-ink/80 leading-relaxed">El proceso de subida de tarifas y archivos de grandes dimensiones se hizo muchísimo más ágil.</li>
-            <li class="pl-4 border-l-2 border-latte text-ink/80 leading-relaxed">El usuario ganó mayor autonomía y control sobre sus propias tarifas.</li>
-            <li class="pl-4 border-l-2 border-latte text-ink/80 leading-relaxed">Conseguimos nuevos clientes gracias a esta nueva funcionalidad: otras empresas que ya contaban con un sistema similar decidieron unirse a nosotros al ver que también lo teníamos.</li>
+            <li class="pl-4 border-l-2 border-latte text-ink/80 leading-relaxed" data-i18n="s04.result1">El proceso de subida de tarifas y archivos de grandes dimensiones se hizo muchísimo más ágil.</li>
+            <li class="pl-4 border-l-2 border-latte text-ink/80 leading-relaxed" data-i18n="s04.result2">El usuario ganó mayor autonomía y control sobre sus propias tarifas.</li>
+            <li class="pl-4 border-l-2 border-latte text-ink/80 leading-relaxed" data-i18n="s04.result3">Conseguimos nuevos clientes gracias a esta nueva funcionalidad: otras empresas que ya contaban con un sistema similar decidieron unirse a nosotros al ver que también lo teníamos.</li>
           </ul>
 
           <div class="space-y-8">
             <div>
-              <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2">+1M</p>
-              <p class="text-sm font-medium text-ink mb-1">Filas procesadas</p>
-              <p class="text-sm text-slate leading-relaxed">Cada uno de los archivos contenía aproximadamente más de 5.000 líneas, y trabajamos con más de 50 transportistas en aquel momento.</p>
+              <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2" data-i18n="s04.stat1.number">+1M</p>
+              <p class="text-sm font-medium text-ink mb-1" data-i18n="s04.stat1.label">Filas procesadas</p>
+              <p class="text-sm text-slate leading-relaxed" data-i18n="s04.stat1.body">Cada uno de los archivos contenía aproximadamente más de 5.000 líneas, y trabajamos con más de 50 transportistas en aquel momento.</p>
             </div>
             <div>
-              <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2">90%</p>
-              <p class="text-sm font-medium text-ink mb-1">Errores detectados antes de producción</p>
-              <p class="text-sm text-slate leading-relaxed">Se automatiza todo el proceso de subida e interpretación de las tarifas, garantizando el mínimo error posible.</p>
+              <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2" data-i18n="s04.stat2.number">90%</p>
+              <p class="text-sm font-medium text-ink mb-1" data-i18n="s04.stat2.label">Errores detectados antes de producción</p>
+              <p class="text-sm text-slate leading-relaxed" data-i18n="s04.stat2.body">Se automatiza todo el proceso de subida e interpretación de las tarifas, garantizando el mínimo error posible.</p>
             </div>
           </div>
         </div>
       </div>
 
       <div class="reveal bg-mist rounded-2xl p-8 md:p-10 my-14 md:my-16">
-        <p class="text-lg md:text-xl leading-relaxed text-ink/90">
+        <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="s04.quote">
           "La agilidad con la que puedo procesar miles de tarifas en un momento es increíble."
         </p>
         <div class="flex items-center gap-3 mt-8">
           <div class="w-10 h-10 rounded-full overflow-hidden shrink-0 bg-paper flex items-center justify-center"><img src="cma-cgm-logo.webp" alt="" class="w-full h-full object-contain p-1.5"></div>
           <div>
             <p class="text-sm font-medium text-ink">CMA CGM</p>
-            <p class="text-sm text-slate">Transportista</p>
+            <p class="text-sm text-slate" data-i18n="s04.testimonial.role">Transportista</p>
           </div>
         </div>
       </div>
@@ -471,27 +481,27 @@
     <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">05</span>
-        <span class="text-xs font-medium tracking-widest uppercase text-slate">Aprendizajes clave</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s05.eyebrow">Aprendizajes clave</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-8">
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-8" data-i18n="s05.heading">
         Qué me dejó este proyecto
       </h2>
-      <p class="reveal text-ink/80 leading-relaxed">
+      <p class="reveal text-ink/80 leading-relaxed" data-i18n="s05.p1">
         Este proyecto me permitió visualizar una nueva rama del diseño de producto: la de trabajar con funcionalidades que manejan archivos muy pesados, con muchísimos datos y cargas de información constantes. Esto me dejó como resultado una habilidad más a nivel personal y profesional como Product Designer: la de poder simplificar incluso los procesos de experiencia de usuario más complejos del mercado.
       </p>
     </section>
 
     <!-- ===== END OF CASE STUDY ===== -->
     <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08] text-center">
-      <p class="reveal text-xs font-medium tracking-widest uppercase text-slate mb-4">Has llegado al final</p>
-      <p class="reveal text-xl md:text-2xl font-medium tracking-tight mb-10">
+      <p class="reveal text-xs font-medium tracking-widest uppercase text-slate mb-4" data-i18n="cta.eyebrow">Has llegado al final</p>
+      <p class="reveal text-xl md:text-2xl font-medium tracking-tight mb-10" data-i18n="cta.heading">
         ¿Quieres ver más proyectos?
       </p>
       <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="sisdeva.html" class="focus-ring inline-flex items-center gap-2 bg-ink text-paper text-sm font-medium px-6 py-3.5 rounded-full hover:bg-slate transition-colors">
+        <a href="sisdeva.html" class="focus-ring inline-flex items-center gap-2 bg-ink text-paper text-sm font-medium px-6 py-3.5 rounded-full hover:bg-slate transition-colors" data-i18n="cta.next">
           Continuar con SISDEVA
         </a>
-        <a href="../index.html#work" class="focus-ring inline-flex items-center gap-2 text-sm font-medium px-6 py-3.5 rounded-full border border-ink/15 hover:bg-latte/40 hover:border-latte-dark transition-colors">
+        <a href="../index.html#work" class="focus-ring inline-flex items-center gap-2 text-sm font-medium px-6 py-3.5 rounded-full border border-ink/15 hover:bg-latte/40 hover:border-latte-dark transition-colors" data-i18n="cta.back">
           Volver a todos los proyectos
         </a>
       </div>
@@ -500,6 +510,272 @@
   </main>
 
   <script>
+    const translations = {
+      es: {
+        'nav.about': 'Sobre mí',
+        'nav.contact': 'Contacto',
+        'nav.menuAria': 'Abrir menú',
+        'meta.title': 'Wizard for Rate Management · Javier Díaz',
+        'meta.description': 'Caso de estudio: gestor masivo de datos de Excel con millones de registros de tarifas entre transportistas y shippers.',
+        'breadcrumb.back': '← Todos los proyectos',
+        'hero.title': 'Wizard For Rate Management: <span class="font-normal">cómo procesar miles de tarifas en tres sencillos pasos</span>',
+        'hero.subtitle': 'Diseño de un wizard para gestionar de forma masiva las tarifas de compraventa entre transportistas y shippers, sobre bases de datos de millones de registros.',
+        'hero.role.label': 'Rol',
+        'hero.role.value': 'Product Designer',
+        'hero.client.label': 'Cliente',
+        'hero.client.value': 'Transportistas',
+        'hero.year.label': 'Año',
+        'hero.year.value': '2024',
+        'hero.team.label': 'Equipo',
+        'hero.team.value': 'Product Managers, Developers, QA',
+        'hero.tag1': 'Data Management',
+        'hero.tag2': 'Enterprise UX',
+        'hero.tag3': 'Excel',
+        'hero.carousel.alt1': 'Tariff Manager: listado de archivos de tarifas con su estado de validación',
+        'hero.carousel.alt2': 'Pantalla de revisión de datos del wizard, con detección de errores por fila',
+        'carousel.prevAria': 'Imagen anterior',
+        'carousel.nextAria': 'Imagen siguiente',
+
+        's01.eyebrow': 'Punto de partida',
+        's01.heading': 'Por qué necesitábamos un nuevo enfoque',
+        's01.label1': 'Contexto',
+        's01.p1': 'Los equipos de operaciones gestionaban las tarifas de compraventa entre transportistas y shippers a través de archivos de Excel de millones de filas, sin validación automática ni trazabilidad de los cambios. Cualquier actualización masiva de tarifas era un proceso manual, lento y arriesgado.',
+        's01.card1.title': 'Errores silenciosos',
+        's01.card1.body': 'Un error de tipeo en una celda podía afectar a miles de tarifas sin que nadie lo notara hasta más tarde.',
+        's01.card2.title': 'Sin trazabilidad',
+        's01.card2.body': 'No había forma de saber quién había cambiado una tarifa concreta, ni cuándo, ni por qué.',
+        's01.card3.title': 'Procesos manuales',
+        's01.card3.body': 'Cargar y validar un archivo de tarifas podía llevar horas de trabajo manual y repetitivo.',
+
+        's02.eyebrow': 'Research',
+        's02.heading': 'Cómo investigamos antes de diseñar el wizard',
+        's02.label1': 'Técnicas de investigación',
+        's02.p1': 'Debido a la urgencia que tenía la compañía en arreglar este proceso, ya que estaba dando muchos errores tanto a nivel interno como a nivel de nuestros clientes, las técnicas de investigación previas antes de llegar al concepto final fueron casi nulas. Básicamente lo que se hizo fue un refresh de la interfaz de usuario y se añadieron algunas funcionalidades nuevas en comparación a la UI anterior.',
+        's02.carousel.alt1': 'Wireframe del refresh de la interfaz de subida de tarifas, con anotaciones de mejoras a implementar',
+        's02.carousel.alt2': 'Wireframe del refresh de la interfaz de edición de tarifas',
+        's02.caption': 'Captura de pantalla con sus correspondientes anotaciones sobre la interfaz que estaba implementada en ese momento.',
+
+        's03.eyebrow': 'Del papel a la pantalla',
+        's03.heading': 'De los primeros bocetos a las primeras interacciones',
+        's03.label1': 'Enfoque',
+        's03.p1': 'Para llevar a cabo este proyecto se tuvo en cuenta referencias de proyectos anteriores en los que tuve la oportunidad de trabajar, tanto a nivel de user experience como a nivel de user interface.',
+        's03.carousel1.alt1': 'Diagrama de flujo del componente de arquitectura de la información para la carga automática de unidades (Autofill Units)',
+        's03.carousel1.alt2': 'Referencias de las pantallas de éxito de carga, borrado masivo y selección masiva del wizard',
+        's03.caption1': 'Referencias de proyectos anteriores utilizadas como punto de partida del flujo y la interfaz.',
+        's03.label2': 'Carga de archivos',
+        's03.step1.title': 'Landing page de archivos',
+        's03.step1.body': 'Una página donde se podían ver todas las tarifas y archivos que se habían subido al sistema. Si no existía ninguno, aparecía un empty state.',
+        's03.step2.title': 'Subida del archivo',
+        's03.step2.body': 'Dos formas de subirlo: haciendo clic en el botón de subir archivos, o arrastrándolo directamente a la pantalla.',
+        's03.step3.title': 'Procesamiento en segundo plano',
+        's03.step3.body': 'Al ser una fase beta, la carga era algo más lenta de lo habitual: el archivo se procesaba mientras el usuario seguía trabajando en otras páginas, y una notificación push avisaba cuando terminaba y había que revisarlo.',
+        's03.step4.title': 'Revisión con IA',
+        's03.step4.body': 'En la página de revisión se visualizaba todo el contenido subido, y la IA identificaba errores o posibles confusiones al introducir los datos en el Excel — uno de los primeros proyectos donde empezamos a implementar IA, detectando errores mientras el archivo aún se estaba procesando.',
+        's03.step5.title': 'Confirmación',
+        's03.step5.body': 'Una vez revisados los errores, se completaba la subida y el archivo quedaba añadido correctamente al sistema.',
+        's03.carousel2.alt1': 'Pantalla de subida de archivo, con la zona de arrastrar y soltar y las instrucciones de uso',
+        's03.carousel2.alt2': 'Arrastrando el archivo directamente sobre el Tariff Manager para subirlo',
+        's03.carousel2.alt3': 'Pantalla de revisión de datos (Check data) antes de confirmar la subida',
+        's03.carousel2.alt4': 'Barra de progreso de la subida en segundo plano, con el usuario pudiendo seguir navegando por el sistema',
+        's03.carousel2.alt5': 'Notificación de confirmación de que el archivo se ha subido correctamente',
+        's03.caption2': 'Capturas del flujo de carga de archivos: desde la subida hasta la confirmación de que el archivo se ha añadido correctamente.',
+        's03.label3': 'Flujo de trabajo y validación con el equipo técnico',
+        's03.p2': 'A medida que íbamos desarrollando las diferentes funcionalidades y procesos de la subida de archivos, recibíamos feedback constante — por no decir diario — del equipo técnico, que validaba las propuestas del equipo de diseño de producto. Muchas veces había cosas que se podían realizar y otras que no, y teníamos que adaptarnos a las condiciones técnicas limitadas que ofrecía la empresa en ese momento.',
+        's03.carousel3.alt1': 'Mapa completo del flujo del wizard (Select file + Processing, Check data page, Add… y Edit page), con los distintos escenarios y validaciones anotados',
+        's03.caption3': 'Mapa del flujo completo del wizard, con los distintos escenarios y validaciones que se fueron acordando con el equipo técnico.',
+
+        's04.eyebrow': 'Solución',
+        's04.heading': 'Un wizard guiado = mil dolores de cabeza menos',
+        's04.label1': 'Enfoque',
+        's04.p1': 'En vez de seguir dependiendo de archivos de Excel sueltos, diseñamos un wizard paso a paso que guía al usuario desde la carga del archivo hasta la validación y confirmación de los cambios, detectando errores automáticamente antes de que lleguen a producción. A pesar de no haber podido testear la propuesta con usuarios reales, el resultado fue bastante óptimo: nuestros transportistas quedaron conformes con la nueva funcionalidad y destacaron que la interfaz se veía mucho más limpia, y que el proceso podía ser más íntimo entre el usuario y la plataforma, en vez de tener que pasar por una revisión del soporte interno de la empresa.',
+        's04.label2': 'Funcionalidades<br class="hidden md:block"> entregadas',
+        's04.feature1.title': 'Rediseño completo a nivel de precio, usuario e interfaz',
+        's04.feature1.body': 'No tenía nada que ver con la versión anterior: se reformula toda la interfaz y las diferentes funcionalidades del sistema para garantizar que el proceso de subida de archivos sea el elemento central a nivel visual.',
+        's04.feature2.title': 'Validación automática',
+        's04.feature2.body': 'El sistema detecta errores e inconsistencias antes de aplicar los cambios gracias a la inteligencia artificial, evitando errores a posteriori y garantizando un resultado mejor que el que estábamos acostumbrados. Este fue uno de los primeros proyectos en los que empezamos a utilizar la IA.',
+        's04.feature3.title': 'Menos carga de trabajo a nivel interno',
+        's04.feature3.body': 'Los equipos internos de la empresa se descargaron de bastante trabajo y pudieron enfocarse en la mejora de otras funcionalidades.',
+        's04.label3': 'Resultados',
+        's04.result1': 'El proceso de subida de tarifas y archivos de grandes dimensiones se hizo muchísimo más ágil.',
+        's04.result2': 'El usuario ganó mayor autonomía y control sobre sus propias tarifas.',
+        's04.result3': 'Conseguimos nuevos clientes gracias a esta nueva funcionalidad: otras empresas que ya contaban con un sistema similar decidieron unirse a nosotros al ver que también lo teníamos.',
+        's04.stat1.number': '+1M',
+        's04.stat1.label': 'Filas procesadas',
+        's04.stat1.body': 'Cada uno de los archivos contenía aproximadamente más de 5.000 líneas, y trabajamos con más de 50 transportistas en aquel momento.',
+        's04.stat2.number': '90%',
+        's04.stat2.label': 'Errores detectados antes de producción',
+        's04.stat2.body': 'Se automatiza todo el proceso de subida e interpretación de las tarifas, garantizando el mínimo error posible.',
+        's04.quote': '"La agilidad con la que puedo procesar miles de tarifas en un momento es increíble."',
+        's04.testimonial.role': 'Transportista',
+
+        's05.eyebrow': 'Aprendizajes clave',
+        's05.heading': 'Qué me dejó este proyecto',
+        's05.p1': 'Este proyecto me permitió visualizar una nueva rama del diseño de producto: la de trabajar con funcionalidades que manejan archivos muy pesados, con muchísimos datos y cargas de información constantes. Esto me dejó como resultado una habilidad más a nivel personal y profesional como Product Designer: la de poder simplificar incluso los procesos de experiencia de usuario más complejos del mercado.',
+
+        'cta.eyebrow': 'Has llegado al final',
+        'cta.heading': '¿Quieres ver más proyectos?',
+        'cta.next': 'Continuar con SISDEVA',
+        'cta.back': 'Volver a todos los proyectos',
+      },
+      en: {
+        'nav.about': 'About',
+        'nav.contact': 'Contact',
+        'nav.menuAria': 'Open menu',
+        'meta.title': 'Wizard for Rate Management · Javier Díaz',
+        'meta.description': 'Case study: a bulk data manager for Excel files with millions of rate records between carriers and shippers.',
+        'breadcrumb.back': '← All projects',
+        'hero.title': 'Wizard For Rate Management: <span class="font-normal">how to process thousands of rates in three simple steps</span>',
+        'hero.subtitle': 'Designing a wizard to manage buy-sell rates between carriers and shippers in bulk, working on databases with millions of records.',
+        'hero.role.label': 'Role',
+        'hero.role.value': 'Product Designer',
+        'hero.client.label': 'Client',
+        'hero.client.value': 'Carriers',
+        'hero.year.label': 'Year',
+        'hero.year.value': '2024',
+        'hero.team.label': 'Team',
+        'hero.team.value': 'Product Managers, Developers, QA',
+        'hero.tag1': 'Data Management',
+        'hero.tag2': 'Enterprise UX',
+        'hero.tag3': 'Excel',
+        'hero.carousel.alt1': 'Tariff Manager: list of rate files with their validation status',
+        'hero.carousel.alt2': 'Wizard data review screen, with row-by-row error detection',
+        'carousel.prevAria': 'Previous image',
+        'carousel.nextAria': 'Next image',
+
+        's01.eyebrow': 'Starting point',
+        's01.heading': 'Why we needed a new approach',
+        's01.label1': 'Context',
+        's01.p1': 'Operations teams managed buy-sell rates between carriers and shippers through Excel files with millions of rows, with no automatic validation or change traceability. Any bulk rate update was a manual, slow, and risky process.',
+        's01.card1.title': 'Silent errors',
+        's01.card1.body': 'A single typo in one cell could affect thousands of rates without anyone noticing until much later.',
+        's01.card2.title': 'No traceability',
+        's01.card2.body': 'There was no way to know who had changed a specific rate, when, or why.',
+        's01.card3.title': 'Manual processes',
+        's01.card3.body': 'Uploading and validating a rate file could take hours of manual, repetitive work.',
+
+        's02.eyebrow': 'Research',
+        's02.heading': 'How we researched before designing the wizard',
+        's02.label1': 'Research techniques',
+        's02.p1': 'Because of how urgently the company needed to fix this process — it was causing plenty of errors both internally and for our clients — the research done before arriving at the final concept was almost nonexistent. Essentially, what we did was refresh the user interface and add a few new features compared to the previous UI.',
+        's02.carousel.alt1': 'Wireframe of the rate upload interface refresh, annotated with improvements to implement',
+        's02.carousel.alt2': 'Wireframe of the rate editing interface refresh',
+        's02.caption': 'Screenshot with its corresponding annotations on the interface that was implemented at that time.',
+
+        's03.eyebrow': 'From paper to screen',
+        's03.heading': 'From the first sketches to the first interactions',
+        's03.label1': 'Approach',
+        's03.p1': 'To carry out this project, we drew on references from previous projects I had the chance to work on, both at the user experience and user interface level.',
+        's03.carousel1.alt1': 'Flow diagram of the information architecture component for automatic unit loading (Autofill Units)',
+        's03.carousel1.alt2': 'References for the upload success, bulk delete, and bulk selection screens of the wizard',
+        's03.caption1': 'References from previous projects used as a starting point for the flow and the interface.',
+        's03.label2': 'File upload',
+        's03.step1.title': 'Files landing page',
+        's03.step1.body': 'A page where all the rates and files uploaded to the system could be seen. If none existed, an empty state appeared.',
+        's03.step2.title': 'Uploading the file',
+        's03.step2.body': 'Two ways to upload it: clicking the upload files button, or dragging it directly onto the screen.',
+        's03.step3.title': 'Background processing',
+        's03.step3.body': 'Since it was in beta, the upload was somewhat slower than usual: the file was processed while the user kept working on other pages, and a push notification let them know when it finished and needed review.',
+        's03.step4.title': 'AI review',
+        's03.step4.body': 'On the review page, all the uploaded content was displayed, and the AI identified errors or possible mistakes made when entering the data in Excel — one of the first projects where we started implementing AI, detecting errors while the file was still being processed.',
+        's03.step5.title': 'Confirmation',
+        's03.step5.body': 'Once the errors were reviewed, the upload was completed and the file was successfully added to the system.',
+        's03.carousel2.alt1': 'File upload screen, with the drag-and-drop area and usage instructions',
+        's03.carousel2.alt2': 'Dragging the file directly onto the Tariff Manager to upload it',
+        's03.carousel2.alt3': 'Data review screen (Check data) before confirming the upload',
+        's03.carousel2.alt4': 'Background upload progress bar, with the user still able to navigate through the system',
+        's03.carousel2.alt5': 'Confirmation notification that the file was uploaded successfully',
+        's03.caption2': 'Screens from the file upload flow: from the upload itself to the confirmation that the file was added successfully.',
+        's03.label3': 'Workflow and validation with the engineering team',
+        's03.p2': 'As we developed the different features and processes for file uploading, we received constant — if not daily — feedback from the engineering team, who validated the product design team’s proposals. Many times there were things that could be done and others that couldn’t, and we had to adapt to the limited technical conditions the company offered at that time.',
+        's03.carousel3.alt1': 'Complete map of the wizard flow (Select file + Processing, Check data page, Add… and Edit page), with the different scenarios and validations annotated',
+        's03.caption3': 'Map of the wizard’s complete flow, with the different scenarios and validations that were agreed upon with the engineering team.',
+
+        's04.eyebrow': 'Solution',
+        's04.heading': 'A guided wizard = a thousand fewer headaches',
+        's04.label1': 'Approach',
+        's04.p1': 'Instead of continuing to rely on loose Excel files, we designed a step-by-step wizard that guides the user from file upload through validation and confirmation of changes, automatically catching errors before they reach production. Even though we weren’t able to test the proposal with real users, the outcome was quite positive: our carriers were happy with the new feature and noted that the interface looked much cleaner, and that the process felt more direct between the user and the platform, instead of having to go through a review by the company’s internal support team.',
+        's04.label2': 'Features<br class="hidden md:block"> delivered',
+        's04.feature1.title': 'Complete redesign at the pricing, user, and interface level',
+        's04.feature1.body': 'It had nothing to do with the previous version: the entire interface and the system’s different features were reformulated to ensure the file upload process was the central visual element.',
+        's04.feature2.title': 'Automatic validation',
+        's04.feature2.body': 'The system detects errors and inconsistencies before applying changes thanks to artificial intelligence, avoiding after-the-fact errors and guaranteeing a better result than what we were used to. This was one of the first projects where we started using AI.',
+        's04.feature3.title': 'Less internal workload',
+        's04.feature3.body': 'Internal company teams were relieved of a significant amount of work and could focus on improving other features.',
+        's04.label3': 'Results',
+        's04.result1': 'The process of uploading rates and large files became dramatically more agile.',
+        's04.result2': 'Users gained greater autonomy and control over their own rates.',
+        's04.result3': 'We won new clients thanks to this new feature: other companies that already had a similar system decided to join us once they saw we had it too.',
+        's04.stat1.number': '+1M',
+        's04.stat1.label': 'Rows processed',
+        's04.stat1.body': 'Each file contained approximately more than 5,000 lines, and at the time we worked with more than 50 carriers.',
+        's04.stat2.number': '90%',
+        's04.stat2.label': 'Errors caught before production',
+        's04.stat2.body': 'The entire process of uploading and interpreting rates is automated, ensuring the lowest possible error rate.',
+        's04.quote': '"The speed at which I can process thousands of rates in an instant is incredible."',
+        's04.testimonial.role': 'Carrier',
+
+        's05.eyebrow': 'Key learnings',
+        's05.heading': 'What this project taught me',
+        's05.p1': 'This project let me see a new branch of product design: working with features that handle very heavy files, with huge amounts of data and constant information loads. As a result, I gained one more skill on a personal and professional level as a Product Designer: the ability to simplify even the most complex user experience processes on the market.',
+
+        'cta.eyebrow': 'You’ve reached the end',
+        'cta.heading': 'Want to see more projects?',
+        'cta.next': 'Continue to SISDEVA',
+        'cta.back': 'Back to all projects',
+      },
+    };
+
+    function detectLang() {
+      const supported = Object.keys(translations);
+      const candidates = (navigator.languages && navigator.languages.length)
+        ? navigator.languages
+        : [navigator.language || 'en'];
+      for (const candidate of candidates) {
+        const short = candidate.slice(0, 2).toLowerCase();
+        if (supported.includes(short)) return short;
+      }
+      return 'en';
+    }
+
+    function applyTranslations(lang) {
+      const dict = translations[lang] || translations.en;
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        const value = dict[key];
+        if (value === undefined) return;
+
+        if (el.hasAttribute('data-i18n-attr')) {
+          el.setAttribute(el.getAttribute('data-i18n-attr'), value);
+        } else {
+          el.innerHTML = value;
+        }
+      });
+    }
+
+    function updateLangButtons(lang) {
+      document.querySelectorAll('.lang-btn').forEach((btn) => {
+        const active = btn.getAttribute('data-lang') === lang;
+        btn.classList.toggle('bg-ink', active);
+        btn.classList.toggle('text-paper', active);
+        btn.classList.toggle('text-ink/50', !active);
+        btn.classList.toggle('hover:text-ink', !active);
+        btn.setAttribute('aria-pressed', String(active));
+      });
+    }
+
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      applyTranslations(lang);
+      updateLangButtons(lang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach((btn) => {
+      btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang')));
+    });
+
+    setLang(localStorage.getItem('lang') || detectLang());
     document.body.classList.add('is-ready');
 
     // Menú móvil (hamburguesa)

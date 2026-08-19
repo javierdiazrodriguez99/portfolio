@@ -7,6 +7,18 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta name="description" content="Sobre Javier Díaz, Product Designer — experiencia, testimonios, premios y educación.">
 
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://javierdiazrodriguez.com/sobre-mi.html">
+<meta property="og:title" content="Sobre mí · Javier Díaz">
+<meta property="og:description" content="Sobre Javier Díaz, Product Designer — experiencia, testimonios, premios y educación.">
+<meta property="og:image" content="https://javierdiazrodriguez.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sobre mí · Javier Díaz">
+<meta name="twitter:description" content="Sobre Javier Díaz, Product Designer — experiencia, testimonios, premios y educación.">
+<meta name="twitter:image" content="https://javierdiazrodriguez.com/og-image.jpg">
+
 <!-- Tailwind CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -112,10 +124,16 @@
         Javier Díaz
       </a>
 
-      <ul class="hidden sm:flex items-center gap-10 text-base text-slate">
-        <li><a href="sobre-mi.html" class="text-ink focus-ring rounded" aria-current="page" data-i18n="nav.about">Sobre mí</a></li>
-        <li><a href="contacto.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
-      </ul>
+      <div class="hidden sm:flex items-center gap-8">
+        <ul class="flex items-center gap-10 text-base text-slate">
+          <li><a href="sobre-mi.html" class="text-ink focus-ring rounded" aria-current="page" data-i18n="nav.about">Sobre mí</a></li>
+          <li><a href="contacto.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
+        </ul>
+        <div class="flex items-center gap-0.5 text-xs font-medium border border-ink/15 rounded-full p-0.5" role="group" aria-label="Seleccionar idioma">
+          <button type="button" class="lang-btn px-2.5 py-1 rounded-full transition-colors" data-lang="es">ES</button>
+          <button type="button" class="lang-btn px-2.5 py-1 rounded-full transition-colors" data-lang="en">EN</button>
+        </div>
+      </div>
 
       <span class="sm:hidden w-[22px]" aria-hidden="true"></span>
     </nav>
@@ -125,6 +143,10 @@
         <li><a href="sobre-mi.html" class="block py-4 focus-ring rounded" aria-current="page" data-i18n="nav.about">Sobre mí</a></li>
         <li><a href="contacto.html" class="block py-4 focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
       </ul>
+      <div class="flex items-center gap-0.5 text-xs font-medium border border-ink/15 rounded-full p-0.5 mx-6 mb-4 w-fit" role="group" aria-label="Seleccionar idioma">
+        <button type="button" class="lang-btn px-3 py-1.5 rounded-full transition-colors" data-lang="es">ES</button>
+        <button type="button" class="lang-btn px-3 py-1.5 rounded-full transition-colors" data-lang="en">EN</button>
+      </div>
     </div>
   </header>
 
@@ -157,13 +179,13 @@
           </div>
         </div>
         <div class="space-y-6 text-lg text-slate leading-relaxed">
-          <p>
+          <p data-i18n="bio.p1">
             Estudié el Grado en Diseño en la <a href="https://www.ull.es/" target="_blank" rel="noopener noreferrer" class="underline decoration-ink/30 hover:decoration-ink underline-offset-2 transition-colors focus-ring rounded">Universidad de La Laguna</a>, donde descubrí mi interés por el diseño de producto a través de una masterclass que recibimos. Mientras tanto, estuve trabajando en <a href="https://www.instagram.com/horizontrainingtnf/" target="_blank" rel="noopener noreferrer" class="underline decoration-ink/30 hover:decoration-ink underline-offset-2 transition-colors focus-ring rounded">Horizon Training</a> como Graphic Designer &amp; Creative Direction, donde generaba contenido audiovisual para sus redes sociales y entrenaba 🏋🏻‍♂️
           </p>
-          <p>
+          <p data-i18n="bio.p2">
             Posteriormente, me mudé a Barcelona para completar mi Máster en Dirección en Diseño de Experiencias y Servicios Digitales en <a href="https://www.elisava.net/" target="_blank" rel="noopener noreferrer" class="underline decoration-ink/30 hover:decoration-ink underline-offset-2 transition-colors focus-ring rounded">Elisava</a>.
           </p>
-          <p>
+          <p data-i18n="bio.p3">
             En <a href="https://www.freightos.com/" target="_blank" rel="noopener noreferrer" class="underline decoration-ink/30 hover:decoration-ink underline-offset-2 transition-colors focus-ring rounded">Freightos</a> he tenido la oportunidad de crecer desde becario hasta convertirme en Product Designer, trabajando en sistemas de diseño, arquitectura de la información, investigación de usuarios, prototipado, entre un largo etcétera. Pero siempre con el mismo objetivo desde que empecé a estudiar: ayudar a las personas en su día a día a través del diseño.
           </p>
           <div class="flex flex-wrap gap-2">
@@ -460,6 +482,9 @@
         'hero.heading': 'Sobre mí',
         'hero.intro': 'Soy Javi — Product Designer con 4 años de experiencia diseñando productos digitales dentro de la industria de la logística.',
         'cv.download': 'Descargar CV',
+        'bio.p1': 'Estudié el Grado en Diseño en la <a href="https://www.ull.es/" target="_blank" rel="noopener noreferrer" class="underline decoration-ink/30 hover:decoration-ink underline-offset-2 transition-colors focus-ring rounded">Universidad de La Laguna</a>, donde descubrí mi interés por el diseño de producto a través de una masterclass que recibimos. Mientras tanto, estuve trabajando en <a href="https://www.instagram.com/horizontrainingtnf/" target="_blank" rel="noopener noreferrer" class="underline decoration-ink/30 hover:decoration-ink underline-offset-2 transition-colors focus-ring rounded">Horizon Training</a> como Graphic Designer &amp; Creative Direction, donde generaba contenido audiovisual para sus redes sociales y entrenaba 🏋🏻‍♂️',
+        'bio.p2': 'Posteriormente, me mudé a Barcelona para completar mi Máster en Dirección en Diseño de Experiencias y Servicios Digitales en <a href="https://www.elisava.net/" target="_blank" rel="noopener noreferrer" class="underline decoration-ink/30 hover:decoration-ink underline-offset-2 transition-colors focus-ring rounded">Elisava</a>.',
+        'bio.p3': 'En <a href="https://www.freightos.com/" target="_blank" rel="noopener noreferrer" class="underline decoration-ink/30 hover:decoration-ink underline-offset-2 transition-colors focus-ring rounded">Freightos</a> he tenido la oportunidad de crecer desde becario hasta convertirme en Product Designer, trabajando en sistemas de diseño, arquitectura de la información, investigación de usuarios, prototipado, entre un largo etcétera. Pero siempre con el mismo objetivo desde que empecé a estudiar: ayudar a las personas en su día a día a través del diseño.',
         'experience.heading': 'Experiencia',
         'testimonials.heading': 'Testimonios',
         'testimonials.more': 'Ver más',
@@ -504,9 +529,9 @@
         'hero.heading': 'About me',
         'hero.intro': "I'm Javier — a Product Designer with 4 years of experience designing digital products within the logistics industry.",
         'cv.download': 'Download CV',
-        'hero.p1': 'At Freightos I had the chance to grow from intern to Product Designer, working on navigation systems, notifications and large-scale data management tools for a platform used by thousands of carriers, airlines and shipping lines worldwide.',
-        'hero.p2': 'Before that I worked at Horizon Training as Graphic Designer & Creative Direction. I studied a Design degree at Universidad de La Laguna, where I discovered my interest in product design, and later completed a Master\'s in Digital Experience and Service Design Direction at Elisava, in Barcelona.',
-        'hero.p3': "Over the years I've worked across design systems, information architecture, user research and prototyping, always with the same goal: turning complex problems into interfaces people understand right away.",
+        'bio.p1': 'I studied a Design degree at <a href="https://www.ull.es/" target="_blank" rel="noopener noreferrer" class="underline decoration-ink/30 hover:decoration-ink underline-offset-2 transition-colors focus-ring rounded">Universidad de La Laguna</a>, where I discovered my interest in product design through a masterclass we received. Meanwhile, I was working at <a href="https://www.instagram.com/horizontrainingtnf/" target="_blank" rel="noopener noreferrer" class="underline decoration-ink/30 hover:decoration-ink underline-offset-2 transition-colors focus-ring rounded">Horizon Training</a> as Graphic Designer &amp; Creative Direction, creating audiovisual content for their social media and coaching 🏋🏻‍♂️',
+        'bio.p2': 'Afterwards, I moved to Barcelona to complete my Master\'s in Digital Experience and Service Design Direction at <a href="https://www.elisava.net/" target="_blank" rel="noopener noreferrer" class="underline decoration-ink/30 hover:decoration-ink underline-offset-2 transition-colors focus-ring rounded">Elisava</a>.',
+        'bio.p3': 'At <a href="https://www.freightos.com/" target="_blank" rel="noopener noreferrer" class="underline decoration-ink/30 hover:decoration-ink underline-offset-2 transition-colors focus-ring rounded">Freightos</a> I\'ve had the opportunity to grow from intern to Product Designer, working on design systems, information architecture, user research, prototyping, and much more. But always with the same goal I\'ve had since I started studying: helping people in their everyday lives through design.',
         'experience.heading': 'Experience',
         'testimonials.heading': 'Testimonials',
         'testimonials.more': 'See more',
@@ -565,11 +590,36 @@
         const key = el.getAttribute('data-i18n');
         const value = dict[key];
         if (value === undefined) return;
-        el.textContent = value;
+        if (el.hasAttribute('data-i18n-attr')) {
+          el.setAttribute(el.getAttribute('data-i18n-attr'), value);
+        } else {
+          el.innerHTML = value;
+        }
       });
     }
 
-    applyTranslations(detectLang());
+    function updateLangButtons(lang) {
+      document.querySelectorAll('.lang-btn').forEach((btn) => {
+        const active = btn.getAttribute('data-lang') === lang;
+        btn.classList.toggle('bg-ink', active);
+        btn.classList.toggle('text-paper', active);
+        btn.classList.toggle('text-ink/50', !active);
+        btn.classList.toggle('hover:text-ink', !active);
+        btn.setAttribute('aria-pressed', String(active));
+      });
+    }
+
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      applyTranslations(lang);
+      updateLangButtons(lang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach((btn) => {
+      btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang')));
+    });
+
+    setLang(localStorage.getItem('lang') || detectLang());
     document.body.classList.add('is-ready');
 
     // ===== Copiar email =====

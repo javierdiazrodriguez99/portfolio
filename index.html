@@ -7,6 +7,18 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta name="description" content="Portfolio de Javier Díaz, Product Designer con 4 años de experiencia diseñando productos digitales." data-i18n-attr="content" data-i18n="meta.description">
 
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://javierdiazrodriguez.com/">
+<meta property="og:title" content="Javier Díaz — Product Designer">
+<meta property="og:description" content="Portfolio de Javier Díaz, Product Designer con 4 años de experiencia diseñando productos digitales.">
+<meta property="og:image" content="https://javierdiazrodriguez.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Javier Díaz — Product Designer">
+<meta name="twitter:description" content="Portfolio de Javier Díaz, Product Designer con 4 años de experiencia diseñando productos digitales.">
+<meta name="twitter:image" content="https://javierdiazrodriguez.com/og-image.jpg">
+
 <!-- Tailwind CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -171,10 +183,16 @@
         Javier Díaz
       </a>
 
-      <ul class="hidden sm:flex items-center gap-10 text-base text-slate">
-        <li><a href="sobre-mi.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
-        <li><a href="contacto.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
-      </ul>
+      <div class="hidden sm:flex items-center gap-8">
+        <ul class="flex items-center gap-10 text-base text-slate">
+          <li><a href="sobre-mi.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
+          <li><a href="contacto.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
+        </ul>
+        <div class="flex items-center gap-0.5 text-xs font-medium border border-ink/15 rounded-full p-0.5" role="group" aria-label="Seleccionar idioma">
+          <button type="button" class="lang-btn px-2.5 py-1 rounded-full transition-colors" data-lang="es">ES</button>
+          <button type="button" class="lang-btn px-2.5 py-1 rounded-full transition-colors" data-lang="en">EN</button>
+        </div>
+      </div>
 
       <span class="sm:hidden w-[22px]" aria-hidden="true"></span>
     </nav>
@@ -184,6 +202,10 @@
         <li><a href="sobre-mi.html" class="block py-4 focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
         <li><a href="contacto.html" class="block py-4 focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
       </ul>
+      <div class="flex items-center gap-0.5 text-xs font-medium border border-ink/15 rounded-full p-0.5 mx-6 mb-4 w-fit" role="group" aria-label="Seleccionar idioma">
+        <button type="button" class="lang-btn px-3 py-1.5 rounded-full transition-colors" data-lang="es">ES</button>
+        <button type="button" class="lang-btn px-3 py-1.5 rounded-full transition-colors" data-lang="en">EN</button>
+      </div>
     </div>
   </header>
 
@@ -257,7 +279,6 @@
                   <span class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap bg-ink text-paper text-xs font-medium px-2 py-1 rounded opacity-0 group-hover/tooltip:opacity-100 transition-opacity">Freightos</span>
                 </span>
                 <a href="work/vertical-menus.html" class="focus-ring rounded hover:text-slate transition-colors" data-i18n="project1.title">Vertical Menu: la unión de cinco menús en uno</a>
-                <span class="text-xs text-slate/70 font-normal">2023</span>
               </h3>
               <p class="text-sm text-slate leading-relaxed max-w-sm" data-i18n="project1.desc">
                 Unificación de los menús de distintos productos en un único sistema de navegación global para toda la plataforma.
@@ -286,7 +307,6 @@
                   <span class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap bg-ink text-paper text-xs font-medium px-2 py-1 rounded opacity-0 group-hover/tooltip:opacity-100 transition-opacity">Elisava</span>
                 </span>
                 <a href="work/swap.html" class="focus-ring rounded hover:text-slate transition-colors" data-i18n="project5.title">SWAP</a>
-                <span class="text-xs text-slate/70 font-normal">2022</span>
               </h3>
               <p class="text-sm text-slate leading-relaxed max-w-sm" data-i18n="project5.desc">
                 Diseño de un servicio digital de innovación social para Inditex, enfocado en la ODS nº 12 para garantizar los modelos de consumo y producción sostenible.
@@ -316,7 +336,6 @@
                   <span class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap bg-ink text-paper text-xs font-medium px-2 py-1 rounded opacity-0 group-hover/tooltip:opacity-100 transition-opacity">Freightos</span>
                 </span>
                 <a href="work/wizard-rate-management.html" class="focus-ring rounded hover:text-slate transition-colors" data-i18n="project3.title">Wizard For Rate Management: cómo procesar miles de tarifas en tres sencillos pasos</a>
-                <span class="text-xs text-slate/70 font-normal">2024</span>
               </h3>
               <p class="text-sm text-slate leading-relaxed max-w-sm" data-i18n="project3.desc">
                 Gestor masivo de datos de Excel con millones de registros de compraventa entre transportistas y shippers.
@@ -345,7 +364,6 @@
                   <span class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap bg-ink text-paper text-xs font-medium px-2 py-1 rounded opacity-0 group-hover/tooltip:opacity-100 transition-opacity">Universidad de La Laguna</span>
                 </span>
                 <a href="work/sisdeva.html" class="focus-ring rounded hover:text-slate transition-colors" data-i18n="project4.title">SISDEVA</a>
-                <span class="text-xs text-slate/70 font-normal">2021</span>
               </h3>
               <p class="text-sm text-slate leading-relaxed max-w-sm" data-i18n="project4.desc">
                 Sistema diseñado para mejorar la comunicación sanitario - paciente.
@@ -379,7 +397,6 @@
                   <span class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap bg-ink text-paper text-xs font-medium px-2 py-1 rounded opacity-0 group-hover/tooltip:opacity-100 transition-opacity">Freightos</span>
                 </span>
                 <a href="work/notification-system.html" class="focus-ring rounded hover:text-slate transition-colors" data-i18n="project2.title">Notification System</a>
-                <span class="text-xs text-slate/70 font-normal">2025</span>
               </h3>
               <p class="text-sm text-slate leading-relaxed max-w-sm" data-i18n="project2.desc">
                 Sistema de notificaciones push para el usuario a través de escritorio y email, para las distintas acciones que ocurren en la plataforma.
@@ -725,7 +742,28 @@
       });
     }
 
-    applyTranslations(detectLang());
+    function updateLangButtons(lang) {
+      document.querySelectorAll('.lang-btn').forEach((btn) => {
+        const active = btn.getAttribute('data-lang') === lang;
+        btn.classList.toggle('bg-ink', active);
+        btn.classList.toggle('text-paper', active);
+        btn.classList.toggle('text-ink/50', !active);
+        btn.classList.toggle('hover:text-ink', !active);
+        btn.setAttribute('aria-pressed', String(active));
+      });
+    }
+
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      applyTranslations(lang);
+      updateLangButtons(lang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach((btn) => {
+      btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang')));
+    });
+
+    setLang(localStorage.getItem('lang') || detectLang());
     document.body.classList.add('is-ready');
 
     // Menú móvil (hamburguesa)

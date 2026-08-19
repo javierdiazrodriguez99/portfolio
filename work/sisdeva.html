@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SISDEVA · Javier Díaz</title>
+<title data-i18n="meta.title">SISDEVA · Javier Díaz</title>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-<meta name="description" content="Caso de estudio: SISDEVA, un sistema de realidad virtual diseñado para mejorar la comunicación entre personal sanitario y paciente.">
+<meta name="description" data-i18n="meta.description" data-i18n-attr="content" content="Caso de estudio: SISDEVA, un sistema de realidad virtual diseñado para mejorar la comunicación entre personal sanitario y paciente.">
 
 <!-- Tailwind CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
@@ -89,7 +89,7 @@
   <!-- ===== NAVBAR ===== -->
   <header class="fixed top-0 inset-x-0 z-50 bg-paper/80 backdrop-blur-md border-b border-ink/[0.06]">
     <nav class="max-w-6xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
-      <button type="button" id="mobile-menu-toggle" class="sm:hidden focus-ring rounded-md p-1 -ml-1 text-ink" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+      <button type="button" id="mobile-menu-toggle" class="sm:hidden focus-ring rounded-md p-1 -ml-1 text-ink" aria-label="Abrir menú" data-i18n="nav.menuToggle" data-i18n-attr="aria-label" aria-expanded="false" aria-controls="mobile-menu">
         <svg id="menu-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         <svg id="menu-icon-close" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
@@ -98,19 +98,29 @@
         Javier Díaz
       </a>
 
-      <ul class="hidden sm:flex items-center gap-10 text-base text-slate">
-        <li><a href="../sobre-mi.html" class="hover:text-ink transition-colors focus-ring rounded">Sobre mí</a></li>
-        <li><a href="../contacto.html" class="hover:text-ink transition-colors focus-ring rounded">Contacto</a></li>
-      </ul>
+      <div class="hidden sm:flex items-center gap-8">
+        <ul class="flex items-center gap-10 text-base text-slate">
+          <li><a href="../sobre-mi.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
+          <li><a href="../contacto.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
+        </ul>
+        <div class="flex items-center gap-0.5 text-xs font-medium border border-ink/15 rounded-full p-0.5" role="group" aria-label="Seleccionar idioma">
+          <button type="button" class="lang-btn px-2.5 py-1 rounded-full transition-colors" data-lang="es">ES</button>
+          <button type="button" class="lang-btn px-2.5 py-1 rounded-full transition-colors" data-lang="en">EN</button>
+        </div>
+      </div>
 
       <span class="sm:hidden w-[22px]" aria-hidden="true"></span>
     </nav>
 
     <div id="mobile-menu" class="sm:hidden max-h-0 opacity-0 blur-sm pointer-events-none overflow-hidden border-t border-ink/[0.06] bg-paper transition-all duration-300 ease-out">
       <ul class="flex flex-col px-6 py-4 text-base font-medium text-ink">
-        <li><a href="../sobre-mi.html" class="block py-4 focus-ring rounded">Sobre mí</a></li>
-        <li><a href="../contacto.html" class="block py-4 focus-ring rounded">Contacto</a></li>
+        <li><a href="../sobre-mi.html" class="block py-4 focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
+        <li><a href="../contacto.html" class="block py-4 focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
       </ul>
+      <div class="flex items-center gap-0.5 text-xs font-medium border border-ink/15 rounded-full p-0.5 mx-6 mb-4 w-fit" role="group" aria-label="Seleccionar idioma">
+        <button type="button" class="lang-btn px-3 py-1.5 rounded-full transition-colors" data-lang="es">ES</button>
+        <button type="button" class="lang-btn px-3 py-1.5 rounded-full transition-colors" data-lang="en">EN</button>
+      </div>
     </div>
   </header>
 
@@ -118,61 +128,61 @@
 
     <!-- ===== HERO ===== -->
     <section class="max-w-6xl mx-auto px-6 md:px-10 pt-[104px]">
-      <a href="../index.html#work" class="reveal is-visible inline-flex items-center gap-2 text-xs font-medium tracking-widest uppercase text-slate hover:text-ink transition-colors focus-ring rounded">
+      <a href="../index.html#work" class="reveal is-visible inline-flex items-center gap-2 text-xs font-medium tracking-widest uppercase text-slate hover:text-ink transition-colors focus-ring rounded" data-i18n="breadcrumb.back">
         ← Todos los proyectos
       </a>
 
-      <h1 class="reveal is-visible mt-6 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tightest leading-[1.08] max-w-4xl">
+      <h1 class="reveal is-visible mt-6 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tightest leading-[1.08] max-w-4xl" data-i18n="hero.title">
         SISDEVA: sistema digital de evaluación y asistencia
       </h1>
 
-      <p class="reveal is-visible mt-6 text-lg text-slate leading-relaxed">
+      <p class="reveal is-visible mt-6 text-lg text-slate leading-relaxed" data-i18n="hero.subtitle">
         Sistema diseñado para mejorar la comunicación entre personal sanitario y paciente, apoyándose en la realidad virtual para explicar procedimientos complejos de forma comprensible.
       </p>
 
       <div class="reveal is-visible mt-12 pt-8 border-t border-ink/[0.08] grid sm:grid-cols-4 gap-8">
         <div>
-          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Rol</p>
-          <p class="text-sm font-medium text-ink">Estudiante</p>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.role.label">Rol</p>
+          <p class="text-sm font-medium text-ink" data-i18n="hero.role.value">Estudiante</p>
         </div>
         <div>
-          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Cliente</p>
-          <p class="text-sm font-medium text-ink">Sistema Canario de Salud</p>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.client.label">Cliente</p>
+          <p class="text-sm font-medium text-ink" data-i18n="hero.client.value">Sistema Canario de Salud</p>
         </div>
         <div>
-          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Año</p>
-          <p class="text-sm font-medium text-ink">2021</p>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.year.label">Año</p>
+          <p class="text-sm font-medium text-ink" data-i18n="hero.year.value">2021</p>
         </div>
         <div>
-          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2">Equipo</p>
-          <p class="text-sm font-medium text-ink">Yerimay Betancourt, Javier Díaz, Paula Jubera y Ana Ramos</p>
+          <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.team.label">Equipo</p>
+          <p class="text-sm font-medium text-ink" data-i18n="hero.team.value">Yerimay Betancourt, Javier Díaz, Paula Jubera y Ana Ramos</p>
         </div>
       </div>
 
       <div class="reveal is-visible mt-8 flex flex-wrap gap-2">
-        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70">Realidad Virtual</span>
-        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70">Salud digital</span>
-        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70">Investigación UX</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70" data-i18n="hero.tag1">Realidad Virtual</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70" data-i18n="hero.tag2">Salud digital</span>
+        <span class="text-xs px-3 py-1.5 rounded-full border border-ink/15 text-ink/70" data-i18n="hero.tag3">Investigación UX</span>
       </div>
 
       <div id="hero-carousel" class="reveal group relative mt-16 md:mt-20 aspect-[16/9] rounded-2xl overflow-hidden">
         <div id="hero-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
-          <img src="sisdeva-vr.png" alt="Persona utilizando unas gafas de realidad virtual con la marca SISDEVA" class="w-full h-full object-cover shrink-0">
-          <img src="sisdeva-hero-2.webp" alt="Persona sujetando un móvil con una ilustración de un rostro en pantalla" class="w-full h-full object-cover shrink-0">
-          <img src="sisdeva-hero-3.webp" alt="Persona sujetando una tablet con un mockup de la pantalla de contacto de SISDEVA" class="w-full h-full object-cover shrink-0">
+          <img src="sisdeva-vr.png" alt="Persona utilizando unas gafas de realidad virtual con la marca SISDEVA" data-i18n="hero.carousel.alt1" data-i18n-attr="alt" class="w-full h-full object-cover shrink-0">
+          <img src="sisdeva-hero-2.webp" alt="Persona sujetando un móvil con una ilustración de un rostro en pantalla" data-i18n="hero.carousel.alt2" data-i18n-attr="alt" class="w-full h-full object-cover shrink-0">
+          <img src="sisdeva-hero-3.webp" alt="Persona sujetando una tablet con un mockup de la pantalla de contacto de SISDEVA" data-i18n="hero.carousel.alt3" data-i18n-attr="alt" class="w-full h-full object-cover shrink-0">
         </div>
 
-        <button type="button" id="hero-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="hero-carousel-prev" aria-label="Imagen anterior" data-i18n="carousel.prev" data-i18n-attr="aria-label" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <button type="button" id="hero-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="hero-carousel-next" aria-label="Imagen siguiente" data-i18n="carousel.next" data-i18n-attr="aria-label" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </button>
 
         <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
-          <button type="button" class="hero-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
-          <button type="button" class="hero-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
-          <button type="button" class="hero-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+          <button type="button" class="hero-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1" data-i18n="carousel.dot1" data-i18n-attr="aria-label"></button>
+          <button type="button" class="hero-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2" data-i18n="carousel.dot2" data-i18n-attr="aria-label"></button>
+          <button type="button" class="hero-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3" data-i18n="carousel.dot3" data-i18n-attr="aria-label"></button>
         </div>
       </div>
     </section>
@@ -181,15 +191,15 @@
     <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">01</span>
-        <span class="text-xs font-medium tracking-widest uppercase text-slate">Punto de partida</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s01.eyebrow">Punto de partida</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s01.heading">
         Cuál fue la necesidad que determinó este proyecto
       </h2>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Contexto</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s01.label1">Contexto</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s01.p1">
           Los pacientes de Parkinson reciben una valoración de la evolución de su enfermedad de una forma discontinua, solo cuando se desplazan a la consulta médica. Además, estas consultas presenciales pueden verse limitadas por cuestiones de espacio y tiempo. Sin embargo, es la única manera que disponen de recibir sus tratamientos de rehabilitación.
         </p>
       </div>
@@ -197,22 +207,22 @@
       <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 pt-10 border-t border-ink/[0.08]">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
           <p class="text-sm font-medium text-latte-dark mb-3">01</p>
-          <h3 class="text-lg font-medium mb-2">Información difícil de comprender</h3>
-          <p class="text-sm text-slate leading-relaxed">
+          <h3 class="text-lg font-medium mb-2" data-i18n="s01.item1.title">Información difícil de comprender</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s01.item1.body">
             El lenguaje clínico dejaba al paciente sin una imagen clara de lo que iba a ocurrir.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
           <p class="text-sm font-medium text-latte-dark mb-3">02</p>
-          <h3 class="text-lg font-medium mb-2">Ansiedad ante el procedimiento</h3>
-          <p class="text-sm text-slate leading-relaxed">
+          <h3 class="text-lg font-medium mb-2" data-i18n="s01.item2.title">Ansiedad ante el procedimiento</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s01.item2.body">
             La incertidumbre sobre el proceso generaba miedo y peor adherencia al tratamiento.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
           <p class="text-sm font-medium text-latte-dark mb-3">03</p>
-          <h3 class="text-lg font-medium mb-2">Tiempo limitado en consulta</h3>
-          <p class="text-sm text-slate leading-relaxed">
+          <h3 class="text-lg font-medium mb-2" data-i18n="s01.item3.title">Tiempo limitado en consulta</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s01.item3.body">
             El personal sanitario no disponía de tiempo suficiente para explicarlo todo en detalle.
           </p>
         </div>
@@ -224,22 +234,22 @@
     <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">02</span>
-        <span class="text-xs font-medium tracking-widest uppercase text-slate">Concepto</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s02.eyebrow">Concepto</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight max-w-2xl mb-14 md:mb-16">
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight max-w-2xl mb-14 md:mb-16" data-i18n="s02.heading">
         Inicios del proyecto
       </h2>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Enfoque</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s02.label1">Enfoque</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s02.p1">
           El proyecto surge a partir de las inquietudes compartidas por los cuatro integrantes del grupo de trabajo sobre el aspecto social del diseño. Lejos de comprender nuestra disciplina como un ámbito meramente artístico, confiamos en la capacidad del diseño para integrarse en un contexto multidisciplinar gracias a su enorme versatilidad. De este modo, pretendemos aprovechar el diseño para que actúe como ese engranaje capaz de poner en común los intereses de los agentes implicados en una determinada actividad, logrando que cada uno alcance sus objetivos individuales.
         </p>
       </div>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1">Objetivos</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1" data-i18n="s02.label2">Objetivos</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s02.p2">
           El principal objetivo fue aprovechar las herramientas de diseño y nuevas tecnologías para realizar propuestas de mejora en prestaciones concretas del ámbito sanitario.
         </p>
       </div>
@@ -247,29 +257,29 @@
       <div class="reveal grid sm:grid-cols-2 gap-x-8 gap-y-10 md:gap-x-16">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
           <p class="text-sm font-medium text-latte-dark mb-3">01</p>
-          <h3 class="text-lg font-medium mb-2">Plataforma de comunicación interactiva</h3>
-          <p class="text-sm text-slate leading-relaxed">
+          <h3 class="text-lg font-medium mb-2" data-i18n="s02.item1.title">Plataforma de comunicación interactiva</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s02.item1.body">
             Proponer una plataforma de comunicación interactiva que ofrezca autonomía al paciente al poder acceder a los tratamientos desde su domicilio.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
           <p class="text-sm font-medium text-latte-dark mb-3">02</p>
-          <h3 class="text-lg font-medium mb-2">Evaluación, tratamiento y seguimiento</h3>
-          <p class="text-sm text-slate leading-relaxed">
+          <h3 class="text-lg font-medium mb-2" data-i18n="s02.item2.title">Evaluación, tratamiento y seguimiento</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s02.item2.body">
             Aprovechar dicha plataforma para facilitar la evaluación, tratamiento y seguimiento de las enfermedades por parte de los sanitarios.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
           <p class="text-sm font-medium text-latte-dark mb-3">03</p>
-          <h3 class="text-lg font-medium mb-2">Tratamientos interactivos con realidad virtual</h3>
-          <p class="text-sm text-slate leading-relaxed">
+          <h3 class="text-lg font-medium mb-2" data-i18n="s02.item3.title">Tratamientos interactivos con realidad virtual</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s02.item3.body">
             Implementar nuevos tratamientos interactivos que combinan el uso de diseño gráfico y aplicaciones tecnológicas relacionadas con la realidad virtual como terapias de rehabilitación.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
           <p class="text-sm font-medium text-latte-dark mb-3">04</p>
-          <h3 class="text-lg font-medium mb-2">Motivación del paciente</h3>
-          <p class="text-sm text-slate leading-relaxed">
+          <h3 class="text-lg font-medium mb-2" data-i18n="s02.item4.title">Motivación del paciente</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s02.item4.body">
             Incidir en el grado de motivación de los pacientes al poder ser conocedores de su propia evolución mediante sistemas de seguimiento.
           </p>
         </div>
@@ -280,22 +290,22 @@
     <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">03</span>
-        <span class="text-xs font-medium tracking-widest uppercase text-slate">Investigación</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s03.eyebrow">Investigación</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s03.heading">
         Análisis y benchmark
       </h2>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Investigación primaria</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s03.label1">Investigación primaria</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s03.p1">
           Una vez definido el problema de estudio, nos adentramos en el análisis de investigaciones, antecedentes y publicaciones que se relacionan con el tema que nos ocupa para definir correctamente la dirección que toma el proyecto y estudiar las posibles líneas de investigación.
         </p>
       </div>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Diseño y ciencia</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s03.label2">Diseño y ciencia</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s03.p2">
           La tecnología y el diseño, bien por separado o en conjunto, son capaces de ofrecer servicios o recursos que faciliten la labor y estancia de profesionales y pacientes, y aseguren una comunicación clara y efectiva. Esto nos muestra la gran variedad de posibles intervenciones que, como diseñadores, debemos tener en cuenta a la hora de desarrollar nuestro proyecto.
         </p>
       </div>
@@ -303,37 +313,37 @@
       <div class="reveal grid sm:grid-cols-2 gap-x-8 gap-y-10 md:gap-x-16 mt-14">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
           <p class="text-sm font-medium text-latte-dark mb-3">01</p>
-          <h3 class="text-lg font-medium mb-2">Neurofit (2019)</h3>
-          <p class="text-sm text-slate leading-relaxed">
+          <h3 class="text-lg font-medium mb-2" data-i18n="s03.item1.title">Neurofit (2019)</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s03.item1.body">
             Creada por la Fundación Curemos el Parkinson y UCB junto a Nerea Foncea. Cuenta con ejercicios de rehabilitación y consejos sobre cómo adaptar el hogar.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
           <p class="text-sm font-medium text-latte-dark mb-3">02</p>
-          <h3 class="text-lg font-medium mb-2">Apparkinson</h3>
-          <p class="text-sm text-slate leading-relaxed">
+          <h3 class="text-lg font-medium mb-2" data-i18n="s03.item2.title">Apparkinson</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s03.item2.body">
             Desarrollada a través del Programa Innova Social. Envía alertas de medicación, ejercicios prácticos, fisioterapia, logopedia o terapia ocupacional.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
           <p class="text-sm font-medium text-latte-dark mb-3">03</p>
-          <h3 class="text-lg font-medium mb-2">Párkinson contigo</h3>
-          <p class="text-sm text-slate leading-relaxed">
+          <h3 class="text-lg font-medium mb-2" data-i18n="s03.item3.title">Párkinson contigo</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s03.item3.body">
             Información sobre la enfermedad y sus tratamientos, con apartados para controlar la medicación.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
           <p class="text-sm font-medium text-latte-dark mb-3">04</p>
-          <h3 class="text-lg font-medium mb-2">HOOP</h3>
-          <p class="text-sm text-slate leading-relaxed">
+          <h3 class="text-lg font-medium mb-2" data-i18n="s03.item4.title">HOOP</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s03.item4.body">
             Plataforma compuesta de una aplicación móvil y sensores inerciales para el paciente, y una web de rehabilitación, comunicación y seguimiento que ayuda al terapeuta.
           </p>
         </div>
       </div>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mt-14 pt-14 border-t border-ink/[0.08]">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">¿Qué podemos hacer?</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s03.label3">¿Qué podemos hacer?</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s03.p3">
           Algunas de las ideas que surgen como fruto de esta unión son el diseño de herramientas digitales que fomenten la autonomía del paciente a través de la implementación de tratamientos a distancia, o el diseño de innovaciones terapéuticas que resulten estimulantes para el paciente por el uso de nuevas tecnologías.
         </p>
       </div>
@@ -343,50 +353,50 @@
     <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">04</span>
-        <span class="text-xs font-medium tracking-widest uppercase text-slate">Análisis de conceptos</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s04.eyebrow">Análisis de conceptos</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s04.heading">
         Conceptualización y planificación
       </h2>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Análisis de conceptos</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s04.label1">Análisis de conceptos</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s04.p1">
           Cada uno de los integrantes del grupo elaboró un mapa conceptual individual, con aquellas palabras que encontraba más familiares con el Párkinson. Una vez puestas en común, elaboramos grupalmente un mapa conceptual mucho más completo al contar con los enfoques individuales de todos los participantes, que se divide según los conjuntos que consideramos de mayor relevancia.
         </p>
       </div>
 
       <div id="concepts-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-white">
         <div id="concepts-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
-          <img src="sisdeva-concept-keywords.png" alt="Tabla de palabras clave agrupadas en cinco categorías: estigma social, connotaciones emocionales y sentimentales, atención sanitaria, relaciones personales y diseño" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
-          <img src="sisdeva-concept-map-connotaciones.png" alt="Mapa conceptual del grupo Connotaciones emocionales y sentimentales, con las palabras resiliencia, motivación, impedimentos, evolución, autonomía, bienestar, soledad e inseguridad" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
-          <img src="sisdeva-concept-maps-estigma-diseno.webp" alt="Mapas conceptuales de los grupos Estigma social y Diseño, con sus respectivas palabras asociadas" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="sisdeva-concept-keywords.png" alt="Tabla de palabras clave agrupadas en cinco categorías: estigma social, connotaciones emocionales y sentimentales, atención sanitaria, relaciones personales y diseño" data-i18n="s04.carousel.alt1" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="sisdeva-concept-map-connotaciones.png" alt="Mapa conceptual del grupo Connotaciones emocionales y sentimentales, con las palabras resiliencia, motivación, impedimentos, evolución, autonomía, bienestar, soledad e inseguridad" data-i18n="s04.carousel.alt2" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="sisdeva-concept-maps-estigma-diseno.webp" alt="Mapas conceptuales de los grupos Estigma social y Diseño, con sus respectivas palabras asociadas" data-i18n="s04.carousel.alt3" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
         </div>
 
-        <button type="button" id="concepts-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="concepts-carousel-prev" aria-label="Imagen anterior" data-i18n="carousel.prev" data-i18n-attr="aria-label" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <button type="button" id="concepts-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="concepts-carousel-next" aria-label="Imagen siguiente" data-i18n="carousel.next" data-i18n-attr="aria-label" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </button>
 
         <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
-          <button type="button" class="concepts-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
-          <button type="button" class="concepts-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
-          <button type="button" class="concepts-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+          <button type="button" class="concepts-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1" data-i18n="carousel.dot1" data-i18n-attr="aria-label"></button>
+          <button type="button" class="concepts-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2" data-i18n="carousel.dot2" data-i18n-attr="aria-label"></button>
+          <button type="button" class="concepts-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3" data-i18n="carousel.dot3" data-i18n-attr="aria-label"></button>
         </div>
       </div>
-      <p class="reveal text-xs text-slate mt-3">Tabla de palabras clave y mapas conceptuales elaborados a partir del análisis grupal.</p>
+      <p class="reveal text-xs text-slate mt-3" data-i18n="s04.caption1">Tabla de palabras clave y mapas conceptuales elaborados a partir del análisis grupal.</p>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14 mt-16 md:mt-20 pt-16 md:pt-20 border-t border-ink/[0.08]">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Planteamiento del proyecto gráfico</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s04.label2">Planteamiento del proyecto gráfico</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s04.p2">
           Llegar a las respuestas de estas preguntas conlleva el desarrollo de un proceso de resolución creativa de problemas. En nuestro caso, recurrimos al proceso del doble diamante, el cual nos ayuda a centrarnos en identificar correctamente el problema antes de comenzar a idear soluciones efectivas.
         </p>
       </div>
 
       <div class="reveal aspect-[21/9] rounded-2xl overflow-hidden bg-white">
-        <img src="sisdeva-double-diamond.png" alt="Diagrama del proceso del doble diamante: Descubrir, Definir, Desarrollar y Dar (entregar)" class="w-full h-full object-contain p-6 md:p-10">
+        <img src="sisdeva-double-diamond.png" alt="Diagrama del proceso del doble diamante: Descubrir, Definir, Desarrollar y Dar (entregar)" data-i18n="s04.diagram.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10">
       </div>
     </section>
 
@@ -394,27 +404,27 @@
     <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">05</span>
-        <span class="text-xs font-medium tracking-widest uppercase text-slate">Naming</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s05.eyebrow">Naming</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s05.heading">
         La búsqueda del nombre perfecto
       </h2>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Enfoque</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s05.label1">Enfoque</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s05.p1">
           El naming es ahora mismo uno de los elementos clave dentro de la promoción y la venta de productos y/o servicios. Es un pilar fundamental dentro de las marcas, siendo capaz de definir el área que ocupa o el público al que se dirige. Es por ello por lo que el proceso de elección de naming implicó la consideración de varias y muy diversas opciones.
         </p>
       </div>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1">Propuestas</p>
+        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1" data-i18n="s05.label2">Propuestas</p>
         <ul class="border-t border-ink/[0.08]">
           <li class="py-5 border-b border-ink/[0.08] flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-sm font-medium text-latte-dark shrink-0">01</span>
             <div>
-              <h3 class="text-base font-medium mb-1">Neuring</h3>
-              <p class="text-sm text-slate leading-relaxed">
+              <h3 class="text-base font-medium mb-1" data-i18n="s05.item1.title">Neuring</h3>
+              <p class="text-sm text-slate leading-relaxed" data-i18n="s05.item1.body">
                 Totalmente relacionado con la neurología, es el campo fundamental donde es tratada la enfermedad de Parkinson. Al fin y al cabo esta patología es neurodegenerativa, es decir, va dañando y eliminando de manera progresiva muchas de las neuronas que nos permiten realizar nuestros movimientos cotidianos. En este caso este tipo de naming se clasifica como evocativo, es decir, mediante una raíz ya existente (neur-), añadimos el -ing, como en inglés, para referirnos a la acción de "neuronar", es decir, estimulación neuronal.
               </p>
             </div>
@@ -422,8 +432,8 @@
           <li class="py-5 border-b border-ink/[0.08] flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-sm font-medium text-latte-dark shrink-0">02</span>
             <div>
-              <h3 class="text-base font-medium mb-1">Yellow</h3>
-              <p class="text-sm text-slate leading-relaxed">
+              <h3 class="text-base font-medium mb-1" data-i18n="s05.item2.title">Yellow</h3>
+              <p class="text-sm text-slate leading-relaxed" data-i18n="s05.item2.body">
                 Del inglés "amarillo", va más allá de un simple naming. El color amarillo es de los más alegres que podemos encontrar dentro de las gamas cromáticas que nos presenta la propia naturaleza. Felicidad, alegría, optimismo y estimulación son algunos de los términos que más se le asocian a esta tonalidad. A simple vista no se relaciona para nada con la filosofía del proyecto, pero sí está totalmente vinculado a la historia de este color dentro de ámbitos como la psicología, la neurología o la psiquiatría. Estudios le otorgan la capacidad de ejercer como neuroestimulador, algo que tuvimos muy en cuenta a la hora de desarrollar el proyecto, y por ello lo empleamos en nuestras terapias hasta llegar a ser el color corporativo de la marca. Todo este trasfondo nos llevó a plantearlo como propio naming. Sin embargo, la opción quedó descartada por la cantidad de contenido del sector del mercado al que se dirige nuestro producto que usa este color como nombre. Con el objetivo de destacar como producto, y no crear confusión, decidimos buscar una propuesta más única.
               </p>
             </div>
@@ -431,8 +441,8 @@
           <li class="py-5 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-sm font-medium text-latte-dark shrink-0">03</span>
             <div>
-              <h3 class="text-base font-medium mb-1">SISDEVA</h3>
-              <p class="text-sm text-slate leading-relaxed">
+              <h3 class="text-base font-medium mb-1" data-i18n="s05.item3.title">SISDEVA</h3>
+              <p class="text-sm text-slate leading-relaxed" data-i18n="s05.item3.body">
                 Se trata de un naming compuesto por un acrónimo, a partir de Sistema (SIS-) Digital (-D-) de Evaluación (-EV-) y Asistencia (-A). Tratamos de generar un naming utilizando términos descriptivos de nuestra actividad e intervención dentro del área sanitaria a la que nos estamos dirigiendo. Para esta propuesta resultó fundamental tener en cuenta la facilidad de pronunciación del término, ya que, en ocasiones, los acrónimos pueden dar lugar a palabras difíciles de pronunciar o recordar.
               </p>
             </div>
@@ -441,46 +451,46 @@
       </div>
 
       <div class="reveal rounded-2xl overflow-hidden">
-        <img src="sisdeva-naming-proposals.webp" alt="Diversas propuestas de naming: Neuring, Yellow y SISDEVA, cada una superpuesta sobre la fotografía de la persona con gafas de realidad virtual" class="w-full h-auto">
+        <img src="sisdeva-naming-proposals.webp" alt="Diversas propuestas de naming: Neuring, Yellow y SISDEVA, cada una superpuesta sobre la fotografía de la persona con gafas de realidad virtual" data-i18n="s05.image.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
-      <p class="reveal text-xs text-slate mt-3">Diversas propuestas de naming</p>
+      <p class="reveal text-xs text-slate mt-3" data-i18n="s05.caption1">Diversas propuestas de naming</p>
     </section>
 
     <!-- ===== 06 · IDENTIDAD CORPORATIVA Y ACTIVIDAD PROMOCIONAL ===== -->
     <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">06</span>
-        <span class="text-xs font-medium tracking-widest uppercase text-slate">Visual / UX</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s06.eyebrow">Visual / UX</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s06.heading">
         Primeros materiales gráficos y mockups
       </h2>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Enfoque</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s06.label1">Enfoque</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s06.p1">
           Como descubrimos en la investigación, el color amarillo es un claro estimulador neuronal que fomenta la neurotransmisión, es decir, el proceso de enviar la información del cerebro a las diferentes partes de nuestro cuerpo para que realicen una determinada acción. Consideramos por lo tanto que este color debía ocupar un lugar protagonista dentro de los códigos visuales del proyecto, algo que puede diferenciar a la identidad del resto de marcas cercanas o relacionadas con el sector.
         </p>
       </div>
 
       <div class="reveal mt-16 md:mt-20 rounded-2xl overflow-hidden bg-white">
-        <img src="sisdeva-logo-construction.webp" alt="Construcción del símbolo del logotipo de SISDEVA: la letra S, una hélice de ADN y unas gafas de realidad virtual se combinan para formar el icono de la marca" class="w-full h-auto">
+        <img src="sisdeva-logo-construction.webp" alt="Construcción del símbolo del logotipo de SISDEVA: la letra S, una hélice de ADN y unas gafas de realidad virtual se combinan para formar el icono de la marca" data-i18n="s06.image1.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
 
       <div class="reveal mt-16 md:mt-20 rounded-2xl overflow-hidden">
-        <img src="sisdeva-orofacial-illustrations.png" alt="Ilustraciones para el tratamiento orofacial: dos rostros ilustrados con los labios resaltados en amarillo" class="w-full h-auto">
+        <img src="sisdeva-orofacial-illustrations.png" alt="Ilustraciones para el tratamiento orofacial: dos rostros ilustrados con los labios resaltados en amarillo" data-i18n="s06.image2.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
-      <p class="reveal text-xs text-slate mt-3">Ilustraciones para el tratamiento orofacial</p>
+      <p class="reveal text-xs text-slate mt-3" data-i18n="s06.caption1">Ilustraciones para el tratamiento orofacial</p>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14 mt-16 md:mt-20 pt-16 md:pt-20 border-t border-ink/[0.08]">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Terapias digitales</p>
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s06.label2">Terapias digitales</p>
         <div class="space-y-5">
-          <p class="text-ink/80 leading-relaxed max-w-2xl">
+          <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s06.p2">
             Entre varios de nuestros objetivos, se encuentra fomentar el entrenamiento autónomo en los pacientes. Es por ello que se han desarrollado una serie de ejercicios a modo de terapias digitales que estimulan ciertos movimientos faciales y corporales que irán incorporados en uno de los apartados de la app. Para su correcta realización, se han llevado a cabo una serie de pasos. Además, dentro de terapias digitales, destaca que se plantearon entonces dos modalidades para la UX del producto:
           </p>
           <ul class="text-ink/80 leading-relaxed space-y-3 list-disc list-outside pl-4 marker:text-latte-dark">
-            <li>Uso del software en el propio dispositivo móvil / tablet</li>
-            <li>Uso de gafas de RV para realizar actividades que se complementaran con esta modalidad</li>
+            <li data-i18n="s06.list1.item1">Uso del software en el propio dispositivo móvil / tablet</li>
+            <li data-i18n="s06.list1.item2">Uso de gafas de RV para realizar actividades que se complementaran con esta modalidad</li>
           </ul>
         </div>
       </div>
@@ -490,8 +500,8 @@
           <li class="py-5 border-b border-ink/[0.08] flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-sm font-medium text-latte-dark shrink-0">01</span>
             <div>
-              <h3 class="text-base font-medium mb-1">Bocetos</h3>
-              <p class="text-sm text-slate leading-relaxed">
+              <h3 class="text-base font-medium mb-1" data-i18n="s06.item1.title">Bocetos</h3>
+              <p class="text-sm text-slate leading-relaxed" data-i18n="s06.item1.body">
                 Es necesario realizar diferentes bocetos para crear un tipo de ilustración adecuada al proyecto. En este caso se ha decidido optar por un tipo de dibujo sencillo a línea, simplificando los rasgos de la cara del personaje en los ejercicios faciales para mantener sólo lo esencial y eliminando el rostro en los ejercicios corporales para centrar la atención en las partes que más la requieren.
               </p>
             </div>
@@ -499,8 +509,8 @@
           <li class="py-5 border-b border-ink/[0.08] flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-sm font-medium text-latte-dark shrink-0">02</span>
             <div>
-              <h3 class="text-base font-medium mb-1">Elección de colores</h3>
-              <p class="text-sm text-slate leading-relaxed">
+              <h3 class="text-base font-medium mb-1" data-i18n="s06.item2.title">Elección de colores</h3>
+              <p class="text-sm text-slate leading-relaxed" data-i18n="s06.item2.body">
                 Para poder crear una unificación entre todos los ejercicios se ha optado por color blanco, negro, gris y amarillo. La dinámica que se ha seguido es delinear con línea negra, colorear los fondos de gris, el cuerpo o cara en color blanco y destacar la parte del cuerpo que se quiere ejercitar de color amarillo para centrar la atención. Además, se ha tomado como referencia un filtro de la aplicación TikTok de China que consiste en imitar ciertos movimientos que están delimitados por una línea continua o discontinua y se iluminan con una línea verde si es correcto. Hemos aplicado esta dinámica añadiendo también un check en verde para que sepan que es correcto.
               </p>
             </div>
@@ -508,8 +518,8 @@
           <li class="py-5 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-sm font-medium text-latte-dark shrink-0">03</span>
             <div>
-              <h3 class="text-base font-medium mb-1">Creación de los gifs</h3>
-              <p class="text-sm text-slate leading-relaxed">
+              <h3 class="text-base font-medium mb-1" data-i18n="s06.item3.title">Creación de los gifs</h3>
+              <p class="text-sm text-slate leading-relaxed" data-i18n="s06.item3.body">
                 Para el proceso de realización de los gifs, se han grabado en un video algunos de los movimientos que queríamos representar en las terapias. Cada uno de ellos se ha introducido en Photoshop para exportar una secuencia de imágenes con pocos frames por segundo para posteriormente realizar una rotoscopia de cada uno de estos movimientos en la aplicación Procreate del iPad. Tras dibujar una media de 13 dibujos por ejercicio, se exporta de nuevo a Photoshop para crear la animación.
               </p>
             </div>
@@ -522,72 +532,72 @@
     <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">07</span>
-        <span class="text-xs font-medium tracking-widest uppercase text-slate">Arquitectura y experiencia de usuario</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s07.eyebrow">Arquitectura y experiencia de usuario</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s07.heading">
         Estructurando el acceso y la navegación de la app
       </h2>
 
       <div class="reveal mb-14 md:mb-16 rounded-2xl overflow-hidden bg-white">
-        <img src="sisdeva-information-architecture.webp" alt="Diagrama de arquitectura de la información de la aplicación, desde Inicio Sesión hasta las secciones Agenda, Actividad, Seguimiento, Contacto y Perfil" class="w-full h-auto">
+        <img src="sisdeva-information-architecture.webp" alt="Diagrama de arquitectura de la información de la aplicación, desde Inicio Sesión hasta las secciones Agenda, Actividad, Seguimiento, Contacto y Perfil" data-i18n="s07.image1.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Acceso y registro</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s07.label1">Acceso y registro</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s07.p1">
           La estructura de uso de la aplicación parte de la pantalla de acceso. Dado que se trata de una aplicación destinada al uso con fines sanitarios, el registro en la misma vendrá recomendado y controlado por parte de un profesional. Por ello, para iniciar la sesión, el usuario deberá introducir su DNI y un código que el personal sanitario que siga su tratamiento le habrá facilitado previamente. De este modo la aplicación quedaría conectada automáticamente al historial médico de los pacientes, facilitando así la actualización continua de los datos.
         </p>
       </div>
 
       <div class="reveal mt-16 md:mt-20 rounded-2xl overflow-hidden bg-[#3D3D3D]">
-        <img src="sisdeva-login-mockup.webp" alt="Mockup de la pantalla de inicio de sesión, con campos para usuario (DNI) y contraseña, en formato horizontal y vertical" class="w-full h-auto">
+        <img src="sisdeva-login-mockup.webp" alt="Mockup de la pantalla de inicio de sesión, con campos para usuario (DNI) y contraseña, en formato horizontal y vertical" data-i18n="s07.image2.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mt-16 md:mt-20 pt-16 md:pt-20 border-t border-ink/[0.08]">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Experiencia post-registro</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s07.label2">Experiencia post-registro</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s07.p2">
           De la definición de perfil de usuario estándar de nuestra aplicación alcanzada gracias a la herramienta buyer persona, extraemos una serie de conclusiones que resultan fundamentales para crear la estructura base de la aplicación. La media de edad de las personas que recurrirían a nuestra aplicación viene dada por la media de edad de las personas que padecen EP, esto es, 60 años. Este dato resulta vital en este punto del proceso, pues, al no tratarse de una aplicación destinada a jóvenes, nos hace tener en cuenta términos de accesibilidad respecto al tamaño de las imágenes y textos, o a la dificultad que pueda suponer aprender a usarla con fluidez. Además, al tratarse de enfermedades degenerativas y, desgraciadamente, aún sin cura, debemos ser muy conscientes de que la aplicación deberá poder ser usada diariamente durante un largo periodo de tiempo sin resultar aburrida o transmitir una sensación de desagrado, es decir, debe ser "amable" tanto en funcionamiento como en apariencia con el usuario para fomentar un uso continuado de la misma.
         </p>
       </div>
 
       <div id="wireframes-carousel" class="reveal group relative mt-16 md:mt-20 aspect-[4/3] sm:aspect-[16/9] rounded-2xl overflow-hidden bg-[#ACACAC]">
         <div id="wireframes-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
-          <img src="sisdeva-wireframe-actividad.png" alt="Wireframe de alta fidelidad de la pantalla Actividad, con cuatro tarjetas: Logopedia, Mindfulness, Movilidad y Entrenamiento cognitivo" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
-          <img src="sisdeva-wireframe-seguimiento.png" alt="Wireframe de alta fidelidad de la pantalla Seguimiento, con tiempo de actividad, logros y pasos diarios" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
-          <img src="sisdeva-wireframe-inicio.webp" alt="Wireframe de alta fidelidad de la pantalla Inicio, con calendario, anotaciones, pendientes y accesos directos a Actividad, Seguimiento y Contacto" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
-          <img src="sisdeva-wireframe-logopedia.webp" alt="Wireframe de alta fidelidad del ejercicio de Logopedia, mostrando el boceto del movimiento a imitar y la webcam del usuario realizándolo" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="sisdeva-wireframe-actividad.png" alt="Wireframe de alta fidelidad de la pantalla Actividad, con cuatro tarjetas: Logopedia, Mindfulness, Movilidad y Entrenamiento cognitivo" data-i18n="s07.carousel.alt1" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="sisdeva-wireframe-seguimiento.png" alt="Wireframe de alta fidelidad de la pantalla Seguimiento, con tiempo de actividad, logros y pasos diarios" data-i18n="s07.carousel.alt2" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="sisdeva-wireframe-inicio.webp" alt="Wireframe de alta fidelidad de la pantalla Inicio, con calendario, anotaciones, pendientes y accesos directos a Actividad, Seguimiento y Contacto" data-i18n="s07.carousel.alt3" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+          <img src="sisdeva-wireframe-logopedia.webp" alt="Wireframe de alta fidelidad del ejercicio de Logopedia, mostrando el boceto del movimiento a imitar y la webcam del usuario realizándolo" data-i18n="s07.carousel.alt4" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
         </div>
 
-        <button type="button" id="wireframes-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="wireframes-carousel-prev" aria-label="Imagen anterior" data-i18n="carousel.prev" data-i18n-attr="aria-label" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <button type="button" id="wireframes-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="wireframes-carousel-next" aria-label="Imagen siguiente" data-i18n="carousel.next" data-i18n-attr="aria-label" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </button>
 
         <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
-          <button type="button" class="wireframes-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
-          <button type="button" class="wireframes-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
-          <button type="button" class="wireframes-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
-          <button type="button" class="wireframes-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="3" aria-label="Ir a la imagen 4"></button>
+          <button type="button" class="wireframes-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1" data-i18n="carousel.dot1" data-i18n-attr="aria-label"></button>
+          <button type="button" class="wireframes-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2" data-i18n="carousel.dot2" data-i18n-attr="aria-label"></button>
+          <button type="button" class="wireframes-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3" data-i18n="carousel.dot3" data-i18n-attr="aria-label"></button>
+          <button type="button" class="wireframes-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="3" aria-label="Ir a la imagen 4" data-i18n="carousel.dot4" data-i18n-attr="aria-label"></button>
         </div>
       </div>
-      <p class="reveal text-xs text-slate mt-3">Wireframes de alta fidelidad</p>
+      <p class="reveal text-xs text-slate mt-3" data-i18n="s07.caption1">Wireframes de alta fidelidad</p>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mt-16 md:mt-20 pt-16 md:pt-20 border-t border-ink/[0.08]">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Emoción y motivación</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s07.label3">Emoción y motivación</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s07.p3">
           El usuario debe sentir principalmente satisfacción y entretenimiento al usar la aplicación. Sería conveniente también que se sintiera en cierto modo retado (desde un punto de vista positivo) para que se involucre plena y conscientemente en el desafío de mejorar y evolucionar, aumentando su implicación y motivación con los tratamientos. Como hemos visto anteriormente, la aplicación debe incidir en los tres niveles emocionales del usuario: visceral (siendo agradable y atractiva a la vista), conductual (haciendo sentir satisfecho e independiente al usuario) y reflexiva (haciéndole llegar a la conclusión de que la aplicación tiene consecuencias positivas no sólo en su enfermedad sino en su vida).
         </p>
       </div>
 
       <div class="reveal mt-16 md:mt-20 rounded-2xl overflow-hidden">
-        <img src="sisdeva-mockups-seguimiento-actividad.webp" alt="Mockups de las pantallas Seguimiento y Actividad de la aplicación, con estadísticas de tiempo, logros y pasos diarios, y accesos a Logopedia, Mindfulness, Movilidad y Entrenamiento cognitivo" class="w-full h-auto">
+        <img src="sisdeva-mockups-seguimiento-actividad.webp" alt="Mockups de las pantallas Seguimiento y Actividad de la aplicación, con estadísticas de tiempo, logros y pasos diarios, y accesos a Logopedia, Mindfulness, Movilidad y Entrenamiento cognitivo" data-i18n="s07.image3.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mt-16 md:mt-20 pt-16 md:pt-20 border-t border-ink/[0.08]">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Estilos terapéuticos</p>
-        <p class="text-ink/80 leading-relaxed max-w-2xl">
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s07.label4">Estilos terapéuticos</p>
+        <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s07.p4">
           Cada ejercicio se representa con una ilustración en primer plano de la zona del cuerpo que se está trabajando, siempre sobre el mismo fondo gris corporativo y con el mismo lenguaje visual: contorno en línea negra, relleno en blanco y silueta en negro. La parte concreta que se busca estimular se resalta en amarillo corporativo, y en los ejercicios de movilidad una línea discontinua delimita además el recorrido del movimiento que el paciente debe realizar.
         </p>
       </div>
@@ -595,28 +605,28 @@
       <div class="reveal grid sm:grid-cols-3 gap-6 mt-14">
         <div>
           <div class="rounded-2xl overflow-hidden bg-[#CCCCCC]">
-            <img src="sisdeva-avatar-disfagia.webp" alt="Ilustración del asistente virtual con los labios resaltados en amarillo para el ejercicio orofacial de la disfagia" class="w-full h-auto">
+            <img src="sisdeva-avatar-disfagia.webp" alt="Ilustración del asistente virtual con los labios resaltados en amarillo para el ejercicio orofacial de la disfagia" data-i18n="s07.avatar1.alt" data-i18n-attr="alt" class="w-full h-auto">
           </div>
-          <h3 class="text-sm font-medium mt-4 mb-1">Ejercicio para la disfagia</h3>
-          <p class="text-sm text-slate leading-relaxed">
+          <h3 class="text-sm font-medium mt-4 mb-1" data-i18n="s07.avatar1.title">Ejercicio para la disfagia</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s07.avatar1.body">
             Los pacientes con enfermedad de Parkinson en ocasiones experimentan problemas a la hora de tragar, por ello se estimularán los músculos que facilitan la deglución y masticación.
           </p>
         </div>
         <div>
           <div class="rounded-2xl overflow-hidden bg-[#CCCCCC]">
-            <img src="sisdeva-avatar-facies-amimica.webp" alt="Ilustración del asistente virtual sonriendo con los labios resaltados en amarillo para el ejercicio orofacial de la facies amímica" class="w-full h-auto">
+            <img src="sisdeva-avatar-facies-amimica.webp" alt="Ilustración del asistente virtual sonriendo con los labios resaltados en amarillo para el ejercicio orofacial de la facies amímica" data-i18n="s07.avatar2.alt" data-i18n-attr="alt" class="w-full h-auto">
           </div>
-          <h3 class="text-sm font-medium mt-4 mb-1">Ejercicio para la facies amímica</h3>
-          <p class="text-sm text-slate leading-relaxed">
+          <h3 class="text-sm font-medium mt-4 mb-1" data-i18n="s07.avatar2.title">Ejercicio para la facies amímica</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s07.avatar2.body">
             Los pacientes con enfermedad de Parkinson en ocasiones experimentan una pérdida de expresión facial y del lenguaje gestual, por ello se estimularán los músculos faciales.
           </p>
         </div>
         <div>
           <div class="rounded-2xl overflow-hidden bg-[#CCCCCC]">
-            <img src="sisdeva-avatar-movilidad-corporal.webp" alt="Ilustración de una figura humana con el hombro y el brazo resaltados en amarillo y una línea discontinua indicando el movimiento a realizar" class="w-full h-auto">
+            <img src="sisdeva-avatar-movilidad-corporal.webp" alt="Ilustración de una figura humana con el hombro y el brazo resaltados en amarillo y una línea discontinua indicando el movimiento a realizar" data-i18n="s07.avatar3.alt" data-i18n-attr="alt" class="w-full h-auto">
           </div>
-          <h3 class="text-sm font-medium mt-4 mb-1">Ejercicio de movilidad corporal</h3>
-          <p class="text-sm text-slate leading-relaxed">
+          <h3 class="text-sm font-medium mt-4 mb-1" data-i18n="s07.avatar3.title">Ejercicio de movilidad corporal</h3>
+          <p class="text-sm text-slate leading-relaxed" data-i18n="s07.avatar3.body">
             Los pacientes con enfermedad de Parkinson en ocasiones experimentan rigidez al realizar ciertos movimientos. Con este ejercicio conseguimos que el paciente estimule ciertas partes del cuerpo, tratando de realizar una elevación de los brazos hasta formar un ángulo de 90º para estimular el movimiento y rehabilitar la zona.
           </p>
         </div>
@@ -627,34 +637,34 @@
     <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">08</span>
-        <span class="text-xs font-medium tracking-widest uppercase text-slate">Experiencia en RV</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s08.eyebrow">Experiencia en RV</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16">
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s08.heading">
         Diseñando la experiencia dentro de las gafas de RV
       </h2>
 
       <div class="reveal mb-14 md:mb-16 aspect-[16/9] rounded-2xl overflow-hidden">
-        <img src="sisdeva-vr-hands.webp" alt="Persona con gafas de realidad virtual moviendo las manos frente a ella" class="w-full h-full object-cover">
+        <img src="sisdeva-vr-hands.webp" alt="Persona con gafas de realidad virtual moviendo las manos frente a ella" data-i18n="s08.image1.alt" data-i18n-attr="alt" class="w-full h-full object-cover">
       </div>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Enfoque</p>
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s08.label1">Enfoque</p>
         <div class="space-y-5">
-          <p class="text-ink/80 leading-relaxed max-w-2xl">
+          <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s08.p1">
             En la pantalla se muestra una sencilla figura humana ilustrada que imita el movimiento que realiza el usuario. La parte específica del cuerpo que se trata de estimular viene destacada en color amarillo. De este modo, el usuario se ve a sí mismo en movimiento (gracias a la información recogida con el sensor externo) dentro de un espacio de 360º. Alrededor de esta figura se muestra una línea discontinua la cual indica la posición final del movimiento que debe realizar. El sensor es capaz de recoger parámetros como la velocidad de los movimientos, la aceleración, o grados de inclinación, por lo que el usuario podrá ir viendo en su pantalla su evolución con respecto a los diferentes datos que se registran.
           </p>
-          <p class="text-ink/80 leading-relaxed max-w-2xl">
+          <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s08.p2">
             Para optimizar la experiencia, se diseñan los entornos en los que se encuentra virtualmente el usuario, para ubicarlo en espacios que, gracias a las investigaciones realizadas, sabemos que pueden tener efectos beneficiosos para su salud como por ejemplo, la naturaleza.
           </p>
         </div>
       </div>
 
       <div class="reveal mt-16 md:mt-20 rounded-2xl overflow-hidden">
-        <img src="sisdeva-vr-setup.webp" alt="Instrucción para colocar el dispositivo en posición horizontal e introducirlo en las gafas de realidad virtual, junto a la fotografía del ejercicio corporal en exteriores" class="w-full h-auto">
+        <img src="sisdeva-vr-setup.webp" alt="Instrucción para colocar el dispositivo en posición horizontal e introducirlo en las gafas de realidad virtual, junto a la fotografía del ejercicio corporal en exteriores" data-i18n="s08.image2.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
 
       <div class="reveal mt-10 md:mt-12 rounded-2xl overflow-hidden">
-        <img src="sisdeva-body-exercise.webp" alt="Boceto de ejercicio facial con brazos levantados sobre fondo amarillo y aplicación del mismo ejercicio corporal superpuesto sobre una fotografía en exteriores" class="w-full h-auto">
+        <img src="sisdeva-body-exercise.webp" alt="Boceto de ejercicio facial con brazos levantados sobre fondo amarillo y aplicación del mismo ejercicio corporal superpuesto sobre una fotografía en exteriores" data-i18n="s08.image3.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
     </section>
 
@@ -662,77 +672,77 @@
     <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">09</span>
-        <span class="text-xs font-medium tracking-widest uppercase text-slate">Solución</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s09.eyebrow">Solución</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight max-w-2xl mb-14 md:mb-16">
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight max-w-2xl mb-14 md:mb-16" data-i18n="s09.heading">
         Una ayuda para nuestros profesionales y pacientes
       </h2>
 
       <div class="reveal rounded-2xl overflow-hidden">
-        <img src="sisdeva-ipad-seguimiento.png" alt="Mockup de un iPad mostrando la pantalla de Seguimiento de la aplicación" class="w-full h-auto">
+        <img src="sisdeva-ipad-seguimiento.png" alt="Mockup de un iPad mostrando la pantalla de Seguimiento de la aplicación" data-i18n="s09.image1.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
 
       <div class="reveal mt-10 md:mt-12">
-        <img src="sisdeva-ipad-login.png" alt="Mockup de un iPad mostrando la pantalla de Inicio y un iPhone con la pantalla de inicio de sesión, solicitando DNI y contraseña" class="w-full h-auto">
+        <img src="sisdeva-ipad-login.png" alt="Mockup de un iPad mostrando la pantalla de Inicio y un iPhone con la pantalla de inicio de sesión, solicitando DNI y contraseña" data-i18n="s09.image2.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
 
       <div class="reveal mt-10 md:mt-12 mb-16">
-        <img src="sisdeva-phone-lineup.webp" alt="Cinco mockups de iPhone mostrando distintas pantallas de la aplicación SISDEVA: portada, inicio, seguimiento, ejercicio de mano y ejercicio orofacial" class="w-full h-auto">
+        <img src="sisdeva-phone-lineup.webp" alt="Cinco mockups de iPhone mostrando distintas pantallas de la aplicación SISDEVA: portada, inicio, seguimiento, ejercicio de mano y ejercicio orofacial" data-i18n="s09.image3.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate">Punto final</p>
+        <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s09.label1">Punto final</p>
         <div class="space-y-5">
-          <p class="text-ink/80 leading-relaxed max-w-2xl">
+          <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s09.p1">
             El desarrollo de este proyecto nos ayuda a encontrar aplicación a los diferentes conocimientos y habilidades adquiridas a lo largo del grado. Tratándose de un proyecto que abarca diversas ramas del campo del diseño, nos ha servido para conocer diferentes modos de actuación y comprender la repercusión que llega a tener el proceso de investigación. Nos ha hecho conscientes de la importancia del flujo de trabajo tanto individual como en grupo, acentuando la relevancia de valores como la cooperación, el trabajo en equipo, y el compromiso.
           </p>
-          <p class="text-ink/80 leading-relaxed max-w-2xl">
+          <p class="text-ink/80 leading-relaxed max-w-2xl" data-i18n="s09.p2">
             El proyecto que se presenta, aporta la visión del asunto y avanza un prototipo de solución desde el punto de vista del diseño social. Esta idea para materializarse de una forma eficaz, precisará los aportes de expertos multidisciplinares, tanto en el ámbito sanitario como tecnológico. Esta convergencia de conocimientos de diferentes disciplinas especializadas, haría viable el producto pudiendo llegar a tener resultados visibles en una hipotética aplicación.
           </p>
         </div>
       </div>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16">
-        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1">Funcionalidades<br class="hidden md:block"> entregadas</p>
+        <p class="text-xs font-medium tracking-widest uppercase text-slate mt-1" data-i18n="s09.label2">Funcionalidades<br class="hidden md:block"> entregadas</p>
         <ul class="border-t border-ink/[0.08]">
           <li class="py-5 border-b border-ink/[0.08] flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-sm font-medium text-latte-dark shrink-0">01</span>
             <div>
-              <h3 class="text-base font-medium mb-1">Experiencia inmersiva guiada</h3>
-              <p class="text-sm text-slate leading-relaxed max-w-lg">A través de las gafas de realidad virtual, el paciente recorre el procedimiento paso a paso en primera persona, visualizando cada etapa antes de vivirla en la consulta real. Esta experiencia guiada reduce la incertidumbre y ayuda a que la persona llegue a la cita con una idea clara de lo que va a suceder.</p>
+              <h3 class="text-base font-medium mb-1" data-i18n="s09.item1.title">Experiencia inmersiva guiada</h3>
+              <p class="text-sm text-slate leading-relaxed max-w-lg" data-i18n="s09.item1.body">A través de las gafas de realidad virtual, el paciente recorre el procedimiento paso a paso en primera persona, visualizando cada etapa antes de vivirla en la consulta real. Esta experiencia guiada reduce la incertidumbre y ayuda a que la persona llegue a la cita con una idea clara de lo que va a suceder.</p>
             </div>
           </li>
           <li class="py-5 border-b border-ink/[0.08] flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-sm font-medium text-latte-dark shrink-0">02</span>
             <div>
-              <h3 class="text-base font-medium mb-1">Lenguaje visual accesible</h3>
-              <p class="text-sm text-slate leading-relaxed max-w-lg">Sustituimos el vocabulario clínico, a menudo complejo para el paciente, por ilustraciones sencillas y códigos visuales claros, como el uso del color amarillo para señalar la parte del cuerpo implicada en cada ejercicio. De este modo, la información se vuelve comprensible independientemente de los conocimientos médicos previos del usuario.</p>
+              <h3 class="text-base font-medium mb-1" data-i18n="s09.item2.title">Lenguaje visual accesible</h3>
+              <p class="text-sm text-slate leading-relaxed max-w-lg" data-i18n="s09.item2.body">Sustituimos el vocabulario clínico, a menudo complejo para el paciente, por ilustraciones sencillas y códigos visuales claros, como el uso del color amarillo para señalar la parte del cuerpo implicada en cada ejercicio. De este modo, la información se vuelve comprensible independientemente de los conocimientos médicos previos del usuario.</p>
             </div>
           </li>
           <li class="py-5 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-sm font-medium text-latte-dark shrink-0">03</span>
             <div>
-              <h3 class="text-base font-medium mb-1">Apoyo al profesional sanitario</h3>
-              <p class="text-sm text-slate leading-relaxed max-w-lg">La herramienta funciona como apoyo durante la consulta, permitiendo al profesional sanitario reforzar sus explicaciones con contenido visual sin necesidad de alargar el tiempo de la cita. De esta forma, el paciente sale con una comprensión más completa del procedimiento sin que ello suponga una carga adicional para el equipo médico.</p>
+              <h3 class="text-base font-medium mb-1" data-i18n="s09.item3.title">Apoyo al profesional sanitario</h3>
+              <p class="text-sm text-slate leading-relaxed max-w-lg" data-i18n="s09.item3.body">La herramienta funciona como apoyo durante la consulta, permitiendo al profesional sanitario reforzar sus explicaciones con contenido visual sin necesidad de alargar el tiempo de la cita. De esta forma, el paciente sale con una comprensión más completa del procedimiento sin que ello suponga una carga adicional para el equipo médico.</p>
             </div>
           </li>
         </ul>
       </div>
 
       <div class="reveal mt-16 md:mt-20 rounded-2xl overflow-hidden">
-        <img src="sisdeva-appstore-mockup.webp" alt="Mockup de una persona sujetando un móvil con la ficha de SISDEVA abierta en la App Store" class="w-full h-auto">
+        <img src="sisdeva-appstore-mockup.webp" alt="Mockup de una persona sujetando un móvil con la ficha de SISDEVA abierta en la App Store" data-i18n="s09.image4.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
 
       <div class="reveal mt-10 md:mt-12 rounded-2xl overflow-hidden">
-        <img src="sisdeva-desktop-mockup.webp" alt="Mockup de la página web de SISDEVA mostrada en un ordenador de sobremesa, un portátil y un móvil" class="w-full h-auto">
+        <img src="sisdeva-desktop-mockup.webp" alt="Mockup de la página web de SISDEVA mostrada en un ordenador de sobremesa, un portátil y un móvil" data-i18n="s09.image5.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
 
       <div class="reveal mt-10 md:mt-12 rounded-2xl overflow-hidden">
-        <img src="sisdeva-subway-ad.webp" alt="Anuncio publicitario de SISDEVA en una estación de metro, con el mensaje 8 de cada 10 nos dan las gracias" class="w-full h-auto">
+        <img src="sisdeva-subway-ad.webp" alt="Anuncio publicitario de SISDEVA en una estación de metro, con el mensaje 8 de cada 10 nos dan las gracias" data-i18n="s09.image6.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
 
       <div class="reveal mt-10 md:mt-12 rounded-2xl overflow-hidden">
-        <img src="sisdeva-logo-variations.png" alt="Variaciones del logotipo de SISDEVA en distintos colores y fondos" class="w-full h-auto">
+        <img src="sisdeva-logo-variations.png" alt="Variaciones del logotipo de SISDEVA en distintos colores y fondos" data-i18n="s09.image7.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
 
     </section>
@@ -741,27 +751,27 @@
     <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">10</span>
-        <span class="text-xs font-medium tracking-widest uppercase text-slate">Aprendizajes clave</span>
+        <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s10.eyebrow">Aprendizajes clave</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-8">
+      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-8" data-i18n="s10.heading">
         Qué me dejó este proyecto
       </h2>
-      <p class="reveal text-ink/80 leading-relaxed">
+      <p class="reveal text-ink/80 leading-relaxed" data-i18n="s10.p1">
         SISDEVA me dejó un compromiso claro con el diseño social: entender que el diseño puede ser una herramienta real de ayuda en el sector sanitario, y no solo un ejercicio estético. Trabajar en un contexto tan sensible como la salud me obligó a diseñar con cuidado, pensando siempre en las personas que estarían al otro lado, y me hizo valorar la tecnología inmersiva no como un fin en sí misma, sino como un medio al servicio de quien la usa. Por encima de todo, este proyecto reforzó mi visión del diseñador como un perfil multidisciplinar, capaz de dialogar con profesionales de otros campos para que una idea llegue a convertirse en una solución viable.
       </p>
     </section>
 
     <!-- ===== END OF CASE STUDY ===== -->
     <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08] text-center">
-      <p class="reveal text-xs font-medium tracking-widest uppercase text-slate mb-4">Has llegado al final</p>
-      <p class="reveal text-xl md:text-2xl font-medium tracking-tight mb-10">
+      <p class="reveal text-xs font-medium tracking-widest uppercase text-slate mb-4" data-i18n="cta.eyebrow">Has llegado al final</p>
+      <p class="reveal text-xl md:text-2xl font-medium tracking-tight mb-10" data-i18n="cta.heading">
         ¿Quieres ver más proyectos?
       </p>
       <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="swap.html" class="focus-ring inline-flex items-center gap-2 bg-ink text-paper text-sm font-medium px-6 py-3.5 rounded-full hover:bg-slate transition-colors">
+        <a href="swap.html" class="focus-ring inline-flex items-center gap-2 bg-ink text-paper text-sm font-medium px-6 py-3.5 rounded-full hover:bg-slate transition-colors" data-i18n="cta.next">
           Continuar con SWAP
         </a>
-        <a href="../index.html#work" class="focus-ring inline-flex items-center gap-2 text-sm font-medium px-6 py-3.5 rounded-full border border-ink/15 hover:bg-latte/40 hover:border-latte-dark transition-colors">
+        <a href="../index.html#work" class="focus-ring inline-flex items-center gap-2 text-sm font-medium px-6 py-3.5 rounded-full border border-ink/15 hover:bg-latte/40 hover:border-latte-dark transition-colors" data-i18n="cta.back">
           Volver a todos los proyectos
         </a>
       </div>
@@ -770,6 +780,426 @@
   </main>
 
   <script>
+    const translations = {
+      es: {
+        'nav.about': 'Sobre mí',
+        'nav.contact': 'Contacto',
+        'nav.menuToggle': 'Abrir menú',
+        'meta.title': 'SISDEVA · Javier Díaz',
+        'meta.description': 'Caso de estudio: SISDEVA, un sistema de realidad virtual diseñado para mejorar la comunicación entre personal sanitario y paciente.',
+        'breadcrumb.back': '← Todos los proyectos',
+        'hero.title': 'SISDEVA: sistema digital de evaluación y asistencia',
+        'hero.subtitle': 'Sistema diseñado para mejorar la comunicación entre personal sanitario y paciente, apoyándose en la realidad virtual para explicar procedimientos complejos de forma comprensible.',
+        'hero.role.label': 'Rol',
+        'hero.role.value': 'Estudiante',
+        'hero.client.label': 'Cliente',
+        'hero.client.value': 'Sistema Canario de Salud',
+        'hero.year.label': 'Año',
+        'hero.year.value': '2021',
+        'hero.team.label': 'Equipo',
+        'hero.team.value': 'Yerimay Betancourt, Javier Díaz, Paula Jubera y Ana Ramos',
+        'hero.tag1': 'Realidad Virtual',
+        'hero.tag2': 'Salud digital',
+        'hero.tag3': 'Investigación UX',
+        'hero.carousel.alt1': 'Persona utilizando unas gafas de realidad virtual con la marca SISDEVA',
+        'hero.carousel.alt2': 'Persona sujetando un móvil con una ilustración de un rostro en pantalla',
+        'hero.carousel.alt3': 'Persona sujetando una tablet con un mockup de la pantalla de contacto de SISDEVA',
+        'carousel.prev': 'Imagen anterior',
+        'carousel.next': 'Imagen siguiente',
+        'carousel.dot1': 'Ir a la imagen 1',
+        'carousel.dot2': 'Ir a la imagen 2',
+        'carousel.dot3': 'Ir a la imagen 3',
+        'carousel.dot4': 'Ir a la imagen 4',
+
+        's01.eyebrow': 'Punto de partida',
+        's01.heading': 'Cuál fue la necesidad que determinó este proyecto',
+        's01.label1': 'Contexto',
+        's01.p1': 'Los pacientes de Parkinson reciben una valoración de la evolución de su enfermedad de una forma discontinua, solo cuando se desplazan a la consulta médica. Además, estas consultas presenciales pueden verse limitadas por cuestiones de espacio y tiempo. Sin embargo, es la única manera que disponen de recibir sus tratamientos de rehabilitación.',
+        's01.item1.title': 'Información difícil de comprender',
+        's01.item1.body': 'El lenguaje clínico dejaba al paciente sin una imagen clara de lo que iba a ocurrir.',
+        's01.item2.title': 'Ansiedad ante el procedimiento',
+        's01.item2.body': 'La incertidumbre sobre el proceso generaba miedo y peor adherencia al tratamiento.',
+        's01.item3.title': 'Tiempo limitado en consulta',
+        's01.item3.body': 'El personal sanitario no disponía de tiempo suficiente para explicarlo todo en detalle.',
+
+        's02.eyebrow': 'Concepto',
+        's02.heading': 'Inicios del proyecto',
+        's02.label1': 'Enfoque',
+        's02.p1': 'El proyecto surge a partir de las inquietudes compartidas por los cuatro integrantes del grupo de trabajo sobre el aspecto social del diseño. Lejos de comprender nuestra disciplina como un ámbito meramente artístico, confiamos en la capacidad del diseño para integrarse en un contexto multidisciplinar gracias a su enorme versatilidad. De este modo, pretendemos aprovechar el diseño para que actúe como ese engranaje capaz de poner en común los intereses de los agentes implicados en una determinada actividad, logrando que cada uno alcance sus objetivos individuales.',
+        's02.label2': 'Objetivos',
+        's02.p2': 'El principal objetivo fue aprovechar las herramientas de diseño y nuevas tecnologías para realizar propuestas de mejora en prestaciones concretas del ámbito sanitario.',
+        's02.item1.title': 'Plataforma de comunicación interactiva',
+        's02.item1.body': 'Proponer una plataforma de comunicación interactiva que ofrezca autonomía al paciente al poder acceder a los tratamientos desde su domicilio.',
+        's02.item2.title': 'Evaluación, tratamiento y seguimiento',
+        's02.item2.body': 'Aprovechar dicha plataforma para facilitar la evaluación, tratamiento y seguimiento de las enfermedades por parte de los sanitarios.',
+        's02.item3.title': 'Tratamientos interactivos con realidad virtual',
+        's02.item3.body': 'Implementar nuevos tratamientos interactivos que combinan el uso de diseño gráfico y aplicaciones tecnológicas relacionadas con la realidad virtual como terapias de rehabilitación.',
+        's02.item4.title': 'Motivación del paciente',
+        's02.item4.body': 'Incidir en el grado de motivación de los pacientes al poder ser conocedores de su propia evolución mediante sistemas de seguimiento.',
+
+        's03.eyebrow': 'Investigación',
+        's03.heading': 'Análisis y benchmark',
+        's03.label1': 'Investigación primaria',
+        's03.p1': 'Una vez definido el problema de estudio, nos adentramos en el análisis de investigaciones, antecedentes y publicaciones que se relacionan con el tema que nos ocupa para definir correctamente la dirección que toma el proyecto y estudiar las posibles líneas de investigación.',
+        's03.label2': 'Diseño y ciencia',
+        's03.p2': 'La tecnología y el diseño, bien por separado o en conjunto, son capaces de ofrecer servicios o recursos que faciliten la labor y estancia de profesionales y pacientes, y aseguren una comunicación clara y efectiva. Esto nos muestra la gran variedad de posibles intervenciones que, como diseñadores, debemos tener en cuenta a la hora de desarrollar nuestro proyecto.',
+        's03.item1.title': 'Neurofit (2019)',
+        's03.item1.body': 'Creada por la Fundación Curemos el Parkinson y UCB junto a Nerea Foncea. Cuenta con ejercicios de rehabilitación y consejos sobre cómo adaptar el hogar.',
+        's03.item2.title': 'Apparkinson',
+        's03.item2.body': 'Desarrollada a través del Programa Innova Social. Envía alertas de medicación, ejercicios prácticos, fisioterapia, logopedia o terapia ocupacional.',
+        's03.item3.title': 'Párkinson contigo',
+        's03.item3.body': 'Información sobre la enfermedad y sus tratamientos, con apartados para controlar la medicación.',
+        's03.item4.title': 'HOOP',
+        's03.item4.body': 'Plataforma compuesta de una aplicación móvil y sensores inerciales para el paciente, y una web de rehabilitación, comunicación y seguimiento que ayuda al terapeuta.',
+        's03.label3': '¿Qué podemos hacer?',
+        's03.p3': 'Algunas de las ideas que surgen como fruto de esta unión son el diseño de herramientas digitales que fomenten la autonomía del paciente a través de la implementación de tratamientos a distancia, o el diseño de innovaciones terapéuticas que resulten estimulantes para el paciente por el uso de nuevas tecnologías.',
+
+        's04.eyebrow': 'Análisis de conceptos',
+        's04.heading': 'Conceptualización y planificación',
+        's04.label1': 'Análisis de conceptos',
+        's04.p1': 'Cada uno de los integrantes del grupo elaboró un mapa conceptual individual, con aquellas palabras que encontraba más familiares con el Párkinson. Una vez puestas en común, elaboramos grupalmente un mapa conceptual mucho más completo al contar con los enfoques individuales de todos los participantes, que se divide según los conjuntos que consideramos de mayor relevancia.',
+        's04.carousel.alt1': 'Tabla de palabras clave agrupadas en cinco categorías: estigma social, connotaciones emocionales y sentimentales, atención sanitaria, relaciones personales y diseño',
+        's04.carousel.alt2': 'Mapa conceptual del grupo Connotaciones emocionales y sentimentales, con las palabras resiliencia, motivación, impedimentos, evolución, autonomía, bienestar, soledad e inseguridad',
+        's04.carousel.alt3': 'Mapas conceptuales de los grupos Estigma social y Diseño, con sus respectivas palabras asociadas',
+        's04.caption1': 'Tabla de palabras clave y mapas conceptuales elaborados a partir del análisis grupal.',
+        's04.label2': 'Planteamiento del proyecto gráfico',
+        's04.p2': 'Llegar a las respuestas de estas preguntas conlleva el desarrollo de un proceso de resolución creativa de problemas. En nuestro caso, recurrimos al proceso del doble diamante, el cual nos ayuda a centrarnos en identificar correctamente el problema antes de comenzar a idear soluciones efectivas.',
+        's04.diagram.alt': 'Diagrama del proceso del doble diamante: Descubrir, Definir, Desarrollar y Dar (entregar)',
+
+        's05.eyebrow': 'Naming',
+        's05.heading': 'La búsqueda del nombre perfecto',
+        's05.label1': 'Enfoque',
+        's05.p1': 'El naming es ahora mismo uno de los elementos clave dentro de la promoción y la venta de productos y/o servicios. Es un pilar fundamental dentro de las marcas, siendo capaz de definir el área que ocupa o el público al que se dirige. Es por ello por lo que el proceso de elección de naming implicó la consideración de varias y muy diversas opciones.',
+        's05.label2': 'Propuestas',
+        's05.item1.title': 'Neuring',
+        's05.item1.body': 'Totalmente relacionado con la neurología, es el campo fundamental donde es tratada la enfermedad de Parkinson. Al fin y al cabo esta patología es neurodegenerativa, es decir, va dañando y eliminando de manera progresiva muchas de las neuronas que nos permiten realizar nuestros movimientos cotidianos. En este caso este tipo de naming se clasifica como evocativo, es decir, mediante una raíz ya existente (neur-), añadimos el -ing, como en inglés, para referirnos a la acción de "neuronar", es decir, estimulación neuronal.',
+        's05.item2.title': 'Yellow',
+        's05.item2.body': 'Del inglés "amarillo", va más allá de un simple naming. El color amarillo es de los más alegres que podemos encontrar dentro de las gamas cromáticas que nos presenta la propia naturaleza. Felicidad, alegría, optimismo y estimulación son algunos de los términos que más se le asocian a esta tonalidad. A simple vista no se relaciona para nada con la filosofía del proyecto, pero sí está totalmente vinculado a la historia de este color dentro de ámbitos como la psicología, la neurología o la psiquiatría. Estudios le otorgan la capacidad de ejercer como neuroestimulador, algo que tuvimos muy en cuenta a la hora de desarrollar el proyecto, y por ello lo empleamos en nuestras terapias hasta llegar a ser el color corporativo de la marca. Todo este trasfondo nos llevó a plantearlo como propio naming. Sin embargo, la opción quedó descartada por la cantidad de contenido del sector del mercado al que se dirige nuestro producto que usa este color como nombre. Con el objetivo de destacar como producto, y no crear confusión, decidimos buscar una propuesta más única.',
+        's05.item3.title': 'SISDEVA',
+        's05.item3.body': 'Se trata de un naming compuesto por un acrónimo, a partir de Sistema (SIS-) Digital (-D-) de Evaluación (-EV-) y Asistencia (-A). Tratamos de generar un naming utilizando términos descriptivos de nuestra actividad e intervención dentro del área sanitaria a la que nos estamos dirigiendo. Para esta propuesta resultó fundamental tener en cuenta la facilidad de pronunciación del término, ya que, en ocasiones, los acrónimos pueden dar lugar a palabras difíciles de pronunciar o recordar.',
+        's05.image.alt': 'Diversas propuestas de naming: Neuring, Yellow y SISDEVA, cada una superpuesta sobre la fotografía de la persona con gafas de realidad virtual',
+        's05.caption1': 'Diversas propuestas de naming',
+
+        's06.eyebrow': 'Visual / UX',
+        's06.heading': 'Primeros materiales gráficos y mockups',
+        's06.label1': 'Enfoque',
+        's06.p1': 'Como descubrimos en la investigación, el color amarillo es un claro estimulador neuronal que fomenta la neurotransmisión, es decir, el proceso de enviar la información del cerebro a las diferentes partes de nuestro cuerpo para que realicen una determinada acción. Consideramos por lo tanto que este color debía ocupar un lugar protagonista dentro de los códigos visuales del proyecto, algo que puede diferenciar a la identidad del resto de marcas cercanas o relacionadas con el sector.',
+        's06.image1.alt': 'Construcción del símbolo del logotipo de SISDEVA: la letra S, una hélice de ADN y unas gafas de realidad virtual se combinan para formar el icono de la marca',
+        's06.image2.alt': 'Ilustraciones para el tratamiento orofacial: dos rostros ilustrados con los labios resaltados en amarillo',
+        's06.caption1': 'Ilustraciones para el tratamiento orofacial',
+        's06.label2': 'Terapias digitales',
+        's06.p2': 'Entre varios de nuestros objetivos, se encuentra fomentar el entrenamiento autónomo en los pacientes. Es por ello que se han desarrollado una serie de ejercicios a modo de terapias digitales que estimulan ciertos movimientos faciales y corporales que irán incorporados en uno de los apartados de la app. Para su correcta realización, se han llevado a cabo una serie de pasos. Además, dentro de terapias digitales, destaca que se plantearon entonces dos modalidades para la UX del producto:',
+        's06.list1.item1': 'Uso del software en el propio dispositivo móvil / tablet',
+        's06.list1.item2': 'Uso de gafas de RV para realizar actividades que se complementaran con esta modalidad',
+        's06.item1.title': 'Bocetos',
+        's06.item1.body': 'Es necesario realizar diferentes bocetos para crear un tipo de ilustración adecuada al proyecto. En este caso se ha decidido optar por un tipo de dibujo sencillo a línea, simplificando los rasgos de la cara del personaje en los ejercicios faciales para mantener sólo lo esencial y eliminando el rostro en los ejercicios corporales para centrar la atención en las partes que más la requieren.',
+        's06.item2.title': 'Elección de colores',
+        's06.item2.body': 'Para poder crear una unificación entre todos los ejercicios se ha optado por color blanco, negro, gris y amarillo. La dinámica que se ha seguido es delinear con línea negra, colorear los fondos de gris, el cuerpo o cara en color blanco y destacar la parte del cuerpo que se quiere ejercitar de color amarillo para centrar la atención. Además, se ha tomado como referencia un filtro de la aplicación TikTok de China que consiste en imitar ciertos movimientos que están delimitados por una línea continua o discontinua y se iluminan con una línea verde si es correcto. Hemos aplicado esta dinámica añadiendo también un check en verde para que sepan que es correcto.',
+        's06.item3.title': 'Creación de los gifs',
+        's06.item3.body': 'Para el proceso de realización de los gifs, se han grabado en un video algunos de los movimientos que queríamos representar en las terapias. Cada uno de ellos se ha introducido en Photoshop para exportar una secuencia de imágenes con pocos frames por segundo para posteriormente realizar una rotoscopia de cada uno de estos movimientos en la aplicación Procreate del iPad. Tras dibujar una media de 13 dibujos por ejercicio, se exporta de nuevo a Photoshop para crear la animación.',
+
+        's07.eyebrow': 'Arquitectura y experiencia de usuario',
+        's07.heading': 'Estructurando el acceso y la navegación de la app',
+        's07.image1.alt': 'Diagrama de arquitectura de la información de la aplicación, desde Inicio Sesión hasta las secciones Agenda, Actividad, Seguimiento, Contacto y Perfil',
+        's07.label1': 'Acceso y registro',
+        's07.p1': 'La estructura de uso de la aplicación parte de la pantalla de acceso. Dado que se trata de una aplicación destinada al uso con fines sanitarios, el registro en la misma vendrá recomendado y controlado por parte de un profesional. Por ello, para iniciar la sesión, el usuario deberá introducir su DNI y un código que el personal sanitario que siga su tratamiento le habrá facilitado previamente. De este modo la aplicación quedaría conectada automáticamente al historial médico de los pacientes, facilitando así la actualización continua de los datos.',
+        's07.image2.alt': 'Mockup de la pantalla de inicio de sesión, con campos para usuario (DNI) y contraseña, en formato horizontal y vertical',
+        's07.label2': 'Experiencia post-registro',
+        's07.p2': 'De la definición de perfil de usuario estándar de nuestra aplicación alcanzada gracias a la herramienta buyer persona, extraemos una serie de conclusiones que resultan fundamentales para crear la estructura base de la aplicación. La media de edad de las personas que recurrirían a nuestra aplicación viene dada por la media de edad de las personas que padecen EP, esto es, 60 años. Este dato resulta vital en este punto del proceso, pues, al no tratarse de una aplicación destinada a jóvenes, nos hace tener en cuenta términos de accesibilidad respecto al tamaño de las imágenes y textos, o a la dificultad que pueda suponer aprender a usarla con fluidez. Además, al tratarse de enfermedades degenerativas y, desgraciadamente, aún sin cura, debemos ser muy conscientes de que la aplicación deberá poder ser usada diariamente durante un largo periodo de tiempo sin resultar aburrida o transmitir una sensación de desagrado, es decir, debe ser "amable" tanto en funcionamiento como en apariencia con el usuario para fomentar un uso continuado de la misma.',
+        's07.carousel.alt1': 'Wireframe de alta fidelidad de la pantalla Actividad, con cuatro tarjetas: Logopedia, Mindfulness, Movilidad y Entrenamiento cognitivo',
+        's07.carousel.alt2': 'Wireframe de alta fidelidad de la pantalla Seguimiento, con tiempo de actividad, logros y pasos diarios',
+        's07.carousel.alt3': 'Wireframe de alta fidelidad de la pantalla Inicio, con calendario, anotaciones, pendientes y accesos directos a Actividad, Seguimiento y Contacto',
+        's07.carousel.alt4': 'Wireframe de alta fidelidad del ejercicio de Logopedia, mostrando el boceto del movimiento a imitar y la webcam del usuario realizándolo',
+        's07.caption1': 'Wireframes de alta fidelidad',
+        's07.label3': 'Emoción y motivación',
+        's07.p3': 'El usuario debe sentir principalmente satisfacción y entretenimiento al usar la aplicación. Sería conveniente también que se sintiera en cierto modo retado (desde un punto de vista positivo) para que se involucre plena y conscientemente en el desafío de mejorar y evolucionar, aumentando su implicación y motivación con los tratamientos. Como hemos visto anteriormente, la aplicación debe incidir en los tres niveles emocionales del usuario: visceral (siendo agradable y atractiva a la vista), conductual (haciendo sentir satisfecho e independiente al usuario) y reflexiva (haciéndole llegar a la conclusión de que la aplicación tiene consecuencias positivas no sólo en su enfermedad sino en su vida).',
+        's07.image3.alt': 'Mockups de las pantallas Seguimiento y Actividad de la aplicación, con estadísticas de tiempo, logros y pasos diarios, y accesos a Logopedia, Mindfulness, Movilidad y Entrenamiento cognitivo',
+        's07.label4': 'Estilos terapéuticos',
+        's07.p4': 'Cada ejercicio se representa con una ilustración en primer plano de la zona del cuerpo que se está trabajando, siempre sobre el mismo fondo gris corporativo y con el mismo lenguaje visual: contorno en línea negra, relleno en blanco y silueta en negro. La parte concreta que se busca estimular se resalta en amarillo corporativo, y en los ejercicios de movilidad una línea discontinua delimita además el recorrido del movimiento que el paciente debe realizar.',
+        's07.avatar1.alt': 'Ilustración del asistente virtual con los labios resaltados en amarillo para el ejercicio orofacial de la disfagia',
+        's07.avatar1.title': 'Ejercicio para la disfagia',
+        's07.avatar1.body': 'Los pacientes con enfermedad de Parkinson en ocasiones experimentan problemas a la hora de tragar, por ello se estimularán los músculos que facilitan la deglución y masticación.',
+        's07.avatar2.alt': 'Ilustración del asistente virtual sonriendo con los labios resaltados en amarillo para el ejercicio orofacial de la facies amímica',
+        's07.avatar2.title': 'Ejercicio para la facies amímica',
+        's07.avatar2.body': 'Los pacientes con enfermedad de Parkinson en ocasiones experimentan una pérdida de expresión facial y del lenguaje gestual, por ello se estimularán los músculos faciales.',
+        's07.avatar3.alt': 'Ilustración de una figura humana con el hombro y el brazo resaltados en amarillo y una línea discontinua indicando el movimiento a realizar',
+        's07.avatar3.title': 'Ejercicio de movilidad corporal',
+        's07.avatar3.body': 'Los pacientes con enfermedad de Parkinson en ocasiones experimentan rigidez al realizar ciertos movimientos. Con este ejercicio conseguimos que el paciente estimule ciertas partes del cuerpo, tratando de realizar una elevación de los brazos hasta formar un ángulo de 90º para estimular el movimiento y rehabilitar la zona.',
+
+        's08.eyebrow': 'Experiencia en RV',
+        's08.heading': 'Diseñando la experiencia dentro de las gafas de RV',
+        's08.image1.alt': 'Persona con gafas de realidad virtual moviendo las manos frente a ella',
+        's08.label1': 'Enfoque',
+        's08.p1': 'En la pantalla se muestra una sencilla figura humana ilustrada que imita el movimiento que realiza el usuario. La parte específica del cuerpo que se trata de estimular viene destacada en color amarillo. De este modo, el usuario se ve a sí mismo en movimiento (gracias a la información recogida con el sensor externo) dentro de un espacio de 360º. Alrededor de esta figura se muestra una línea discontinua la cual indica la posición final del movimiento que debe realizar. El sensor es capaz de recoger parámetros como la velocidad de los movimientos, la aceleración, o grados de inclinación, por lo que el usuario podrá ir viendo en su pantalla su evolución con respecto a los diferentes datos que se registran.',
+        's08.p2': 'Para optimizar la experiencia, se diseñan los entornos en los que se encuentra virtualmente el usuario, para ubicarlo en espacios que, gracias a las investigaciones realizadas, sabemos que pueden tener efectos beneficiosos para su salud como por ejemplo, la naturaleza.',
+        's08.image2.alt': 'Instrucción para colocar el dispositivo en posición horizontal e introducirlo en las gafas de realidad virtual, junto a la fotografía del ejercicio corporal en exteriores',
+        's08.image3.alt': 'Boceto de ejercicio facial con brazos levantados sobre fondo amarillo y aplicación del mismo ejercicio corporal superpuesto sobre una fotografía en exteriores',
+
+        's09.eyebrow': 'Solución',
+        's09.heading': 'Una ayuda para nuestros profesionales y pacientes',
+        's09.image1.alt': 'Mockup de un iPad mostrando la pantalla de Seguimiento de la aplicación',
+        's09.image2.alt': 'Mockup de un iPad mostrando la pantalla de Inicio y un iPhone con la pantalla de inicio de sesión, solicitando DNI y contraseña',
+        's09.image3.alt': 'Cinco mockups de iPhone mostrando distintas pantallas de la aplicación SISDEVA: portada, inicio, seguimiento, ejercicio de mano y ejercicio orofacial',
+        's09.label1': 'Punto final',
+        's09.p1': 'El desarrollo de este proyecto nos ayuda a encontrar aplicación a los diferentes conocimientos y habilidades adquiridas a lo largo del grado. Tratándose de un proyecto que abarca diversas ramas del campo del diseño, nos ha servido para conocer diferentes modos de actuación y comprender la repercusión que llega a tener el proceso de investigación. Nos ha hecho conscientes de la importancia del flujo de trabajo tanto individual como en grupo, acentuando la relevancia de valores como la cooperación, el trabajo en equipo, y el compromiso.',
+        's09.p2': 'El proyecto que se presenta, aporta la visión del asunto y avanza un prototipo de solución desde el punto de vista del diseño social. Esta idea para materializarse de una forma eficaz, precisará los aportes de expertos multidisciplinares, tanto en el ámbito sanitario como tecnológico. Esta convergencia de conocimientos de diferentes disciplinas especializadas, haría viable el producto pudiendo llegar a tener resultados visibles en una hipotética aplicación.',
+        's09.label2': 'Funcionalidades<br class="hidden md:block"> entregadas',
+        's09.item1.title': 'Experiencia inmersiva guiada',
+        's09.item1.body': 'A través de las gafas de realidad virtual, el paciente recorre el procedimiento paso a paso en primera persona, visualizando cada etapa antes de vivirla en la consulta real. Esta experiencia guiada reduce la incertidumbre y ayuda a que la persona llegue a la cita con una idea clara de lo que va a suceder.',
+        's09.item2.title': 'Lenguaje visual accesible',
+        's09.item2.body': 'Sustituimos el vocabulario clínico, a menudo complejo para el paciente, por ilustraciones sencillas y códigos visuales claros, como el uso del color amarillo para señalar la parte del cuerpo implicada en cada ejercicio. De este modo, la información se vuelve comprensible independientemente de los conocimientos médicos previos del usuario.',
+        's09.item3.title': 'Apoyo al profesional sanitario',
+        's09.item3.body': 'La herramienta funciona como apoyo durante la consulta, permitiendo al profesional sanitario reforzar sus explicaciones con contenido visual sin necesidad de alargar el tiempo de la cita. De esta forma, el paciente sale con una comprensión más completa del procedimiento sin que ello suponga una carga adicional para el equipo médico.',
+        's09.image4.alt': 'Mockup de una persona sujetando un móvil con la ficha de SISDEVA abierta en la App Store',
+        's09.image5.alt': 'Mockup de la página web de SISDEVA mostrada en un ordenador de sobremesa, un portátil y un móvil',
+        's09.image6.alt': 'Anuncio publicitario de SISDEVA en una estación de metro, con el mensaje 8 de cada 10 nos dan las gracias',
+        's09.image7.alt': 'Variaciones del logotipo de SISDEVA en distintos colores y fondos',
+
+        's10.eyebrow': 'Aprendizajes clave',
+        's10.heading': 'Qué me dejó este proyecto',
+        's10.p1': 'SISDEVA me dejó un compromiso claro con el diseño social: entender que el diseño puede ser una herramienta real de ayuda en el sector sanitario, y no solo un ejercicio estético. Trabajar en un contexto tan sensible como la salud me obligó a diseñar con cuidado, pensando siempre en las personas que estarían al otro lado, y me hizo valorar la tecnología inmersiva no como un fin en sí misma, sino como un medio al servicio de quien la usa. Por encima de todo, este proyecto reforzó mi visión del diseñador como un perfil multidisciplinar, capaz de dialogar con profesionales de otros campos para que una idea llegue a convertirse en una solución viable.',
+
+        'cta.eyebrow': 'Has llegado al final',
+        'cta.heading': '¿Quieres ver más proyectos?',
+        'cta.next': 'Continuar con SWAP',
+        'cta.back': 'Volver a todos los proyectos',
+      },
+      en: {
+        'nav.about': 'About',
+        'nav.contact': 'Contact',
+        'nav.menuToggle': 'Open menu',
+        'meta.title': 'SISDEVA · Javier Díaz',
+        'meta.description': 'Case study: SISDEVA, a virtual reality system designed to improve communication between healthcare staff and patients.',
+        'breadcrumb.back': '← All projects',
+        'hero.title': 'SISDEVA: a digital assessment and assistance system',
+        'hero.subtitle': 'A system designed to improve communication between healthcare staff and patients, using virtual reality to explain complex procedures in an understandable way.',
+        'hero.role.label': 'Role',
+        'hero.role.value': 'Student',
+        'hero.client.label': 'Client',
+        'hero.client.value': 'Canary Islands Health Service',
+        'hero.year.label': 'Year',
+        'hero.year.value': '2021',
+        'hero.team.label': 'Team',
+        'hero.team.value': 'Yerimay Betancourt, Javier Díaz, Paula Jubera and Ana Ramos',
+        'hero.tag1': 'Virtual Reality',
+        'hero.tag2': 'Digital health',
+        'hero.tag3': 'UX Research',
+        'hero.carousel.alt1': 'Person using a virtual reality headset with the SISDEVA brand',
+        'hero.carousel.alt2': 'Person holding a phone with an illustration of a face on screen',
+        'hero.carousel.alt3': 'Person holding a tablet with a mockup of the SISDEVA contact screen',
+        'carousel.prev': 'Previous image',
+        'carousel.next': 'Next image',
+        'carousel.dot1': 'Go to image 1',
+        'carousel.dot2': 'Go to image 2',
+        'carousel.dot3': 'Go to image 3',
+        'carousel.dot4': 'Go to image 4',
+
+        's01.eyebrow': 'Starting point',
+        's01.heading': 'What need shaped this project',
+        's01.label1': 'Context',
+        's01.p1': 'Parkinson’s patients receive an assessment of their disease progression in a discontinuous way, only when they travel to a medical appointment. What’s more, these in-person appointments can be limited by space and time constraints. Even so, it is the only way they have of receiving their rehabilitation treatments.',
+        's01.item1.title': 'Information that is hard to understand',
+        's01.item1.body': 'Clinical language left patients without a clear picture of what was about to happen.',
+        's01.item2.title': 'Anxiety about the procedure',
+        's01.item2.body': 'Uncertainty about the process created fear and led to poorer treatment adherence.',
+        's01.item3.title': 'Limited time during appointments',
+        's01.item3.body': 'Healthcare staff did not have enough time to explain everything in detail.',
+
+        's02.eyebrow': 'Concept',
+        's02.heading': 'Origins of the project',
+        's02.label1': 'Approach',
+        's02.p1': 'The project grew out of concerns shared by the four members of the working group about the social dimension of design. Far from viewing our discipline as a purely artistic pursuit, we believe in design’s capacity to fit into a multidisciplinary context thanks to its enormous versatility. In this way, we set out to use design as the mechanism able to bring together the interests of the parties involved in a given activity, helping each one reach their individual goals.',
+        's02.label2': 'Objectives',
+        's02.p2': 'The main objective was to use design tools and new technologies to propose improvements to specific services within the healthcare field.',
+        's02.item1.title': 'Interactive communication platform',
+        's02.item1.body': 'Propose an interactive communication platform that gives patients autonomy by letting them access treatments from home.',
+        's02.item2.title': 'Assessment, treatment and monitoring',
+        's02.item2.body': 'Use that platform to make it easier for healthcare staff to assess, treat and monitor conditions.',
+        's02.item3.title': 'Interactive treatments using virtual reality',
+        's02.item3.body': 'Implement new interactive treatments that combine graphic design with virtual-reality technology as rehabilitation therapies.',
+        's02.item4.title': 'Patient motivation',
+        's02.item4.body': 'Boost patient motivation by letting them track and stay aware of their own progress through monitoring systems.',
+
+        's03.eyebrow': 'Research',
+        's03.heading': 'Analysis and benchmark',
+        's03.label1': 'Primary research',
+        's03.p1': 'Once the problem to study was defined, we dug into research, precedents and publications related to the topic at hand, in order to properly define the project’s direction and explore possible lines of research.',
+        's03.label2': 'Design and science',
+        's03.p2': 'Technology and design, separately or together, can offer services or resources that ease the work and stay of both professionals and patients, ensuring clear and effective communication. This shows the wide range of possible interventions that we, as designers, need to consider when developing our project.',
+        's03.item1.title': 'Neurofit (2019)',
+        's03.item1.body': 'Created by the Curemos el Parkinson Foundation and UCB together with Nerea Foncea. It includes rehabilitation exercises and advice on adapting the home.',
+        's03.item2.title': 'Apparkinson',
+        's03.item2.body': 'Developed through the Innova Social Programme. Sends medication alerts and practical exercises covering physiotherapy, speech therapy and occupational therapy.',
+        's03.item3.title': 'Párkinson contigo',
+        's03.item3.body': 'Information about the condition and its treatments, with sections for managing medication.',
+        's03.item4.title': 'HOOP',
+        's03.item4.body': 'A platform made up of a mobile app and inertial sensors for the patient, plus a web tool for rehabilitation, communication and monitoring that supports the therapist.',
+        's03.label3': 'What can we do?',
+        's03.p3': 'Some of the ideas that emerged from bringing these findings together include designing digital tools that foster patient autonomy through remote treatments, or designing therapeutic innovations that feel engaging for patients through the use of new technologies.',
+
+        's04.eyebrow': 'Concept analysis',
+        's04.heading': 'Conceptualisation and planning',
+        's04.label1': 'Concept analysis',
+        's04.p1': 'Each member of the group produced an individual concept map with the words they found most closely tied to Parkinson’s. Once we compared notes, we built a much more complete group concept map that combined everyone’s individual perspectives, organised into the clusters we considered most relevant.',
+        's04.carousel.alt1': 'Table of keywords grouped into five categories: social stigma, emotional and sentimental connotations, healthcare, personal relationships and design',
+        's04.carousel.alt2': 'Concept map for the Emotional and sentimental connotations group, featuring the words resilience, motivation, obstacles, progress, autonomy, wellbeing, loneliness and insecurity',
+        's04.carousel.alt3': 'Concept maps for the Social stigma and Design groups, with their respective associated words',
+        's04.caption1': 'Keyword table and concept maps produced from the group analysis.',
+        's04.label2': 'Approach to the graphic project',
+        's04.p2': 'Answering these questions requires a creative problem-solving process. In our case, we turned to the double diamond process, which helps us focus on correctly identifying the problem before starting to come up with effective solutions.',
+        's04.diagram.alt': 'Diagram of the double diamond process: Discover, Define, Develop and Deliver',
+
+        's05.eyebrow': 'Naming',
+        's05.heading': 'The search for the perfect name',
+        's05.label1': 'Approach',
+        's05.p1': 'Naming is right now one of the key elements in promoting and selling products and/or services. It is a fundamental pillar for brands, able to define the space a brand occupies or the audience it targets. That is why choosing a name involved considering several, very different options.',
+        's05.label2': 'Proposals',
+        's05.item1.title': 'Neuring',
+        's05.item1.body': 'Fully tied to neurology, the core field where Parkinson’s disease is treated. After all, this condition is neurodegenerative — it progressively damages and eliminates many of the neurons that let us carry out our everyday movements. This type of naming is classified as evocative: using an existing root (neur-), we add -ing, as in English, to refer to the action of “neuroning,” that is, neural stimulation.',
+        's05.item2.title': 'Yellow',
+        's05.item2.body': 'This name goes beyond a simple label. Yellow is one of the most cheerful colours found across nature’s own colour ranges. Happiness, joy, optimism and stimulation are some of the terms most associated with this hue. At first glance it doesn’t seem related to the project’s philosophy at all, but it is fully tied to this colour’s history in fields such as psychology, neurology and psychiatry. Studies credit it with the ability to act as a neurostimulator, something we kept firmly in mind while developing the project — which is why we used it throughout our therapies until it became the brand’s corporate colour. All of this backstory led us to consider it as the name itself. However, the option was ruled out because of how much of our product’s market sector already uses this colour as a name. To stand out as a product, and avoid confusion, we decided to look for a more distinctive proposal.',
+        's05.item3.title': 'SISDEVA',
+        's05.item3.body': 'This name is an acronym built from Sistema (SIS-) Digital (-D-) de Evaluación (-EV-) y Asistencia (-A) — Digital Assessment and Assistance System. We aimed to build a name using terms that describe our activity and our work within the healthcare field we are addressing. For this proposal, it was essential to consider how easy the term was to pronounce, since acronyms can sometimes result in words that are hard to say or remember.',
+        's05.image.alt': 'Several naming proposals: Neuring, Yellow and SISDEVA, each overlaid on the photograph of the person wearing the virtual reality headset',
+        's05.caption1': 'Several naming proposals',
+
+        's06.eyebrow': 'Visual / UX',
+        's06.heading': 'First graphic materials and mockups',
+        's06.label1': 'Approach',
+        's06.p1': 'As we discovered during research, yellow is a clear neural stimulator that encourages neurotransmission — the process of sending information from the brain to different parts of the body so they can perform a given action. We therefore felt this colour needed to take centre stage within the project’s visual codes, something that could set the identity apart from other brands close to or related to the sector.',
+        's06.image1.alt': 'Construction of the SISDEVA logo symbol: the letter S, a DNA helix and a virtual reality headset combine to form the brand icon',
+        's06.image2.alt': 'Illustrations for the orofacial treatment: two illustrated faces with their lips highlighted in yellow',
+        's06.caption1': 'Illustrations for the orofacial treatment',
+        's06.label2': 'Digital therapies',
+        's06.p2': 'Among our various objectives is encouraging autonomous training for patients. That is why we developed a series of exercises in the form of digital therapies that stimulate certain facial and body movements, to be built into one of the app’s sections. A number of steps were carried out to make sure they worked correctly. Within digital therapies, two modes were then proposed for the product’s UX:',
+        's06.list1.item1': 'Using the software directly on the mobile device / tablet',
+        's06.list1.item2': 'Using a VR headset to carry out activities that complement this mode',
+        's06.item1.title': 'Sketches',
+        's06.item1.body': 'Different sketches were needed to arrive at an illustration style suited to the project. In this case, we chose a simple line-drawing style, simplifying the character’s facial features in the facial exercises to keep only the essentials, and removing the face altogether in the body exercises to focus attention on the parts that need it most.',
+        's06.item2.title': 'Colour choices',
+        's06.item2.body': 'To unify all the exercises, we settled on white, black, grey and yellow. The approach was to outline in black, colour the backgrounds grey, render the body or face in white, and highlight the body part being exercised in yellow to draw attention to it. We also took inspiration from a filter on the Chinese version of TikTok, which mimics certain movements outlined by a solid or dashed line that lights up green once performed correctly. We applied this same idea, adding a green checkmark to let users know they got it right.',
+        's06.item3.title': 'Creating the gifs',
+        's06.item3.body': 'To create the gifs, we filmed some of the movements we wanted to represent in the therapies. Each recording was brought into Photoshop to export a low-frame-rate image sequence, which was then rotoscoped for each movement in Procreate on the iPad. After drawing an average of 13 frames per exercise, the sequence was exported back to Photoshop to build the animation.',
+
+        's07.eyebrow': 'Architecture and user experience',
+        's07.heading': 'Structuring the app’s access and navigation',
+        's07.image1.alt': 'Diagram of the app’s information architecture, from Login through the Schedule, Activity, Progress, Contact and Profile sections',
+        's07.label1': 'Access and registration',
+        's07.p1': 'The app’s usage structure starts from the login screen. Since this app is intended for healthcare purposes, registration is recommended and controlled by a professional. To sign in, the user must enter their ID number and a code that the healthcare staff overseeing their treatment will have provided beforehand. This way, the app would automatically link to patients’ medical records, making it easier to keep their data continuously up to date.',
+        's07.image2.alt': 'Mockup of the login screen, with fields for username (ID number) and password, shown in landscape and portrait formats',
+        's07.label2': 'Post-registration experience',
+        's07.p2': 'From the standard user profile of our app, arrived at using the buyer persona tool, we draw a series of conclusions that are essential for building the app’s core structure. The average age of the people who would use our app matches the average age of people living with Parkinson’s, that is, 60 years old. This is a vital piece of information at this stage of the process, since — as the app is not aimed at young people — we have to factor in accessibility considerations around image and text sizes, and the difficulty of learning to use it fluently. In addition, since these are degenerative diseases with no cure yet, we have to keep firmly in mind that the app will need to be used daily over a long period of time without becoming boring or off-putting — in other words, it must be “friendly” in both function and appearance to encourage continued use.',
+        's07.carousel.alt1': 'High-fidelity wireframe of the Activity screen, with four cards: Speech Therapy, Mindfulness, Mobility and Cognitive Training',
+        's07.carousel.alt2': 'High-fidelity wireframe of the Progress screen, showing activity time, achievements and daily steps',
+        's07.carousel.alt3': 'High-fidelity wireframe of the Home screen, with a calendar, notes, to-dos and shortcuts to Activity, Progress and Contact',
+        's07.carousel.alt4': 'High-fidelity wireframe of the Speech Therapy exercise, showing the sketch of the movement to imitate alongside the user’s webcam feed performing it',
+        's07.caption1': 'High-fidelity wireframes',
+        's07.label3': 'Emotion and motivation',
+        's07.p3': 'Above all, the user should feel satisfaction and enjoyment while using the app. It would also help for them to feel challenged, in a positive sense, so they fully and consciously engage with the challenge of improving and progressing, boosting their involvement and motivation with their treatments. As noted earlier, the app needs to address the three emotional levels of the user: visceral (being pleasant and visually appealing), behavioural (making the user feel satisfied and independent) and reflective (leading them to conclude that the app has a positive impact not just on their condition, but on their life).',
+        's07.image3.alt': 'Mockups of the app’s Progress and Activity screens, showing time statistics, achievements and daily steps, plus shortcuts to Speech Therapy, Mindfulness, Mobility and Cognitive Training',
+        's07.label4': 'Therapeutic styles',
+        's07.p4': 'Each exercise is represented with a close-up illustration of the body area being worked on, always over the same corporate grey background and using the same visual language: black outline, white fill and black silhouette. The specific part to be stimulated is highlighted in the corporate yellow, and in mobility exercises a dashed line also marks out the path of the movement the patient needs to perform.',
+        's07.avatar1.alt': 'Illustration of the virtual assistant with lips highlighted in yellow for the dysphagia orofacial exercise',
+        's07.avatar1.title': 'Exercise for dysphagia',
+        's07.avatar1.body': 'Parkinson’s patients sometimes experience difficulty swallowing, so the muscles that aid swallowing and chewing are stimulated.',
+        's07.avatar2.alt': 'Illustration of the virtual assistant smiling with lips highlighted in yellow for the facial masking orofacial exercise',
+        's07.avatar2.title': 'Exercise for facial masking',
+        's07.avatar2.body': 'Parkinson’s patients sometimes experience a loss of facial expression and gestural language, so the facial muscles are stimulated.',
+        's07.avatar3.alt': 'Illustration of a human figure with the shoulder and arm highlighted in yellow and a dashed line indicating the movement to perform',
+        's07.avatar3.title': 'Body mobility exercise',
+        's07.avatar3.body': 'Parkinson’s patients sometimes experience stiffness when performing certain movements. With this exercise, the patient stimulates specific parts of the body, raising their arms until they form a 90º angle to stimulate movement and rehabilitate the area.',
+
+        's08.eyebrow': 'VR experience',
+        's08.heading': 'Designing the experience inside the VR headset',
+        's08.image1.alt': 'Person wearing a virtual reality headset moving their hands in front of them',
+        's08.label1': 'Approach',
+        's08.p1': 'The screen shows a simple illustrated human figure that mimics the movement the user is performing. The specific body part being stimulated is highlighted in yellow. This way, the user sees themself in motion (thanks to the data collected by the external sensor) within a 360º space. Around this figure, a dashed line shows the final position of the movement they need to complete. The sensor can capture parameters such as movement speed, acceleration and angles of inclination, so the user can track their progress on screen against the different data being recorded.',
+        's08.p2': 'To optimise the experience, the environments where the user is virtually placed are designed to locate them in settings that, thanks to our research, we know can have beneficial effects on their health — nature, for example.',
+        's08.image2.alt': 'Instructions for placing the device horizontally and inserting it into the virtual reality headset, alongside a photograph of the body exercise outdoors',
+        's08.image3.alt': 'Sketch of a facial exercise with raised arms on a yellow background, and the same body exercise applied over an outdoor photograph',
+
+        's09.eyebrow': 'Solution',
+        's09.heading': 'A helping hand for our professionals and patients',
+        's09.image1.alt': 'Mockup of an iPad showing the app’s Progress screen',
+        's09.image2.alt': 'Mockup of an iPad showing the Home screen and an iPhone showing the login screen, requesting ID number and password',
+        's09.image3.alt': 'Five iPhone mockups showing different screens of the SISDEVA app: cover, home, progress, hand exercise and orofacial exercise',
+        's09.label1': 'Final point',
+        's09.p1': 'Developing this project helped us apply the different knowledge and skills we gained throughout the degree. As a project spanning several branches of design, it helped us understand different ways of working and grasp the impact that the research process can have. It made us aware of how important individual and group workflow is, underlining the value of qualities such as cooperation, teamwork and commitment.',
+        's09.p2': 'This project offers a perspective on the issue and puts forward a prototype solution from a social design standpoint. To become a reality in an effective way, this idea would need input from multidisciplinary experts in both the healthcare and technology fields. Bringing together knowledge from these different specialised disciplines would make the product viable, with the potential to deliver visible results in a hypothetical app.',
+        's09.label2': 'Features<br class="hidden md:block"> delivered',
+        's09.item1.title': 'Guided immersive experience',
+        's09.item1.body': 'Through the virtual reality headset, the patient walks through the procedure step by step in first person, viewing each stage before experiencing it in the real appointment. This guided experience reduces uncertainty and helps the person arrive at their appointment with a clear idea of what is about to happen.',
+        's09.item2.title': 'Accessible visual language',
+        's09.item2.body': 'We replaced clinical vocabulary, often complex for patients, with simple illustrations and clear visual codes, such as using yellow to highlight the body part involved in each exercise. This way, the information becomes understandable regardless of the user’s prior medical knowledge.',
+        's09.item3.title': 'Support for healthcare professionals',
+        's09.item3.body': 'The tool works as support during the appointment, letting healthcare professionals reinforce their explanations with visual content without needing to extend the appointment time. As a result, the patient leaves with a fuller understanding of the procedure without adding any extra burden to the medical team.',
+        's09.image4.alt': 'Mockup of a person holding a phone with the SISDEVA listing open in the App Store',
+        's09.image5.alt': 'Mockup of the SISDEVA website shown on a desktop computer, a laptop and a phone',
+        's09.image6.alt': 'SISDEVA advertisement in a metro station, with the message 8 out of 10 thank us',
+        's09.image7.alt': 'Variations of the SISDEVA logo in different colours and backgrounds',
+
+        's10.eyebrow': 'Key learnings',
+        's10.heading': 'What this project left me with',
+        's10.p1': 'SISDEVA left me with a clear commitment to social design: understanding that design can be a real tool for good in healthcare, not just an aesthetic exercise. Working in a context as sensitive as health forced me to design carefully, always thinking about the people on the other end, and it made me value immersive technology not as an end in itself, but as a means at the service of whoever uses it. Above all, this project reinforced my view of the designer as a multidisciplinary profile, able to engage with professionals from other fields so that an idea can become a viable solution.',
+
+        'cta.eyebrow': 'You’ve reached the end',
+        'cta.heading': 'Want to see more projects?',
+        'cta.next': 'Continue with SWAP',
+        'cta.back': 'Back to all projects',
+      },
+    };
+
+    function detectLang() {
+      const supported = Object.keys(translations);
+      const candidates = (navigator.languages && navigator.languages.length)
+        ? navigator.languages
+        : [navigator.language || 'en'];
+      for (const candidate of candidates) {
+        const short = candidate.slice(0, 2).toLowerCase();
+        if (supported.includes(short)) return short;
+      }
+      return 'en';
+    }
+
+    function applyTranslations(lang) {
+      const dict = translations[lang] || translations.en;
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        const value = dict[key];
+        if (value === undefined) return;
+
+        if (el.hasAttribute('data-i18n-attr')) {
+          el.setAttribute(el.getAttribute('data-i18n-attr'), value);
+        } else {
+          el.innerHTML = value;
+        }
+      });
+    }
+
+    function updateLangButtons(lang) {
+      document.querySelectorAll('.lang-btn').forEach((btn) => {
+        const active = btn.getAttribute('data-lang') === lang;
+        btn.classList.toggle('bg-ink', active);
+        btn.classList.toggle('text-paper', active);
+        btn.classList.toggle('text-ink/50', !active);
+        btn.classList.toggle('hover:text-ink', !active);
+        btn.setAttribute('aria-pressed', String(active));
+      });
+    }
+
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      applyTranslations(lang);
+      updateLangButtons(lang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach((btn) => {
+      btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang')));
+    });
+
+    setLang(localStorage.getItem('lang') || detectLang());
     document.body.classList.add('is-ready');
 
     // ===== Copiar email =====
