@@ -255,13 +255,6 @@
         <h2 class="text-2xl md:text-3xl font-semibold tracking-tight" data-i18n="work.heading">Proyectos seleccionados</h2>
       </div>
 
-      <div class="reveal flex flex-wrap items-center gap-2 mb-6" role="group" aria-label="Filtrar proyectos">
-        <button type="button" class="work-filter-btn focus-ring text-xs font-medium px-4 py-1.5 rounded-full border border-ink bg-ink text-paper transition-colors" data-filter="all" aria-pressed="true" data-i18n="work.filter.all">Todos</button>
-        <button type="button" class="work-filter-btn focus-ring text-xs font-medium px-4 py-1.5 rounded-full border border-ink/15 text-ink/70 hover:bg-latte/40 hover:border-latte-dark hover:text-ink transition-colors" data-filter="freightos" aria-pressed="false" data-i18n="work.filter.freightos">Freightos</button>
-        <button type="button" class="work-filter-btn focus-ring text-xs font-medium px-4 py-1.5 rounded-full border border-ink/15 text-ink/70 hover:bg-latte/40 hover:border-latte-dark hover:text-ink transition-colors" data-filter="universidad" aria-pressed="false" data-i18n="work.filter.universidad">Universidad</button>
-        <button type="button" class="work-filter-btn focus-ring text-xs font-medium px-4 py-1.5 rounded-full border border-ink/15 text-ink/70 hover:bg-latte/40 hover:border-latte-dark hover:text-ink transition-colors" data-filter="master" aria-pressed="false" data-i18n="work.filter.master">Master</button>
-      </div>
-
       <div id="work-grid" class="grid sm:grid-cols-2 gap-x-8 gap-y-16">
 
         <!-- Vertical Menu -->
@@ -1023,39 +1016,6 @@
       goTo(0);
       startAutoplay();
     }
-
-    // Filtro de proyectos
-    (function () {
-      const filterBtns = Array.from(document.querySelectorAll('.work-filter-btn'));
-      const projects = Array.from(document.querySelectorAll('#work-grid > article'));
-      if (!filterBtns.length || !projects.length) return;
-
-      const activeClasses = ['bg-ink', 'text-paper', 'border-ink'];
-      const inactiveClasses = ['border-ink/15', 'text-ink/70', 'hover:bg-latte/40', 'hover:border-latte-dark', 'hover:text-ink'];
-
-      function setActiveBtn(btn) {
-        filterBtns.forEach((b) => {
-          const isActive = b === btn;
-          b.classList.remove(...activeClasses, ...inactiveClasses);
-          b.classList.add(...(isActive ? activeClasses : inactiveClasses));
-          b.setAttribute('aria-pressed', String(isActive));
-        });
-      }
-
-      function applyFilter(filter) {
-        projects.forEach((article) => {
-          const show = filter === 'all' || article.dataset.category === filter;
-          article.classList.toggle('hidden', !show);
-        });
-      }
-
-      filterBtns.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          setActiveBtn(btn);
-          applyFilter(btn.dataset.filter);
-        });
-      });
-    })();
 
     initCarousel({
       containerId: 'testimonial-carousel',
