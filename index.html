@@ -68,6 +68,20 @@
     .reveal { opacity: 1; transform: none; }
   }
 
+  @media (prefers-reduced-motion: no-preference) {
+    .preloader-hint {
+      animation: preloader-hint-up 1.6s ease-in-out infinite;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .preloader-hint { opacity: 0.35; }
+  }
+  @keyframes preloader-hint-up {
+    0% { transform: translateY(14px); opacity: 0; }
+    40% { opacity: 0.55; }
+    100% { transform: translateY(-11px); opacity: 0; }
+  }
+
   .focus-ring:focus-visible {
     outline: 2px solid #1A1917;
     outline-offset: 3px;
@@ -169,6 +183,9 @@
   <!-- ===== PRELOADER ===== -->
   <div id="preloader" class="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-paper">
     <span id="preloader-word" class="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tightest text-ink transition-opacity duration-[600ms] ease-in-out">Hola</span>
+    <div class="absolute bottom-10 sm:bottom-14 inset-x-0 flex justify-center pointer-events-none" aria-hidden="true">
+      <div class="preloader-hint w-[5px] h-[11px] rounded-[3px] bg-slate"></div>
+    </div>
   </div>
 
   <!-- ===== NAVBAR ===== -->
