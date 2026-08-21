@@ -68,6 +68,16 @@
     .reveal { opacity: 1; transform: none; }
   }
 
+  .preloader-hint {
+    --hint-start: 14px;
+    --hint-end: -11px;
+  }
+  @media (min-width: 640px) {
+    .preloader-hint {
+      --hint-start: 24px;
+      --hint-end: -20px;
+    }
+  }
   @media (prefers-reduced-motion: no-preference) {
     .preloader-hint {
       animation: preloader-hint-up 1.6s ease-in-out infinite;
@@ -77,9 +87,9 @@
     .preloader-hint { opacity: 0.35; }
   }
   @keyframes preloader-hint-up {
-    0% { transform: translateY(14px); opacity: 0; }
+    0% { transform: translateY(var(--hint-start)); opacity: 0; }
     40% { opacity: 0.55; }
-    100% { transform: translateY(-11px); opacity: 0; }
+    100% { transform: translateY(var(--hint-end)); opacity: 0; }
   }
 
   .focus-ring:focus-visible {
@@ -184,7 +194,7 @@
   <div id="preloader" class="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-paper">
     <span id="preloader-word" class="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tightest text-ink transition-opacity duration-[600ms] ease-in-out">Hola</span>
     <div class="absolute bottom-10 sm:bottom-14 inset-x-0 flex justify-center pointer-events-none" aria-hidden="true">
-      <div class="preloader-hint w-[5px] h-[11px] rounded-[3px] bg-slate"></div>
+      <div class="preloader-hint w-[5px] h-[11px] rounded-[3px] sm:w-[7px] sm:h-[16px] sm:rounded-[4px] bg-slate"></div>
     </div>
   </div>
 
