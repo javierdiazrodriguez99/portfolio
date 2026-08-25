@@ -163,7 +163,7 @@
           Sobre mí
         </h1>
 
-        <a href="javier-diaz-cv.pdf" download class="inline-flex items-center gap-2 text-sm font-medium px-6 py-3.5 rounded-full border border-ink/15 hover:bg-latte/40 hover:border-latte-dark transition-colors focus-ring shrink-0">
+        <a id="cv-download-link" href="javier-diaz-cv-es.pdf" download class="inline-flex items-center gap-2 text-sm font-medium px-6 py-3.5 rounded-full border border-ink/15 hover:bg-latte/40 hover:border-latte-dark transition-colors focus-ring shrink-0">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           <span data-i18n="cv.download">Descargar CV</span>
         </a>
@@ -189,7 +189,7 @@
             En <a href="https://www.freightos.com/" target="_blank" rel="noopener noreferrer" class="underline decoration-ink/30 hover:decoration-ink underline-offset-2 transition-colors focus-ring rounded">Freightos</a> he tenido la oportunidad de crecer desde becario hasta convertirme en Product Designer, trabajando en sistemas de diseño, arquitectura de la información, investigación de usuarios, prototipado, entre un largo etcétera. Pero siempre con el mismo objetivo desde que empecé a estudiar: ayudar a las personas en su día a día a través del diseño.
           </p>
           <div class="flex flex-wrap gap-2">
-            <span class="text-sm px-4 py-2 rounded-full bg-latte/50 text-ink/70" data-i18n="hobby1">Deporte</span>
+            <span class="text-sm px-4 py-2 rounded-full bg-latte/50 text-ink/70" data-i18n="hobby1">Gym / CrossFit</span>
             <span class="text-sm px-4 py-2 rounded-full bg-latte/50 text-ink/70" data-i18n="hobby2">DJ</span>
             <span class="text-sm px-4 py-2 rounded-full bg-latte/50 text-ink/70" data-i18n="hobby3">Videojuegos</span>
             <span class="text-sm px-4 py-2 rounded-full bg-latte/50 text-ink/70" data-i18n="hobby4">Vinilos</span>
@@ -538,7 +538,7 @@
         't9.role': 'Senior UX/UI Designer | 8+ Years in Digital Design | Instructor',
         't10.quote': '"Como PM, valoro a los diseñadores que no se limitan a tomar requisitos, sino que hacen las preguntas correctas, y él tiene un gran ojo para el detalle y una capacidad poco común para simplificar recorridos de usuario complejos. Es colaborativo, está abierto al feedback y muestra un compromiso profundo con el porqué detrás de cada funcionalidad, convirtiéndose rápidamente en una pieza clave para el éxito de nuestro producto."',
         't10.role': 'Product Manager @ Freightos (CRGO)',
-        'hobby1': 'Deporte',
+        'hobby1': 'Gym / CrossFit',
         'hobby2': 'DJ',
         'hobby3': 'Videojuegos',
         'hobby4': 'Vinilos',
@@ -589,7 +589,7 @@
         't9.role': 'Senior UX/UI Designer | 8+ Years in Digital Design | Instructor',
         't10.quote': '"As a PM, I value designers who don\'t just take requirements but ask the right questions, and he has a great eye for detail and a rare ability to simplify difficult user journeys. He is collaborative, open to feedback, and deeply committed to the \'why\' behind every feature, and he quickly became a key contributor to our product\'s success."',
         't10.role': 'Product Manager @ Freightos (CRGO)',
-        'hobby1': 'Sport',
+        'hobby1': 'Gym / CrossFit',
         'hobby2': 'DJing / Mixing music',
         'hobby3': 'Video games',
         'hobby4': 'Vinyl records',
@@ -634,6 +634,11 @@
           el.innerHTML = value;
         }
       });
+
+      const cvLink = document.getElementById('cv-download-link');
+      if (cvLink) {
+        cvLink.href = lang === 'es' ? 'javier-diaz-cv-es.pdf' : 'javier-diaz-cv.pdf';
+      }
     }
 
     function updateLangButtons(lang) {
