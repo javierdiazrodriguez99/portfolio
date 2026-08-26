@@ -1006,9 +1006,8 @@
       }
 
       function startAutoplay() {
-        if (reducedMotion || !hasEnteredView) return;
-        stopAutoplay();
-        timer = setInterval(() => goTo(index + 1), autoplayMs);
+        // Autoplay deshabilitado: navegación solo manual (clic, swipe, scroll).
+        return;
       }
 
       function stopAutoplay() {
