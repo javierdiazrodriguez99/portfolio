@@ -87,25 +87,25 @@
 <body class="bg-paper text-ink antialiased">
 
   <!-- ===== NAVBAR ===== -->
-  <header class="fixed top-0 inset-x-0 z-50 bg-paper/80 backdrop-blur-md border-b border-ink/[0.06]">
-    <nav class="max-w-6xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
+  <header class="fixed top-0 inset-x-0 z-50 bg-paper/80 backdrop-blur-md">
+    <nav class="max-w-[1680px] mx-auto px-6 sm:px-16 h-[68px] sm:h-[136px] flex items-center justify-between">
       <button type="button" id="mobile-menu-toggle" class="sm:hidden focus-ring rounded-md p-1 -ml-1 text-ink" aria-label="Abrir menú" data-i18n="nav.menuToggle" data-i18n-attr="aria-label" aria-expanded="false" aria-controls="mobile-menu">
         <svg id="menu-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         <svg id="menu-icon-close" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
 
-      <a href="../index.html" class="text-lg font-semibold tracking-tight focus-ring rounded absolute left-1/2 -translate-x-1/2 sm:static sm:translate-x-0">
+      <a href="../index.html" class="text-2xl font-semibold tracking-tight focus-ring rounded absolute left-1/2 -translate-x-1/2 sm:static sm:translate-x-0">
         Javier Díaz
       </a>
 
       <div class="hidden sm:flex items-center gap-8">
-        <ul class="flex items-center gap-10 text-base text-slate">
+        <ul class="flex items-center gap-10 text-xl text-slate">
           <li><a href="../sobre-mi.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
           <li><a href="../contacto.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
         </ul>
-        <div class="flex items-center gap-0.5 text-xs font-medium border border-ink/15 rounded-full p-0.5" role="group" aria-label="Seleccionar idioma">
-          <button type="button" class="lang-btn px-2.5 py-1 rounded-full transition-colors" data-lang="es">ES</button>
-          <button type="button" class="lang-btn px-2.5 py-1 rounded-full transition-colors" data-lang="en">EN</button>
+        <div class="flex items-center h-8 gap-0.5 text-lg font-medium border border-ink/15 rounded-full p-0.5" role="group" aria-label="Seleccionar idioma">
+          <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="en">EN</button>
+          <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="es">ES</button>
         </div>
       </div>
 
@@ -118,8 +118,8 @@
         <li><a href="../contacto.html" class="block py-4 focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
       </ul>
       <div class="flex items-center gap-0.5 text-xs font-medium border border-ink/15 rounded-full p-0.5 mx-6 mb-4 w-fit" role="group" aria-label="Seleccionar idioma">
-        <button type="button" class="lang-btn px-3 py-1.5 rounded-full transition-colors" data-lang="es">ES</button>
         <button type="button" class="lang-btn px-3 py-1.5 rounded-full transition-colors" data-lang="en">EN</button>
+        <button type="button" class="lang-btn px-3 py-1.5 rounded-full transition-colors" data-lang="es">ES</button>
       </div>
     </div>
   </header>
@@ -127,16 +127,16 @@
   <main>
 
     <!-- ===== HERO ===== -->
-    <section class="max-w-6xl mx-auto px-6 md:px-10 pt-[104px]">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 pt-[91px] sm:pt-[159px]">
       <a href="../index.html#work" class="reveal is-visible inline-flex items-center gap-2 text-xs font-medium tracking-widest uppercase text-slate hover:text-ink transition-colors focus-ring rounded" data-i18n="breadcrumb.back">
         ← Todos los proyectos
       </a>
 
-      <h1 class="reveal is-visible mt-6 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tightest leading-[1.08]" data-i18n="hero.title">
+      <h1 class="reveal is-visible mt-6 text-4xl sm:text-5xl md:text-[clamp(3.75rem,2.9167rem+1.3021vw,5rem)] font-semibold tracking-tightest leading-[1.08]" data-i18n="hero.title">
         SWAP
       </h1>
 
-      <p class="reveal is-visible mt-6 text-lg text-slate leading-relaxed" data-i18n="hero.subtitle">
+      <p class="reveal is-visible mt-6 text-xl md:text-[clamp(1.25rem,1.0833rem+0.2604vw,1.5rem)] text-slate leading-relaxed" data-i18n="hero.subtitle">
         Diseño de un servicio digital de innovación social para Inditex, enfocado en la ODS nº 12 para garantizar los modelos de consumo y producción sostenible.
       </p>
 
@@ -148,19 +148,19 @@
       <div class="reveal is-visible mt-12 pt-8 border-t border-ink/[0.08] grid sm:grid-cols-4 gap-8">
         <div>
           <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.role.label">Rol</p>
-          <p class="text-sm font-medium text-ink" data-i18n="hero.role.value">Estudiante</p>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink" data-i18n="hero.role.value">Estudiante</p>
         </div>
         <div>
           <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.client.label">Cliente</p>
-          <p class="text-sm font-medium text-ink" data-i18n="hero.client.value">Inditex (ficticio)</p>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink" data-i18n="hero.client.value">Inditex (ficticio)</p>
         </div>
         <div>
           <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.year.label">Año</p>
-          <p class="text-sm font-medium text-ink" data-i18n="hero.year.value">2022</p>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink" data-i18n="hero.year.value">2022</p>
         </div>
         <div>
           <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.team.label">Equipo</p>
-          <p class="text-sm font-medium text-ink" data-i18n="hero.team.value">Oriol Colchón, Javier Díaz, Berta Junyent y Júlia Sala</p>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink" data-i18n="hero.team.value">Oriol Colchón, Javier Díaz, Berta Junyent y Júlia Sala</p>
         </div>
       </div>
 
@@ -187,12 +187,12 @@
     </section>
 
     <!-- ===== 01 · STARTING POINT ===== -->
-    <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">01</span>
         <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s01.eyebrow">Punto de partida</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s01.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s01.heading">
         Por qué necesitábamos un nuevo enfoque
       </h2>
 
@@ -205,20 +205,20 @@
 
       <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 pt-10 border-t border-ink/[0.08]">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
-          <h3 class="text-lg font-medium mb-2" data-i18n="s01.card1.title">El placer de lo nuevo</h3>
-          <p class="text-sm text-slate leading-relaxed" data-i18n="s01.card1.quote">
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s01.card1.title">El placer de lo nuevo</h3>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s01.card1.quote">
             "A la gente le encanta comprar y tener ropa nueva, le hace sentir bien".
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg font-medium mb-2" data-i18n="s01.card2.title">Urgencia de temporada</h3>
-          <p class="text-sm text-slate leading-relaxed" data-i18n="s01.card2.quote">
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s01.card2.title">Urgencia de temporada</h3>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s01.card2.quote">
             "Cambios de temporada = urgencia y consumismo".
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg font-medium mb-2" data-i18n="s01.card3.title">Reciclaje sin prioridad institucional</h3>
-          <p class="text-sm text-slate leading-relaxed" data-i18n="s01.card3.quote">
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s01.card3.title">Reciclaje sin prioridad institucional</h3>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s01.card3.quote">
             "No se prioriza a nivel institucional el reciclaje de la ropa".
           </p>
         </div>
@@ -226,12 +226,12 @@
     </section>
 
     <!-- ===== 02 · RESEARCH ===== -->
-    <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">02</span>
         <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s02.eyebrow">Research</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s02.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s02.heading">
         Cómo investigamos antes de tocar el diseño
       </h2>
 
@@ -244,16 +244,16 @@
 
       <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 mb-14">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
-          <h3 class="text-lg font-medium mb-2" data-i18n="s02.card1.title">Hechos</h3>
-          <p class="text-sm text-slate leading-relaxed" data-i18n="s02.card1.text">Recopilamos hechos observados sobre cómo se relaciona la gente con la ropa y el consumo: desde el placer de comprar algo nuevo hasta la falta de prioridad institucional en el reciclaje textil.</p>
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s02.card1.title">Hechos</h3>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s02.card1.text">Recopilamos hechos observados sobre cómo se relaciona la gente con la ropa y el consumo: desde el placer de comprar algo nuevo hasta la falta de prioridad institucional en el reciclaje textil.</p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg font-medium mb-2" data-i18n="s02.card2.title">Retos</h3>
-          <p class="text-sm text-slate leading-relaxed" data-i18n="s02.card2.text">Reformulamos esos hechos en preguntas de tipo "¿cómo podríamos...?", para abrir el abanico de posibles soluciones sin cerrarnos a una única dirección.</p>
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s02.card2.title">Retos</h3>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s02.card2.text">Reformulamos esos hechos en preguntas de tipo "¿cómo podríamos...?", para abrir el abanico de posibles soluciones sin cerrarnos a una única dirección.</p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg font-medium mb-2" data-i18n="s02.card3.title">Ideas</h3>
-          <p class="text-sm text-slate leading-relaxed" data-i18n="s02.card3.text">A partir de los retos, generamos ideas disruptivas: desde una nueva línea de ropa de segunda mano hasta un servicio de suscripción que sustituyera la venta tradicional.</p>
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s02.card3.title">Ideas</h3>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s02.card3.text">A partir de los retos, generamos ideas disruptivas: desde una nueva línea de ropa de segunda mano hasta un servicio de suscripción que sustituyera la venta tradicional.</p>
         </div>
       </div>
 
@@ -279,7 +279,7 @@
           <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="3" aria-label="Ir a la imagen 4" data-i18n="carousel.dot4" data-i18n-attr="aria-label"></button>
         </div>
       </div>
-      <p class="reveal text-xs text-slate mt-3" data-i18n="s02.caption1">Sesiones de trabajo en equipo, volcando hechos, retos e ideas en un mural de papel.</p>
+      <p class="reveal text-sm text-slate mt-3" data-i18n="s02.caption1">Sesiones de trabajo en equipo, volcando hechos, retos e ideas en un mural de papel.</p>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16 mt-16 md:mt-20">
         <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s02.label2">Sesiones de trabajo en equipo</p>
@@ -291,43 +291,43 @@
       <div class="reveal aspect-[16/9] rounded-2xl overflow-hidden bg-white">
         <img src="swap-sessions-4.webp" alt="Resultados de la encuesta a 160 personas sobre hábitos de consumo y sostenibilidad" data-i18n="s02.surveyImage.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10">
       </div>
-      <p class="reveal text-xs text-slate mt-3" data-i18n="s02.caption2">Resultados de la encuesta a 160 personas sobre hábitos de consumo y sostenibilidad.</p>
+      <p class="reveal text-sm text-slate mt-3" data-i18n="s02.caption2">Resultados de la encuesta a 160 personas sobre hábitos de consumo y sostenibilidad.</p>
 
       <div class="reveal mb-16 mt-16 md:mt-20">
         <p class="text-xs font-medium tracking-widest uppercase text-slate mb-8" data-i18n="s02.conclusions.label">Conclusiones</p>
 
         <div class="grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 pt-10 border-t border-ink/[0.08]">
           <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
-            <h3 class="text-lg font-medium mb-2" data-i18n="s02.conclusions.card1.title">Ingresos bajos en jóvenes</h3>
-            <p class="text-sm text-slate leading-relaxed" data-i18n="s02.conclusions.card1.quote">"La mayoría de jóvenes menores de 30 años tienen menos de 20.000€ de ingresos anuales".</p>
+            <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s02.conclusions.card1.title">Ingresos bajos en jóvenes</h3>
+            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s02.conclusions.card1.quote">"La mayoría de jóvenes menores de 30 años tienen menos de 20.000€ de ingresos anuales".</p>
           </div>
           <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-            <h3 class="text-lg font-medium mb-2" data-i18n="s02.conclusions.card2.title">Online y físico, sin preferencia clara</h3>
-            <p class="text-sm text-slate leading-relaxed" data-i18n="s02.conclusions.card2.quote">"No hay una clara preferencia entre comprar en tienda online y en tienda física".</p>
+            <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s02.conclusions.card2.title">Online y físico, sin preferencia clara</h3>
+            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s02.conclusions.card2.quote">"No hay una clara preferencia entre comprar en tienda online y en tienda física".</p>
           </div>
           <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-            <h3 class="text-lg font-medium mb-2" data-i18n="s02.conclusions.card3.title">Compra por temporada</h3>
-            <p class="text-sm text-slate leading-relaxed" data-i18n="s02.conclusions.card3.quote">"La mayoría de usuarios compra una vez por temporada".</p>
+            <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s02.conclusions.card3.title">Compra por temporada</h3>
+            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s02.conclusions.card3.quote">"La mayoría de usuarios compra una vez por temporada".</p>
           </div>
           <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
-            <h3 class="text-lg font-medium mb-2" data-i18n="s02.conclusions.card4.title">Apps de moda muy extendidas</h3>
-            <p class="text-sm text-slate leading-relaxed" data-i18n="s02.conclusions.card4.quote">"Más de la mitad de usuarios tiene apps de moda".</p>
+            <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s02.conclusions.card4.title">Apps de moda muy extendidas</h3>
+            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s02.conclusions.card4.quote">"Más de la mitad de usuarios tiene apps de moda".</p>
           </div>
           <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-            <h3 class="text-lg font-medium mb-2" data-i18n="s02.conclusions.card5.title">Precio y diseño ante todo</h3>
-            <p class="text-sm text-slate leading-relaxed" data-i18n="s02.conclusions.card5.quote">"Los factores que más se tienen en cuenta a la hora de comprar ropa son, principalmente, el precio y, después, el diseño".</p>
+            <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s02.conclusions.card5.title">Precio y diseño ante todo</h3>
+            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s02.conclusions.card5.quote">"Los factores que más se tienen en cuenta a la hora de comprar ropa son, principalmente, el precio y, después, el diseño".</p>
           </div>
           <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-            <h3 class="text-lg font-medium mb-2" data-i18n="s02.conclusions.card6.title">Poco consumo de segunda mano</h3>
-            <p class="text-sm text-slate leading-relaxed" data-i18n="s02.conclusions.card6.quote">"La mayoría de usuarios no consume ropa de segunda mano".</p>
+            <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s02.conclusions.card6.title">Poco consumo de segunda mano</h3>
+            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s02.conclusions.card6.quote">"La mayoría de usuarios no consume ropa de segunda mano".</p>
           </div>
           <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
-            <h3 class="text-lg font-medium mb-2" data-i18n="s02.conclusions.card7.title">Casi nadie fabrica su propia ropa</h3>
-            <p class="text-sm text-slate leading-relaxed" data-i18n="s02.conclusions.card7.quote">"Casi ningún usuario se ha fabricado alguna prenda".</p>
+            <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s02.conclusions.card7.title">Casi nadie fabrica su propia ropa</h3>
+            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s02.conclusions.card7.quote">"Casi ningún usuario se ha fabricado alguna prenda".</p>
           </div>
           <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-            <h3 class="text-lg font-medium mb-2" data-i18n="s02.conclusions.card8.title">Desconocimiento de la línea sostenible</h3>
-            <p class="text-sm text-slate leading-relaxed" data-i18n="s02.conclusions.card8.quote">"La mayoría desconoce que Inditex tiene una línea sostenible".</p>
+            <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s02.conclusions.card8.title">Desconocimiento de la línea sostenible</h3>
+            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s02.conclusions.card8.quote">"La mayoría desconoce que Inditex tiene una línea sostenible".</p>
           </div>
         </div>
       </div>
@@ -357,7 +357,7 @@
           <button type="button" class="benchmark-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2" data-i18n="carousel.dot2" data-i18n-attr="aria-label"></button>
         </div>
       </div>
-      <p class="reveal text-xs text-slate mt-3" data-i18n="s02.caption3">Benchmark de las iniciativas de sostenibilidad de Uniqlo, Mango, Gap y H&amp;M.</p>
+      <p class="reveal text-sm text-slate mt-3" data-i18n="s02.caption3">Benchmark de las iniciativas de sostenibilidad de Uniqlo, Mango, Gap y H&amp;M.</p>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-16 mt-16 md:mt-20">
         <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s02.label4">Benchmark digital</p>
@@ -384,16 +384,16 @@
           <button type="button" class="benchmark-digital-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2" data-i18n="carousel.dot2" data-i18n-attr="aria-label"></button>
         </div>
       </div>
-      <p class="reveal text-xs text-slate mt-3" data-i18n="s02.caption4">Tabla comparativa y matriz de posicionamiento frente a Vinted, Wallapop, Zalando y Depop.</p>
+      <p class="reveal text-sm text-slate mt-3" data-i18n="s02.caption4">Tabla comparativa y matriz de posicionamiento frente a Vinted, Wallapop, Zalando y Depop.</p>
     </section>
 
     <!-- ===== 03 · PROPUESTA DE VALOR Y PERSONAS ===== -->
-    <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">03</span>
         <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s03.eyebrow">Propuesta de valor y personas</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s03.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s03.heading">
         A quién nos dirigíamos y qué le ofrecíamos
       </h2>
 
@@ -440,23 +440,23 @@
           <button type="button" class="personas-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="3" aria-label="Ir a la imagen 4" data-i18n="carousel.dot4" data-i18n-attr="aria-label"></button>
         </div>
       </div>
-      <p class="reveal text-xs text-slate mt-3" data-i18n="s03.caption">Las dos personas definidas a partir del research y la encuesta, con sus user flows: María Timonet y Carlos Rodríguez.</p>
+      <p class="reveal text-sm text-slate mt-3" data-i18n="s03.caption">Las dos personas definidas a partir del research y la encuesta, con sus user flows: María Timonet y Carlos Rodríguez.</p>
     </section>
 
     <!-- ===== 04 · ARQUITECTURA DE LA INFORMACIÓN Y WIREFRAMES ===== -->
-    <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">04</span>
         <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s04.eyebrow">Arquitectura de la información y wireframes</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s04.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s04.heading">
         De la arquitectura a los primeros wireframes
       </h2>
 
       <div class="reveal aspect-[16/9] rounded-2xl overflow-hidden bg-white mb-3">
         <img src="swap-ia-diagram.webp" alt="Mapa de arquitectura de la información de la app, con Tienda como hub central y Mi Armario como rama más profunda" data-i18n="s04.iaImage.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10">
       </div>
-      <p class="reveal text-xs text-slate mb-14" data-i18n="s04.caption1">Mapa de arquitectura de la información de la app.</p>
+      <p class="reveal text-sm text-slate mb-14" data-i18n="s04.caption1">Mapa de arquitectura de la información de la app.</p>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14">
         <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s04.label1">Desde los átomos hasta los componentes finales</p>
@@ -493,38 +493,38 @@
           <button type="button" class="wireframes-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="6" aria-label="Ir a la imagen 7" data-i18n="carousel.dot7" data-i18n-attr="aria-label"></button>
         </div>
       </div>
-      <p class="reveal text-xs text-slate mt-3" data-i18n="s04.caption2">Wireframes de la app SWAP.</p>
+      <p class="reveal text-sm text-slate mt-3" data-i18n="s04.caption2">Wireframes de la app SWAP.</p>
     </section>
 
     <!-- ===== 05 · MODELO DE NEGOCIO Y GO TO MARKET ===== -->
-    <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">05</span>
         <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s05.eyebrow">Modelo de negocio y Go to Market</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s05.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s05.heading">
         Plan de estrategia dividido en tres etapas
       </h2>
 
       <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
-          <h3 class="text-lg font-medium mb-3" data-i18n="s05.stage1.title">Descubrimiento</h3>
-          <ul class="text-sm text-slate leading-relaxed space-y-3 list-disc list-outside pl-4 marker:text-latte-dark">
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-3" data-i18n="s05.stage1.title">Descubrimiento</h3>
+          <ul class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed space-y-3 list-disc list-outside pl-4 marker:text-latte-dark">
             <li data-i18n="s05.stage1.item1">Acciones para todos aquellos usuarios que son potencial target de la app, para que se interesen y quieran saber más sobre cómo funciona y qué beneficios tiene.</li>
             <li data-i18n="s05.stage1.item2">Para todos ellos realizaremos campañas de paid media vía Meta y TikTok. Participando con influencers y haciendo que las mismas marcas del grupo hagan eco del lanzamiento.</li>
             <li data-i18n="s05.stage1.item3">Paid media / moppies / contenido con influencers / promoción en las apps de las marcas.</li>
           </ul>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg font-medium mb-3" data-i18n="s05.stage2.title">Consideración</h3>
-          <ul class="text-sm text-slate leading-relaxed space-y-3 list-disc list-outside pl-4 marker:text-latte-dark">
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-3" data-i18n="s05.stage2.title">Consideración</h3>
+          <ul class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed space-y-3 list-disc list-outside pl-4 marker:text-latte-dark">
             <li data-i18n="s05.stage2.item1">Para aquellos usuarios que ya son clientes de Inditex, pero no tienen la app, vamos a ofrecerles un código de descuento como lead magnet para que se descarguen y prueben ellos mismos las funcionalidades de la app.</li>
             <li data-i18n="s05.stage2.item2">De esta forma conseguimos atraer tráfico a la app para que el sistema de compra venta de segunda mano empiece a funcionar.</li>
           </ul>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg font-medium mb-3" data-i18n="s05.stage3.title">Decisión</h3>
-          <ul class="text-sm text-slate leading-relaxed space-y-3 list-disc list-outside pl-4 marker:text-latte-dark">
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-3" data-i18n="s05.stage3.title">Decisión</h3>
+          <ul class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed space-y-3 list-disc list-outside pl-4 marker:text-latte-dark">
             <li data-i18n="s05.stage3.item1">Para super usuarios, es decir, el público más fidelizado y que se descarga la app de forma inmediata, se realizarán acciones de pro users para que ellos mismos puedan recomendar la marca a otros amigos, teniendo así beneficios en las compras, ventas y mejores resultados a nivel de visibilidad en la app.</li>
             <li data-i18n="s05.stage3.item2">Así conseguimos crear líderes de comunidad que se encarguen de convencer a nuevos públicos y generar contenido.</li>
           </ul>
@@ -535,19 +535,19 @@
         <p class="text-xs font-medium tracking-widest uppercase text-slate mb-8" data-i18n="s05.kpiSdg.label">KPIs de ODS</p>
         <div class="grid sm:grid-cols-3 gap-x-8 gap-y-10">
           <div>
-            <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2">5%</p>
-            <p class="text-sm font-medium text-ink mb-1" data-i18n="s05.kpiSdg.stat1.title">Volumen de producciones anuales</p>
-            <p class="text-sm text-slate leading-relaxed" data-i18n="s05.kpiSdg.stat1.desc">Reducción de la producción de colecciones estacionales durante el primer año.</p>
+            <p class="text-4xl md:text-[clamp(3rem,2.3333rem+1.04167vw,4rem)] font-semibold tracking-tightest mb-2">5%</p>
+            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink mb-1" data-i18n="s05.kpiSdg.stat1.title">Volumen de producciones anuales</p>
+            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s05.kpiSdg.stat1.desc">Reducción de la producción de colecciones estacionales durante el primer año.</p>
           </div>
           <div>
-            <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2">10%</p>
-            <p class="text-sm font-medium text-ink mb-1" data-i18n="s05.kpiSdg.stat2.title">Número de toneladas de ropa que se distribuye</p>
-            <p class="text-sm text-slate leading-relaxed" data-i18n="s05.kpiSdg.stat2.desc">Menos residuos generados durante la cadena de suministro en los primeros 12 meses.</p>
+            <p class="text-4xl md:text-[clamp(3rem,2.3333rem+1.04167vw,4rem)] font-semibold tracking-tightest mb-2">10%</p>
+            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink mb-1" data-i18n="s05.kpiSdg.stat2.title">Número de toneladas de ropa que se distribuye</p>
+            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s05.kpiSdg.stat2.desc">Menos residuos generados durante la cadena de suministro en los primeros 12 meses.</p>
           </div>
           <div>
-            <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2">20%</p>
-            <p class="text-sm font-medium text-ink mb-1" data-i18n="s05.kpiSdg.stat3.title">Número de prendas que se revenden en la App</p>
-            <p class="text-sm text-slate leading-relaxed" data-i18n="s05.kpiSdg.stat3.desc">Aumento de la vida útil de los productos que genera Inditex durante el primer año.</p>
+            <p class="text-4xl md:text-[clamp(3rem,2.3333rem+1.04167vw,4rem)] font-semibold tracking-tightest mb-2">20%</p>
+            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink mb-1" data-i18n="s05.kpiSdg.stat3.title">Número de prendas que se revenden en la App</p>
+            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s05.kpiSdg.stat3.desc">Aumento de la vida útil de los productos que genera Inditex durante el primer año.</p>
           </div>
         </div>
       </div>
@@ -556,31 +556,31 @@
         <p class="text-xs font-medium tracking-widest uppercase text-slate mb-8" data-i18n="s05.kpiBiz.label">KPIs de Negocio</p>
         <div class="grid sm:grid-cols-3 gap-x-8 gap-y-10">
           <div>
-            <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2">15%</p>
-            <p class="text-sm font-medium text-ink mb-1" data-i18n="s05.kpiBiz.stat1.title">Número de nuevos registros</p>
-            <p class="text-sm text-slate leading-relaxed" data-i18n="s05.kpiBiz.stat1.desc">Del total de usuarios de las apps del grupo Inditex durante los primeros 6 meses.</p>
+            <p class="text-4xl md:text-[clamp(3rem,2.3333rem+1.04167vw,4rem)] font-semibold tracking-tightest mb-2">15%</p>
+            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink mb-1" data-i18n="s05.kpiBiz.stat1.title">Número de nuevos registros</p>
+            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s05.kpiBiz.stat1.desc">Del total de usuarios de las apps del grupo Inditex durante los primeros 6 meses.</p>
           </div>
           <div>
-            <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2">10%</p>
-            <p class="text-sm font-medium text-ink mb-1" data-i18n="s05.kpiBiz.stat2.title">Compras en la app por mes</p>
-            <p class="text-sm text-slate leading-relaxed" data-i18n="s05.kpiBiz.stat2.desc">Aumento mensual de las ventas de ropa de segunda mano durante el primer año de lanzamiento.</p>
+            <p class="text-4xl md:text-[clamp(3rem,2.3333rem+1.04167vw,4rem)] font-semibold tracking-tightest mb-2">10%</p>
+            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink mb-1" data-i18n="s05.kpiBiz.stat2.title">Compras en la app por mes</p>
+            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s05.kpiBiz.stat2.desc">Aumento mensual de las ventas de ropa de segunda mano durante el primer año de lanzamiento.</p>
           </div>
           <div>
-            <p class="text-4xl md:text-5xl font-semibold tracking-tightest mb-2">75%</p>
-            <p class="text-sm font-medium text-ink mb-1" data-i18n="s05.kpiBiz.stat3.title">Artículos en el armario por usuario</p>
-            <p class="text-sm text-slate leading-relaxed" data-i18n="s05.kpiBiz.stat3.desc">De los usuarios registrados suben artículos al armario durante los primeros 12 meses.</p>
+            <p class="text-4xl md:text-[clamp(3rem,2.3333rem+1.04167vw,4rem)] font-semibold tracking-tightest mb-2">75%</p>
+            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink mb-1" data-i18n="s05.kpiBiz.stat3.title">Artículos en el armario por usuario</p>
+            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s05.kpiBiz.stat3.desc">De los usuarios registrados suben artículos al armario durante los primeros 12 meses.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ===== 06 · SOLUTION ===== -->
-    <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">06</span>
         <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s06.eyebrow">Solución</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s06.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s06.heading">
         SWAP: innovación ecológica para Inditex
       </h2>
 
@@ -632,7 +632,7 @@
             <button type="button" class="delivery-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3" data-i18n="carousel.dot3" data-i18n-attr="aria-label"></button>
           </div>
         </div>
-        <p class="reveal text-xs text-slate mt-3" data-i18n="s06.deliveryCaption">Presentación final del proyecto SWAP en Elisava, junto al equipo: Oriol Colchón, Javier Díaz, Berta Junyent y Júlia Sala.</p>
+        <p class="reveal text-sm text-slate mt-3" data-i18n="s06.deliveryCaption">Presentación final del proyecto SWAP en Elisava, junto al equipo: Oriol Colchón, Javier Díaz, Berta Junyent y Júlia Sala.</p>
       </div>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16">
@@ -663,12 +663,12 @@
     </section>
 
     <!-- ===== 07 · KEY LEARNINGS ===== -->
-    <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">07</span>
         <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s07.eyebrow">Aprendizajes clave</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-8" data-i18n="s07.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-8" data-i18n="s07.heading">
         Qué me dejó este proyecto
       </h2>
       <p class="reveal text-ink/80 leading-relaxed" data-i18n="s07.p1">
@@ -677,9 +677,9 @@
     </section>
 
     <!-- ===== END OF CASE STUDY ===== -->
-    <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08] text-center">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20 border-t border-ink/[0.08] text-center">
       <p class="reveal text-xs font-medium tracking-widest uppercase text-slate mb-4" data-i18n="cta.eyebrow">Has llegado al final</p>
-      <p class="reveal text-xl md:text-2xl font-medium tracking-tight mb-10" data-i18n="cta.heading">
+      <p class="reveal text-xl md:text-[clamp(1.25rem,1.0833rem+0.2604vw,1.5rem)] font-medium tracking-tight mb-10" data-i18n="cta.heading">
         ¿Quieres ver más proyectos?
       </p>
       <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -1094,7 +1094,7 @@
       btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang')));
     });
 
-    setLang(localStorage.getItem('lang') || detectLang());
+    setLang(localStorage.getItem('lang') || 'en');
     document.body.classList.add('is-ready');
 
     // Menú móvil (hamburguesa)

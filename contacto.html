@@ -94,25 +94,25 @@
 <body class="bg-paper text-ink antialiased min-h-screen flex flex-col">
 
   <!-- ===== NAVBAR ===== -->
-  <header class="fixed top-0 inset-x-0 z-50 bg-paper/80 backdrop-blur-md border-b border-ink/[0.06]">
-    <nav class="max-w-6xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
+  <header class="fixed top-0 inset-x-0 z-50 bg-paper/80 backdrop-blur-md">
+    <nav class="max-w-[1680px] mx-auto px-6 sm:px-16 h-[68px] sm:h-[136px] flex items-center justify-between">
       <button type="button" id="mobile-menu-toggle" class="sm:hidden focus-ring rounded-md p-1 -ml-1 text-ink" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
         <svg id="menu-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         <svg id="menu-icon-close" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
 
-      <a href="index.html" class="text-lg font-semibold tracking-tight focus-ring rounded absolute left-1/2 -translate-x-1/2 sm:static sm:translate-x-0">
+      <a href="index.html" class="text-2xl font-semibold tracking-tight focus-ring rounded absolute left-1/2 -translate-x-1/2 sm:static sm:translate-x-0">
         Javier Díaz
       </a>
 
       <div class="hidden sm:flex items-center gap-8">
-        <ul class="flex items-center gap-10 text-base text-slate">
+        <ul class="flex items-center gap-10 text-xl text-slate">
           <li><a href="sobre-mi.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
           <li><a href="contacto.html" class="text-ink focus-ring rounded" aria-current="page" data-i18n="nav.contact">Contacto</a></li>
         </ul>
-        <div class="flex items-center gap-0.5 text-xs font-medium border border-ink/15 rounded-full p-0.5" role="group" aria-label="Seleccionar idioma">
-          <button type="button" class="lang-btn px-2.5 py-1 rounded-full transition-colors" data-lang="es">ES</button>
-          <button type="button" class="lang-btn px-2.5 py-1 rounded-full transition-colors" data-lang="en">EN</button>
+        <div class="flex items-center h-8 gap-0.5 text-lg font-medium border border-ink/15 rounded-full p-0.5" role="group" aria-label="Seleccionar idioma">
+          <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="en">EN</button>
+          <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="es">ES</button>
         </div>
       </div>
 
@@ -125,8 +125,8 @@
         <li><a href="contacto.html" class="block py-4 focus-ring rounded" aria-current="page" data-i18n="nav.contact">Contacto</a></li>
       </ul>
       <div class="flex items-center gap-0.5 text-xs font-medium border border-ink/15 rounded-full p-0.5 mx-6 mb-4 w-fit" role="group" aria-label="Seleccionar idioma">
-        <button type="button" class="lang-btn px-3 py-1.5 rounded-full transition-colors" data-lang="es">ES</button>
         <button type="button" class="lang-btn px-3 py-1.5 rounded-full transition-colors" data-lang="en">EN</button>
+        <button type="button" class="lang-btn px-3 py-1.5 rounded-full transition-colors" data-lang="es">ES</button>
       </div>
     </div>
   </header>
@@ -134,17 +134,17 @@
   <main class="flex-1">
 
     <!-- ===== HERO ===== -->
-    <section class="max-w-6xl mx-auto px-6 md:px-10 pt-[104px]">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 pt-[91px] sm:pt-[159px]">
       <a href="index.html" class="reveal is-visible inline-flex items-center gap-2 text-xs font-medium tracking-widest uppercase text-slate hover:text-ink transition-colors focus-ring rounded" data-i18n="back.home">
         ← Volver al inicio
       </a>
 
-      <h1 class="reveal is-visible mt-10 text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tightest leading-[1.05]" data-i18n="hero.heading">
+      <h1 class="reveal is-visible mt-10 text-4xl sm:text-6xl md:text-[clamp(4.5rem,3.5rem+1.5625vw,6rem)] font-semibold tracking-tightest leading-[1.05]" data-i18n="hero.heading">
         ¿Hablamos?
       </h1>
 
       <div class="reveal is-visible mt-6">
-        <p class="text-lg text-slate leading-relaxed" data-i18n="hero.body">
+        <p class="text-xl md:text-[clamp(1.25rem,1.0833rem+0.2604vw,1.5rem)] text-slate leading-relaxed" data-i18n="hero.body">
           Copia mi email o escríbeme directamente a través de LinkedIn. Te responderé en la mayor brevedad posible :)
         </p>
 
@@ -163,9 +163,9 @@
     </section>
 
     <!-- ===== TESTIMONIALS ===== -->
-    <section class="max-w-6xl mx-auto px-6 md:px-10 pt-[64px]">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 pt-[64px]">
       <div class="reveal flex items-end justify-between mb-6">
-        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight" data-i18n="testimonials.heading">Testimonios</h2>
+        <h2 class="text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight" data-i18n="testimonials.heading">Testimonios</h2>
         <a href="https://www.linkedin.com/in/javierdiazrodriguez/details/recommendations/" target="_blank" rel="noopener noreferrer" class="focus-ring inline-flex items-center text-sm font-medium px-4 py-1.5 rounded-full border border-ink/15 text-ink/70 hover:bg-latte/40 hover:border-latte-dark hover:text-ink transition-colors" data-i18n="testimonials.more">
           Ver más
         </a>
@@ -175,7 +175,7 @@
         <div id="testimonial-track" class="flex transition-transform duration-500 ease-out">
           <div class="w-full shrink-0 px-1">
             <div class="bg-mist rounded-2xl p-8 md:p-10 min-h-[220px] flex flex-col justify-between">
-              <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t1.quote">
+              <p class="text-xl md:text-[clamp(1.25rem,1rem+0.390625vw,1.625rem)] leading-relaxed text-ink/90" data-i18n="t1.quote">
                 "I met Javi when I hired him as an intern, and over the following 4 years I had the chance to see him grow into a Product Designer within the team. He shows up with the same level of commitment regardless of the task at hand, approaching everything with ownership and a positive, solution-oriented mindset."
               </p>
               <div class="flex items-center gap-3 mt-6">
@@ -189,7 +189,7 @@
           </div>
           <div class="w-full shrink-0 px-1">
             <div class="bg-mist rounded-2xl p-8 md:p-10 min-h-[220px] flex flex-col justify-between">
-              <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t2.quote">
+              <p class="text-xl md:text-[clamp(1.25rem,1rem+0.390625vw,1.625rem)] leading-relaxed text-ink/90" data-i18n="t2.quote">
                 "He's a super friendly and collaborative person. In every project we've worked on together, there's always been a great environment for collaboration and communication. As a professional, a 10."
               </p>
               <div class="flex items-center gap-3 mt-6">
@@ -203,7 +203,7 @@
           </div>
           <div class="w-full shrink-0 px-1">
             <div class="bg-mist rounded-2xl p-8 md:p-10 min-h-[220px] flex flex-col justify-between">
-              <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t3.quote">
+              <p class="text-xl md:text-[clamp(1.25rem,1rem+0.390625vw,1.625rem)] leading-relaxed text-ink/90" data-i18n="t3.quote">
                 "I had the pleasure of working with Javier for over two years on the same UX team, and I can say without hesitation that he's one of those designers you genuinely want on every project. He brings a rare combination of craft and strategic thinking."
               </p>
               <div class="flex items-center gap-3 mt-6">
@@ -217,7 +217,7 @@
           </div>
           <div class="w-full shrink-0 px-1">
             <div class="bg-mist rounded-2xl p-8 md:p-10 min-h-[220px] flex flex-col justify-between">
-              <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t4.quote">
+              <p class="text-xl md:text-[clamp(1.25rem,1rem+0.390625vw,1.625rem)] leading-relaxed text-ink/90" data-i18n="t4.quote">
                 "Trabajar con Javier codo con codo en el Grado en Diseño de la Universidad de La Laguna fue una experiencia gratificante que sin duda repetiría más veces en mi trayectoria profesional. Siempre mostraba una actitud proactiva y desarrollaba un punto de vista innovador."
               </p>
               <div class="flex items-center gap-3 mt-6">
@@ -231,7 +231,7 @@
           </div>
           <div class="w-full shrink-0 px-1">
             <div class="bg-mist rounded-2xl p-8 md:p-10 min-h-[220px] flex flex-col justify-between">
-              <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t5.quote">
+              <p class="text-xl md:text-[clamp(1.25rem,1rem+0.390625vw,1.625rem)] leading-relaxed text-ink/90" data-i18n="t5.quote">
                 "Estudié con Javier en el Máster de dirección en diseño de experiencias y servicios digitales en Elisava. Es una persona muy proactiva, con amplia visión para nuevos proyectos, creativo, alegre y responsable."
               </p>
               <div class="flex items-center gap-3 mt-6">
@@ -245,7 +245,7 @@
           </div>
           <div class="w-full shrink-0 px-1">
             <div class="bg-mist rounded-2xl p-8 md:p-10 min-h-[220px] flex flex-col justify-between">
-              <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t6.quote">
+              <p class="text-xl md:text-[clamp(1.25rem,1rem+0.390625vw,1.625rem)] leading-relaxed text-ink/90" data-i18n="t6.quote">
                 "Tuve la suerte de trabajar con Javi y, más allá de lo profesional, es de esas personas que hacen que el día a día sea mucho mejor. Como UX Designer, tiene una sensibilidad especial para entender a las personas: no solo a los usuarios, sino también al equipo."
               </p>
               <div class="flex items-center gap-3 mt-6">
@@ -259,7 +259,7 @@
           </div>
           <div class="w-full shrink-0 px-1">
             <div class="bg-mist rounded-2xl p-8 md:p-10 min-h-[220px] flex flex-col justify-between">
-              <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t7.quote">
+              <p class="text-xl md:text-[clamp(1.25rem,1rem+0.390625vw,1.625rem)] leading-relaxed text-ink/90" data-i18n="t7.quote">
                 "Javier joined Freightos as an intern, and it has been a real joy to watch his growth over the past four years. He stands out not only for the excellent quality of his work and his exceptional technical skill set, but also for his attitude."
               </p>
               <div class="flex items-center gap-3 mt-6">
@@ -273,7 +273,7 @@
           </div>
           <div class="w-full shrink-0 px-1">
             <div class="bg-mist rounded-2xl p-8 md:p-10 min-h-[220px] flex flex-col justify-between">
-              <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t8.quote">
+              <p class="text-xl md:text-[clamp(1.25rem,1rem+0.390625vw,1.625rem)] leading-relaxed text-ink/90" data-i18n="t8.quote">
                 "I worked with Javi at Freightos for many years and on many projects. Javi is a pleasure to work with — always friendly, dedicated and focused on achieving a great product for our customers."
               </p>
               <div class="flex items-center gap-3 mt-6">
@@ -287,7 +287,7 @@
           </div>
           <div class="w-full shrink-0 px-1">
             <div class="bg-mist rounded-2xl p-8 md:p-10 min-h-[220px] flex flex-col justify-between">
-              <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t9.quote">
+              <p class="text-xl md:text-[clamp(1.25rem,1rem+0.390625vw,1.625rem)] leading-relaxed text-ink/90" data-i18n="t9.quote">
                 "Javi is not only an incredible designer but a truly remarkable person. From my very first day, he was there to help me with everything and I've learned so much just by watching him work. He is just one of those people who makes the office a better place; he always has this amazing energy and truly looks out for everyone around him."
               </p>
               <div class="flex items-center gap-3 mt-6">
@@ -301,7 +301,7 @@
           </div>
           <div class="w-full shrink-0 px-1">
             <div class="bg-mist rounded-2xl p-8 md:p-10 min-h-[220px] flex flex-col justify-between">
-              <p class="text-lg md:text-xl leading-relaxed text-ink/90" data-i18n="t10.quote">
+              <p class="text-xl md:text-[clamp(1.25rem,1rem+0.390625vw,1.625rem)] leading-relaxed text-ink/90" data-i18n="t10.quote">
                 "As a PM, I value designers who don't just take requirements but ask the right questions, and he has a great eye for detail and a rare ability to simplify difficult user journeys. He is collaborative, open to feedback, and deeply committed to the 'why' behind every feature, and he quickly became a key contributor to our product's success."
               </p>
               <div class="flex items-center gap-3 mt-6">
@@ -450,7 +450,7 @@
       btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang')));
     });
 
-    setLang(localStorage.getItem('lang') || detectLang());
+    setLang(localStorage.getItem('lang') || 'en');
     document.body.classList.add('is-ready');
 
     // Menú móvil (hamburguesa)

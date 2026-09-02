@@ -87,25 +87,25 @@
 <body class="bg-paper text-ink antialiased min-h-screen flex flex-col">
 
   <!-- ===== NAVBAR ===== -->
-  <header class="fixed top-0 inset-x-0 z-50 bg-paper/80 backdrop-blur-md border-b border-ink/[0.06]">
-    <nav class="max-w-6xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
+  <header class="fixed top-0 inset-x-0 z-50 bg-paper/80 backdrop-blur-md">
+    <nav class="max-w-[1680px] mx-auto px-6 sm:px-16 h-[68px] sm:h-[136px] flex items-center justify-between">
       <button type="button" id="mobile-menu-toggle" class="sm:hidden focus-ring rounded-md p-1 -ml-1 text-ink" aria-label="Abrir menú" data-i18n="nav.menuToggle" data-i18n-attr="aria-label" aria-expanded="false" aria-controls="mobile-menu">
         <svg id="menu-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         <svg id="menu-icon-close" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
 
-      <a href="../index.html" class="text-lg font-semibold tracking-tight focus-ring rounded absolute left-1/2 -translate-x-1/2 sm:static sm:translate-x-0">
+      <a href="../index.html" class="text-2xl font-semibold tracking-tight focus-ring rounded absolute left-1/2 -translate-x-1/2 sm:static sm:translate-x-0">
         Javier Díaz
       </a>
 
       <div class="hidden sm:flex items-center gap-8">
-        <ul class="flex items-center gap-10 text-base text-slate">
+        <ul class="flex items-center gap-10 text-xl text-slate">
           <li><a href="../sobre-mi.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
           <li><a href="../contacto.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
         </ul>
-        <div class="flex items-center gap-0.5 text-xs font-medium border border-ink/15 rounded-full p-0.5" role="group" aria-label="Seleccionar idioma">
-          <button type="button" class="lang-btn px-2.5 py-1 rounded-full transition-colors" data-lang="es">ES</button>
-          <button type="button" class="lang-btn px-2.5 py-1 rounded-full transition-colors" data-lang="en">EN</button>
+        <div class="flex items-center h-8 gap-0.5 text-lg font-medium border border-ink/15 rounded-full p-0.5" role="group" aria-label="Seleccionar idioma">
+          <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="en">EN</button>
+          <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="es">ES</button>
         </div>
       </div>
 
@@ -118,8 +118,8 @@
         <li><a href="../contacto.html" class="block py-4 focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
       </ul>
       <div class="flex items-center gap-0.5 text-xs font-medium border border-ink/15 rounded-full p-0.5 mx-6 mb-4 w-fit" role="group" aria-label="Seleccionar idioma">
-        <button type="button" class="lang-btn px-3 py-1.5 rounded-full transition-colors" data-lang="es">ES</button>
         <button type="button" class="lang-btn px-3 py-1.5 rounded-full transition-colors" data-lang="en">EN</button>
+        <button type="button" class="lang-btn px-3 py-1.5 rounded-full transition-colors" data-lang="es">ES</button>
       </div>
     </div>
   </header>
@@ -127,35 +127,35 @@
   <main class="flex-1">
 
     <!-- ===== HERO ===== -->
-    <section class="max-w-6xl mx-auto px-6 md:px-10 pt-[104px]">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 pt-[91px] sm:pt-[159px]">
       <a href="../index.html#work" class="reveal is-visible inline-flex items-center gap-2 text-xs font-medium tracking-widest uppercase text-slate hover:text-ink transition-colors focus-ring rounded" data-i18n="breadcrumb.back">
         ← Todos los proyectos
       </a>
 
-      <h1 class="reveal is-visible mt-6 text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tightest leading-[1.08]" data-i18n="hero.title">
+      <h1 class="reveal is-visible mt-6 text-4xl sm:text-5xl md:text-[clamp(3.75rem,2.9167rem+1.3021vw,5rem)] font-semibold tracking-tightest leading-[1.08]" data-i18n="hero.title">
         SISDEVA: sistema digital de evaluación y asistencia
       </h1>
 
-      <p class="reveal is-visible mt-6 text-lg text-slate leading-relaxed" data-i18n="hero.subtitle">
+      <p class="reveal is-visible mt-6 text-xl md:text-[clamp(1.25rem,1.0833rem+0.2604vw,1.5rem)] text-slate leading-relaxed" data-i18n="hero.subtitle">
         Sistema diseñado para mejorar la comunicación entre personal sanitario y paciente, apoyándose en la realidad virtual para explicar procedimientos complejos de forma comprensible.
       </p>
 
       <div class="reveal is-visible mt-12 pt-8 border-t border-ink/[0.08] grid sm:grid-cols-4 gap-8">
         <div>
           <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.role.label">Rol</p>
-          <p class="text-sm font-medium text-ink" data-i18n="hero.role.value">Estudiante</p>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink" data-i18n="hero.role.value">Estudiante</p>
         </div>
         <div>
           <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.client.label">Cliente</p>
-          <p class="text-sm font-medium text-ink" data-i18n="hero.client.value">Sistema Canario de Salud</p>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink" data-i18n="hero.client.value">Sistema Canario de Salud</p>
         </div>
         <div>
           <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.year.label">Año</p>
-          <p class="text-sm font-medium text-ink" data-i18n="hero.year.value">2021</p>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink" data-i18n="hero.year.value">2021</p>
         </div>
         <div>
           <p class="text-xs font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.team.label">Equipo</p>
-          <p class="text-sm font-medium text-ink" data-i18n="hero.team.value">Yerimay Betancourt, Javier Díaz, Paula Jubera y Ana Ramos</p>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink" data-i18n="hero.team.value">Yerimay Betancourt, Javier Díaz, Paula Jubera y Ana Ramos</p>
         </div>
       </div>
 
@@ -182,12 +182,12 @@
     </section>
 
     <!-- ===== 01 · STARTING POINT ===== -->
-    <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">01</span>
         <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s01.eyebrow">Punto de partida</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s01.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s01.heading">
         Cuál fue la necesidad que determinó este proyecto
       </h2>
 
@@ -201,22 +201,22 @@
       <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 pt-10 border-t border-ink/[0.08]">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
           <p class="text-sm font-medium text-latte-dark mb-3">01</p>
-          <h3 class="text-lg font-medium mb-2" data-i18n="s01.item1.title">Información difícil de comprender</h3>
-          <p class="text-sm text-slate leading-relaxed" data-i18n="s01.item1.body">
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s01.item1.title">Información difícil de comprender</h3>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s01.item1.body">
             El lenguaje clínico dejaba al paciente sin una imagen clara de lo que iba a ocurrir.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
           <p class="text-sm font-medium text-latte-dark mb-3">02</p>
-          <h3 class="text-lg font-medium mb-2" data-i18n="s01.item2.title">Ansiedad ante el procedimiento</h3>
-          <p class="text-sm text-slate leading-relaxed" data-i18n="s01.item2.body">
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s01.item2.title">Ansiedad ante el procedimiento</h3>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s01.item2.body">
             La incertidumbre sobre el proceso generaba miedo y peor adherencia al tratamiento.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
           <p class="text-sm font-medium text-latte-dark mb-3">03</p>
-          <h3 class="text-lg font-medium mb-2" data-i18n="s01.item3.title">Tiempo limitado en consulta</h3>
-          <p class="text-sm text-slate leading-relaxed" data-i18n="s01.item3.body">
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s01.item3.title">Tiempo limitado en consulta</h3>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s01.item3.body">
             El personal sanitario no disponía de tiempo suficiente para explicarlo todo en detalle.
           </p>
         </div>
@@ -225,12 +225,12 @@
     </section>
 
     <!-- ===== 02 · CONCEPTO ===== -->
-    <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">02</span>
         <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s02.eyebrow">Concepto</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight max-w-2xl mb-14 md:mb-16" data-i18n="s02.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight max-w-2xl mb-14 md:mb-16" data-i18n="s02.heading">
         Inicios del proyecto
       </h2>
 
@@ -251,29 +251,29 @@
       <div class="reveal grid sm:grid-cols-2 gap-x-8 gap-y-10 md:gap-x-16">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
           <p class="text-sm font-medium text-latte-dark mb-3">01</p>
-          <h3 class="text-lg font-medium mb-2" data-i18n="s02.item1.title">Plataforma de comunicación interactiva</h3>
-          <p class="text-sm text-slate leading-relaxed" data-i18n="s02.item1.body">
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s02.item1.title">Plataforma de comunicación interactiva</h3>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s02.item1.body">
             Proponer una plataforma de comunicación interactiva que ofrezca autonomía al paciente al poder acceder a los tratamientos desde su domicilio.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
           <p class="text-sm font-medium text-latte-dark mb-3">02</p>
-          <h3 class="text-lg font-medium mb-2" data-i18n="s02.item2.title">Evaluación, tratamiento y seguimiento</h3>
-          <p class="text-sm text-slate leading-relaxed" data-i18n="s02.item2.body">
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s02.item2.title">Evaluación, tratamiento y seguimiento</h3>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s02.item2.body">
             Aprovechar dicha plataforma para facilitar la evaluación, tratamiento y seguimiento de las enfermedades por parte de los sanitarios.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
           <p class="text-sm font-medium text-latte-dark mb-3">03</p>
-          <h3 class="text-lg font-medium mb-2" data-i18n="s02.item3.title">Tratamientos interactivos con realidad virtual</h3>
-          <p class="text-sm text-slate leading-relaxed" data-i18n="s02.item3.body">
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s02.item3.title">Tratamientos interactivos con realidad virtual</h3>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s02.item3.body">
             Implementar nuevos tratamientos interactivos que combinan el uso de diseño gráfico y aplicaciones tecnológicas relacionadas con la realidad virtual como terapias de rehabilitación.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
           <p class="text-sm font-medium text-latte-dark mb-3">04</p>
-          <h3 class="text-lg font-medium mb-2" data-i18n="s02.item4.title">Motivación del paciente</h3>
-          <p class="text-sm text-slate leading-relaxed" data-i18n="s02.item4.body">
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s02.item4.title">Motivación del paciente</h3>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s02.item4.body">
             Incidir en el grado de motivación de los pacientes al poder ser conocedores de su propia evolución mediante sistemas de seguimiento.
           </p>
         </div>
@@ -281,12 +281,12 @@
     </section>
 
     <!-- ===== 03 · INVESTIGACIÓN ===== -->
-    <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">03</span>
         <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s03.eyebrow">Investigación</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s03.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s03.heading">
         Análisis y benchmark
       </h2>
 
@@ -307,29 +307,29 @@
       <div class="reveal grid sm:grid-cols-2 gap-x-8 gap-y-10 md:gap-x-16 mt-14">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
           <p class="text-sm font-medium text-latte-dark mb-3">01</p>
-          <h3 class="text-lg font-medium mb-2" data-i18n="s03.item1.title">Neurofit (2019)</h3>
-          <p class="text-sm text-slate leading-relaxed" data-i18n="s03.item1.body">
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s03.item1.title">Neurofit (2019)</h3>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s03.item1.body">
             Creada por la Fundación Curemos el Parkinson y UCB junto a Nerea Foncea. Cuenta con ejercicios de rehabilitación y consejos sobre cómo adaptar el hogar.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
           <p class="text-sm font-medium text-latte-dark mb-3">02</p>
-          <h3 class="text-lg font-medium mb-2" data-i18n="s03.item2.title">Apparkinson</h3>
-          <p class="text-sm text-slate leading-relaxed" data-i18n="s03.item2.body">
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s03.item2.title">Apparkinson</h3>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s03.item2.body">
             Desarrollada a través del Programa Innova Social. Envía alertas de medicación, ejercicios prácticos, fisioterapia, logopedia o terapia ocupacional.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
           <p class="text-sm font-medium text-latte-dark mb-3">03</p>
-          <h3 class="text-lg font-medium mb-2" data-i18n="s03.item3.title">Párkinson contigo</h3>
-          <p class="text-sm text-slate leading-relaxed" data-i18n="s03.item3.body">
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s03.item3.title">Párkinson contigo</h3>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s03.item3.body">
             Información sobre la enfermedad y sus tratamientos, con apartados para controlar la medicación.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
           <p class="text-sm font-medium text-latte-dark mb-3">04</p>
-          <h3 class="text-lg font-medium mb-2" data-i18n="s03.item4.title">HOOP</h3>
-          <p class="text-sm text-slate leading-relaxed" data-i18n="s03.item4.body">
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s03.item4.title">HOOP</h3>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s03.item4.body">
             Plataforma compuesta de una aplicación móvil y sensores inerciales para el paciente, y una web de rehabilitación, comunicación y seguimiento que ayuda al terapeuta.
           </p>
         </div>
@@ -344,12 +344,12 @@
     </section>
 
     <!-- ===== 04 · ANÁLISIS DE CONCEPTOS ===== -->
-    <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">04</span>
         <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s04.eyebrow">Análisis de conceptos</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s04.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s04.heading">
         Conceptualización y planificación
       </h2>
 
@@ -380,7 +380,7 @@
           <button type="button" class="concepts-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3" data-i18n="carousel.dot3" data-i18n-attr="aria-label"></button>
         </div>
       </div>
-      <p class="reveal text-xs text-slate mt-3" data-i18n="s04.caption1">Tabla de palabras clave y mapas conceptuales elaborados a partir del análisis grupal.</p>
+      <p class="reveal text-sm text-slate mt-3" data-i18n="s04.caption1">Tabla de palabras clave y mapas conceptuales elaborados a partir del análisis grupal.</p>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14 mt-16 md:mt-20 pt-16 md:pt-20 border-t border-ink/[0.08]">
         <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s04.label2">Planteamiento del proyecto gráfico</p>
@@ -395,12 +395,12 @@
     </section>
 
     <!-- ===== 05 · NAMING ===== -->
-    <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">05</span>
         <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s05.eyebrow">Naming</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s05.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s05.heading">
         La búsqueda del nombre perfecto
       </h2>
 
@@ -417,8 +417,8 @@
           <li class="py-5 border-b border-ink/[0.08] flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-sm font-medium text-latte-dark shrink-0">01</span>
             <div>
-              <h3 class="text-base font-medium mb-1" data-i18n="s05.item1.title">Neuring</h3>
-              <p class="text-sm text-slate leading-relaxed" data-i18n="s05.item1.body">
+              <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-1" data-i18n="s05.item1.title">Neuring</h3>
+              <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s05.item1.body">
                 Totalmente relacionado con la neurología, es el campo fundamental donde es tratada la enfermedad de Parkinson. Al fin y al cabo esta patología es neurodegenerativa, es decir, va dañando y eliminando de manera progresiva muchas de las neuronas que nos permiten realizar nuestros movimientos cotidianos. En este caso este tipo de naming se clasifica como evocativo, es decir, mediante una raíz ya existente (neur-), añadimos el -ing, como en inglés, para referirnos a la acción de "neuronar", es decir, estimulación neuronal.
               </p>
             </div>
@@ -426,8 +426,8 @@
           <li class="py-5 border-b border-ink/[0.08] flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-sm font-medium text-latte-dark shrink-0">02</span>
             <div>
-              <h3 class="text-base font-medium mb-1" data-i18n="s05.item2.title">Yellow</h3>
-              <p class="text-sm text-slate leading-relaxed" data-i18n="s05.item2.body">
+              <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-1" data-i18n="s05.item2.title">Yellow</h3>
+              <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s05.item2.body">
                 Del inglés "amarillo", va más allá de un simple naming. El color amarillo es de los más alegres que podemos encontrar dentro de las gamas cromáticas que nos presenta la propia naturaleza. Felicidad, alegría, optimismo y estimulación son algunos de los términos que más se le asocian a esta tonalidad. A simple vista no se relaciona para nada con la filosofía del proyecto, pero sí está totalmente vinculado a la historia de este color dentro de ámbitos como la psicología, la neurología o la psiquiatría. Estudios le otorgan la capacidad de ejercer como neuroestimulador, algo que tuvimos muy en cuenta a la hora de desarrollar el proyecto, y por ello lo empleamos en nuestras terapias hasta llegar a ser el color corporativo de la marca. Todo este trasfondo nos llevó a plantearlo como propio naming. Sin embargo, la opción quedó descartada por la cantidad de contenido del sector del mercado al que se dirige nuestro producto que usa este color como nombre. Con el objetivo de destacar como producto, y no crear confusión, decidimos buscar una propuesta más única.
               </p>
             </div>
@@ -435,8 +435,8 @@
           <li class="py-5 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-sm font-medium text-latte-dark shrink-0">03</span>
             <div>
-              <h3 class="text-base font-medium mb-1" data-i18n="s05.item3.title">SISDEVA</h3>
-              <p class="text-sm text-slate leading-relaxed" data-i18n="s05.item3.body">
+              <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-1" data-i18n="s05.item3.title">SISDEVA</h3>
+              <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s05.item3.body">
                 Se trata de un naming compuesto por un acrónimo, a partir de Sistema (SIS-) Digital (-D-) de Evaluación (-EV-) y Asistencia (-A). Tratamos de generar un naming utilizando términos descriptivos de nuestra actividad e intervención dentro del área sanitaria a la que nos estamos dirigiendo. Para esta propuesta resultó fundamental tener en cuenta la facilidad de pronunciación del término, ya que, en ocasiones, los acrónimos pueden dar lugar a palabras difíciles de pronunciar o recordar.
               </p>
             </div>
@@ -447,16 +447,16 @@
       <div class="reveal rounded-2xl overflow-hidden">
         <img src="sisdeva-naming-proposals.webp" alt="Diversas propuestas de naming: Neuring, Yellow y SISDEVA, cada una superpuesta sobre la fotografía de la persona con gafas de realidad virtual" data-i18n="s05.image.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
-      <p class="reveal text-xs text-slate mt-3" data-i18n="s05.caption1">Diversas propuestas de naming</p>
+      <p class="reveal text-sm text-slate mt-3" data-i18n="s05.caption1">Diversas propuestas de naming</p>
     </section>
 
     <!-- ===== 06 · IDENTIDAD CORPORATIVA Y ACTIVIDAD PROMOCIONAL ===== -->
-    <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">06</span>
         <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s06.eyebrow">Visual / UX</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s06.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s06.heading">
         Primeros materiales gráficos y mockups
       </h2>
 
@@ -474,7 +474,7 @@
       <div class="reveal mt-16 md:mt-20 rounded-2xl overflow-hidden">
         <img src="sisdeva-orofacial-illustrations.png" alt="Ilustraciones para el tratamiento orofacial: dos rostros ilustrados con los labios resaltados en amarillo" data-i18n="s06.image2.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
-      <p class="reveal text-xs text-slate mt-3" data-i18n="s06.caption1">Ilustraciones para el tratamiento orofacial</p>
+      <p class="reveal text-sm text-slate mt-3" data-i18n="s06.caption1">Ilustraciones para el tratamiento orofacial</p>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mb-14 mt-16 md:mt-20 pt-16 md:pt-20 border-t border-ink/[0.08]">
         <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s06.label2">Terapias digitales</p>
@@ -494,8 +494,8 @@
           <li class="py-5 border-b border-ink/[0.08] flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-sm font-medium text-latte-dark shrink-0">01</span>
             <div>
-              <h3 class="text-base font-medium mb-1" data-i18n="s06.item1.title">Bocetos</h3>
-              <p class="text-sm text-slate leading-relaxed" data-i18n="s06.item1.body">
+              <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-1" data-i18n="s06.item1.title">Bocetos</h3>
+              <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s06.item1.body">
                 Es necesario realizar diferentes bocetos para crear un tipo de ilustración adecuada al proyecto. En este caso se ha decidido optar por un tipo de dibujo sencillo a línea, simplificando los rasgos de la cara del personaje en los ejercicios faciales para mantener sólo lo esencial y eliminando el rostro en los ejercicios corporales para centrar la atención en las partes que más la requieren.
               </p>
             </div>
@@ -503,8 +503,8 @@
           <li class="py-5 border-b border-ink/[0.08] flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-sm font-medium text-latte-dark shrink-0">02</span>
             <div>
-              <h3 class="text-base font-medium mb-1" data-i18n="s06.item2.title">Elección de colores</h3>
-              <p class="text-sm text-slate leading-relaxed" data-i18n="s06.item2.body">
+              <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-1" data-i18n="s06.item2.title">Elección de colores</h3>
+              <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s06.item2.body">
                 Para poder crear una unificación entre todos los ejercicios se ha optado por color blanco, negro, gris y amarillo. La dinámica que se ha seguido es delinear con línea negra, colorear los fondos de gris, el cuerpo o cara en color blanco y destacar la parte del cuerpo que se quiere ejercitar de color amarillo para centrar la atención. Además, se ha tomado como referencia un filtro de la aplicación TikTok de China que consiste en imitar ciertos movimientos que están delimitados por una línea continua o discontinua y se iluminan con una línea verde si es correcto. Hemos aplicado esta dinámica añadiendo también un check en verde para que sepan que es correcto.
               </p>
             </div>
@@ -512,8 +512,8 @@
           <li class="py-5 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-sm font-medium text-latte-dark shrink-0">03</span>
             <div>
-              <h3 class="text-base font-medium mb-1" data-i18n="s06.item3.title">Creación de los gifs</h3>
-              <p class="text-sm text-slate leading-relaxed" data-i18n="s06.item3.body">
+              <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-1" data-i18n="s06.item3.title">Creación de los gifs</h3>
+              <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s06.item3.body">
                 Para el proceso de realización de los gifs, se han grabado en un video algunos de los movimientos que queríamos representar en las terapias. Cada uno de ellos se ha introducido en Photoshop para exportar una secuencia de imágenes con pocos frames por segundo para posteriormente realizar una rotoscopia de cada uno de estos movimientos en la aplicación Procreate del iPad. Tras dibujar una media de 13 dibujos por ejercicio, se exporta de nuevo a Photoshop para crear la animación.
               </p>
             </div>
@@ -523,12 +523,12 @@
     </section>
 
     <!-- ===== 07 · ARQUITECTURA Y EXPERIENCIA DE USUARIO ===== -->
-    <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">07</span>
         <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s07.eyebrow">Arquitectura y experiencia de usuario</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s07.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s07.heading">
         Estructurando el acceso y la navegación de la app
       </h2>
 
@@ -576,7 +576,7 @@
           <button type="button" class="wireframes-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="3" aria-label="Ir a la imagen 4" data-i18n="carousel.dot4" data-i18n-attr="aria-label"></button>
         </div>
       </div>
-      <p class="reveal text-xs text-slate mt-3" data-i18n="s07.caption1">Wireframes de alta fidelidad</p>
+      <p class="reveal text-sm text-slate mt-3" data-i18n="s07.caption1">Wireframes de alta fidelidad</p>
 
       <div class="reveal grid md:grid-cols-[1fr_1.4fr] gap-4 md:gap-16 mt-16 md:mt-20 pt-16 md:pt-20 border-t border-ink/[0.08]">
         <p class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s07.label3">Emoción y motivación</p>
@@ -602,7 +602,7 @@
             <img src="sisdeva-avatar-disfagia.webp" alt="Ilustración del asistente virtual con los labios resaltados en amarillo para el ejercicio orofacial de la disfagia" data-i18n="s07.avatar1.alt" data-i18n-attr="alt" class="w-full h-auto">
           </div>
           <h3 class="text-sm font-medium mt-4 mb-1" data-i18n="s07.avatar1.title">Ejercicio para la disfagia</h3>
-          <p class="text-sm text-slate leading-relaxed" data-i18n="s07.avatar1.body">
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s07.avatar1.body">
             Los pacientes con enfermedad de Parkinson en ocasiones experimentan problemas a la hora de tragar, por ello se estimularán los músculos que facilitan la deglución y masticación.
           </p>
         </div>
@@ -611,7 +611,7 @@
             <img src="sisdeva-avatar-facies-amimica.webp" alt="Ilustración del asistente virtual sonriendo con los labios resaltados en amarillo para el ejercicio orofacial de la facies amímica" data-i18n="s07.avatar2.alt" data-i18n-attr="alt" class="w-full h-auto">
           </div>
           <h3 class="text-sm font-medium mt-4 mb-1" data-i18n="s07.avatar2.title">Ejercicio para la facies amímica</h3>
-          <p class="text-sm text-slate leading-relaxed" data-i18n="s07.avatar2.body">
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s07.avatar2.body">
             Los pacientes con enfermedad de Parkinson en ocasiones experimentan una pérdida de expresión facial y del lenguaje gestual, por ello se estimularán los músculos faciales.
           </p>
         </div>
@@ -620,7 +620,7 @@
             <img src="sisdeva-avatar-movilidad-corporal.webp" alt="Ilustración de una figura humana con el hombro y el brazo resaltados en amarillo y una línea discontinua indicando el movimiento a realizar" data-i18n="s07.avatar3.alt" data-i18n-attr="alt" class="w-full h-auto">
           </div>
           <h3 class="text-sm font-medium mt-4 mb-1" data-i18n="s07.avatar3.title">Ejercicio de movilidad corporal</h3>
-          <p class="text-sm text-slate leading-relaxed" data-i18n="s07.avatar3.body">
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s07.avatar3.body">
             Los pacientes con enfermedad de Parkinson en ocasiones experimentan rigidez al realizar ciertos movimientos. Con este ejercicio conseguimos que el paciente estimule ciertas partes del cuerpo, tratando de realizar una elevación de los brazos hasta formar un ángulo de 90º para estimular el movimiento y rehabilitar la zona.
           </p>
         </div>
@@ -628,12 +628,12 @@
     </section>
 
     <!-- ===== 08 · EXPERIENCIA EN RV ===== -->
-    <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">08</span>
         <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s08.eyebrow">Experiencia en RV</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s08.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-14 md:mb-16" data-i18n="s08.heading">
         Diseñando la experiencia dentro de las gafas de RV
       </h2>
 
@@ -663,12 +663,12 @@
     </section>
 
     <!-- ===== 09 · SOLUTION ===== -->
-    <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">09</span>
         <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s09.eyebrow">Solución</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight max-w-2xl mb-14 md:mb-16" data-i18n="s09.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight max-w-2xl mb-14 md:mb-16" data-i18n="s09.heading">
         Una ayuda para nuestros profesionales y pacientes
       </h2>
 
@@ -702,22 +702,22 @@
           <li class="py-5 border-b border-ink/[0.08] flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-sm font-medium text-latte-dark shrink-0">01</span>
             <div>
-              <h3 class="text-base font-medium mb-1" data-i18n="s09.item1.title">Experiencia inmersiva guiada</h3>
-              <p class="text-sm text-slate leading-relaxed max-w-lg" data-i18n="s09.item1.body">A través de las gafas de realidad virtual, el paciente recorre el procedimiento paso a paso en primera persona, visualizando cada etapa antes de vivirla en la consulta real. Esta experiencia guiada reduce la incertidumbre y ayuda a que la persona llegue a la cita con una idea clara de lo que va a suceder.</p>
+              <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-1" data-i18n="s09.item1.title">Experiencia inmersiva guiada</h3>
+              <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed max-w-lg" data-i18n="s09.item1.body">A través de las gafas de realidad virtual, el paciente recorre el procedimiento paso a paso en primera persona, visualizando cada etapa antes de vivirla en la consulta real. Esta experiencia guiada reduce la incertidumbre y ayuda a que la persona llegue a la cita con una idea clara de lo que va a suceder.</p>
             </div>
           </li>
           <li class="py-5 border-b border-ink/[0.08] flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-sm font-medium text-latte-dark shrink-0">02</span>
             <div>
-              <h3 class="text-base font-medium mb-1" data-i18n="s09.item2.title">Lenguaje visual accesible</h3>
-              <p class="text-sm text-slate leading-relaxed max-w-lg" data-i18n="s09.item2.body">Sustituimos el vocabulario clínico, a menudo complejo para el paciente, por ilustraciones sencillas y códigos visuales claros, como el uso del color amarillo para señalar la parte del cuerpo implicada en cada ejercicio. De este modo, la información se vuelve comprensible independientemente de los conocimientos médicos previos del usuario.</p>
+              <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-1" data-i18n="s09.item2.title">Lenguaje visual accesible</h3>
+              <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed max-w-lg" data-i18n="s09.item2.body">Sustituimos el vocabulario clínico, a menudo complejo para el paciente, por ilustraciones sencillas y códigos visuales claros, como el uso del color amarillo para señalar la parte del cuerpo implicada en cada ejercicio. De este modo, la información se vuelve comprensible independientemente de los conocimientos médicos previos del usuario.</p>
             </div>
           </li>
           <li class="py-5 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-sm font-medium text-latte-dark shrink-0">03</span>
             <div>
-              <h3 class="text-base font-medium mb-1" data-i18n="s09.item3.title">Apoyo al profesional sanitario</h3>
-              <p class="text-sm text-slate leading-relaxed max-w-lg" data-i18n="s09.item3.body">La herramienta funciona como apoyo durante la consulta, permitiendo al profesional sanitario reforzar sus explicaciones con contenido visual sin necesidad de alargar el tiempo de la cita. De esta forma, el paciente sale con una comprensión más completa del procedimiento sin que ello suponga una carga adicional para el equipo médico.</p>
+              <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-1" data-i18n="s09.item3.title">Apoyo al profesional sanitario</h3>
+              <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed max-w-lg" data-i18n="s09.item3.body">La herramienta funciona como apoyo durante la consulta, permitiendo al profesional sanitario reforzar sus explicaciones con contenido visual sin necesidad de alargar el tiempo de la cita. De esta forma, el paciente sale con una comprensión más completa del procedimiento sin que ello suponga una carga adicional para el equipo médico.</p>
             </div>
           </li>
         </ul>
@@ -742,12 +742,12 @@
     </section>
 
     <!-- ===== 10 · KEY LEARNINGS ===== -->
-    <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08]">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20 border-t border-ink/[0.08]">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-sm font-medium text-latte-dark">10</span>
         <span class="text-xs font-medium tracking-widest uppercase text-slate" data-i18n="s10.eyebrow">Aprendizajes clave</span>
       </div>
-      <h2 class="reveal text-2xl md:text-3xl font-semibold tracking-tight mb-8" data-i18n="s10.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-8" data-i18n="s10.heading">
         Qué me dejó este proyecto
       </h2>
       <p class="reveal text-ink/80 leading-relaxed" data-i18n="s10.p1">
@@ -756,9 +756,9 @@
     </section>
 
     <!-- ===== END OF CASE STUDY ===== -->
-    <section class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20 border-t border-ink/[0.08] text-center">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20 border-t border-ink/[0.08] text-center">
       <p class="reveal text-xs font-medium tracking-widest uppercase text-slate mb-4" data-i18n="cta.eyebrow">Has llegado al final</p>
-      <p class="reveal text-xl md:text-2xl font-medium tracking-tight mb-10" data-i18n="cta.heading">
+      <p class="reveal text-xl md:text-[clamp(1.25rem,1.0833rem+0.2604vw,1.5rem)] font-medium tracking-tight mb-10" data-i18n="cta.heading">
         ¿Quieres ver más proyectos?
       </p>
       <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -1193,7 +1193,7 @@
       btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang')));
     });
 
-    setLang(localStorage.getItem('lang') || detectLang());
+    setLang(localStorage.getItem('lang') || 'en');
     document.body.classList.add('is-ready');
 
     // ===== Copiar email =====
