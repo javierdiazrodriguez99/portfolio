@@ -88,43 +88,51 @@
 
   <!-- ===== NAVBAR ===== -->
   <header class="fixed top-0 inset-x-0 z-50 bg-paper/80 backdrop-blur-md">
-    <nav class="max-w-[1680px] mx-auto px-6 sm:px-16 h-[68px] sm:h-[136px] flex items-center justify-between">
-      <button type="button" id="mobile-menu-toggle" class="sm:hidden focus-ring rounded-md p-1 -ml-1 text-ink" data-i18n="nav.menuAria" data-i18n-attr="aria-label" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
-        <svg id="menu-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-        <svg id="menu-icon-close" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
+    <nav class="max-w-[1680px] mx-auto px-4 sm:px-16 h-[68px] sm:h-[136px] flex items-center justify-between">
 
-      <a href="../index.html" class="text-2xl font-semibold tracking-tight focus-ring rounded absolute left-1/2 -translate-x-1/2 sm:static sm:translate-x-0">
+      <a href="../index.html" class="text-lg sm:text-2xl font-semibold tracking-tight focus-ring rounded whitespace-nowrap shrink-0">
         Javier Díaz
       </a>
 
-      <div class="hidden sm:flex items-center gap-8">
-        <ul class="flex items-center gap-10 text-xl text-slate">
+      <div class="flex items-center gap-2 sm:gap-8 shrink-0">
+        <ul class="flex items-center gap-2 sm:gap-10 text-base sm:text-xl text-slate whitespace-nowrap">
           <li><a href="../sobre-mi.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
           <li><a href="../contacto.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
         </ul>
-        <div class="flex items-center h-8 gap-0.5 text-lg font-medium border border-ink/15 rounded-full p-0.5" role="group" aria-label="Seleccionar idioma">
-          <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="en">EN</button>
-          <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="es">ES</button>
+        <div class="flex items-center h-8 gap-0.5 text-base sm:text-lg font-medium border border-ink/15 rounded-full p-0.5" role="group" aria-label="Seleccionar idioma">
+          <button type="button" class="lang-btn h-full px-1 sm:px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="en">EN</button>
+          <button type="button" class="lang-btn h-full px-1 sm:px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="es">ES</button>
         </div>
       </div>
 
-      <span class="sm:hidden w-[22px]" aria-hidden="true"></span>
     </nav>
-
-    <div id="mobile-menu" class="sm:hidden max-h-0 opacity-0 blur-sm pointer-events-none overflow-hidden bg-paper transition-all duration-300 ease-out">
-      <ul class="flex flex-col px-6 py-4 text-base font-medium text-ink">
-        <li><a href="../sobre-mi.html" class="block py-4 focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
-        <li><a href="../contacto.html" class="block py-4 focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
-      </ul>
-      <div class="flex items-center gap-0.5 text-base font-medium border border-ink/15 rounded-full p-0.5 mx-6 mb-4 w-fit" role="group" aria-label="Seleccionar idioma">
-        <button type="button" class="lang-btn px-3 py-1.5 rounded-full transition-colors" data-lang="en">EN</button>
-        <button type="button" class="lang-btn px-3 py-1.5 rounded-full transition-colors" data-lang="es">ES</button>
-      </div>
-    </div>
   </header>
 
   <main>
+
+    <!-- ===== ÍNDICE DE SECCIONES ===== -->
+    <nav id="section-index" class="group/index hidden xl:flex flex-col items-end gap-4 fixed right-6 top-1/2 -translate-y-1/2 z-30" aria-label="Índice de secciones">
+      <button type="button" class="section-index-item flex items-center gap-3 focus-ring rounded" data-target="s01">
+        <span class="section-index-label text-base text-slate whitespace-nowrap opacity-0 max-w-0 group-hover/index:opacity-100 group-hover/index:max-w-[280px] overflow-hidden transition-all duration-300 ease-out bg-paper/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-ink/15" data-i18n="s01.eyebrow">Punto de partida</span>
+        <span class="section-index-dot w-1.5 h-1.5 rounded-full bg-ink/20 transition-all shrink-0"></span>
+      </button>
+      <button type="button" class="section-index-item flex items-center gap-3 focus-ring rounded" data-target="s02">
+        <span class="section-index-label text-base text-slate whitespace-nowrap opacity-0 max-w-0 group-hover/index:opacity-100 group-hover/index:max-w-[280px] overflow-hidden transition-all duration-300 ease-out bg-paper/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-ink/15" data-i18n="s02.eyebrow">Research</span>
+        <span class="section-index-dot w-1.5 h-1.5 rounded-full bg-ink/20 transition-all shrink-0"></span>
+      </button>
+      <button type="button" class="section-index-item flex items-center gap-3 focus-ring rounded" data-target="s03">
+        <span class="section-index-label text-base text-slate whitespace-nowrap opacity-0 max-w-0 group-hover/index:opacity-100 group-hover/index:max-w-[280px] overflow-hidden transition-all duration-300 ease-out bg-paper/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-ink/15" data-i18n="s03.eyebrow">Del papel a la pantalla</span>
+        <span class="section-index-dot w-1.5 h-1.5 rounded-full bg-ink/20 transition-all shrink-0"></span>
+      </button>
+      <button type="button" class="section-index-item flex items-center gap-3 focus-ring rounded" data-target="s04">
+        <span class="section-index-label text-base text-slate whitespace-nowrap opacity-0 max-w-0 group-hover/index:opacity-100 group-hover/index:max-w-[280px] overflow-hidden transition-all duration-300 ease-out bg-paper/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-ink/15" data-i18n="s04.eyebrow">Solución</span>
+        <span class="section-index-dot w-1.5 h-1.5 rounded-full bg-ink/20 transition-all shrink-0"></span>
+      </button>
+      <button type="button" class="section-index-item flex items-center gap-3 focus-ring rounded" data-target="s05">
+        <span class="section-index-label text-base text-slate whitespace-nowrap opacity-0 max-w-0 group-hover/index:opacity-100 group-hover/index:max-w-[280px] overflow-hidden transition-all duration-300 ease-out bg-paper/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-ink/15" data-i18n="s05.eyebrow">Aprendizajes clave</span>
+        <span class="section-index-dot w-1.5 h-1.5 rounded-full bg-ink/20 transition-all shrink-0"></span>
+      </button>
+    </nav>
 
     <!-- ===== HERO ===== -->
     <section class="max-w-[1680px] mx-auto px-6 sm:px-16 pt-[91px] sm:pt-[159px]">
@@ -180,7 +188,7 @@
     </section>
 
     <!-- ===== 01 · STARTING POINT ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20" id="s01">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-base font-medium text-latte-dark">01</span>
         <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s01.eyebrow">Punto de partida</span>
@@ -218,7 +226,7 @@
     </section>
 
     <!-- ===== 02 · RESEARCH ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20" id="s02">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-base font-medium text-latte-dark">02</span>
         <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s02.eyebrow">Research</span>
@@ -255,7 +263,7 @@
     </section>
 
     <!-- ===== 03 · DEL PAPEL A LA PANTALLA ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20" id="s03">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-base font-medium text-latte-dark">03</span>
         <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s03.eyebrow">Del papel a la pantalla</span>
@@ -386,7 +394,7 @@
     </section>
 
     <!-- ===== 04 · SOLUTION ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20" id="s04">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-base font-medium text-latte-dark">04</span>
         <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s04.eyebrow">Solución</span>
@@ -465,7 +473,7 @@
     </section>
 
     <!-- ===== 05 · KEY LEARNINGS ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20" id="s05">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-base font-medium text-latte-dark">05</span>
         <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s05.eyebrow">Aprendizajes clave</span>
@@ -765,39 +773,6 @@
     setLang(localStorage.getItem('lang') || 'en');
     document.body.classList.add('is-ready');
 
-    // Menú móvil (hamburguesa)
-    (function () {
-      const toggleBtn = document.getElementById('mobile-menu-toggle');
-      const menu = document.getElementById('mobile-menu');
-      const iconOpen = document.getElementById('menu-icon-open');
-      const iconClose = document.getElementById('menu-icon-close');
-      if (!toggleBtn || !menu) return;
-
-      function closeMenu() {
-        menu.classList.add('max-h-0', 'opacity-0', 'blur-sm', 'pointer-events-none');
-        menu.classList.remove('max-h-48', 'opacity-100', 'blur-none', 'pointer-events-auto');
-        iconOpen.classList.remove('hidden');
-        iconClose.classList.add('hidden');
-        toggleBtn.setAttribute('aria-expanded', 'false');
-      }
-
-      function openMenu() {
-        menu.classList.add('max-h-48', 'opacity-100', 'blur-none', 'pointer-events-auto');
-        menu.classList.remove('max-h-0', 'opacity-0', 'blur-sm', 'pointer-events-none');
-        iconOpen.classList.add('hidden');
-        iconClose.classList.remove('hidden');
-        toggleBtn.setAttribute('aria-expanded', 'true');
-      }
-
-      toggleBtn.addEventListener('click', () => {
-        const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
-        isOpen ? closeMenu() : openMenu();
-      });
-
-      menu.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', closeMenu);
-      });
-    })();
 
     // Scroll reveal
     const revealEls = document.querySelectorAll('.reveal:not(.is-visible)');
@@ -986,6 +961,46 @@
       inactiveDotClass: 'bg-ink/25',
     });
 
+  
+    // ===== Índice de secciones =====
+    (function () {
+      const items = Array.from(document.querySelectorAll('.section-index-item'));
+      if (!items.length) return;
+
+      const sections = items
+        .map((item) => document.getElementById(item.dataset.target))
+        .filter(Boolean);
+
+      items.forEach((item) => {
+        item.addEventListener('click', () => {
+          const target = document.getElementById(item.dataset.target);
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      function setActive(id) {
+        items.forEach((item) => {
+          const dot = item.querySelector('.section-index-dot');
+          const label = item.querySelector('.section-index-label');
+          const active = item.dataset.target === id;
+          dot.classList.toggle('bg-ink', active);
+          dot.classList.toggle('scale-150', active);
+          dot.classList.toggle('bg-ink/20', !active);
+          label.classList.toggle('text-ink', active);
+          label.classList.toggle('font-semibold', active);
+          label.classList.toggle('text-slate', !active);
+        });
+      }
+
+      if ('IntersectionObserver' in window) {
+        const sectionObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) setActive(entry.target.id);
+          });
+        }, { rootMargin: '-45% 0px -50% 0px' });
+        sections.forEach((section) => sectionObserver.observe(section));
+      }
+    })();
   </script>
 
 </body>
