@@ -200,20 +200,21 @@
 
   <!-- ===== NAVBAR ===== -->
   <header class="fixed top-0 inset-x-0 z-50 bg-paper/80 backdrop-blur-md">
-    <nav class="max-w-[1680px] mx-auto px-4 sm:px-16 h-[68px] sm:h-[136px] flex items-center justify-between">
+    <nav class="max-w-[1680px] mx-auto px-6 sm:px-16 h-[68px] sm:h-[136px] flex items-center justify-between">
 
       <a href="#" class="text-lg sm:text-2xl font-semibold tracking-tight focus-ring rounded whitespace-nowrap shrink-0">
         Javier Díaz
       </a>
 
-      <div class="flex items-center gap-2 sm:gap-8 shrink-0">
-        <ul class="flex items-center gap-2 sm:gap-10 text-base sm:text-xl text-slate whitespace-nowrap">
+      <div class="flex items-center gap-4 sm:gap-8 shrink-0">
+        <ul class="flex items-center gap-4 sm:gap-10 text-base sm:text-xl text-slate whitespace-nowrap">
           <li><a href="sobre-mi.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
           <li><a href="contacto.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
         </ul>
-        <div class="flex items-center h-8 gap-0.5 text-base sm:text-lg font-medium border border-ink/15 rounded-full p-0.5" role="group" aria-label="Seleccionar idioma">
-          <button type="button" class="lang-btn h-full px-1 sm:px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="en">EN</button>
-          <button type="button" class="lang-btn h-full px-1 sm:px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="es">ES</button>
+        <button type="button" id="lang-toggle-mobile" class="sm:hidden h-8 px-3 flex items-center justify-center text-base font-medium border border-ink/15 rounded-full hover:bg-latte/40 transition-colors" aria-label="Cambiar idioma">ES</button>
+        <div class="hidden sm:flex items-center h-8 gap-0.5 text-lg font-medium border border-ink/15 rounded-full p-0.5" role="group" aria-label="Seleccionar idioma">
+          <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="en">EN</button>
+          <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="es">ES</button>
         </div>
       </div>
 
@@ -436,7 +437,7 @@
 
       <div id="testimonial-carousel-mobile" class="reveal group relative sm:hidden">
        <div class="overflow-hidden">
-        <div id="testimonial-track-mobile" class="flex transition-transform duration-500 ease-out">
+        <div id="testimonial-track-mobile" class="flex items-start transition-transform duration-500 ease-out">
           <div class="w-full shrink-0 px-1">
             <div class="bg-mist rounded-2xl p-6 md:p-8 min-h-[220px] flex flex-col justify-between">
               <p class="text-xl leading-relaxed text-ink/90" data-i18n="t1.quote">
@@ -580,10 +581,10 @@
         </div>
        </div>
 
-        <button type="button" id="testimonial-prev-mobile" aria-label="Testimonio anterior" class="focus-ring absolute top-1/2 -left-2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper border border-ink/10 text-ink hover:bg-latte/40 transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="testimonial-prev-mobile" aria-label="Testimonio anterior" class="hidden focus-ring absolute top-1/2 -left-2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper border border-ink/10 text-ink hover:bg-latte/40 transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <button type="button" id="testimonial-next-mobile" aria-label="Siguiente testimonio" class="focus-ring absolute top-1/2 -right-2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper border border-ink/10 text-ink hover:bg-latte/40 transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="testimonial-next-mobile" aria-label="Siguiente testimonio" class="hidden focus-ring absolute top-1/2 -right-2 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper border border-ink/10 text-ink hover:bg-latte/40 transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </button>
 
@@ -967,6 +968,8 @@
         btn.classList.toggle('hover:text-ink', !active);
         btn.setAttribute('aria-pressed', String(active));
       });
+      const mobileToggle = document.getElementById('lang-toggle-mobile');
+      if (mobileToggle) mobileToggle.textContent = lang.toUpperCase();
     }
 
     function setLang(lang) {
@@ -978,6 +981,13 @@
     document.querySelectorAll('.lang-btn').forEach((btn) => {
       btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang')));
     });
+
+    const mobileLangToggle = document.getElementById('lang-toggle-mobile');
+    if (mobileLangToggle) {
+      mobileLangToggle.addEventListener('click', () => {
+        setLang(document.documentElement.lang === 'es' ? 'en' : 'es');
+      });
+    }
 
     setLang(localStorage.getItem('lang') || 'en');
     document.body.classList.add('is-ready');
@@ -1129,7 +1139,7 @@
     })();
 
     // ===== Carrusel de testimonios =====
-    function initCarousel({ containerId, trackId, prevId, nextId, dotClass, activeDotClass, inactiveDotClass }) {
+    function initCarousel({ containerId, trackId, prevId, nextId, dotClass, activeDotClass, inactiveDotClass, autoHeight }) {
       const container = document.getElementById(containerId);
       const track = document.getElementById(trackId);
       const prevBtn = document.getElementById(prevId);
@@ -1137,11 +1147,18 @@
       const dots = Array.from(document.querySelectorAll('.' + dotClass));
       if (!track || !dots.length) return;
 
+      const wrapper = track.parentElement;
       const slideCount = track.children.length;
       const autoplayMs = 10000;
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       let index = 0;
       let timer = null;
+
+      function updateHeight() {
+        if (!autoHeight) return;
+        const activeSlide = track.children[index];
+        if (activeSlide) wrapper.style.height = activeSlide.offsetHeight + 'px';
+      }
 
       function goTo(i) {
         index = (i + slideCount) % slideCount;
@@ -1150,6 +1167,7 @@
           dot.classList.toggle(activeDotClass, dotIndex === index);
           dot.classList.toggle(inactiveDotClass, dotIndex !== index);
         });
+        updateHeight();
       }
 
       function startAutoplay() {
@@ -1203,6 +1221,15 @@
         }, { passive: false });
       }
 
+      if (autoHeight) {
+        wrapper.style.overflow = 'hidden';
+        wrapper.style.transition = 'height 0.3s ease';
+        window.addEventListener('resize', updateHeight);
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(updateHeight);
+        }
+      }
+
       goTo(0);
       startAutoplay();
     }
@@ -1225,6 +1252,7 @@
       dotClass: 'testimonial-dot-mobile',
       activeDotClass: 'bg-ink',
       inactiveDotClass: 'bg-ink/25',
+      autoHeight: true,
     });
   </script>
 

@@ -88,20 +88,21 @@
 
   <!-- ===== NAVBAR ===== -->
   <header class="fixed top-0 inset-x-0 z-50 bg-paper/80 backdrop-blur-md">
-    <nav class="max-w-[1680px] mx-auto px-4 sm:px-16 h-[68px] sm:h-[136px] flex items-center justify-between">
+    <nav class="max-w-[1680px] mx-auto px-6 sm:px-16 h-[68px] sm:h-[136px] flex items-center justify-between">
 
       <a href="../index.html" class="text-lg sm:text-2xl font-semibold tracking-tight focus-ring rounded whitespace-nowrap shrink-0">
         Javier Díaz
       </a>
 
-      <div class="flex items-center gap-2 sm:gap-8 shrink-0">
-        <ul class="flex items-center gap-2 sm:gap-10 text-base sm:text-xl text-slate whitespace-nowrap">
+      <div class="flex items-center gap-4 sm:gap-8 shrink-0">
+        <ul class="flex items-center gap-4 sm:gap-10 text-base sm:text-xl text-slate whitespace-nowrap">
           <li><a href="../sobre-mi.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
           <li><a href="../contacto.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
         </ul>
-        <div class="flex items-center h-8 gap-0.5 text-base sm:text-lg font-medium border border-ink/15 rounded-full p-0.5" role="group" aria-label="Seleccionar idioma">
-          <button type="button" class="lang-btn h-full px-1 sm:px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="en">EN</button>
-          <button type="button" class="lang-btn h-full px-1 sm:px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="es">ES</button>
+        <button type="button" id="lang-toggle-mobile" class="sm:hidden h-8 px-3 flex items-center justify-center text-base font-medium border border-ink/15 rounded-full hover:bg-latte/40 transition-colors" aria-label="Cambiar idioma">ES</button>
+        <div class="hidden sm:flex items-center h-8 gap-0.5 text-lg font-medium border border-ink/15 rounded-full p-0.5" role="group" aria-label="Seleccionar idioma">
+          <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="en">EN</button>
+          <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="es">ES</button>
         </div>
       </div>
 
@@ -1082,6 +1083,8 @@
         btn.classList.toggle('hover:text-ink', !active);
         btn.setAttribute('aria-pressed', String(active));
       });
+      const mobileToggle = document.getElementById('lang-toggle-mobile');
+      if (mobileToggle) mobileToggle.textContent = lang.toUpperCase();
     }
 
     function setLang(lang) {
@@ -1093,6 +1096,13 @@
     document.querySelectorAll('.lang-btn').forEach((btn) => {
       btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang')));
     });
+
+    const mobileLangToggle = document.getElementById('lang-toggle-mobile');
+    if (mobileLangToggle) {
+      mobileLangToggle.addEventListener('click', () => {
+        setLang(document.documentElement.lang === 'es' ? 'en' : 'es');
+      });
+    }
 
     setLang(localStorage.getItem('lang') || 'en');
     document.body.classList.add('is-ready');
