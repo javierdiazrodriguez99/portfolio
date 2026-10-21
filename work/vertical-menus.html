@@ -164,7 +164,15 @@
         </div>
         <div>
           <p class="text-base font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.team.label">Equipo</p>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink" data-i18n="hero.team.value">Directivos (CEO + Main Managers), PMs, Developers, QA</p>
+          <div class="relative inline-block group">
+            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink">
+              <span tabindex="0" aria-describedby="team-tooltip" class="focus-ring rounded">End-to-end</span>
+            </p>
+            <div id="team-tooltip" role="tooltip" class="pointer-events-none absolute bottom-full left-0 sm:left-auto sm:right-0 mb-3 z-20 w-max max-w-[360px] rounded-xl bg-ink px-4 py-3 text-base text-paper shadow-sm opacity-0 translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:translate-y-0">
+              <span class="block" data-i18n="hero.team.tooltip">Un equipo end-to-end es aquel en el que, como Product Designer, tuve la oportunidad de interactuar con todos los departamentos implicados, de principio a fin del proyecto:</span>
+              <span class="block mt-2 font-medium">Customer Success → Product Management → Product Design → Development → QA Testing</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -595,7 +603,7 @@
         'hero.year.label': `Año`,
         'hero.year.value': `2023`,
         'hero.team.label': `Equipo`,
-        'hero.team.value': `Directivos (CEO + Main Managers), PMs, Developers, QA`,
+        'hero.team.tooltip': `Un equipo end-to-end es aquel en el que, como Product Designer, tuve la oportunidad de interactuar con todos los departamentos implicados, de principio a fin del proyecto:`,
         'hero.tag1': `Design System`,
         'hero.tag2': `Information Architecture`,
         'hero.tag3': `Figma`,
@@ -728,7 +736,7 @@
         'hero.year.label': `Year`,
         'hero.year.value': `2023`,
         'hero.team.label': `Team`,
-        'hero.team.value': `Executives (CEO + Main Managers), PMs, Developers, QA`,
+        'hero.team.tooltip': `An end-to-end team is one where, as Product Designer, I had the chance to work with every department involved, from the start to the end of the project:`,
         'hero.tag1': `Design System`,
         'hero.tag2': `Information Architecture`,
         'hero.tag3': `Figma`,

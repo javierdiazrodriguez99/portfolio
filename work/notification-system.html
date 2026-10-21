@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title data-i18n="meta.title">Notification System · Javier Díaz</title>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-<meta name="description" data-i18n="meta.description" data-i18n-attr="content" content="Caso de estudio: sistema de notificaciones push para escritorio y email de las acciones que ocurren en la plataforma.">
+<meta name="description" data-i18n="meta.description" data-i18n-attr="content" content="Caso de estudio: sistema de notificaciones por email que alerta a los usuarios de las acciones relevantes de sus shipments.">
 
 <!-- Tailwind CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
@@ -171,15 +171,23 @@
         </div>
         <div>
           <p class="text-base font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.usertype.label">Tipo de usuario</p>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink" data-i18n="hero.usertype.value">Transportistas (Freightos)</p>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink" data-i18n="hero.usertype.value">Freight Forwarders y Shippers</p>
         </div>
         <div>
           <p class="text-base font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.year.label">Año</p>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink" data-i18n="hero.year.value">2025</p>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink" data-i18n="hero.year.value">2025-2026</p>
         </div>
         <div>
           <p class="text-base font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.team.label">Equipo</p>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink" data-i18n="hero.team.value">PM, Ingeniería, Research</p>
+          <div class="relative inline-block group">
+            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink">
+              <span tabindex="0" aria-describedby="team-tooltip" class="focus-ring rounded">End-to-end</span>
+            </p>
+            <div id="team-tooltip" role="tooltip" class="pointer-events-none absolute bottom-full left-0 sm:left-auto sm:right-0 mb-3 z-20 w-max max-w-[360px] rounded-xl bg-ink px-4 py-3 text-base text-paper shadow-sm opacity-0 translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:translate-y-0">
+              <span class="block" data-i18n="hero.team.tooltip">Un equipo end-to-end es aquel en el que, como Product Designer, tuve la oportunidad de interactuar con todos los departamentos implicados, de principio a fin del proyecto:</span>
+              <span class="block mt-2 font-medium">Customer Success → Product Management → Product Design → Development → QA Testing</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -217,27 +225,27 @@
 
       <div class="reveal mb-14">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s01.context.p">
-          En la plataforma ocurrían constantemente acciones relevantes para los usuarios — cambios de estado, mensajes, alertas — pero no existía ningún sistema centralizado para avisarles. La única vía era que el propio usuario entrara y comprobara manualmente si algo había cambiado.
+          En la plataforma, los freight forwarders y los shippers gestionan shipments (envíos de carga) junto a muchas otras partes implicadas. Constantemente ocurrían acciones relevantes para ellos — cambios de estado, mensajes, alertas — pero no existía ningún sistema centralizado para avisarles. La única vía era que el propio usuario entrara y comprobara manualmente si algo había cambiado.
         </p>
       </div>
 
       <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 pt-10">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s01.card1.heading">Falta de visibilidad</h3>
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s01.card1.heading">Información que había que ir a buscar</h3>
           <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s01.card1.p">
-            El proceso para consultar las actualizaciones de un shipment era bastante arcaico y poco innovador: el usuario tenía que ir desplegando manualmente los distintos puntos del shipment para ver en qué estado se encontraba cada uno de los puntos que necesitaba comprobar.
+            Los usuarios tenían que volver una y otra vez a cada shipment para ver qué había cambiado, sin que nada les avisara cuando ocurría algo.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s01.card2.heading">Canales desconectados</h3>
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s01.card2.heading">Errores y carga de soporte</h3>
           <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s01.card2.p">
-            Surgió la necesidad de poder configurar qué tipo de información iba a recibir cada stakeholder asociado a ese shipment.
+            Los usuarios no podían seguir el progreso de sus reservas y cotizaciones con otros clientes y stakeholders, y eso se traducía en errores y tickets de soporte. No era solo una cuestión de comodidad, sino de coordinación y de coste operativo.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s01.card3.heading">Poca personalización de las notificaciones</h3>
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s01.card3.heading">Sin control sobre qué se comunicaba ni a quién</h3>
           <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s01.card3.p">
-            Había muy pocos apartados para activar o desactivar notificaciones, así que creamos un sistema mucho más enriquecido y explícito para saber qué información recibiría el usuario.
+            Producto planteó como requisito clave que forwarders y shippers pudieran configurar las notificaciones de cada shipment y decidir quién recibía cada tipo de información. Sin esa granularidad, no había forma de adaptar la información a cada stakeholder.
           </p>
         </div>
       </div>
@@ -264,13 +272,13 @@
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
           <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s02.card3.heading">Benchmark de sistemas de notificaciones</h3>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s02.card3.p">Intentamos localizar e investigar aquellos sistemas más actualizados a nivel de experiencia de usuario e interfaz, para garantizar una funcionalidad lo más fresca posible.</p>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s02.card3.p">Analizamos sistemas de notificaciones de otros softwares para identificar los patrones de experiencia de usuario e interfaz que mejor funcionaban.</p>
         </div>
       </div>
 
       <div class="reveal mb-14">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s02.requirements.p">
-          Desde product management nos plantearon un requisito clave: permitir que forwarders y shippers pudieran configurar notificaciones para cada envío y decidir quién recibía cada tipo de información. Se plantearon dos opciones: mostrar los tipos de notificación y asignar personas a cada uno, o añadir personas y elegir qué tipo de información recibiría cada una.
+          Desde product management nos plantearon un requisito clave: permitir que forwarders y shippers pudieran configurar notificaciones para cada envío y decidir quién recibía cada tipo de información. Se plantearon dos opciones: mostrar los tipos de notificación y asignar personas a cada uno, o añadir personas y elegir qué tipo de información recibiría cada una. Elegimos la primera: asignar personas a cada tipo de notificación. Así se mantiene la misma estructura para todos y cada uno de los shipments, y es igual tanto para freight forwarders como para shippers. Plantearlo al revés complicaba mucho el diseño y el desarrollo, y resultaba menos intuitivo como producto.
         </p>
       </div>
 
@@ -358,57 +366,9 @@
       </div>
       <p class="reveal text-base text-slate mt-3" data-i18n="s03.caption1">Primeros bocetos del sistema de notificaciones y escenarios planteados por producto.</p>
 
-      <div class="reveal mb-16 mt-16 md:mt-20">
-        <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s03.prebooking.p">
-          Por cuestiones de roadmap, esta sección quedó exenta de rediseño y se mantuvo como estaba hasta el momento.
-        </p>
-      </div>
-
-      <div id="notifcenter-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-[#ECECEC]">
-        <div id="notifcenter-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
-          <img src="notification-system-prebooking-flow.webp" alt="Flow de las páginas de pre-booking: árbol de decisiones para activar notificaciones por email, junto al modal de preferencias de notificación" data-i18n="s03.img4.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
-        </div>
-
-        <button type="button" id="notifcenter-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <button type="button" id="notifcenter-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-
-        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
-          <button type="button" class="notifcenter-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
-        </div>
-      </div>
-      <p class="reveal text-base text-slate mt-3" data-i18n="s03.caption2">Flow actual de las páginas de pre-booking. No tengo capturas de pantalla completas jeje :)</p>
-
-      <div class="reveal mb-16 mt-16 md:mt-20">
-        <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s03.contact.p">
-          En cuanto a la creación de contacto, también se mantuvo fuera del proyecto final de momento: la propuesta está hecha, pero no se pudo integrar debido a cuestiones técnicas del equipo de desarrollo, y porque para el equipo directivo no era realmente una prioridad finalmente.
-        </p>
-      </div>
-
-      <div id="push-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-white border border-ink/15">
-        <div id="push-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
-          <img src="notification-system-addcontact-flow.webp" alt="Flow de añadir un nuevo contacto desde el panel de notificaciones: notifications side panel, pop-up de añadir contacto y pop-up relleno" data-i18n="s03.img5.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
-        </div>
-
-        <button type="button" id="push-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <button type="button" id="push-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-
-        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
-          <button type="button" class="push-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
-        </div>
-      </div>
-      <p class="reveal text-base text-slate mt-3" data-i18n="s03.caption3">Propuesta de flow para añadir un nuevo contacto, finalmente descartada.</p>
-
       <div class="reveal mb-10 mt-16 md:mt-20">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s03.pivot.p">
-          Este proyecto sufrió numerosos cambios de prioridades durante su desarrollo. Así arrancamos, y así terminamos.
+          Al principio había muchos requirements y el alcance se fue simplificando tanto que perdimos diseños ya trabajados que finalmente no se incluyeron. Así arrancamos (arriba, el alcance inicial) y así terminamos (abajo, lo que finalmente quedó).
         </p>
       </div>
 
@@ -435,16 +395,68 @@
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ink/40"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
       </div>
 
-      <div class="reveal grid sm:grid-cols-2 gap-x-8 gap-y-10 md:gap-x-10 mb-16">
+      <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 mb-16">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
           <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s03.final.card1.heading">Activar/Desactivar notificaciones</h3>
           <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s03.final.card1.p">Los usuarios podían activar o desactivar las notificaciones directamente desde la vista general de envíos.</p>
+        </div>
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s03.final.cardNotify.heading">Notificar a terceras personas</h3>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s03.final.cardNotify.p">Los usuarios podían personalizar las notificaciones que recibía cada uno de los contactos del envío.</p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
           <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s03.final.card2.heading">Añadir y modificar tarjetas de contacto del propio envío</h3>
           <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s03.final.card2.p">Se permitía añadir y modificar las tarjetas de contacto asociadas a cada envío, sin salir del flujo principal.</p>
         </div>
       </div>
+
+      <div class="reveal mb-16">
+        <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s03.prebooking.p">
+          Pre-booking: por cuestiones de roadmap, esta parte quedó exenta de rediseño y se mantuvo como estaba hasta el momento.
+        </p>
+      </div>
+
+      <div id="notifcenter-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-[#ECECEC]">
+        <div id="notifcenter-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="notification-system-prebooking-flow.webp" alt="Flow de las páginas de pre-booking: árbol de decisiones para activar notificaciones por email, junto al modal de preferencias de notificación" data-i18n="s03.img4.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+        </div>
+
+        <button type="button" id="notifcenter-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="notifcenter-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="notifcenter-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+        </div>
+      </div>
+      <p class="reveal text-base text-slate mt-3" data-i18n="s03.caption2">Flow actual de las páginas de pre-booking (no se dispone de capturas completas).</p>
+
+      <div class="reveal mb-16 mt-16 md:mt-20">
+        <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s03.contact.p">
+          En cuanto a la creación de contacto, también se mantuvo fuera del proyecto final de momento: la propuesta está hecha, pero no se pudo integrar debido a cuestiones técnicas del equipo de desarrollo, y porque para el equipo directivo no era realmente una prioridad finalmente.
+        </p>
+      </div>
+
+      <div id="push-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-white border border-ink/15">
+        <div id="push-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="notification-system-addcontact-flow.webp" alt="Flow de añadir un nuevo contacto desde el panel de notificaciones: notifications side panel, pop-up de añadir contacto y pop-up relleno" data-i18n="s03.img5.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
+        </div>
+
+        <button type="button" id="push-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="push-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="push-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+        </div>
+      </div>
+      <p class="reveal text-base text-slate mt-3" data-i18n="s03.caption3">Propuesta de flow para añadir un nuevo contacto, finalmente descartada.</p>
     </section>
 
     <!-- ===== 04 · SOLUTION ===== -->
@@ -459,7 +471,7 @@
 
       <div class="reveal mb-16">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s04.approach.p">
-          Tras percibir estos cambios de roadmap mientras el proyecto estaba en pleno desarrollo de diseño, me alineé bastante rápido con los diferentes stakeholders y conseguimos sacar en tiempo récord un sistema de notificaciones que pudiera solventar las principales prioridades del equipo de producto.
+          Tras percibir estos cambios de roadmap mientras el proyecto estaba en pleno desarrollo de diseño, me alineé bastante rápido con los diferentes stakeholders y definimos, en tiempo récord, un sistema de notificaciones simplificado que pudiera solventar las principales prioridades del equipo de producto. El proyecto aún no se ha lanzado, así que lo que sigue es la solución diseñada, no un producto en vivo.
         </p>
       </div>
 
@@ -497,7 +509,7 @@
           <li class="py-5 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <div>
               <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-1" data-i18n="s04.feature2.heading">Notificar a terceras personas</h3>
-              <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s04.feature2.p">Conseguimos proporcionar una solución donde se permitiera la customización de las notificaciones que recibirían cada uno de los contactos del envío.</p>
+              <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s04.feature2.p">Diseñamos una solución que permitía customizar las notificaciones que recibiría cada uno de los contactos del envío.</p>
             </div>
           </li>
         </ul>
@@ -559,6 +571,11 @@
         </div>
       </div>
       <p class="reveal text-base text-slate mt-3" data-i18n="s04.item03.caption">Detalle de campana, tarjeta de contacto en Contacts v2, y modal de edición de Notify party.</p>
+
+      <div class="reveal mt-16 md:mt-20">
+        <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s04.expected.heading">Impacto esperado</h3>
+        <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s04.expected.p">Al no haberse publicado todavía, no hay resultados medidos. Lo que se esperaba era que los usuarios pudieran recibir más emails sobre el estado de sus shipments y reducir las llamadas al servicio de atención al cliente.</p>
+      </div>
     </section>
 
     <!-- ===== 05 · KEY LEARNINGS ===== -->
@@ -573,7 +590,7 @@
       <p class="reveal text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s05.p1">
         A veces hay proyectos que conllevan más o menos prioridad dentro de un roadmap. Con este en concreto, pude observar cómo los requisitos pueden cambiar de la noche a la mañana y la agilidad que hay que tener para adaptarse a las nuevas visiones externas. Me llevo mucho entrenamiento para futuros proyectos que conlleven situaciones similares.
       </p>
-      <p class="reveal text-ink/80 leading-relaxed mt-6" data-i18n="s05.p2">
+      <p class="reveal text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed mt-6" data-i18n="s05.p2">
         También comentar que este proyecto no ha sido publicado aún en el sistema, por eso todo lo que vemos en esta página es estrictamente confidencial.
       </p>
     </section>
@@ -603,7 +620,7 @@
         'nav.about': 'Sobre mí',
         'nav.contact': 'Contacto',
         'meta.title': 'Notification System · Javier Díaz',
-        'meta.description': 'Caso de estudio: sistema de notificaciones push para escritorio y email de las acciones que ocurren en la plataforma.',
+        'meta.description': "Caso de estudio: sistema de notificaciones por email que alerta a los usuarios de las acciones relevantes de sus shipments.",
         'gate.back': '← Volver al inicio',
         'gate.heading': 'Este proyecto está protegido',
         'gate.instructions': 'Introduce la contraseña para acceder.',
@@ -617,11 +634,11 @@
         'hero.role.label': 'Rol',
         'hero.role.value': 'Product Designer',
         'hero.usertype.label': 'Tipo de usuario',
-        'hero.usertype.value': 'Transportistas (Freightos)',
+        'hero.usertype.value': "Freight Forwarders y Shippers",
         'hero.year.label': 'Año',
-        'hero.year.value': '2025',
+        'hero.year.value': '2025-2026',
         'hero.team.label': 'Equipo',
-        'hero.team.value': 'PM, Ingeniería, Research',
+        'hero.team.tooltip': 'Un equipo end-to-end es aquel en el que, como Product Designer, tuve la oportunidad de interactuar con todos los departamentos implicados, de principio a fin del proyecto:',
         'hero.tag1': 'Product Design',
         'hero.tag2': 'Push Notifications',
         'hero.tag3': 'Email',
@@ -631,13 +648,13 @@
         's01.eyebrow': 'Punto de partida',
         's01.heading': 'Por qué necesitábamos un nuevo enfoque',
         's01.context.label': 'Contexto',
-        's01.context.p': 'En la plataforma ocurrían constantemente acciones relevantes para los usuarios — cambios de estado, mensajes, alertas — pero no existía ningún sistema centralizado para avisarles. La única vía era que el propio usuario entrara y comprobara manualmente si algo había cambiado.',
-        's01.card1.heading': 'Falta de visibilidad',
-        's01.card1.p': 'El proceso para consultar las actualizaciones de un shipment era bastante arcaico y poco innovador: el usuario tenía que ir desplegando manualmente los distintos puntos del shipment para ver en qué estado se encontraba cada uno de los puntos que necesitaba comprobar.',
-        's01.card2.heading': 'Canales desconectados',
-        's01.card2.p': 'Surgió la necesidad de poder configurar qué tipo de información iba a recibir cada stakeholder asociado a ese shipment.',
-        's01.card3.heading': 'Poca personalización de las notificaciones',
-        's01.card3.p': 'Había muy pocos apartados para activar o desactivar notificaciones, así que creamos un sistema mucho más enriquecido y explícito para saber qué información recibiría el usuario.',
+        's01.context.p': "En la plataforma, los freight forwarders y los shippers gestionan shipments (envíos de carga) junto a muchas otras partes implicadas. Constantemente ocurrían acciones relevantes para ellos — cambios de estado, mensajes, alertas — pero no existía ningún sistema centralizado para avisarles. La única vía era que el propio usuario entrara y comprobara manualmente si algo había cambiado.",
+        's01.card1.heading': "Información que había que ir a buscar",
+        's01.card1.p': "Los usuarios tenían que volver una y otra vez a cada shipment para ver qué había cambiado, sin que nada les avisara cuando ocurría algo.",
+        's01.card2.heading': "Errores y carga de soporte",
+        's01.card2.p': "Los usuarios no podían seguir el progreso de sus reservas y cotizaciones con otros clientes y stakeholders, y eso se traducía en errores y tickets de soporte. No era solo una cuestión de comodidad, sino de coordinación y de coste operativo.",
+        's01.card3.heading': "Sin control sobre qué se comunicaba ni a quién",
+        's01.card3.p': "Producto planteó como requisito clave que forwarders y shippers pudieran configurar las notificaciones de cada shipment y decidir quién recibía cada tipo de información. Sin esa granularidad, no había forma de adaptar la información a cada stakeholder.",
         's02.eyebrow': 'Research',
         's02.heading': 'Cómo investigamos antes de diseñar las notificaciones',
         's02.card1.heading': 'Entrevistas con usuarios y soporte',
@@ -645,9 +662,9 @@
         's02.card2.heading': 'Análisis de tickets de soporte',
         's02.card2.p': 'Llegaban muchísimos tickets de error reportados por usuarios, porque no podían estar al tanto del proceso de sus bookings o de sus cotizaciones con otros clientes y stakeholders.',
         's02.card3.heading': 'Benchmark de sistemas de notificaciones',
-        's02.card3.p': 'Intentamos localizar e investigar aquellos sistemas más actualizados a nivel de experiencia de usuario e interfaz, para garantizar una funcionalidad lo más fresca posible.',
+        's02.card3.p': "Analizamos sistemas de notificaciones de otros softwares para identificar los patrones de experiencia de usuario e interfaz que mejor funcionaban.",
         's02.requirements.label': 'Requisitos básicos desde product management',
-        's02.requirements.p': 'Desde product management nos plantearon un requisito clave: permitir que forwarders y shippers pudieran configurar notificaciones para cada envío y decidir quién recibía cada tipo de información. Se plantearon dos opciones: mostrar los tipos de notificación y asignar personas a cada uno, o añadir personas y elegir qué tipo de información recibiría cada una.',
+        's02.requirements.p': "Desde product management nos plantearon un requisito clave: permitir que forwarders y shippers pudieran configurar notificaciones para cada envío y decidir quién recibía cada tipo de información. Se plantearon dos opciones: mostrar los tipos de notificación y asignar personas a cada uno, o añadir personas y elegir qué tipo de información recibiría cada una. Elegimos la primera: asignar personas a cada tipo de notificación. Así se mantiene la misma estructura para todos y cada uno de los shipments, y es igual tanto para freight forwarders como para shippers. Plantearlo al revés complicaba mucho el diseño y el desarrollo, y resultaba menos intuitivo como producto.",
         's02.benchmark.label': 'Benchmark',
         's02.benchmark.p': 'Se realizaron diferentes estudios sobre otras propuestas vistas en otros softwares. Predominaban side panels accesibles desde casi cualquier parte de la plataforma, permitiendo a los usuarios seleccionar qué notificaciones se recibirían tanto de un pedido como de todos en general.',
         's02.img1.alt': 'Referencias de benchmark: modal de configuración de alertas de AhoyConnect y panel de preferencias de notificaciones de Stratis UI',
@@ -670,15 +687,15 @@
         's03.img3.alt': 'Boceto sobre dónde ubicar el CTA de notificaciones en la vista general de envíos',
         's03.caption1': 'Primeros bocetos del sistema de notificaciones y escenarios planteados por producto.',
         's03.prebooking.label': 'Pre-booking',
-        's03.prebooking.p': 'Por cuestiones de roadmap, esta sección quedó exenta de rediseño y se mantuvo como estaba hasta el momento.',
+        's03.prebooking.p': 'Pre-booking: por cuestiones de roadmap, esta parte quedó exenta de rediseño y se mantuvo como estaba hasta el momento.',
         's03.img4.alt': 'Flow de las páginas de pre-booking: árbol de decisiones para activar notificaciones por email, junto al modal de preferencias de notificación',
-        's03.caption2': 'Flow actual de las páginas de pre-booking. No tengo capturas de pantalla completas jeje :)',
+        's03.caption2': "Flow actual de las páginas de pre-booking (no se dispone de capturas completas).",
         's03.contact.label': 'Creación de contacto',
         's03.contact.p': 'En cuanto a la creación de contacto, también se mantuvo fuera del proyecto final de momento: la propuesta está hecha, pero no se pudo integrar debido a cuestiones técnicas del equipo de desarrollo, y porque para el equipo directivo no era realmente una prioridad finalmente.',
         's03.img5.alt': 'Flow de añadir un nuevo contacto desde el panel de notificaciones: notifications side panel, pop-up de añadir contacto y pop-up relleno',
         's03.caption3': 'Propuesta de flow para añadir un nuevo contacto, finalmente descartada.',
         's03.pivot.label': 'Cambio de rumbo',
-        's03.pivot.p': 'Este proyecto sufrió numerosos cambios de prioridades durante su desarrollo. Así arrancamos, y así terminamos.',
+        's03.pivot.p': "Al principio había muchos requirements y el alcance se fue simplificando tanto que perdimos diseños ya trabajados que finalmente no se incluyeron. Así arrancamos (arriba, el alcance inicial) y así terminamos (abajo, lo que finalmente quedó).",
         's03.discarded.card1.heading': 'Pre-booking',
         's03.discarded.card1.p': 'Añadir el mismo componente de notificaciones en el lado de pre-booking, antes de confirmar el envío.',
         's03.discarded.card2.heading': 'Creación de contacto',
@@ -689,19 +706,21 @@
         's03.discarded.card4.p': 'Añadir notificaciones haciendo clic directamente sobre cada contacto.',
         's03.final.card1.heading': 'Activar/Desactivar notificaciones',
         's03.final.card1.p': 'Los usuarios podían activar o desactivar las notificaciones directamente desde la vista general de envíos.',
+        's03.final.cardNotify.heading': "Notificar a terceras personas",
+        's03.final.cardNotify.p': "Los usuarios podían personalizar las notificaciones que recibía cada uno de los contactos del envío.",
         's03.final.card2.heading': 'Añadir y modificar tarjetas de contacto del propio envío',
         's03.final.card2.p': 'Se permitía añadir y modificar las tarjetas de contacto asociadas a cada envío, sin salir del flujo principal.',
         's04.eyebrow': 'Solución',
         's04.heading': 'Un sistema de notificaciones más sencillo de lo esperado',
         's04.approach.label': 'Enfoque',
-        's04.approach.p': 'Tras percibir estos cambios de roadmap mientras el proyecto estaba en pleno desarrollo de diseño, me alineé bastante rápido con los diferentes stakeholders y conseguimos sacar en tiempo récord un sistema de notificaciones que pudiera solventar las principales prioridades del equipo de producto.',
+        's04.approach.p': "Tras percibir estos cambios de roadmap mientras el proyecto estaba en pleno desarrollo de diseño, me alineé bastante rápido con los diferentes stakeholders y definimos, en tiempo récord, un sistema de notificaciones simplificado que pudiera solventar las principales prioridades del equipo de producto. El proyecto aún no se ha lanzado, así que lo que sigue es la solución diseñada, no un producto en vivo.",
         's04.features.label': 'Funcionalidades<br class="hidden md:block"> entregadas',
         's04.feature1.heading': 'Activar y desactivar notificaciones de manera general',
         's04.feature1.p': 'Se buscaba una solución que permitiera modificar rápidamente si un envío debería de recibir notificaciones o no.',
         's04.item01.img.alt': 'Panel lateral de notificaciones con las secciones My notifications y Notify others',
         's04.item01.caption': 'Panel lateral de notificaciones, con el toggle general de My notifications.',
         's04.feature2.heading': 'Notificar a terceras personas',
-        's04.feature2.p': 'Conseguimos proporcionar una solución donde se permitiera la customización de las notificaciones que recibirían cada uno de los contactos del envío.',
+        's04.feature2.p': "Diseñamos una solución que permitía customizar las notificaciones que recibiría cada uno de los contactos del envío.",
         's04.item02.img.alt': 'Comparativa del bloque Notify others, con el desplegable de selección de contactos para el evento Itinerary abierto',
         's04.item02.caption': 'Selección de contactos por evento dentro del bloque Notify others.',
         's04.feature3.heading': 'Añadir y modificar contactos del envío',
@@ -710,6 +729,8 @@
         's04.item03.img2.alt': 'Contacts v2: tarjeta de contacto Pickup con el icono de campana activo y el tooltip listando los tipos de notificación activados',
         's04.item03.img3.alt': 'Comparativa del modal Update contacts con la pestaña Notify party, mostrando la lista de notify parties y el formulario de edición de compañía',
         's04.item03.caption': 'Detalle de campana, tarjeta de contacto en Contacts v2, y modal de edición de Notify party.',
+        's04.expected.heading': "Impacto esperado",
+        's04.expected.p': "Al no haberse publicado todavía, no hay resultados medidos. Lo que se esperaba era que los usuarios pudieran recibir más emails sobre el estado de sus shipments y reducir las llamadas al servicio de atención al cliente.",
         's05.eyebrow': 'Aprendizajes clave',
         's05.heading': 'Qué me dejó este proyecto',
         's05.p1': 'A veces hay proyectos que conllevan más o menos prioridad dentro de un roadmap. Con este en concreto, pude observar cómo los requisitos pueden cambiar de la noche a la mañana y la agilidad que hay que tener para adaptarse a las nuevas visiones externas. Me llevo mucho entrenamiento para futuros proyectos que conlleven situaciones similares.',
@@ -722,7 +743,7 @@
         'nav.about': 'About',
         'nav.contact': 'Contact',
         'meta.title': 'Notification System · Javier Díaz',
-        'meta.description': 'Case study: a push notification system for desktop and email covering the actions that happen on the platform.',
+        'meta.description': "Case study: an email notification system that alerts users to relevant actions on their shipments.",
         'gate.back': '← Back to home',
         'gate.heading': 'This project is protected',
         'gate.instructions': 'Enter the password to access it.',
@@ -731,16 +752,16 @@
         'gate.button': 'Enter',
         'gate.error': 'Incorrect password. Please try again.',
         'breadcrumb.back': '← All projects',
-        'hero.title': 'Notifications System',
+        'hero.title': 'Notification System',
         'hero.subtitle': 'Email notification system that alerts users to relevant actions happening in relation to their shipments.',
         'hero.role.label': 'Role',
         'hero.role.value': 'Product Designer',
         'hero.usertype.label': 'User type',
-        'hero.usertype.value': 'Carriers (Freightos)',
+        'hero.usertype.value': "Freight Forwarders and Shippers",
         'hero.year.label': 'Year',
-        'hero.year.value': '2025',
+        'hero.year.value': '2025-2026',
         'hero.team.label': 'Team',
-        'hero.team.value': 'PM, Engineering, Research',
+        'hero.team.tooltip': 'An end-to-end team is one where, as Product Designer, I had the chance to work with every department involved, from the start to the end of the project:',
         'hero.tag1': 'Product Design',
         'hero.tag2': 'Push Notifications',
         'hero.tag3': 'Email',
@@ -750,13 +771,13 @@
         's01.eyebrow': 'Starting point',
         's01.heading': 'Why we needed a new approach',
         's01.context.label': 'Context',
-        's01.context.p': 'Relevant actions were constantly happening on the platform for users — status changes, messages, alerts — but there was no centralized system to notify them. The only way to find out was for users to log in and manually check whether something had changed.',
-        's01.card1.heading': 'Lack of visibility',
-        's01.card1.p': 'The process for checking shipment updates was quite archaic and not very innovative: users had to manually expand each shipment point one by one to see the status of every point they needed to check.',
-        's01.card2.heading': 'Disconnected channels',
-        's01.card2.p': 'The need arose to configure what type of information each stakeholder associated with a shipment would receive.',
-        's01.card3.heading': 'Little notification customization',
-        's01.card3.p': 'There were very few options to turn notifications on or off, so we built a much richer, more explicit system so users know exactly what information they would receive.',
+        's01.context.p': "On the platform, freight forwarders and shippers manage shipments (cargo bookings) together with many other parties involved. Relevant actions were constantly happening for them — status changes, messages, alerts — but there was no centralized system to notify them. The only way to find out was for users to log in and manually check whether something had changed.",
+        's01.card1.heading': "Information users had to go and find",
+        's01.card1.p': "Users had to keep going back into each shipment to see what had changed, with nothing to tell them when something did.",
+        's01.card2.heading': "Errors and support load",
+        's01.card2.p': "Users couldn't keep track of the progress of their bookings and quotes with other clients and stakeholders, which turned into errors and support tickets. It wasn't just a matter of convenience, but of coordination and operational cost.",
+        's01.card3.heading': "No control over what was communicated, or to whom",
+        's01.card3.p': "Product management raised as a key requirement that forwarders and shippers could configure notifications for each shipment and decide who received each type of information. Without that granularity, there was no way to tailor the information to each stakeholder.",
         's02.eyebrow': 'Research',
         's02.heading': 'How we researched before designing the notifications',
         's02.card1.heading': 'Interviews with users and support',
@@ -764,9 +785,9 @@
         's02.card2.heading': 'Support ticket analysis',
         's02.card2.p': "We received a large volume of error tickets from users, because they couldn't keep track of the progress of their bookings or quotes with other clients and stakeholders.",
         's02.card3.heading': 'Benchmark of notification systems',
-        's02.card3.p': 'We tried to identify and research the most up-to-date systems in terms of user experience and interface, to ensure the freshest possible functionality.',
+        's02.card3.p': "We analyzed notification systems from other software to identify the user-experience and interface patterns that worked best.",
         's02.requirements.label': 'Basic requirements from product management',
-        's02.requirements.p': 'Product management raised one key requirement: allow forwarders and shippers to configure notifications for each shipment and decide who received each type of information. Two options were considered: show the notification types and assign people to each one, or add people and choose which type of information each one would receive.',
+        's02.requirements.p': "Product management raised one key requirement: allow forwarders and shippers to configure notifications for each shipment and decide who received each type of information. Two options were considered: show the notification types and assign people to each one, or add people and choose which type of information each one would receive. We chose the first: assigning people to each notification type. That keeps the same structure for every shipment and works the same for freight forwarders and shippers. The reverse approach would have complicated the design and development considerably and would have been less intuitive as a product.",
         's02.benchmark.label': 'Benchmark',
         's02.benchmark.p': 'We carried out several studies of approaches seen in other software. Side panels accessible from almost anywhere in the platform were the dominant pattern, letting users select which notifications to receive for a single order or for all of them in general.',
         's02.img1.alt': "Benchmark references: AhoyConnect's alert settings modal and Stratis UI's notification preferences panel",
@@ -789,15 +810,15 @@
         's03.img3.alt': 'Sketch exploring where to place the notifications CTA in the shipments overview',
         's03.caption1': 'Early sketches of the notification system and scenarios proposed by product.',
         's03.prebooking.label': 'Pre-booking',
-        's03.prebooking.p': 'Due to roadmap constraints, this section was left out of the redesign and stayed as it was up to that point.',
+        's03.prebooking.p': 'Pre-booking: due to roadmap constraints, this part was left out of the redesign and stayed as it was up to that point.',
         's03.img4.alt': 'Pre-booking pages flow: decision tree for enabling email notifications, alongside the notification preferences modal',
-        's03.caption2': "Current flow of the pre-booking pages. I don't have full screenshots of this one, ha :)",
+        's03.caption2': "Current flow of the pre-booking pages (full screenshots are not available).",
         's03.contact.label': 'Contact creation',
         's03.contact.p': "As for contact creation, it was also left out of the final project for now: the proposal is done, but it couldn't be integrated due to technical constraints from the engineering team, and because it ultimately wasn't a real priority for leadership.",
         's03.img5.alt': 'Flow for adding a new contact from the notifications panel: notifications side panel, add-contact pop-up, and completed pop-up',
         's03.caption3': 'Proposed flow for adding a new contact, ultimately discarded.',
         's03.pivot.label': 'Change of direction',
-        's03.pivot.p': 'This project went through numerous shifts in priorities during development. This is how we started, and this is how we ended up.',
+        's03.pivot.p': "At the start there were many requirements, and the scope was simplified so much that we lost designs that were already worked on and ultimately weren't included. This is how we started (above, the initial scope) and how we ended up (below, what remained).",
         's03.discarded.card1.heading': 'Pre-booking',
         's03.discarded.card1.p': 'Add the same notifications component on the pre-booking side, before confirming the shipment.',
         's03.discarded.card2.heading': 'Contact creation',
@@ -808,19 +829,21 @@
         's03.discarded.card4.p': 'Add notifications by clicking directly on each contact.',
         's03.final.card1.heading': 'Enable/Disable notifications',
         's03.final.card1.p': 'Users could turn notifications on or off directly from the shipments overview.',
+        's03.final.cardNotify.heading': "Notify third parties",
+        's03.final.cardNotify.p': "Users could customize the notifications each of the shipment's contacts would receive.",
         's03.final.card2.heading': 'Add and edit contact cards for the shipment itself',
         's03.final.card2.p': 'Users could add and edit the contact cards associated with each shipment, without leaving the main flow.',
         's04.eyebrow': 'Solution',
         's04.heading': 'A notification system simpler than expected',
         's04.approach.label': 'Approach',
-        's04.approach.p': "After noticing these roadmap changes while the project was in the middle of design development, I aligned quickly with the different stakeholders, and together we shipped, in record time, a notification system that could address product's main priorities.",
+        's04.approach.p': "After noticing these roadmap changes while the project was in the middle of design development, I aligned quickly with the different stakeholders, and together we defined, in record time, a simplified notification system that could address the product team's main priorities. The project hasn't been released yet, so what follows is the designed solution, not a live product.",
         's04.features.label': 'Features<br class="hidden md:block"> delivered',
         's04.feature1.heading': 'Turn notifications on and off globally',
         's04.feature1.p': 'We wanted a solution that would let users quickly change whether a shipment should receive notifications or not.',
         's04.item01.img.alt': 'Notifications side panel with the My notifications and Notify others sections',
         's04.item01.caption': 'Notifications side panel, with the global My notifications toggle.',
         's04.feature2.heading': 'Notify third parties',
-        's04.feature2.p': "We managed to deliver a solution that allowed customizing the notifications each of the shipment's contacts would receive.",
+        's04.feature2.p': "We designed a solution that allowed customizing the notifications each of the shipment's contacts would receive.",
         's04.item02.img.alt': 'Comparison of the Notify others block, with the contact-selection dropdown open for the Itinerary event',
         's04.item02.caption': 'Selecting contacts per event within the Notify others block.',
         's04.feature3.heading': 'Add and edit shipment contacts',
@@ -829,6 +852,8 @@
         's04.item03.img2.alt': 'Contacts v2: Pickup contact card with the active bell icon and the tooltip listing the enabled notification types',
         's04.item03.img3.alt': 'Comparison of the Update contacts modal with the Notify party tab, showing the list of notify parties and the company edit form',
         's04.item03.caption': 'Bell icon detail, contact card in Contacts v2, and the Notify party edit modal.',
+        's04.expected.heading': "Expected impact",
+        's04.expected.p': "Since it hasn't been released yet, there are no measured results. What was expected is that users would receive more emails about the status of their shipments, and make fewer calls to customer service.",
         's05.eyebrow': 'Key learnings',
         's05.heading': 'What this project taught me',
         's05.p1': "Some projects carry more or less priority within a roadmap. With this one specifically, I saw firsthand how requirements can change overnight, and the agility needed to adapt to new external visions. I'm taking a lot of that training with me for future projects with similar situations.",
