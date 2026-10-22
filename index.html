@@ -185,6 +185,10 @@
     transform: scale(1.8);
     transform-origin: 28% 32%;
   }
+  /* Portadas con teléfonos: misma animación que el hover, activada por scroll en móvil */
+  .is-active .anim-up { transform: translateY(-3%); }
+  .is-active .anim-down { transform: translateY(3%); }
+  .is-active .anim-lift { transform: translateY(-0.375rem); }
 </style>
 </head>
 
@@ -363,10 +367,15 @@
         </article>
 
         <!-- SWAP -->
-        <article class="reveal group" data-category="master">
+        <article class="reveal group" data-category="master" data-scroll-anim>
           <a href="work/swap.html" class="focus-ring block rounded-2xl">
             <div class="relative aspect-[4/3] rounded-2xl mb-6 overflow-hidden bg-[#3f78d1]">
-              <img src="work/swap-cover-2.jpg" alt="Swap: pantallas de comunidad y tienda de la app de intercambio de ropa de segunda mano" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.015]">
+              <img src="work/swap-cover-2-base.webp" alt="" aria-hidden="true" class="absolute inset-x-0 top-[7.7%] w-full h-auto">
+              <div class="absolute inset-x-0 bottom-0 aspect-[1440/878]">
+                
+                <img src="work/swap-cover-2-right.webp" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full drop-shadow-[18px_24px_26px_rgba(20,50,110,0.4)] transition-transform duration-500 ease-out group-hover:-translate-y-[3%] anim-up">
+                <img src="work/swap-cover-2-left.webp" alt="Swap: pantallas de comunidad y tienda de la app de intercambio de ropa de segunda mano" class="absolute inset-0 w-full h-full transition-transform duration-500 ease-out group-hover:translate-y-[3%] anim-down">
+              </div>
               <span class="absolute top-3 left-3 inline-flex items-center leading-none gap-1.5 sm:gap-0 sm:group-hover:gap-1.5 bg-paper/90 backdrop-blur-sm text-ink text-base font-medium p-2.5 rounded-full shadow-sm transition-[gap] duration-300">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0V4Z"/><path d="M17 5h2.5a1 1 0 0 1 1 1v1a3 3 0 0 1-3 3"/><path d="M7 5H4.5a1 1 0 0 0-1 1v1a3 3 0 0 0 3 3"/></svg>
                 <span class="max-w-[440px] opacity-100 sm:max-w-0 sm:opacity-0 sm:group-hover:max-w-[440px] sm:group-hover:opacity-100 overflow-hidden whitespace-nowrap transition-all duration-300 ease-out" data-i18n="project5.award">Nominado a Premios Laus y Elisava Awards</span>
@@ -1253,6 +1262,15 @@
       inactiveDotClass: 'bg-ink/25',
       autoHeight: true,
     });
+    // Animación de las portadas con teléfonos en móvil: se activa al pasar por el centro de la pantalla
+    (function () {
+      if (!window.matchMedia('(hover: none)').matches || !('IntersectionObserver' in window)) return;
+      const cards = document.querySelectorAll('[data-scroll-anim]');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => e.target.classList.toggle('is-active', e.isIntersecting));
+      }, { rootMargin: '-30% 0px -30% 0px' });
+      cards.forEach((c) => io.observe(c));
+    })();
   </script>
 
   <!-- deploy trigger -->
