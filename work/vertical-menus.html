@@ -96,8 +96,8 @@
 
       <div class="flex items-center gap-4 sm:gap-8 shrink-0">
         <ul class="flex items-center gap-4 sm:gap-10 text-base sm:text-xl text-slate whitespace-nowrap">
-          <li><a href="../sobre-mi.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
-          <li><a href="../contacto.html" class="hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
+          <li><a href="../sobre-mi.html" class="inline-block py-2 -my-2 hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
+          <li><a href="../contacto.html" class="inline-block py-2 -my-2 hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
         </ul>
         <button type="button" id="lang-toggle-mobile" class="sm:hidden h-8 px-3 flex items-center justify-center text-base font-medium border border-ink/15 rounded-full hover:bg-latte/40 transition-colors" aria-label="Cambiar idioma">ES</button>
         <div class="hidden sm:flex items-center h-8 gap-0.5 text-lg font-medium border border-ink/15 rounded-full p-0.5" role="group" aria-label="Seleccionar idioma">
@@ -168,7 +168,7 @@
             <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink">
               <span tabindex="0" aria-describedby="team-tooltip" class="focus-ring rounded">End-to-end</span>
             </p>
-            <div id="team-tooltip" role="tooltip" class="pointer-events-none absolute bottom-full left-0 sm:left-auto sm:right-0 mb-3 z-20 w-max max-w-[360px] rounded-xl bg-ink px-4 py-3 text-base text-paper shadow-sm opacity-0 translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:translate-y-0">
+            <div id="team-tooltip" role="tooltip" class="pointer-events-none absolute bottom-full left-0 sm:left-auto sm:right-0 mb-3 z-20 w-max max-w-[min(360px,calc(100vw-3rem))] rounded-xl bg-ink px-4 py-3 text-base text-paper shadow-sm opacity-0 translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:translate-y-0">
               <span class="block" data-i18n="hero.team.tooltip">Un equipo end-to-end es aquel en el que, como Product Designer, tuve la oportunidad de interactuar con todos los departamentos implicados, de principio a fin del proyecto:</span>
               <span class="block mt-2 font-medium">Customer Success → Product Management → Product Design → Development → QA Testing</span>
             </div>
@@ -182,10 +182,10 @@
           <img src="vertical-menus-cover-2.png" alt="Submenú de creación rápida (New) desplegado sobre la plataforma de Freightos" class="w-full h-full object-cover shrink-0" data-i18n="hero.cover.img2.alt" data-i18n-attr="alt">
         </div>
 
-        <button type="button" id="carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <button type="button" id="carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </button>
 
@@ -278,14 +278,14 @@
           <img src="vertical-menus-cardsorting-3.png" alt="Árbol de arquitectura de la información resultante, con la navegación completa organizada por secciones" class="w-full h-full object-cover shrink-0" data-i18n="s02.research.img4.alt" data-i18n-attr="alt">
         </div>
 
-        <button type="button" id="research-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="research-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <button type="button" id="research-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="research-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </button>
 
-        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+        <div class="absolute bottom-4 inset-x-0 hidden sm:flex items-center justify-center gap-2">
           <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
           <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
           <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
@@ -309,14 +309,14 @@
           <img src="vertical-menus-workshop-4.png" alt="Workshop con equipos internos sobre el nuevo sistema de navegación" class="w-full h-full object-cover shrink-0" data-i18n="s02.workshops.img5.alt" data-i18n-attr="alt">
         </div>
 
-        <button type="button" id="workshops-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="workshops-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <button type="button" id="workshops-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="workshops-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </button>
 
-        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+        <div class="absolute bottom-4 inset-x-0 hidden sm:flex items-center justify-center gap-2">
           <button type="button" class="workshops-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
           <button type="button" class="workshops-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
           <button type="button" class="workshops-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
@@ -351,14 +351,14 @@
           <img src="vertical-menus-sketches-4.png" alt="Clasificación de la información en primer, segundo y tercer nivel." class="w-full h-full object-cover shrink-0" data-i18n="s03.sketches.img4.alt" data-i18n-attr="alt">
         </div>
 
-        <button type="button" id="sketches-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="sketches-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <button type="button" id="sketches-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="sketches-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </button>
 
-        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+        <div class="absolute bottom-4 inset-x-0 hidden sm:flex items-center justify-center gap-2">
           <button type="button" class="sketches-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
           <button type="button" class="sketches-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
           <button type="button" class="sketches-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
@@ -380,14 +380,14 @@
           <img src="vertical-menus-header-3.png" alt="Referencia de header estudiada durante el rediseño" class="w-full h-full object-cover shrink-0" data-i18n="s03.header.img3.alt" data-i18n-attr="alt">
         </div>
 
-        <button type="button" id="header-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="header-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <button type="button" id="header-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="header-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </button>
 
-        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+        <div class="absolute bottom-4 inset-x-0 hidden sm:flex items-center justify-center gap-2">
           <button type="button" class="header-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
           <button type="button" class="header-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
           <button type="button" class="header-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
@@ -409,14 +409,14 @@
           <img src="vertical-menus-level1-3.png" alt="Comportamiento del primer nivel de información del menú vertical" class="w-full h-full object-contain p-6 md:p-9 shrink-0" data-i18n="s03.level1.img4.alt" data-i18n-attr="alt">
         </div>
 
-        <button type="button" id="level1-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="level1-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <button type="button" id="level1-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="level1-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </button>
 
-        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+        <div class="absolute bottom-4 inset-x-0 hidden sm:flex items-center justify-center gap-2">
           <button type="button" class="level1-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
           <button type="button" class="level1-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
           <button type="button" class="level1-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
@@ -437,14 +437,14 @@
           <img src="vertical-menus-footer-2.webp" alt="Footer del menú colapsado y expandido con Legal Notice, Terms of service, EU Design Patent y copyright" class="w-full h-full object-contain p-6 md:p-9 shrink-0" data-i18n="s03.footer.img2.alt" data-i18n-attr="alt">
         </div>
 
-        <button type="button" id="footer-proposal-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="footer-proposal-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <button type="button" id="footer-proposal-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="footer-proposal-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </button>
 
-        <div class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+        <div class="absolute bottom-4 inset-x-0 hidden sm:flex items-center justify-center gap-2">
           <button type="button" class="footer-proposal-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
           <button type="button" class="footer-proposal-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
         </div>
@@ -519,15 +519,15 @@
             <img src="vertical-menus-main-nav-2.webp" alt="Nuevo menú vertical unificado de Freightos en la plataforma principal" class="w-full h-full object-cover shrink-0" data-i18n="s05.nav.img2.alt" data-i18n-attr="alt">
           </div>
 
-          <button type="button" id="main-nav-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <button type="button" id="main-nav-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
           </button>
-          <button type="button" id="main-nav-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <button type="button" id="main-nav-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
           </button>
         </div>
 
-        <div class="flex items-center justify-center gap-2 mt-4">
+        <div class="hidden sm:flex items-center justify-center gap-2 mt-4">
           <button type="button" class="main-nav-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
           <button type="button" class="main-nav-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
         </div>
@@ -538,11 +538,11 @@
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed mb-8" data-i18n="s05.results.intro">A raíz de todo este trabajo, salieron:</p>
         <div class="grid sm:grid-cols-3 gap-8 lg:gap-16">
           <div>
-            <p class="text-2xl md:text-[clamp(1.5rem,1.3333rem+0.2604vw,1.75rem)] font-semibold tracking-tight leading-snug text-ink mb-2" data-i18n="s05.stat1.label">Hasta 3* nuevos servicios considerados</p>
+            <p class="text-2xl md:text-[clamp(1.5rem,1.3333rem+0.2604vw,1.75rem)] font-semibold tracking-tight leading-snug text-ink mb-2" data-i18n="s05.stat1.label">Hasta <span data-countup class="inline-block tabular-nums" style="min-width:1ch">3</span>* nuevos servicios considerados</p>
             <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s05.stat1.p">Gracias a la versatilidad del menú vertical, la dirección pudo plantearse hasta tres nuevos servicios que antes no encajaban en la navegación.</p>
           </div>
           <div>
-            <p class="text-2xl md:text-[clamp(1.5rem,1.3333rem+0.2604vw,1.75rem)] font-semibold tracking-tight leading-snug text-ink mb-2" data-i18n="s05.stat2.label">~50%* menos tiempo de onboarding</p>
+            <p class="text-2xl md:text-[clamp(1.5rem,1.3333rem+0.2604vw,1.75rem)] font-semibold tracking-tight leading-snug text-ink mb-2" data-i18n="s05.stat2.label">~<span data-countup class="inline-block tabular-nums" style="min-width:2ch">50</span>%* menos tiempo de onboarding</p>
             <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s05.stat2.p">Tras replantear la arquitectura de la información y la interfaz, cada nueva implementación dentro del menú llevó aproximadamente la mitad de tiempo.</p>
           </div>
           <div>
@@ -574,8 +574,8 @@
         ¿Quieres ver más proyectos?
       </p>
       <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="notification-system.html" class="focus-ring inline-flex items-center gap-2 bg-ink text-paper text-base font-medium px-6 py-3.5 rounded-full hover:bg-slate transition-colors" data-i18n="cta.next">
-          Continuar con Notification System
+        <a href="wizard-rate-management.html" class="focus-ring inline-flex items-center gap-2 bg-ink text-paper text-base font-medium px-6 py-3.5 rounded-full hover:bg-slate transition-colors" data-i18n="cta.next">
+          Continuar con Wizard for Rate Management
         </a>
         <a href="../index.html#work" class="focus-ring inline-flex items-center gap-2 text-base font-medium px-6 py-3.5 rounded-full border border-ink/15 hover:bg-latte/40 hover:border-latte-dark transition-colors" data-i18n="cta.back">
           Volver a todos los proyectos
@@ -702,9 +702,9 @@
         's05.feature3.heading': `Migración progresiva y cero invasiva`,
         's05.feature3.p': `A diferencia de muchos otros proyectos en los que trabajé, se realizó una migración y un cambio de UI bastante progresivo y paciente con el usuario, con un onboarding correctamente explicado por el equipo de marketing y en constante comunicación con nuestros usuarios a través de customer service.`,
         's05.label3': `Resultados`,
-        's05.stat1.label': `Hasta 3* nuevos servicios considerados`,
+        's05.stat1.label': `Hasta <span data-countup class="inline-block tabular-nums" style="min-width:1ch">3</span>* nuevos servicios considerados`,
         's05.stat1.p': `Gracias a la versatilidad del menú vertical, la dirección pudo plantearse hasta tres nuevos servicios que antes no encajaban en la navegación.`,
-        's05.stat2.label': `~50%* menos tiempo de onboarding`,
+        's05.stat2.label': `~<span data-countup class="inline-block tabular-nums" style="min-width:2ch">50</span>%* menos tiempo de onboarding`,
         's05.stat2.p': `Tras replantear la arquitectura de la información y la interfaz, cada nueva implementación dentro del menú llevó aproximadamente la mitad de tiempo.`,
         's05.stat3.label': `Navegación más predecible`,
         's05.stat3.p': `Las carpetas y los servicios ahora están mucho mejor organizados, y la navegación resultó más clara y coherente tanto para el equipo como para los usuarios.`,
@@ -717,7 +717,7 @@
         's06.p1': `Este fue, hasta la fecha, el proyecto más completo de mi etapa en Freightos. Me permitió tocar prácticamente todos los ámbitos de la experiencia de usuario y el diseño de producto digital: desde la comunicación interna dentro de la empresa y las conversaciones directas con distintos directivos, hasta un proceso de research bastante complejo a nivel de UX, interacción e interfaz, apoyado en metodologías como card sorting y workshops con los distintos equipos de la empresa. Ese recorrido me permitió llegar a una solución mucho más actualizada y fresca que la de otros proyectos que había diseñado antes para la empresa.`,
 
         'cta.heading': `¿Quieres ver más proyectos?`,
-        'cta.next': `Continuar con Notification System`,
+        'cta.next': "Continuar con Wizard for Rate Management",
         'cta.back': `Volver a todos los proyectos`,
       },
       en: {
@@ -835,9 +835,9 @@
         's05.feature3.heading': `Progressive, zero-disruption migration`,
         's05.feature3.p': `Unlike many other projects I worked on, the migration and UI change were carried out gradually and patiently with users, with onboarding clearly explained by the marketing team and constant communication with our users through customer service.`,
         's05.label3': `Results`,
-        's05.stat1.label': `Up to 3* new services considered`,
+        's05.stat1.label': `Up to <span data-countup class="inline-block tabular-nums" style="min-width:1ch">3</span>* new services considered`,
         's05.stat1.p': `Thanks to the versatility of the vertical menu, leadership could consider up to three new services that previously didn’t fit the navigation.`,
-        's05.stat2.label': `~50%* less onboarding time`,
+        's05.stat2.label': `~<span data-countup class="inline-block tabular-nums" style="min-width:2ch">50</span>%* less onboarding time`,
         's05.stat2.p': `After rethinking the information architecture and the interface, each new implementation inside the menu took roughly half the time.`,
         's05.stat3.label': `More predictable navigation`,
         's05.stat3.p': `Folders and services are now much better organized, and navigation felt clearer and more consistent for both the team and users.`,
@@ -850,7 +850,7 @@
         's06.p1': `This was, to date, the most complete project of my time at Freightos. It let me touch on virtually every area of user experience and digital product design: from internal communication within the company and direct conversations with various executives, to a fairly complex research process spanning UX, interaction, and interface, supported by methodologies like card sorting and workshops with the company's different teams. That journey led me to a far more current and fresh solution than other projects I had previously designed for the company.`,
 
         'cta.heading': `Want to see more projects?`,
-        'cta.next': `Continue to Notification System`,
+        'cta.next': "Continue to Wizard for Rate Management",
         'cta.back': `Back to all projects`,
       },
     };
@@ -1172,6 +1172,51 @@
         }, { rootMargin: '-45% 0px -50% 0px' });
         sections.forEach((section) => sectionObserver.observe(section));
       }
+    })();
+  
+    // ===== Contador animado de cifras =====
+    (function () {
+      const els = Array.from(document.querySelectorAll('[data-countup]'));
+      if (!els.length) return;
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function parse(text) {
+        const m = text.match(/^(\D*)(\d[\d.,]*)(.*)$/);
+        if (!m) return null;
+        const decimals = (m[2].split('.')[1] || '').length;
+        return { prefix: m[1], value: parseFloat(m[2].replace(/,/g, '')), decimals, suffix: m[3] };
+      }
+
+      function run(el, delay) {
+        const final = el.textContent.trim();
+        const parsed = parse(final);
+        if (!parsed || parsed.value < 3 || reduced) return;
+        const duration = 1400;
+        el.textContent = parsed.prefix + (0).toFixed(parsed.decimals) + parsed.suffix;
+        setTimeout(() => {
+          const start = performance.now();
+          function tick(now) {
+            const t = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - t, 3);
+            el.textContent = parsed.prefix + (parsed.value * eased).toFixed(parsed.decimals) + parsed.suffix;
+            if (t < 1) requestAnimationFrame(tick);
+            else el.textContent = final;
+          }
+          requestAnimationFrame(tick);
+        }, delay);
+      }
+
+      if (!('IntersectionObserver' in window)) return;
+      const countObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          countObserver.unobserve(el);
+          const siblings = el.closest('.grid') ? Array.from(el.closest('.grid').querySelectorAll('[data-countup]')) : [el];
+          run(el, siblings.indexOf(el) * 120);
+        });
+      }, { threshold: 0.6 });
+      els.forEach((el) => countObserver.observe(el));
     })();
   </script>
 
