@@ -99,7 +99,7 @@
           <li><a href="../sobre-mi.html" class="inline-block py-2 -my-2 hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
           <li><a href="../contacto.html" class="inline-block py-2 -my-2 hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
         </ul>
-        <button type="button" id="lang-toggle-mobile" class="sm:hidden h-8 px-3 flex items-center justify-center text-base font-medium border border-ink/15 rounded-full hover:bg-latte/40 transition-colors" aria-label="Cambiar idioma">ES</button>
+        <button type="button" id="lang-toggle-mobile" class="sm:hidden h-8 px-3 flex items-center justify-center text-base font-medium border border-ink/15 rounded-full [@media(hover:hover)]:hover:bg-latte/40 [-webkit-tap-highlight-color:transparent] transition-colors" aria-label="Cambiar idioma">ES</button>
         <div class="hidden sm:flex items-center h-8 gap-0.5 text-lg font-medium border border-ink/15 rounded-full p-0.5" role="group" aria-label="Seleccionar idioma">
           <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="en">EN</button>
           <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="es">ES</button>
@@ -160,7 +160,7 @@
         Sistema de notificaciones
       </h1>
 
-      <p class="reveal is-visible mt-6 text-xl md:text-[clamp(1.25rem,1.0833rem+0.2604vw,1.5rem)] text-slate leading-relaxed" data-i18n="hero.subtitle">
+      <p class="reveal is-visible mt-6 text-lg md:text-[clamp(1.25rem,1.0833rem+0.2604vw,1.5rem)] text-slate leading-relaxed" data-i18n="hero.subtitle">
         Sistema de notificaciones por email que alerta a los usuarios de las acciones relevantes que ocurren en relación a sus shipments.
       </p>
 
@@ -183,7 +183,7 @@
             <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink">
               <span tabindex="0" aria-describedby="team-tooltip" class="focus-ring rounded">End-to-end</span>
             </p>
-            <div id="team-tooltip" role="tooltip" class="pointer-events-none absolute bottom-full left-0 sm:left-auto sm:right-0 mb-3 z-20 w-max max-w-[min(360px,calc(100vw-3rem))] rounded-xl bg-ink px-4 py-3 text-base text-paper shadow-sm opacity-0 translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:translate-y-0">
+            <div id="team-tooltip" role="tooltip" class="pointer-events-none absolute bottom-full right-0 mb-3 z-20 w-max max-w-[min(360px,calc(100vw-3rem))] rounded-xl bg-ink px-4 py-3 text-base text-paper shadow-sm opacity-0 translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:translate-y-0">
               <span class="block" data-i18n="hero.team.tooltip">Un equipo end-to-end es aquel en el que, como Product Designer, tuve la oportunidad de interactuar con todos los departamentos implicados, de principio a fin del proyecto:</span>
               <span class="block mt-2 font-medium">Customer Success → Product Management → Product Design → Development → QA Testing</span>
             </div>
@@ -191,7 +191,7 @@
         </div>
       </div>
 
-      <div id="cover-carousel" class="reveal group mt-16 md:mt-20 relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+      <div id="cover-carousel" class="reveal group mt-10 md:mt-20 relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
         <div id="carousel-track" class="flex h-full transition-transform duration-500 ease-out">
           <img src="notification-system-cover.png" alt="Tooltip de notificaciones activas sobre un contacto de envío en la plataforma" data-i18n="hero.img1.alt" data-i18n-attr="alt" class="w-full h-full object-cover shrink-0">
           <img src="notification-system-cover-2.png" alt="Estado del envío marcado como En tránsito con el icono de notificaciones" data-i18n="hero.img2.alt" data-i18n-attr="alt" class="w-full h-full object-cover shrink-0">
@@ -214,22 +214,22 @@
     </section>
 
     <!-- ===== 01 · STARTING POINT ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20" id="s01">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s01">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-base font-medium text-latte-dark">01</span>
         <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s01.eyebrow">Punto de partida</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight max-w-2xl mb-12" data-i18n="s01.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight max-w-2xl mb-8 md:mb-12" data-i18n="s01.heading">
         Por qué necesitábamos un nuevo enfoque
       </h2>
 
-      <div class="reveal mb-14">
+      <div class="reveal mb-8 md:mb-14">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s01.context.p">
           En la plataforma, los freight forwarders y los shippers gestionan shipments (envíos de carga) junto a muchas otras partes implicadas. Constantemente ocurrían acciones relevantes para ellos — cambios de estado, mensajes, alertas — pero no existía ningún sistema centralizado para avisarles. La única vía era que el propio usuario entrara y comprobara manualmente si algo había cambiado.
         </p>
       </div>
 
-      <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 pt-10">
+      <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 pt-0 md:pt-10">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
           <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s01.card1.heading">Información que había que ir a buscar</h3>
           <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s01.card1.p">
@@ -252,16 +252,16 @@
     </section>
 
     <!-- ===== 02 · RESEARCH ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20" id="s02">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s02">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-base font-medium text-latte-dark">02</span>
         <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s02.eyebrow">Research</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-12" data-i18n="s02.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-8 md:mb-12" data-i18n="s02.heading">
         Cómo investigamos antes de diseñar las notificaciones
       </h2>
 
-      <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 mb-16">
+      <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 mb-10 md:mb-16">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
           <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s02.card1.heading">Entrevistas con usuarios y soporte</h3>
           <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s02.card1.p">Nuestros usuarios pedían encarecidamente que, de alguna manera, se pudiera identificar cada uno de los cambios que ocurrían durante su experiencia de usuario en la plataforma.</p>
@@ -276,13 +276,13 @@
         </div>
       </div>
 
-      <div class="reveal mb-14">
+      <div class="reveal mb-8 md:mb-14">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s02.requirements.p">
           Desde product management nos plantearon un requisito clave: permitir que forwarders y shippers pudieran configurar notificaciones para cada envío y decidir quién recibía cada tipo de información. Se plantearon dos opciones: mostrar los tipos de notificación y asignar personas a cada uno, o añadir personas y elegir qué tipo de información recibiría cada una. Elegimos la primera: asignar personas a cada tipo de notificación. Así se mantiene la misma estructura para todos y cada uno de los shipments, y es igual tanto para freight forwarders como para shippers. Plantearlo al revés complicaba mucho el diseño y el desarrollo, y resultaba menos intuitivo como producto.
         </p>
       </div>
 
-      <div class="reveal mb-16 mt-16 md:mt-20">
+      <div class="reveal mb-10 md:mb-16 mt-10 md:mt-20">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s02.benchmark.p">
           Se realizaron diferentes estudios sobre otras propuestas vistas en otros softwares. Predominaban side panels accesibles desde casi cualquier parte de la plataforma, permitiendo a los usuarios seleccionar qué notificaciones se recibirían tanto de un pedido como de todos en general.
         </p>
@@ -310,22 +310,22 @@
     </section>
 
     <!-- ===== 03 · DEL PAPEL A LA PANTALLA ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20" id="s03">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s03">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-base font-medium text-latte-dark">03</span>
         <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s03.eyebrow">Del papel a la pantalla</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-12" data-i18n="s03.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-8 md:mb-12" data-i18n="s03.heading">
         De los primeros bocetos a las primeras interacciones
       </h2>
 
-      <div class="reveal mb-16">
+      <div class="reveal mb-10 md:mb-16">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s03.approach.p">
           Desde la dirección de producto se promovía buscar soluciones para varios escenarios. Teníamos ventaja porque ya en su momento había planteado una propuesta rápida para los senior product managers, donde daba una idea sobre cómo podríamos apañar esta nueva funcionalidad en un futuro.
         </p>
       </div>
 
-      <div class="reveal grid sm:grid-cols-4 gap-x-8 gap-y-10 md:gap-x-10 mb-16">
+      <div class="reveal grid sm:grid-cols-4 gap-x-8 gap-y-10 md:gap-x-10 mb-10 md:mb-16">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
           <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s03.card1.heading">Pre-booking</h3>
           <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s03.card1.p">Añadir el mismo componente de notificaciones en el lado de pre-booking, antes de confirmar el envío.</p>
@@ -366,7 +366,7 @@
       </div>
       <p class="reveal text-base text-slate mt-3" data-i18n="s03.caption1">Primeros bocetos del sistema de notificaciones y escenarios planteados por producto.</p>
 
-      <div class="reveal mb-10 mt-16 md:mt-20">
+      <div class="reveal mb-10 mt-10 md:mt-20">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s03.pivot.p">
           Al principio había muchos requirements y el alcance se fue simplificando tanto que perdimos diseños ya trabajados que finalmente no se incluyeron. Así arrancamos (arriba, el alcance inicial) y así terminamos (abajo, lo que finalmente quedó).
         </p>
@@ -395,7 +395,7 @@
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ink/40"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
       </div>
 
-      <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 mb-16">
+      <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 mb-10 md:mb-16">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
           <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s03.final.card1.heading">Activar/Desactivar notificaciones</h3>
           <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s03.final.card1.p">Los usuarios podían activar o desactivar las notificaciones directamente desde la vista general de envíos.</p>
@@ -410,7 +410,7 @@
         </div>
       </div>
 
-      <div class="reveal mb-16">
+      <div class="reveal mb-10 md:mb-16">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s03.prebooking.p">
           Pre-booking: por cuestiones de roadmap, esta parte quedó exenta de rediseño y se mantuvo como estaba hasta el momento.
         </p>
@@ -434,7 +434,7 @@
       </div>
       <p class="reveal text-base text-slate mt-3" data-i18n="s03.caption2">Flow actual de las páginas de pre-booking (no se dispone de capturas completas).</p>
 
-      <div class="reveal mb-16 mt-16 md:mt-20">
+      <div class="reveal mb-10 md:mb-16 mt-10 md:mt-20">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s03.contact.p">
           En cuanto a la creación de contacto, también se mantuvo fuera del proyecto final de momento: la propuesta está hecha, pero no se pudo integrar debido a cuestiones técnicas del equipo de desarrollo, y porque para el equipo directivo no era realmente una prioridad finalmente.
         </p>
@@ -460,16 +460,16 @@
     </section>
 
     <!-- ===== 04 · SOLUTION ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20" id="s04">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s04">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-base font-medium text-latte-dark">04</span>
         <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s04.eyebrow">Solución</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-12" data-i18n="s04.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-8 md:mb-12" data-i18n="s04.heading">
         Un sistema de notificaciones más sencillo de lo esperado
       </h2>
 
-      <div class="reveal mb-16">
+      <div class="reveal mb-10 md:mb-16">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s04.approach.p">
           Tras percibir estos cambios de roadmap mientras el proyecto estaba en pleno desarrollo de diseño, me alineé bastante rápido con los diferentes stakeholders y definimos, en tiempo récord, un sistema de notificaciones simplificado que pudiera solventar las principales prioridades del equipo de producto. El proyecto aún no se ha lanzado, así que lo que sigue es la solución diseñada, no un producto en vivo.
         </p>
@@ -572,14 +572,14 @@
       </div>
       <p class="reveal text-base text-slate mt-3" data-i18n="s04.item03.caption">Detalle de campana, tarjeta de contacto en Contacts v2, y modal de edición de Notify party.</p>
 
-      <div class="reveal mt-16 md:mt-20">
+      <div class="reveal mt-10 md:mt-20">
         <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s04.expected.heading">Impacto esperado</h3>
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s04.expected.p">Al no haberse publicado todavía, no hay resultados medidos. Lo que se esperaba era que los usuarios pudieran recibir más emails sobre el estado de sus shipments y reducir las llamadas al servicio de atención al cliente.</p>
       </div>
     </section>
 
     <!-- ===== 05 · KEY LEARNINGS ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20" id="s05">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s05">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-base font-medium text-latte-dark">05</span>
         <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s05.eyebrow">Aprendizajes clave</span>
@@ -596,8 +596,8 @@
     </section>
 
     <!-- ===== END OF CASE STUDY ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20 text-center">
-      <p class="reveal text-xl md:text-[clamp(1.25rem,1.0833rem+0.2604vw,1.5rem)] font-medium tracking-tight mb-10" data-i18n="cta.heading">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20 text-center">
+      <p class="reveal text-lg md:text-[clamp(1.25rem,1.0833rem+0.2604vw,1.5rem)] font-medium tracking-tight mb-10" data-i18n="cta.heading">
         ¿Quieres ver más proyectos?
       </p>
       <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -1271,5 +1271,50 @@
     })();
   </script>
 
+  <!-- Visor de imágenes a pantalla completa (solo táctil) -->
+  <script>
+    (function () {
+      if (!window.matchMedia('(hover: none)').matches) return;
+      const main = document.querySelector('main');
+      if (!main) return;
+      const overlay = document.createElement('div');
+      overlay.setAttribute('role', 'dialog');
+      overlay.setAttribute('aria-modal', 'true');
+      overlay.style.cssText = 'position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(10,10,10,0.94);touch-action:pinch-zoom;';
+      const big = document.createElement('img');
+      big.style.cssText = 'max-width:100%;max-height:100%;object-fit:contain;touch-action:pinch-zoom;';
+      big.alt = '';
+      const close = document.createElement('button');
+      close.type = 'button';
+      close.setAttribute('aria-label', 'Cerrar');
+      close.style.cssText = 'position:absolute;top:max(env(safe-area-inset-top),12px);right:12px;width:44px;height:44px;border-radius:9999px;border:0;background:rgba(255,255,255,0.16);color:#fff;font-size:24px;line-height:1;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;';
+      close.textContent = '\u00d7';
+      overlay.appendChild(big);
+      overlay.appendChild(close);
+      document.body.appendChild(overlay);
+
+      function open(img) {
+        big.src = img.currentSrc || img.src;
+        big.alt = img.alt || '';
+        overlay.style.display = 'flex';
+        document.documentElement.style.overflow = 'hidden';
+      }
+      function shut() {
+        overlay.style.display = 'none';
+        big.removeAttribute('src');
+        document.documentElement.style.overflow = '';
+      }
+      overlay.addEventListener('click', shut);
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') shut(); });
+
+      main.addEventListener('click', (e) => {
+        const img = e.target.closest('img');
+        if (!img || img.closest('a, button, header, nav')) return;
+        if (img.hasAttribute('data-nozoom')) return;
+        if (img.getBoundingClientRect().width < 120) return;
+        open(img);
+      });
+    })();
+  </script>
 </body>
 </html>

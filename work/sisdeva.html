@@ -99,7 +99,7 @@
           <li><a href="../sobre-mi.html" class="inline-block py-2 -my-2 hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
           <li><a href="../contacto.html" class="inline-block py-2 -my-2 hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
         </ul>
-        <button type="button" id="lang-toggle-mobile" class="sm:hidden h-8 px-3 flex items-center justify-center text-base font-medium border border-ink/15 rounded-full hover:bg-latte/40 transition-colors" aria-label="Cambiar idioma">ES</button>
+        <button type="button" id="lang-toggle-mobile" class="sm:hidden h-8 px-3 flex items-center justify-center text-base font-medium border border-ink/15 rounded-full [@media(hover:hover)]:hover:bg-latte/40 [-webkit-tap-highlight-color:transparent] transition-colors" aria-label="Cambiar idioma">ES</button>
         <div class="hidden sm:flex items-center h-8 gap-0.5 text-lg font-medium border border-ink/15 rounded-full p-0.5" role="group" aria-label="Seleccionar idioma">
           <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="en">EN</button>
           <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="es">ES</button>
@@ -161,7 +161,7 @@
         SISDEVA
       </h1>
 
-      <p class="reveal is-visible mt-6 text-xl md:text-[clamp(1.25rem,1.0833rem+0.2604vw,1.5rem)] text-slate leading-relaxed" data-i18n="hero.subtitle">
+      <p class="reveal is-visible mt-6 text-lg md:text-[clamp(1.25rem,1.0833rem+0.2604vw,1.5rem)] text-slate leading-relaxed" data-i18n="hero.subtitle">
         Sistema digital para pacientes de Parkinson que combina terapias de rehabilitación en casa con realidad virtual y seguimiento, y mejora la comunicación entre personal sanitario y paciente al explicar procedimientos complejos de forma comprensible.
       </p>
 
@@ -184,7 +184,7 @@
         </div>
       </div>
 
-      <div id="hero-carousel" class="reveal group relative mt-16 md:mt-20 aspect-[16/9] rounded-2xl overflow-hidden">
+      <div id="hero-carousel" class="reveal group relative mt-10 md:mt-20 aspect-[16/9] rounded-2xl overflow-hidden">
         <div id="hero-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
           <img src="sisdeva-vr.png" alt="Persona utilizando unas gafas de realidad virtual con la marca SISDEVA" data-i18n="hero.carousel.alt1" data-i18n-attr="alt" class="w-full h-full object-cover shrink-0">
           <img src="sisdeva-hero-2.webp" alt="Persona sujetando un móvil con una ilustración de un rostro en pantalla" data-i18n="hero.carousel.alt2" data-i18n-attr="alt" class="w-full h-full object-cover shrink-0">
@@ -207,22 +207,22 @@
     </section>
 
     <!-- ===== 01 · STARTING POINT ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20" id="s01">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s01">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-base font-medium text-latte-dark">01</span>
         <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s01.eyebrow">Punto de partida</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-12" data-i18n="s01.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-8 md:mb-12" data-i18n="s01.heading">
         Cuál fue la necesidad que determinó este proyecto
       </h2>
 
-      <div class="reveal mb-14">
+      <div class="reveal mb-8 md:mb-14">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s01.p1">
           Los pacientes de Parkinson reciben una valoración de la evolución de su enfermedad de una forma discontinua, solo cuando se desplazan a la consulta médica. Además, estas consultas presenciales pueden verse limitadas por cuestiones de espacio y tiempo. Sin embargo, es la única manera que disponen de recibir sus tratamientos de rehabilitación.
         </p>
       </div>
 
-      <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 pt-10">
+      <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 pt-0 md:pt-10">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
           <p class="text-base font-medium text-latte-dark mb-3">01</p>
           <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s01.item1.title">Información difícil de comprender</h3>
@@ -249,22 +249,22 @@
     </section>
 
     <!-- ===== 02 · CONCEPTO ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20" id="s02">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s02">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-base font-medium text-latte-dark">02</span>
         <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s02.eyebrow">Concepto</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight max-w-2xl mb-12" data-i18n="s02.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight max-w-2xl mb-8 md:mb-12" data-i18n="s02.heading">
         Inicios del proyecto
       </h2>
 
-      <div class="reveal mb-14">
+      <div class="reveal mb-8 md:mb-14">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s02.p1">
           El proyecto surge a partir de las inquietudes compartidas por los cuatro integrantes del grupo de trabajo sobre el aspecto social del diseño. Lejos de comprender nuestra disciplina como un ámbito meramente artístico, confiamos en la capacidad del diseño para integrarse en un contexto multidisciplinar gracias a su enorme versatilidad. De este modo, pretendemos aprovechar el diseño para que actúe como ese engranaje capaz de poner en común los intereses de los agentes implicados en una determinada actividad, logrando que cada uno alcance sus objetivos individuales.
         </p>
       </div>
 
-      <div class="reveal mb-14">
+      <div class="reveal mb-8 md:mb-14">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s02.p2">
           El principal objetivo fue aprovechar las herramientas de diseño y nuevas tecnologías para realizar propuestas de mejora en prestaciones concretas del ámbito sanitario.
         </p>
@@ -303,16 +303,16 @@
     </section>
 
     <!-- ===== 03 · INVESTIGACIÓN ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20" id="s03">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s03">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-base font-medium text-latte-dark">03</span>
         <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s03.eyebrow">Investigación</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-12" data-i18n="s03.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-8 md:mb-12" data-i18n="s03.heading">
         Análisis y benchmark
       </h2>
 
-      <div class="reveal mb-14">
+      <div class="reveal mb-8 md:mb-14">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s03.p1">
           Una vez definido el problema de estudio, nos adentramos en el análisis de investigaciones, antecedentes y publicaciones que se relacionan con el tema que nos ocupa para definir correctamente la dirección que toma el proyecto y estudiar las posibles líneas de investigación.
         </p>
@@ -363,16 +363,16 @@
     </section>
 
     <!-- ===== 04 · ANÁLISIS DE CONCEPTOS ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20" id="s04">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s04">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-base font-medium text-latte-dark">04</span>
         <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s04.eyebrow">Análisis de conceptos</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-12" data-i18n="s04.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-8 md:mb-12" data-i18n="s04.heading">
         Conceptualización y planificación
       </h2>
 
-      <div class="reveal mb-16">
+      <div class="reveal mb-10 md:mb-16">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s04.p1">
           Cada uno de los integrantes del grupo elaboró un mapa conceptual individual, con aquellas palabras que encontraba más familiares con el Párkinson. Una vez puestas en común, elaboramos grupalmente un mapa conceptual mucho más completo al contar con los enfoques individuales de todos los participantes, que se divide según los conjuntos que consideramos de mayor relevancia.
         </p>
@@ -400,7 +400,7 @@
       </div>
       <p class="reveal text-base text-slate mt-3" data-i18n="s04.caption1">Tabla de palabras clave y mapas conceptuales elaborados a partir del análisis grupal.</p>
 
-      <div class="reveal mb-14 mt-16 md:mt-20 pt-16 md:pt-20">
+      <div class="reveal mb-8 md:mb-14 mt-10 md:mt-20 pt-16 md:pt-20">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s04.p2">
           Para estructurar este proceso de resolución creativa de problemas recurrimos al doble diamante, que nos ayuda a centrarnos en identificar correctamente el problema antes de empezar a idear soluciones efectivas.
         </p>
@@ -412,22 +412,22 @@
     </section>
 
     <!-- ===== 05 · NAMING ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20" id="s05">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s05">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-base font-medium text-latte-dark">05</span>
         <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s05.eyebrow">Naming</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-12" data-i18n="s05.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-8 md:mb-12" data-i18n="s05.heading">
         La búsqueda del nombre perfecto
       </h2>
 
-      <div class="reveal mb-14">
+      <div class="reveal mb-8 md:mb-14">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s05.p1">
           El naming es hoy un elemento clave en la promoción y venta de productos y servicios: define el espacio que ocupa una marca y el público al que se dirige. Por eso consideramos varias opciones muy diversas.
         </p>
       </div>
 
-      <div class="reveal mb-14">
+      <div class="reveal mb-8 md:mb-14">
         <ul class="">
           <li class="py-5 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-base font-medium text-latte-dark shrink-0">01</span>
@@ -466,12 +466,12 @@
     </section>
 
     <!-- ===== 06 · IDENTIDAD CORPORATIVA Y ACTIVIDAD PROMOCIONAL ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20" id="s06">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s06">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-base font-medium text-latte-dark">06</span>
         <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s06.eyebrow">Visual / UX</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-12" data-i18n="s06.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-8 md:mb-12" data-i18n="s06.heading">
         Primeros materiales gráficos y mockups
       </h2>
 
@@ -481,16 +481,16 @@
         </p>
       </div>
 
-      <div class="reveal mt-16 md:mt-20 rounded-2xl overflow-hidden bg-white border border-ink/15">
+      <div class="reveal mt-10 md:mt-20 rounded-2xl overflow-hidden bg-white border border-ink/15">
         <img src="sisdeva-logo-construction.webp" alt="Construcción del símbolo del logotipo de SISDEVA: la letra S, una hélice de ADN y unas gafas de realidad virtual se combinan para formar el icono de la marca" data-i18n="s06.image1.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
 
-      <div class="reveal mt-16 md:mt-20 rounded-2xl overflow-hidden">
+      <div class="reveal mt-10 md:mt-20 rounded-2xl overflow-hidden">
         <img src="sisdeva-orofacial-illustrations.png" alt="Ilustraciones para el tratamiento orofacial: dos rostros ilustrados con los labios resaltados en amarillo" data-i18n="s06.image2.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
       <p class="reveal text-base text-slate mt-3" data-i18n="s06.caption1">Ilustraciones para el tratamiento orofacial</p>
 
-      <div class="reveal mb-14 mt-16 md:mt-20 pt-16 md:pt-20">
+      <div class="reveal mb-8 md:mb-14 mt-10 md:mt-20 pt-16 md:pt-20">
         <div class="space-y-5">
           <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s06.p2">
             Entre varios de nuestros objetivos, se encuentra fomentar el entrenamiento autónomo en los pacientes. Es por ello que se han desarrollado una serie de ejercicios a modo de terapias digitales que estimulan ciertos movimientos faciales y corporales que irán incorporados en uno de los apartados de la app. Para su correcta realización, se han llevado a cabo una serie de pasos. Además, dentro de terapias digitales, destaca que se plantearon entonces dos modalidades para la UX del producto:
@@ -536,16 +536,16 @@
     </section>
 
     <!-- ===== 07 · ARQUITECTURA Y EXPERIENCIA DE USUARIO ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20" id="s07">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s07">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-base font-medium text-latte-dark">07</span>
         <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s07.eyebrow">Arquitectura y experiencia de usuario</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-12" data-i18n="s07.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-8 md:mb-12" data-i18n="s07.heading">
         Estructurando el acceso y la navegación de la app
       </h2>
 
-      <div class="reveal mb-14 md:mb-16 rounded-2xl overflow-hidden bg-white border border-ink/15">
+      <div class="reveal mb-8 md:mb-14 md:mb-16 rounded-2xl overflow-hidden bg-white border border-ink/15">
         <img src="sisdeva-information-architecture.webp" alt="Diagrama de arquitectura de la información de la aplicación, desde Inicio Sesión hasta las secciones Agenda, Actividad, Seguimiento, Contacto y Perfil" data-i18n="s07.image1.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
 
@@ -555,17 +555,17 @@
         </p>
       </div>
 
-      <div class="reveal mt-16 md:mt-20 rounded-2xl overflow-hidden bg-[#3D3D3D]">
+      <div class="reveal mt-10 md:mt-20 rounded-2xl overflow-hidden bg-[#3D3D3D]">
         <img src="sisdeva-login-mockup.webp" alt="Mockup de la pantalla de inicio de sesión, con campos para usuario (DNI) y contraseña, en formato horizontal y vertical" data-i18n="s07.image2.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
 
-      <div class="reveal mt-16 md:mt-20 pt-16 md:pt-20">
+      <div class="reveal mt-10 md:mt-20 pt-16 md:pt-20">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s07.p2">
           De la definición de perfil de usuario estándar de nuestra aplicación alcanzada gracias a la herramienta buyer persona, extraemos una serie de conclusiones que resultan fundamentales para crear la estructura base de la aplicación. La media de edad de las personas que recurrirían a nuestra aplicación viene dada por la media de edad de las personas que padecen EP, esto es, 60 años. Este dato resulta vital en este punto del proceso, pues, al no tratarse de una aplicación destinada a jóvenes, nos hace tener en cuenta términos de accesibilidad respecto al tamaño de las imágenes y textos, o a la dificultad que pueda suponer aprender a usarla con fluidez. Además, al tratarse de enfermedades degenerativas y, desgraciadamente, aún sin cura, debemos ser muy conscientes de que la aplicación deberá poder ser usada diariamente durante un largo periodo de tiempo sin resultar aburrida o transmitir una sensación de desagrado, es decir, debe ser "amable" tanto en funcionamiento como en apariencia con el usuario para fomentar un uso continuado de la misma.
         </p>
       </div>
 
-      <div id="wireframes-carousel" class="reveal group relative mt-16 md:mt-20 aspect-[4/3] sm:aspect-[16/9] rounded-2xl overflow-hidden bg-[#ACACAC]">
+      <div id="wireframes-carousel" class="reveal group relative mt-10 md:mt-20 aspect-[4/3] sm:aspect-[16/9] rounded-2xl overflow-hidden bg-[#ACACAC]">
         <div id="wireframes-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
           <img src="sisdeva-wireframe-actividad.png" alt="Wireframe de alta fidelidad de la pantalla Actividad, con cuatro tarjetas: Logopedia, Mindfulness, Movilidad y Entrenamiento cognitivo" data-i18n="s07.carousel.alt1" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
           <img src="sisdeva-wireframe-seguimiento.png" alt="Wireframe de alta fidelidad de la pantalla Seguimiento, con tiempo de actividad, logros y pasos diarios" data-i18n="s07.carousel.alt2" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-10 shrink-0">
@@ -589,17 +589,17 @@
       </div>
       <p class="reveal text-base text-slate mt-3" data-i18n="s07.caption1">Wireframes de alta fidelidad</p>
 
-      <div class="reveal mt-16 md:mt-20 pt-16 md:pt-20">
+      <div class="reveal mt-10 md:mt-20 pt-16 md:pt-20">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s07.p3">
           El usuario debe sentir principalmente satisfacción y entretenimiento al usar la aplicación. Sería conveniente también que se sintiera en cierto modo retado (desde un punto de vista positivo) para que se involucre plena y conscientemente en el desafío de mejorar y evolucionar, aumentando su implicación y motivación con los tratamientos. Como hemos visto anteriormente, la aplicación debe incidir en los tres niveles emocionales del usuario: visceral (siendo agradable y atractiva a la vista), conductual (haciendo sentir satisfecho e independiente al usuario) y reflexiva (haciéndole llegar a la conclusión de que la aplicación tiene consecuencias positivas no sólo en su enfermedad sino en su vida).
         </p>
       </div>
 
-      <div class="reveal mt-16 md:mt-20 rounded-2xl overflow-hidden">
+      <div class="reveal mt-10 md:mt-20 rounded-2xl overflow-hidden">
         <img src="sisdeva-mockups-seguimiento-actividad.webp" alt="Mockups de las pantallas Seguimiento y Actividad de la aplicación, con estadísticas de tiempo, logros y pasos diarios, y accesos a Logopedia, Mindfulness, Movilidad y Entrenamiento cognitivo" data-i18n="s07.image3.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
 
-      <div class="reveal mt-16 md:mt-20 pt-16 md:pt-20">
+      <div class="reveal mt-10 md:mt-20 pt-16 md:pt-20">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s07.p4">
           Cada ejercicio se representa con una ilustración en primer plano de la zona del cuerpo que se está trabajando, siempre sobre el mismo fondo gris corporativo y con el mismo lenguaje visual: contorno en línea negra, relleno en blanco y silueta en negro. La parte concreta que se busca estimular se resalta en amarillo corporativo, y en los ejercicios de movilidad una línea discontinua delimita además el recorrido del movimiento que el paciente debe realizar.
         </p>
@@ -637,16 +637,16 @@
     </section>
 
     <!-- ===== 08 · EXPERIENCIA EN RV ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20" id="s08">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s08">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-base font-medium text-latte-dark">08</span>
         <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s08.eyebrow">Experiencia en RV</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-12" data-i18n="s08.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-8 md:mb-12" data-i18n="s08.heading">
         Diseñando la experiencia dentro de las gafas de RV
       </h2>
 
-      <div class="reveal mb-14 md:mb-16 aspect-[16/9] rounded-2xl overflow-hidden">
+      <div class="reveal mb-8 md:mb-14 md:mb-16 aspect-[16/9] rounded-2xl overflow-hidden">
         <img src="sisdeva-vr-hands.webp" alt="Persona con gafas de realidad virtual moviendo las manos frente a ella" data-i18n="s08.image1.alt" data-i18n-attr="alt" class="w-full h-full object-cover">
       </div>
 
@@ -661,7 +661,7 @@
         </div>
       </div>
 
-      <div class="reveal mt-16 md:mt-20 rounded-2xl overflow-hidden">
+      <div class="reveal mt-10 md:mt-20 rounded-2xl overflow-hidden">
         <img src="sisdeva-vr-setup.webp" alt="Instrucción para colocar el dispositivo en posición horizontal e introducirlo en las gafas de realidad virtual, junto a la fotografía del ejercicio corporal en exteriores" data-i18n="s08.image2.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
 
@@ -671,12 +671,12 @@
     </section>
 
     <!-- ===== 09 · SOLUTION ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20" id="s09">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s09">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-base font-medium text-latte-dark">09</span>
         <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s09.eyebrow">Solución</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight max-w-2xl mb-12" data-i18n="s09.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight max-w-2xl mb-8 md:mb-12" data-i18n="s09.heading">
         Una ayuda para nuestros profesionales y pacientes
       </h2>
 
@@ -688,11 +688,11 @@
         <img src="sisdeva-ipad-login.png" alt="Mockup de un iPad mostrando la pantalla de Inicio y un iPhone con la pantalla de inicio de sesión, solicitando DNI y contraseña" data-i18n="s09.image2.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
 
-      <div class="reveal mt-10 md:mt-12 mb-16">
+      <div class="reveal mt-10 md:mt-12 mb-10 md:mb-16">
         <img src="sisdeva-phone-lineup.webp" alt="Cinco mockups de iPhone mostrando distintas pantallas de la aplicación SISDEVA: portada, inicio, seguimiento, ejercicio de mano y ejercicio orofacial" data-i18n="s09.image3.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
 
-      <div class="reveal mb-16">
+      <div class="reveal mb-10 md:mb-16">
         <div class="space-y-5">
           <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s09.p1">
             El desarrollo de este proyecto nos ayuda a encontrar aplicación a los diferentes conocimientos y habilidades adquiridas a lo largo del grado. Tratándose de un proyecto que abarca diversas ramas del campo del diseño, nos ha servido para conocer diferentes modos de actuación y comprender la repercusión que llega a tener el proceso de investigación. Nos ha hecho conscientes de la importancia del flujo de trabajo tanto individual como en grupo, acentuando la relevancia de valores como la cooperación, el trabajo en equipo, y el compromiso.
@@ -703,7 +703,7 @@
         </div>
       </div>
 
-      <div class="reveal mb-16">
+      <div class="reveal mb-10 md:mb-16">
         <ul class="">
           <li class="py-5 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <span class="text-base font-medium text-latte-dark shrink-0">01</span>
@@ -729,7 +729,7 @@
         </ul>
       </div>
 
-      <div class="reveal mt-16 md:mt-20 rounded-2xl overflow-hidden">
+      <div class="reveal mt-10 md:mt-20 rounded-2xl overflow-hidden">
         <img src="sisdeva-appstore-mockup.webp" alt="Mockup de una persona sujetando un móvil con la ficha de SISDEVA abierta en la App Store" data-i18n="s09.image4.alt" data-i18n-attr="alt" class="w-full h-auto">
       </div>
 
@@ -748,7 +748,7 @@
     </section>
 
     <!-- ===== 10 · KEY LEARNINGS ===== -->
-    <section id="s10" class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20">
+    <section id="s10" class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-base font-medium text-latte-dark">10</span>
         <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s10.eyebrow">Aprendizajes clave</span>
@@ -762,8 +762,8 @@
     </section>
 
     <!-- ===== END OF CASE STUDY ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20 text-center">
-      <p class="reveal text-xl md:text-[clamp(1.25rem,1.0833rem+0.2604vw,1.5rem)] font-medium tracking-tight mb-10" data-i18n="cta.heading">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20 text-center">
+      <p class="reveal text-lg md:text-[clamp(1.25rem,1.0833rem+0.2604vw,1.5rem)] font-medium tracking-tight mb-10" data-i18n="cta.heading">
         ¿Quieres ver más proyectos?
       </p>
       <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -1450,5 +1450,50 @@
     })();
   </script>
 
+  <!-- Visor de imágenes a pantalla completa (solo táctil) -->
+  <script>
+    (function () {
+      if (!window.matchMedia('(hover: none)').matches) return;
+      const main = document.querySelector('main');
+      if (!main) return;
+      const overlay = document.createElement('div');
+      overlay.setAttribute('role', 'dialog');
+      overlay.setAttribute('aria-modal', 'true');
+      overlay.style.cssText = 'position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(10,10,10,0.94);touch-action:pinch-zoom;';
+      const big = document.createElement('img');
+      big.style.cssText = 'max-width:100%;max-height:100%;object-fit:contain;touch-action:pinch-zoom;';
+      big.alt = '';
+      const close = document.createElement('button');
+      close.type = 'button';
+      close.setAttribute('aria-label', 'Cerrar');
+      close.style.cssText = 'position:absolute;top:max(env(safe-area-inset-top),12px);right:12px;width:44px;height:44px;border-radius:9999px;border:0;background:rgba(255,255,255,0.16);color:#fff;font-size:24px;line-height:1;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;';
+      close.textContent = '\u00d7';
+      overlay.appendChild(big);
+      overlay.appendChild(close);
+      document.body.appendChild(overlay);
+
+      function open(img) {
+        big.src = img.currentSrc || img.src;
+        big.alt = img.alt || '';
+        overlay.style.display = 'flex';
+        document.documentElement.style.overflow = 'hidden';
+      }
+      function shut() {
+        overlay.style.display = 'none';
+        big.removeAttribute('src');
+        document.documentElement.style.overflow = '';
+      }
+      overlay.addEventListener('click', shut);
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') shut(); });
+
+      main.addEventListener('click', (e) => {
+        const img = e.target.closest('img');
+        if (!img || img.closest('a, button, header, nav')) return;
+        if (img.hasAttribute('data-nozoom')) return;
+        if (img.getBoundingClientRect().width < 120) return;
+        open(img);
+      });
+    })();
+  </script>
 </body>
 </html>

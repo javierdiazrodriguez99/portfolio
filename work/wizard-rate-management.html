@@ -99,7 +99,7 @@
           <li><a href="../sobre-mi.html" class="inline-block py-2 -my-2 hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
           <li><a href="../contacto.html" class="inline-block py-2 -my-2 hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
         </ul>
-        <button type="button" id="lang-toggle-mobile" class="sm:hidden h-8 px-3 flex items-center justify-center text-base font-medium border border-ink/15 rounded-full hover:bg-latte/40 transition-colors" aria-label="Cambiar idioma">ES</button>
+        <button type="button" id="lang-toggle-mobile" class="sm:hidden h-8 px-3 flex items-center justify-center text-base font-medium border border-ink/15 rounded-full [@media(hover:hover)]:hover:bg-latte/40 [-webkit-tap-highlight-color:transparent] transition-colors" aria-label="Cambiar idioma">ES</button>
         <div class="hidden sm:flex items-center h-8 gap-0.5 text-lg font-medium border border-ink/15 rounded-full p-0.5" role="group" aria-label="Seleccionar idioma">
           <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="en">EN</button>
           <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="es">ES</button>
@@ -141,7 +141,7 @@
         Asistente de Gestión de Tarifas
       </h1>
 
-      <p class="reveal is-visible mt-6 text-xl md:text-[clamp(1.25rem,1.0833rem+0.2604vw,1.5rem)] text-slate leading-relaxed" data-i18n="hero.subtitle">
+      <p class="reveal is-visible mt-6 text-lg md:text-[clamp(1.25rem,1.0833rem+0.2604vw,1.5rem)] text-slate leading-relaxed" data-i18n="hero.subtitle">
         Diseño de un wizard para gestionar de forma masiva las tarifas de compraventa entre transportistas y shippers, sobre bases de datos de millones de registros.
       </p>
 
@@ -164,7 +164,7 @@
             <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink">
               <span tabindex="0" aria-describedby="team-tooltip" class="focus-ring rounded">End-to-end</span>
             </p>
-            <div id="team-tooltip" role="tooltip" class="pointer-events-none absolute bottom-full left-0 sm:left-auto sm:right-0 mb-3 z-20 w-max max-w-[min(360px,calc(100vw-3rem))] rounded-xl bg-ink px-4 py-3 text-base text-paper shadow-sm opacity-0 translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:translate-y-0">
+            <div id="team-tooltip" role="tooltip" class="pointer-events-none absolute bottom-full right-0 mb-3 z-20 w-max max-w-[min(360px,calc(100vw-3rem))] rounded-xl bg-ink px-4 py-3 text-base text-paper shadow-sm opacity-0 translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:translate-y-0">
               <span class="block" data-i18n="hero.team.tooltip">Un equipo end-to-end es aquel en el que, como Product Designer, tuve la oportunidad de interactuar con todos los departamentos implicados, de principio a fin del proyecto:</span>
               <span class="block mt-2 font-medium">Customer Success → Product Management → Product Design → Development → QA Testing</span>
             </div>
@@ -172,7 +172,7 @@
         </div>
       </div>
 
-      <div id="cover-carousel" class="reveal group mt-16 md:mt-20 relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+      <div id="cover-carousel" class="reveal group mt-10 md:mt-20 relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
         <div id="carousel-track" class="flex h-full transition-transform duration-500 ease-out">
           <img src="wizard-rate-management-cover.png" data-i18n="hero.carousel.alt1" data-i18n-attr="alt" alt="Tariff Manager: listado de archivos de tarifas con su estado de validación" class="w-full h-full object-cover shrink-0">
           <img src="wizard-rate-management-cover-2.png" data-i18n="hero.carousel.alt2" data-i18n-attr="alt" alt="Pantalla de revisión de datos del wizard, con detección de errores por fila" class="w-full h-full object-cover shrink-0">
@@ -193,22 +193,22 @@
     </section>
 
     <!-- ===== 01 · STARTING POINT ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20" id="s01">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s01">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-base font-medium text-latte-dark">01</span>
         <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s01.eyebrow">Punto de partida</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-12" data-i18n="s01.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-8 md:mb-12" data-i18n="s01.heading">
         Por qué necesitábamos un nuevo enfoque
       </h2>
 
-      <div class="reveal mb-14">
+      <div class="reveal mb-8 md:mb-14">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s01.p1">
           Los equipos de operaciones gestionaban las tarifas de compraventa entre transportistas y shippers a través de archivos de Excel de millones de filas, sin validación automática ni trazabilidad de los cambios. Cualquier actualización masiva de tarifas era un proceso manual, lento y arriesgado.
         </p>
       </div>
 
-      <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 pt-10">
+      <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 pt-0 md:pt-10">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
           <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s01.card1.title">Errores silenciosos</h3>
           <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s01.card1.body">
@@ -231,16 +231,16 @@
     </section>
 
     <!-- ===== 02 · RESEARCH ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20" id="s02">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s02">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-base font-medium text-latte-dark">02</span>
         <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s02.eyebrow">Research</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-12" data-i18n="s02.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-8 md:mb-12" data-i18n="s02.heading">
         La interfaz existente
       </h2>
 
-      <div class="reveal mb-14">
+      <div class="reveal mb-8 md:mb-14">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s02.p1">
           Debido a la urgencia que tenía la compañía en arreglar este proceso, ya que estaba dando muchos errores tanto a nivel interno como a nivel de nuestros clientes, las técnicas de investigación previas antes de llegar al concepto final fueron casi nulas. Básicamente lo que se hizo fue un refresh de la interfaz de usuario y se añadieron algunas funcionalidades nuevas en comparación a la UI anterior.
         </p>
@@ -268,16 +268,16 @@
     </section>
 
     <!-- ===== 03 · DEL PAPEL A LA PANTALLA ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20" id="s03">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s03">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-base font-medium text-latte-dark">03</span>
         <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s03.eyebrow">Del papel a la pantalla</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-12" data-i18n="s03.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-8 md:mb-12" data-i18n="s03.heading">
         De los primeros bocetos a las primeras interacciones
       </h2>
 
-      <div class="reveal mb-16">
+      <div class="reveal mb-10 md:mb-16">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s03.p1">
           Para llevar a cabo este proyecto se tuvo en cuenta referencias de proyectos anteriores en los que tuve la oportunidad de trabajar, tanto a nivel de user experience como a nivel de user interface.
         </p>
@@ -303,7 +303,7 @@
       </div>
       <p class="reveal text-base text-slate mt-3" data-i18n="s03.caption1">Referencias de proyectos anteriores utilizadas como punto de partida del flujo y la interfaz.</p>
 
-      <div class="reveal mb-16 mt-16">
+      <div class="reveal mb-10 md:mb-16 mt-10 md:mt-16">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s03.p2">
           A medida que íbamos desarrollando las diferentes funcionalidades y procesos de la subida de archivos, recibíamos feedback constante — por no decir diario — del equipo técnico, que validaba las propuestas del equipo de diseño de producto. Muchas veces había cosas que se podían realizar y otras que no, y teníamos que adaptarnos a las condiciones técnicas limitadas que ofrecía la empresa en ese momento.
         </p>
@@ -329,22 +329,22 @@
     </section>
 
     <!-- ===== 04 · SOLUTION ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20" id="s04">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s04">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-base font-medium text-latte-dark">04</span>
         <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s04.eyebrow">Solución</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-12" data-i18n="s04.heading">
+      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-8 md:mb-12" data-i18n="s04.heading">
         Un wizard guiado = mil dolores de cabeza menos
       </h2>
 
-      <div class="reveal mb-16">
+      <div class="reveal mb-10 md:mb-16">
         <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s04.p1">
           En vez de seguir dependiendo de archivos de Excel sueltos, diseñamos un wizard paso a paso que guía al usuario desde la carga del archivo hasta la validación y confirmación de los cambios, detectando errores automáticamente antes de que lleguen a producción. A pesar de no haber podido testear la propuesta con usuarios reales, el resultado fue bastante óptimo: nuestros transportistas quedaron conformes con la nueva funcionalidad y destacaron que la interfaz se veía mucho más limpia, y que el proceso podía ser más íntimo entre el usuario y la plataforma, en vez de tener que pasar por una revisión del soporte interno de la empresa.
         </p>
       </div>
 
-      <div class="reveal mb-16">
+      <div class="reveal mb-10 md:mb-16">
         <p class="text-base font-medium tracking-widest uppercase text-slate mb-8" data-i18n="s03.label2">Carga de archivos</p>
 
         <div class="flex flex-col gap-8 md:flex-row md:items-stretch md:gap-0">
@@ -414,72 +414,38 @@
       </div>
       <p class="reveal text-base text-slate mt-3" data-i18n="s03.caption2">Capturas del flujo de carga de archivos: desde la subida hasta la confirmación de que el archivo se ha añadido correctamente.</p>
 
-      <div class="reveal mb-16 mt-16 md:mt-20">
-        <ul class="">
-          <li class="py-5 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
-            <span class="text-base font-medium text-latte-dark shrink-0">01</span>
-            <div>
-              <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-1" data-i18n="s04.feature1.title">Rediseño completo a nivel de precio, usuario e interfaz</h3>
-              <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed max-w-lg" data-i18n="s04.feature1.body">No tenía nada que ver con la versión anterior: se reformula toda la interfaz y las diferentes funcionalidades del sistema para garantizar que el proceso de subida de archivos sea el elemento central a nivel visual.</p>
-            </div>
-          </li>
-          <li class="py-5 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
-            <span class="text-base font-medium text-latte-dark shrink-0">02</span>
-            <div>
-              <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-1" data-i18n="s04.feature2.title">Validación automática</h3>
-              <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed max-w-lg" data-i18n="s04.feature2.body">El sistema detecta errores e inconsistencias antes de aplicar los cambios gracias a la inteligencia artificial, evitando errores a posteriori y garantizando un resultado mejor que el que estábamos acostumbrados.</p>
-            </div>
-          </li>
-          <li class="py-5 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
-            <span class="text-base font-medium text-latte-dark shrink-0">03</span>
-            <div>
-              <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-1" data-i18n="s04.feature3.title">Menos carga de trabajo a nivel interno</h3>
-              <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed max-w-lg" data-i18n="s04.feature3.body">Los equipos internos de la empresa se descargaron de bastante trabajo y pudieron enfocarse en la mejora de otras funcionalidades.</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      <div class="reveal">
-        <div class="grid sm:grid-cols-2 gap-8 md:gap-12">
-          <ul class="space-y-4">
-            <li class="pl-4 border-l-2 border-latte text-ink/80 leading-relaxed" data-i18n="s04.result1">El proceso de subida de tarifas y archivos de grandes dimensiones se hizo muchísimo más ágil.</li>
-            <li class="pl-4 border-l-2 border-latte text-ink/80 leading-relaxed" data-i18n="s04.result2">El usuario ganó mayor autonomía y control sobre sus propias tarifas.</li>
-            <li class="pl-4 border-l-2 border-latte text-ink/80 leading-relaxed" data-i18n="s04.result3">Otras empresas que ya contaban con un sistema similar mostraron interés en unirse al ver que nosotros también lo ofrecíamos.</li>
-          </ul>
-
-          <div class="space-y-8">
-            <div>
-              <p class="text-4xl md:text-[clamp(3rem,2.3333rem+1.04167vw,4rem)] font-semibold tracking-tightest mb-2 tabular-nums" data-countup data-i18n="s04.stat1.number">+5K*</p>
-              <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink mb-1" data-i18n="s04.stat1.label">Filas por archivo</p>
-              <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s04.stat1.body">Cada archivo contenía más de 5.000 filas, y en aquel momento trabajábamos con más de 50 transportistas.</p>
-            </div>
-            <div>
-              <p class="text-4xl md:text-[clamp(3rem,2.3333rem+1.04167vw,4rem)] font-semibold tracking-tightest mb-2 tabular-nums" data-countup data-i18n="s04.stat2.number">90%*</p>
-              <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink mb-1" data-i18n="s04.stat2.label">Errores detectados antes de producción</p>
-              <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s04.stat2.body">Se automatiza todo el proceso de subida e interpretación de las tarifas, garantizando el mínimo error posible.</p>
-            </div>
-            <p class="text-base text-slate" data-i18n="s04.footnote">*Cifras aproximadas, medidas por el equipo de Product Managers.</p>
-          </div>
+      <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 mt-10 md:mt-20 mb-10 md:mb-16">
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s04.feature1.title">Rediseño completo a nivel de precio, usuario e interfaz</h3>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s04.feature1.body">No tenía nada que ver con la versión anterior: se reformula toda la interfaz y las diferentes funcionalidades del sistema para garantizar que el proceso de subida de archivos sea el elemento central a nivel visual.</p>
+        </div>
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s04.feature2.title">Validación automática</h3>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s04.feature2.body">El sistema detecta errores e inconsistencias antes de aplicar los cambios gracias a la inteligencia artificial, evitando errores a posteriori y garantizando un resultado mejor que el que estábamos acostumbrados.</p>
+        </div>
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s04.feature3.title">Menos carga de trabajo a nivel interno</h3>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s04.feature3.body">Los equipos internos de la empresa se descargaron de bastante trabajo y pudieron enfocarse en la mejora de otras funcionalidades.</p>
         </div>
       </div>
 
-      <div class="reveal bg-mist rounded-2xl p-8 md:p-10 my-14 md:my-16">
-        <p class="text-xl md:text-[clamp(1.25rem,1rem+0.390625vw,1.625rem)] leading-relaxed text-ink/90" data-i18n="s04.quote">
-          "La agilidad con la que puedo procesar miles de tarifas en un momento es increíble."
-        </p>
-        <div class="flex items-center gap-3 mt-8">
-          <div class="w-10 h-10 rounded-full overflow-hidden shrink-0 bg-paper flex items-center justify-center"><img src="cma-cgm-logo.webp" alt="" class="w-full h-full object-contain p-1.5"></div>
-          <div>
-            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink">CMA CGM</p>
-            <p class="text-base text-slate" data-i18n="s04.testimonial.role">Transportista</p>
-          </div>
+      <div class="reveal grid sm:grid-cols-2 gap-x-8 gap-y-10 md:gap-x-10">
+        <div>
+          <p class="text-4xl md:text-[clamp(3rem,2.3333rem+1.04167vw,4rem)] font-semibold tracking-tightest mb-2 tabular-nums" data-countup data-i18n="s04.stat1.number">+5K*</p>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink mb-1" data-i18n="s04.stat1.label">Filas por archivo</p>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s04.stat1.body">Cada archivo contenía más de 5.000 filas, y en aquel momento trabajábamos con más de 50 transportistas.</p>
+        </div>
+        <div>
+          <p class="text-4xl md:text-[clamp(3rem,2.3333rem+1.04167vw,4rem)] font-semibold tracking-tightest mb-2 tabular-nums" data-countup data-i18n="s04.stat2.number">90%*</p>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink mb-1" data-i18n="s04.stat2.label">Errores detectados antes de producción</p>
+          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s04.stat2.body">Se automatiza todo el proceso de subida e interpretación de las tarifas, garantizando el mínimo error posible.</p>
         </div>
       </div>
+      <p class="reveal text-base text-slate mt-6" data-i18n="s04.footnote">*Cifras aproximadas, medidas por el equipo de Product Managers.</p>
     </section>
 
     <!-- ===== 05 · KEY LEARNINGS ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20" id="s05">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s05">
       <div class="reveal flex items-center gap-4 mb-5">
         <span class="text-base font-medium text-latte-dark">05</span>
         <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s05.eyebrow">Aprendizajes clave</span>
@@ -493,8 +459,8 @@
     </section>
 
     <!-- ===== END OF CASE STUDY ===== -->
-    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-16 md:py-20 text-center">
-      <p class="reveal text-xl md:text-[clamp(1.25rem,1.0833rem+0.2604vw,1.5rem)] font-medium tracking-tight mb-10" data-i18n="cta.heading">
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20 text-center">
+      <p class="reveal text-lg md:text-[clamp(1.25rem,1.0833rem+0.2604vw,1.5rem)] font-medium tracking-tight mb-10" data-i18n="cta.heading">
         ¿Quieres ver más proyectos?
       </p>
       <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -596,9 +562,6 @@
         's04.feature3.title': 'Menos carga de trabajo a nivel interno',
         's04.feature3.body': 'Los equipos internos de la empresa se descargaron de bastante trabajo y pudieron enfocarse en la mejora de otras funcionalidades.',
         's04.label3': 'Resultados',
-        's04.result1': 'El proceso de subida de tarifas y archivos de grandes dimensiones se hizo muchísimo más ágil.',
-        's04.result2': 'El usuario ganó mayor autonomía y control sobre sus propias tarifas.',
-        's04.result3': 'Otras empresas que ya contaban con un sistema similar mostraron interés en unirse al ver que nosotros también lo ofrecíamos.',
         's04.stat1.number': "+5K*",
         's04.stat1.label': "Filas por archivo",
         's04.stat1.body': "Cada archivo contenía más de 5.000 filas, y en aquel momento trabajábamos con más de 50 transportistas.",
@@ -606,8 +569,6 @@
         's04.stat2.label': 'Errores detectados antes de producción',
         's04.stat2.body': 'Se automatiza todo el proceso de subida e interpretación de las tarifas, garantizando el mínimo error posible.',
         's04.footnote': "*Cifras aproximadas, medidas por el equipo de Product Managers.",
-        's04.quote': '"La agilidad con la que puedo procesar miles de tarifas en un momento es increíble."',
-        's04.testimonial.role': 'Transportista',
 
         's05.eyebrow': 'Aprendizajes clave',
         's05.heading': 'Qué me dejó este proyecto',
@@ -702,9 +663,6 @@
         's04.feature3.title': 'Less internal workload',
         's04.feature3.body': 'Internal company teams were relieved of a significant amount of work and could focus on improving other features.',
         's04.label3': 'Results',
-        's04.result1': 'The process of uploading rates and large files became dramatically more agile.',
-        's04.result2': 'Users gained greater autonomy and control over their own rates.',
-        's04.result3': 'Other companies that already had a similar system showed interest in joining once they saw we offered it too.',
         's04.stat1.number': "+5K*",
         's04.stat1.label': "Rows per file",
         's04.stat1.body': "Each file contained more than 5,000 rows, and at the time we worked with more than 50 carriers.",
@@ -712,8 +670,6 @@
         's04.stat2.label': 'Errors caught before production',
         's04.stat2.body': 'The entire process of uploading and interpreting rates is automated, ensuring the lowest possible error rate.',
         's04.footnote': "*Approximate figures, measured by the Product Managers team.",
-        's04.quote': '"The speed at which I can process thousands of rates in an instant is incredible."',
-        's04.testimonial.role': 'Carrier',
 
         's05.eyebrow': 'Key learnings',
         's05.heading': 'What this project taught me',
@@ -1062,5 +1018,50 @@
     })();
   </script>
 
+  <!-- Visor de imágenes a pantalla completa (solo táctil) -->
+  <script>
+    (function () {
+      if (!window.matchMedia('(hover: none)').matches) return;
+      const main = document.querySelector('main');
+      if (!main) return;
+      const overlay = document.createElement('div');
+      overlay.setAttribute('role', 'dialog');
+      overlay.setAttribute('aria-modal', 'true');
+      overlay.style.cssText = 'position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(10,10,10,0.94);touch-action:pinch-zoom;';
+      const big = document.createElement('img');
+      big.style.cssText = 'max-width:100%;max-height:100%;object-fit:contain;touch-action:pinch-zoom;';
+      big.alt = '';
+      const close = document.createElement('button');
+      close.type = 'button';
+      close.setAttribute('aria-label', 'Cerrar');
+      close.style.cssText = 'position:absolute;top:max(env(safe-area-inset-top),12px);right:12px;width:44px;height:44px;border-radius:9999px;border:0;background:rgba(255,255,255,0.16);color:#fff;font-size:24px;line-height:1;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;';
+      close.textContent = '\u00d7';
+      overlay.appendChild(big);
+      overlay.appendChild(close);
+      document.body.appendChild(overlay);
+
+      function open(img) {
+        big.src = img.currentSrc || img.src;
+        big.alt = img.alt || '';
+        overlay.style.display = 'flex';
+        document.documentElement.style.overflow = 'hidden';
+      }
+      function shut() {
+        overlay.style.display = 'none';
+        big.removeAttribute('src');
+        document.documentElement.style.overflow = '';
+      }
+      overlay.addEventListener('click', shut);
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') shut(); });
+
+      main.addEventListener('click', (e) => {
+        const img = e.target.closest('img');
+        if (!img || img.closest('a, button, header, nav')) return;
+        if (img.hasAttribute('data-nozoom')) return;
+        if (img.getBoundingClientRect().width < 120) return;
+        open(img);
+      });
+    })();
+  </script>
 </body>
 </html>
