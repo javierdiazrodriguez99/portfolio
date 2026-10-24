@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="meta.title">Vertical Menus — One Stack · Javier Díaz</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="description" content="Caso de estudio: unificación de los menús de distintos productos en un único sistema de navegación global." data-i18n="meta.description" data-i18n-attr="content">
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#1A1917',
+          slate: '#6E6A64',
+          paper: '#FFFFFF',
+          mist: '#FAF9F7',
+          latte: '#E5D9C5',
+          'latte-dark': '#D4C4B7',
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+        },
+        letterSpacing: {
+          tightest: '-0.04em',
+        },
+      },
+    },
+  }
+</script>
+
+<!-- Google Fonts: Inter -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  html { font-family: 'Inter', sans-serif; }
+  ::selection { background-color: #E5D9C5; color: #1A1917; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  .focus-ring:focus-visible {
+    outline: 2px solid #1A1917;
+    outline-offset: 3px;
+  }
+
+  .card-img {
+    background-image:
+      linear-gradient(135deg, #F0EBE1 0%, #E5D9C5 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .card-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.5), transparent 60%);
+  }
+
+  body {
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+  body.is-ready {
+    opacity: 1;
+  }
+  /* Escala tipográfica (múltiplos de 8, sin decimales): H1–H6 + P */
+  .t-h1 { font-size: 48px; line-height: 56px; font-weight: 600; letter-spacing: -2px; }
+  .t-h2 { font-size: 40px; line-height: 48px; font-weight: 600; letter-spacing: -1px; }
+  .t-h3 { font-size: 32px; line-height: 40px; font-weight: 500; letter-spacing: 0; }
+  .t-h4 { font-size: 20px; line-height: 28px; font-weight: 400; letter-spacing: 0; }
+  .t-h5 { font-size: 20px; line-height: 28px; font-weight: 500; letter-spacing: 0; }
+  .t-h6 { font-size: 20px; line-height: 28px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; }
+  .t-h4.t-medium { font-weight: 500; }
+  .t-s  { font-size: 16px; line-height: 24px; font-weight: 400; letter-spacing: 0; }
+  .t-s-m { font-size: 16px; line-height: 24px; font-weight: 500; letter-spacing: 0; }
+  .t-logo { font-size: 16px; line-height: 24px; font-weight: 600; letter-spacing: 0; }
+  .t-p  { font-size: 20px; line-height: 28px; font-weight: 400; letter-spacing: 0; }
+  @media (min-width: 768px) {
+    .t-logo { font-size: 24px; line-height: 32px; letter-spacing: -1px; }
+    .t-h1 { font-size: 72px; line-height: 80px; letter-spacing: -3px; }
+    .t-h4 { font-size: 24px; line-height: 32px; }
+    }
+  @media (min-width: 1280px) {
+    .t-h1 { font-size: 80px; line-height: 88px; }
+  }
+  @media (max-width: 767px) {
+    .t-meta { font-size: 16px; line-height: 24px; }
+  }
+  /* PRUEBA: cuerpo base a 16px */
+  .t-p { font-size: 16px; line-height: 24px; }
+</style>
+</head>
+
+<body class="bg-paper text-ink antialiased">
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-paper/80 backdrop-blur-md">
+    <nav class="max-w-[1680px] mx-auto px-6 sm:px-16 h-[68px] sm:h-[136px] flex items-center justify-between">
+
+      <a href="../index.html" class="t-logo focus-ring rounded whitespace-nowrap shrink-0">
+        Javier Díaz
+      </a>
+
+      <div class="flex items-center gap-4 sm:gap-8 shrink-0">
+        <ul class="flex items-center gap-4 sm:gap-10 text-base sm:text-xl text-slate whitespace-nowrap">
+          <li><a href="../sobre-mi.html" class="inline-block py-2 -my-2 hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
+          <li><a href="../contacto.html" class="inline-block py-2 -my-2 hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
+        </ul>
+        <button type="button" id="lang-toggle-mobile" class="sm:hidden h-8 px-3 flex items-center justify-center t-s-m border border-ink/15 rounded-full [@media(hover:hover)]:hover:bg-latte/40 [-webkit-tap-highlight-color:transparent] transition-colors" aria-label="Cambiar idioma">ES</button>
+        <div class="hidden sm:flex items-center h-8 gap-1 t-s-m border border-ink/15 rounded-full p-1" role="group" aria-label="Seleccionar idioma">
+          <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="en">EN</button>
+          <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="es">ES</button>
+        </div>
+      </div>
+
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===== ÍNDICE DE SECCIONES ===== -->
+    <nav id="section-index" class="group/index hidden xl:flex flex-col items-end gap-4 fixed right-6 top-1/2 -translate-y-1/2 z-30" aria-label="Índice de secciones">
+      <button type="button" class="section-index-item flex items-center gap-3 focus-ring rounded" data-target="s01">
+        <span class="section-index-label t-s text-slate whitespace-nowrap opacity-0 max-w-0 group-hover/index:opacity-100 group-hover/index:max-w-[280px] overflow-hidden transition-all duration-300 ease-out bg-paper/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-ink/15" data-i18n="s01.eyebrow">Punto de partida</span>
+        <span class="section-index-dot w-1.5 h-1.5 rounded-full bg-ink/20 transition-all shrink-0"></span>
+      </button>
+      <button type="button" class="section-index-item flex items-center gap-3 focus-ring rounded" data-target="s02">
+        <span class="section-index-label t-s text-slate whitespace-nowrap opacity-0 max-w-0 group-hover/index:opacity-100 group-hover/index:max-w-[280px] overflow-hidden transition-all duration-300 ease-out bg-paper/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-ink/15" data-i18n="s02.eyebrow">Research</span>
+        <span class="section-index-dot w-1.5 h-1.5 rounded-full bg-ink/20 transition-all shrink-0"></span>
+      </button>
+      <button type="button" class="section-index-item flex items-center gap-3 focus-ring rounded" data-target="s03">
+        <span class="section-index-label t-s text-slate whitespace-nowrap opacity-0 max-w-0 group-hover/index:opacity-100 group-hover/index:max-w-[280px] overflow-hidden transition-all duration-300 ease-out bg-paper/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-ink/15" data-i18n="s03.eyebrow">Del papel a la pantalla</span>
+        <span class="section-index-dot w-1.5 h-1.5 rounded-full bg-ink/20 transition-all shrink-0"></span>
+      </button>
+      <button type="button" class="section-index-item flex items-center gap-3 focus-ring rounded" data-target="s04">
+        <span class="section-index-label t-s text-slate whitespace-nowrap opacity-0 max-w-0 group-hover/index:opacity-100 group-hover/index:max-w-[280px] overflow-hidden transition-all duration-300 ease-out bg-paper/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-ink/15" data-i18n="s04.eyebrow">Interacciones / Prototipos</span>
+        <span class="section-index-dot w-1.5 h-1.5 rounded-full bg-ink/20 transition-all shrink-0"></span>
+      </button>
+      <button type="button" class="section-index-item flex items-center gap-3 focus-ring rounded" data-target="s05">
+        <span class="section-index-label t-s text-slate whitespace-nowrap opacity-0 max-w-0 group-hover/index:opacity-100 group-hover/index:max-w-[280px] overflow-hidden transition-all duration-300 ease-out bg-paper/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-ink/15" data-i18n="s05.eyebrow">Solución</span>
+        <span class="section-index-dot w-1.5 h-1.5 rounded-full bg-ink/20 transition-all shrink-0"></span>
+      </button>
+      <button type="button" class="section-index-item flex items-center gap-3 focus-ring rounded" data-target="s06">
+        <span class="section-index-label t-s text-slate whitespace-nowrap opacity-0 max-w-0 group-hover/index:opacity-100 group-hover/index:max-w-[280px] overflow-hidden transition-all duration-300 ease-out bg-paper/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-ink/15" data-i18n="s06.eyebrow">Aprendizajes clave</span>
+        <span class="section-index-dot w-1.5 h-1.5 rounded-full bg-ink/20 transition-all shrink-0"></span>
+      </button>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 pt-[91px] sm:pt-[159px]">
+      <h1 class="reveal is-visible t-h1">
+        <a href="https://www.freightos.com/freight-resources/webcargos-new-menu-redesign/?utm_content=303815178&amp;utm_medium=social&amp;utm_source=linkedin&amp;hss_channel=lcp-3486795" target="_blank" rel="noopener noreferrer" class="focus-ring rounded hover:underline decoration-2 decoration-ink/30 underline-offset-8 transition-colors" data-i18n="hero.title">Menú Vertical</a>
+      </h1>
+
+      <p class="reveal is-visible mt-6 t-h4 text-slate" data-i18n="hero.subtitle">
+        Rediseño de la arquitectura de navegación para unificar los diferentes menús de los múltiples productos de la empresa en un único formato.
+      </p>
+
+      <div class="reveal is-visible mt-8 sm:mt-12 pt-0 sm:pt-8 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-6 sm:gap-8">
+        <div>
+          <p class="t-s-m uppercase tracking-[2px] text-slate mb-1 sm:mb-2" data-i18n="hero.role.label">Rol</p>
+          <p class="t-h5 t-meta text-ink" data-i18n="hero.role.value">Junior UX/UI Designer</p>
+        </div>
+        <div>
+          <p class="t-s-m uppercase tracking-[2px] text-slate mb-1 sm:mb-2" data-i18n="hero.client.label">Cliente</p>
+          <p class="t-h5 t-meta text-ink" data-i18n="hero.client.value">Freightos</p>
+        </div>
+        <div>
+          <p class="t-s-m uppercase tracking-[2px] text-slate mb-1 sm:mb-2" data-i18n="hero.year.label">Año</p>
+          <p class="t-h5 t-meta text-ink" data-i18n="hero.year.value">2023</p>
+        </div>
+        <div>
+          <p class="t-s-m uppercase tracking-[2px] text-slate mb-1 sm:mb-2" data-i18n="hero.team.label">Equipo</p>
+          <div class="relative inline-block group">
+            <p class="t-h5 t-meta text-ink">
+              <span tabindex="0" aria-describedby="team-tooltip" class="focus-ring rounded">End-to-end</span>
+            </p>
+            <div id="team-tooltip" role="tooltip" class="pointer-events-none absolute bottom-full right-0 mb-3 z-20 w-max max-w-[min(360px,calc(100vw-3rem))] rounded-xl bg-ink px-4 py-3 text-base text-paper shadow-sm opacity-0 translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:translate-y-0">
+              <span class="block" data-i18n="hero.team.tooltip">Un equipo end-to-end es aquel en el que, como Product Designer, tuve la oportunidad de interactuar con todos los departamentos implicados, de principio a fin del proyecto:</span>
+              <span class="block mt-2 font-medium">Customer Success → Product Management → Product Design → Development → QA Testing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="cover-carousel" class="reveal group mt-8 md:mt-20 relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+        <div id="carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="vertical-menus-cover.png" alt="Menú vertical de Freightos unificado en un único sistema de navegación" class="w-full h-full object-cover shrink-0" data-i18n="hero.cover.img1.alt" data-i18n-attr="alt">
+          <img src="vertical-menus-cover-2.png" alt="Submenú de creación rápida (New) desplegado sobre la plataforma de Freightos" class="w-full h-full object-cover shrink-0" data-i18n="hero.cover.img2.alt" data-i18n-attr="alt">
+        </div>
+
+        <button type="button" id="carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div id="carousel-dots" class="absolute bottom-4 inset-x-0 flex items-center justify-center gap-2">
+          <button type="button" class="carousel-dot focus-ring w-2 h-2 rounded-full bg-paper/60 transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="carousel-dot focus-ring w-2 h-2 rounded-full bg-paper/60 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 01 · STARTING POINT ===== -->
+    <section id="s01" class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="t-h5 text-latte-dark" data-i18n="s01.index">01</span>
+        <span class="t-h6 text-slate" data-i18n="s01.eyebrow">Punto de partida</span>
+      </div>
+      <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="s01.heading">
+        Por qué necesitábamos un nuevo enfoque
+      </h2>
+
+      <div class="reveal mb-8 md:mb-14">
+        <p class="t-p text-ink/80" data-i18n="s01.p1">
+          La empresa contaba con diferentes productos y cada uno tenía un sistema de navegación diferente. Por ende, tuvimos que rediseñar y reestructurar toda la arquitectura de la información de cada uno de los productos de la empresa.
+        </p>
+      </div>
+
+      <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 pt-0 md:pt-10">
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
+          <h3 class="t-h4 t-medium mb-2" data-i18n="s01.card1.heading">Los usuarios no encontraban la información que necesitaban</h3>
+          <p class="t-p text-slate" data-i18n="s01.card1.p">
+            Recibíamos muchas quejas hacia soporte técnico, ya que los usuarios no lograban completar sus acciones una vez dentro de la plataforma: no conocían bien el producto porque el producto en sí no era intuitivo.
+          </p>
+        </div>
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+          <h3 class="t-h4 t-medium mb-2" data-i18n="s01.card2.heading">Costes de mantenimiento</h3>
+          <p class="t-p text-slate" data-i18n="s01.card2.p">
+            Para aplicar cualquier cambio de navegación había que coordinarse con varios equipos distintos, lo que alargaba mucho los tiempos de resolución — a veces tanto que, cuando el cambio por fin se implementaba, el cliente que lo había pedido ya se había dado de baja.
+          </p>
+        </div>
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+          <h3 class="t-h4 t-medium mb-2" data-i18n="s01.card3.heading">Confusión entre productos</h3>
+          <p class="t-p text-slate" data-i18n="s01.card3.p">
+            Tanto a nivel de arquitectura de la información como de UX e interfaz, los distintos tipos de usuario que saltaban entre productos se perdían con la información y no conseguían acceder correctamente a funcionalidades que debían funcionar de forma conjunta entre productos.
+          </p>
+        </div>
+      </div>
+
+      <div class="reveal aspect-[2000/1054] rounded-2xl overflow-hidden bg-white border border-ink/15 mt-14 md:mt-16">
+        <img src="vertical-menus-ia-antigua.webp" alt="Captura de pantalla de la UI y arquitectura de información antigua" data-i18n="s01.oldUi.alt" data-i18n-attr="alt" class="w-full h-full object-cover">
+      </div>
+      <p class="reveal t-s text-slate mt-3" data-i18n="s01.oldUi.caption">Captura de pantalla de la UI y arquitectura de información antigua.</p>
+    </section>
+
+    <!-- ===== 02 · RESEARCH ===== -->
+    <section id="s02" class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="t-h5 text-latte-dark" data-i18n="s02.index">02</span>
+        <span class="t-h6 text-slate" data-i18n="s02.eyebrow">Research</span>
+      </div>
+      <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="s02.heading">
+        Cómo investigamos antes de tocar el diseño
+      </h2>
+
+      <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 mb-10 md:mb-16">
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
+          <h3 class="t-h4 t-medium mb-2" data-i18n="s02.card2.heading">Árboles de arquitectura de la información</h3>
+          <p class="t-p text-slate" data-i18n="s02.card2.p">Mapeo de la estructura actual de cada producto frente a la estructura ideal que emergía de las sesiones, contrastando a la vez los distintos árboles de información de los diferentes productos para los diferentes usuarios, entre ellos freight forwarders, carriers y shippers.</p>
+        </div>
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+          <h3 class="t-h4 t-medium mb-2" data-i18n="s02.card1.heading">Card sorting con usuarios reales</h3>
+          <p class="t-p text-slate" data-i18n="s02.card1.p">Los usuarios dedicaron una semana a acceder a un link de card sorting totalmente remoto, donde ellos mismos realizaban una serie de tareas que les permitían agrupar los diferentes conceptos en una misma carpeta.</p>
+        </div>
+        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
+          <h3 class="t-h4 t-medium mb-2" data-i18n="s02.card3.heading">Síntesis y validación de patrones</h3>
+          <p class="t-p text-slate" data-i18n="s02.card3.p">Extracción de conclusiones a través del card sorting, combinado con sesiones internas con los product managers y directivos, para consolidar los futuros patrones de la nueva arquitectura de la información.</p>
+        </div>
+      </div>
+
+      <div class="reveal mb-8 md:mb-14">
+        <p class="t-p text-ink/80" data-i18n="s02.p1">
+          Antes de plantear una solución global, necesitábamos entender cómo pensaban los usuarios sobre la información de cada producto. Combinamos sesiones de card sorting con la construcción de árboles de arquitectura de la información, para contrastar cómo agrupaban mentalmente el contenido frente a cómo estaba estructurado realmente en cada plataforma.
+        </p>
+      </div>
+
+      <div id="research-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+        <div id="research-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="vertical-menus-cardsorting-4.png" alt="Detalle adicional de los resultados del card sorting" class="w-full h-full object-contain p-8 md:p-12 shrink-0" data-i18n="s02.research.img1.alt" data-i18n-attr="alt">
+          <img src="vertical-menus-cardsorting-1.png" alt="Resultados generales de la sesión de card sorting: respuestas completadas, tiempo empleado y ubicación de los participantes" class="w-full h-full object-contain p-8 md:p-12 shrink-0" data-i18n="s02.research.img2.alt" data-i18n-attr="alt">
+          <img src="vertical-menus-cardsorting-2.png" alt="Matrices de resultados del card sorting mostrando cómo los usuarios agruparon cada tarjeta y los emplazamientos más populares" class="w-full h-full object-contain p-8 md:p-12 shrink-0" data-i18n="s02.research.img3.alt" data-i18n-attr="alt">
+          <img src="vertical-menus-cardsorting-3.png" alt="Árbol de arquitectura de la información resultante, con la navegación completa organizada por secciones" class="w-full h-full object-cover shrink-0" data-i18n="s02.research.img4.alt" data-i18n-attr="alt">
+        </div>
+
+        <button type="button" id="research-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="research-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 hidden sm:flex items-center justify-center gap-2">
+          <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+          <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+          <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="3" aria-label="Ir a la imagen 4"></button>
+        </div>
+      </div>
+      <p class="reveal t-s text-slate mt-3" data-i18n="s02.research.caption">Resultados de las sesiones de card sorting y árbol de arquitectura de la información resultante.</p>
+
+      <div class="reveal mb-10 md:mb-16 mt-10 md:mt-20">
+        <p class="t-p text-ink/80" data-i18n="s02.p2">
+          Una vez recogida toda la información del research, y con una idea clara de cómo nuestros usuarios visualizaban la información de Freightos en general, el equipo de producto pasó dos semanas seguidas trabajando codo con codo en la misma sala de reuniones siempre que fue posible, construyendo entre todos un modelo final de arquitectura de la información alineado tanto con la postura de los stakeholders como con la de los usuarios finales. Tuve la oportunidad de colaborar con todo el equipo y con mi manager, que aportaba una visión más global de los productos y nos ayudaba a validar si estábamos ubicando cada sección en el lugar correcto.
+        </p>
+      </div>
+
+      <div id="workshops-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+        <div id="workshops-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="vertical-menus-workshop-team.jpeg" alt="Equipo de producto celebrando frente al whiteboard con la arquitectura de la información del workshop" class="w-full h-full object-cover shrink-0" data-i18n="s02.workshops.img1.alt" data-i18n-attr="alt">
+          <img src="vertical-menus-workshop-1.png" alt="Workshop con equipos internos sobre el nuevo sistema de navegación" class="w-full h-full object-cover shrink-0" data-i18n="s02.workshops.img2.alt" data-i18n-attr="alt">
+          <img src="vertical-menus-workshop-2.png" alt="Workshop con equipos internos sobre el nuevo sistema de navegación" class="w-full h-full object-cover shrink-0" data-i18n="s02.workshops.img3.alt" data-i18n-attr="alt">
+          <img src="vertical-menus-workshop-3.png" alt="Workshop con equipos internos sobre el nuevo sistema de navegación" class="w-full h-full object-cover shrink-0" data-i18n="s02.workshops.img4.alt" data-i18n-attr="alt">
+          <img src="vertical-menus-workshop-4.png" alt="Workshop con equipos internos sobre el nuevo sistema de navegación" class="w-full h-full object-cover shrink-0" data-i18n="s02.workshops.img5.alt" data-i18n-attr="alt">
+        </div>
+
+        <button type="button" id="workshops-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="workshops-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 hidden sm:flex items-center justify-center gap-2">
+          <button type="button" class="workshops-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="workshops-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+          <button type="button" class="workshops-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+          <button type="button" class="workshops-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="3" aria-label="Ir a la imagen 4"></button>
+          <button type="button" class="workshops-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="4" aria-label="Ir a la imagen 5"></button>
+        </div>
+      </div>
+      <p class="reveal t-s text-slate mt-3" data-i18n="s02.workshops.caption">Workshops presenciales con los equipos internos de producto.</p>
+    </section>
+
+    <!-- ===== 03 · DEL PAPEL A LA PANTALLA ===== -->
+    <section id="s03" class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="t-h5 text-latte-dark" data-i18n="s03.index">03</span>
+        <span class="t-h6 text-slate" data-i18n="s03.eyebrow">Del papel a la pantalla</span>
+      </div>
+      <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="s03.heading">
+        De los primeros bocetos a las primeras interacciones
+      </h2>
+
+      <div class="reveal mb-10 md:mb-16">
+        <p class="t-p text-ink/80" data-i18n="s03.p1">
+          Antes de lanzarnos a los primeros bocetos, dedicamos tiempo a investigar cómo resolvían el menú vertical otros productos y software del mercado digital. Hicimos un benchmark exhaustivo revisando distintas plataformas, analizando no solo la estructura general de sus menús sino también el detalle: qué microinteracciones ocurrían cuando el usuario empezaba a interactuar con ellos y cómo clasificaban la información en un primer, segundo y tercer nivel.
+        </p>
+      </div>
+
+      <div id="sketches-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+        <div id="sketches-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="vertical-menus-sketches-1.png" alt="Primeros bocetos del menú vertical y exploración de la información." class="w-full h-full object-cover shrink-0" data-i18n="s03.sketches.img1.alt" data-i18n-attr="alt">
+          <img src="vertical-menus-sketches-2.png" alt="Workshop con equipos de producto sobre los primeros bocetos del menú." class="w-full h-full object-cover shrink-0" data-i18n="s03.sketches.img2.alt" data-i18n-attr="alt">
+          <img src="vertical-menus-sketches-3.png" alt="Exploración de microinteracciones del menú vertical." class="w-full h-full object-cover shrink-0" data-i18n="s03.sketches.img3.alt" data-i18n-attr="alt">
+          <img src="vertical-menus-sketches-4.png" alt="Clasificación de la información en primer, segundo y tercer nivel." class="w-full h-full object-cover shrink-0" data-i18n="s03.sketches.img4.alt" data-i18n-attr="alt">
+        </div>
+
+        <button type="button" id="sketches-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="sketches-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 hidden sm:flex items-center justify-center gap-2">
+          <button type="button" class="sketches-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="sketches-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+          <button type="button" class="sketches-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+          <button type="button" class="sketches-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="3" aria-label="Ir a la imagen 4"></button>
+        </div>
+      </div>
+      <p class="reveal t-s text-slate mt-3" data-i18n="s03.sketches.caption">Primeros bocetos del menú vertical y workshop con los equipos de producto.</p>
+
+      <div class="reveal mb-10 md:mb-16 mt-10 md:mt-20">
+        <p class="t-p text-ink/80" data-i18n="s03.p2">
+          Al estar rediseñando toda la navegación por defecto del sistema, también tuvimos que tocar el header, ya que al final formaba parte del mismo sistema de navegación original. Para cada producto tuvimos que especificar qué elementos del header se iban a incluir y cuáles no, así que construimos una versión global que se desescalaba según el producto en el que se aplicara.
+        </p>
+      </div>
+
+      <div id="header-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+        <div id="header-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="vertical-menus-header-1.png" alt="Referencia de header estudiada durante el rediseño" class="w-full h-full object-cover shrink-0" data-i18n="s03.header.img1.alt" data-i18n-attr="alt">
+          <img src="vertical-menus-header-2.png" alt="Referencia de header estudiada durante el rediseño" class="w-full h-full object-cover shrink-0" data-i18n="s03.header.img2.alt" data-i18n-attr="alt">
+          <img src="vertical-menus-header-3.png" alt="Referencia de header estudiada durante el rediseño" class="w-full h-full object-cover shrink-0" data-i18n="s03.header.img3.alt" data-i18n-attr="alt">
+        </div>
+
+        <button type="button" id="header-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="header-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 hidden sm:flex items-center justify-center gap-2">
+          <button type="button" class="header-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="header-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+          <button type="button" class="header-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+        </div>
+      </div>
+      <p class="reveal t-s text-slate mt-3" data-i18n="s03.header.caption">Referencias de los diferentes headers que estudiamos y sus soluciones finales.</p>
+
+      <div class="reveal mb-10 md:mb-16 mt-10 md:mt-20">
+        <p class="t-p text-ink/80" data-i18n="s03.p3">
+          Mientras trabajábamos en la propuesta final del header que aplicaría a los diferentes productos, íbamos de la mano trabajando en la propuesta final de lo que sería el futuro menú vertical de Freightos. Estudiamos detenidamente los diferentes tipos de interacción: cómo se abriría la información, si esta se desplegaba en horizontal o en vertical, cómo respondería el componente al pasar el ratón por encima y cómo se vería su versión cerrada. Trabajamos con muchísimo cariño cada uno de los componentes y las interacciones que forman, a día de hoy, el producto final.
+        </p>
+      </div>
+
+      <div id="level1-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-[#E1E1E1]">
+        <div id="level1-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="vertical-menus-usecases.webp" alt="Diagrama de los posibles casos de uso del menú vertical en su versión drill-down" class="w-full h-full object-contain p-6 md:p-9 shrink-0" data-i18n="s03.level1.img1.alt" data-i18n-attr="alt">
+          <img src="vertical-menus-level1-1.png" alt="Comportamiento del primer nivel de información del menú vertical" class="w-full h-full object-contain p-6 md:p-9 shrink-0" data-i18n="s03.level1.img2.alt" data-i18n-attr="alt">
+          <img src="vertical-menus-level1-2.png" alt="Comportamiento del primer nivel de información del menú vertical" class="w-full h-full object-contain p-6 md:p-9 shrink-0" data-i18n="s03.level1.img3.alt" data-i18n-attr="alt">
+          <img src="vertical-menus-level1-3.png" alt="Comportamiento del primer nivel de información del menú vertical" class="w-full h-full object-contain p-6 md:p-9 shrink-0" data-i18n="s03.level1.img4.alt" data-i18n-attr="alt">
+        </div>
+
+        <button type="button" id="level1-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="level1-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 hidden sm:flex items-center justify-center gap-2">
+          <button type="button" class="level1-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="level1-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+          <button type="button" class="level1-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+          <button type="button" class="level1-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="3" aria-label="Ir a la imagen 4"></button>
+        </div>
+      </div>
+      <p class="reveal t-s text-slate mt-3" data-i18n="s03.level1.caption">Referencias del comportamiento del menú vertical.</p>
+
+      <div class="reveal mb-10 md:mb-16 mt-10 md:mt-20">
+        <p class="t-p text-ink/80" data-i18n="s03.p4">
+          Al ser un menú vertical que ocupaba toda la altura de la página, en algunas pantallas del sistema quedaba un pequeño footer suelto, desconectado del resto de la navegación. A partir de la investigación realizada, decidimos integrarlo directamente dentro del propio menú, de forma que sus elementos fueran accesibles tanto con el menú abierto como cerrado.
+        </p>
+      </div>
+
+      <div id="footer-proposal-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-[#f5f5f5]">
+        <div id="footer-proposal-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="vertical-menus-footer-1.webp" alt="Estados del menú colapsado con acceso a ayuda, términos de servicio, patente y copyright, incluyendo el hover de Terms of service" class="w-full h-full object-contain p-6 md:p-9 shrink-0" data-i18n="s03.footer.img1.alt" data-i18n-attr="alt">
+          <img src="vertical-menus-footer-2.webp" alt="Footer del menú colapsado y expandido con Legal Notice, Terms of service, EU Design Patent y copyright" class="w-full h-full object-contain p-6 md:p-9 shrink-0" data-i18n="s03.footer.img2.alt" data-i18n-attr="alt">
+        </div>
+
+        <button type="button" id="footer-proposal-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="footer-proposal-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 hidden sm:flex items-center justify-center gap-2">
+          <button type="button" class="footer-proposal-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="footer-proposal-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+        </div>
+      </div>
+      <p class="reveal t-s text-slate mt-3" data-i18n="s03.footer.caption">Referencias de la propuesta final del footer.</p>
+    </section>
+
+    <!-- ===== 04 · INTERACCIONES Y PROTOTIPOS ===== -->
+    <section id="s04" class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="t-h5 text-latte-dark" data-i18n="s04.index">04</span>
+        <span class="t-h6 text-slate" data-i18n="s04.eyebrow">Interacciones / Prototipos</span>
+      </div>
+      <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="s04.heading">
+        Cómo tomó forma la interacción final
+      </h2>
+
+      <div class="reveal mb-8 md:mb-14">
+        <p class="t-p text-ink/80" data-i18n="s04.p1">
+          Cuando se validaron las versiones finales a nivel de UX y UI, se fueron generando diferentes prototipos en Figma que se entregaban a distintos stakeholders y cargos directivos para que pudieran interactuar con el nuevo menú y dar su feedback. Además, se fue creando un prototipo distinto para cada tipo de usuario y producto de la compañía, llegando a más de 8-10 prototipos finales.
+        </p>
+      </div>
+
+      <div class="reveal aspect-[16/9] rounded-2xl mb-8 md:mb-14 overflow-hidden bg-[#f5f5f5]">
+        <img src="vertical-menus-prototype-userflow.webp" alt="User flows del menú vertical para Hybrid Platform, Enterprise Shippers y Sky eBookings" class="w-full h-full object-contain p-6 md:p-9" data-i18n="s04.userflow.alt" data-i18n-attr="alt">
+      </div>
+    </section>
+
+    <!-- ===== 05 · SOLUTION ===== -->
+    <section id="s05" class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="t-h5 text-latte-dark" data-i18n="s05.index">05</span>
+        <span class="t-h6 text-slate" data-i18n="s05.eyebrow">Solución</span>
+      </div>
+      <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="s05.heading">
+        Un sistema de navegación unificado y fresco
+      </h2>
+
+      <div class="reveal mb-10 md:mb-16">
+        <p class="t-p text-ink/80" data-i18n="s05.p1">
+          El nuevo menú vertical suponía una gran revolución a nivel de navegación y de disfrute del día a día para los usuarios de la compañía. Incluso a nivel interno se convirtió en una forma más rápida y eficaz de encontrar información, tanto para los product managers y developers como para los diferentes equipos de finanzas y de servicio al cliente.
+        </p>
+      </div>
+
+      <div class="reveal mb-10 md:mb-16">
+        <ul class="grid sm:grid-cols-3 gap-8 lg:gap-16">
+          <li>
+            <div>
+              <h3 class="t-h4 t-medium mb-1" data-i18n="s05.feature1.heading">Sistema de navegación modular</h3>
+              <p class="t-p text-slate" data-i18n="s05.feature1.p">Se entregó una propuesta muy consolidada y sólida, construida con piezas modulares y reutilizables, para que la navegación pueda crecer y adaptarse a futuras fases del mismo proyecto sin tener que rediseñarla.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3 class="t-h4 t-medium mb-1" data-i18n="s05.feature2.heading">Librería de patrones documentada</h3>
+              <p class="t-p text-slate" data-i18n="s05.feature2.p">Se documentaron todos y cada uno de los comportamientos posibles del menú vertical y todas sus variantes, tanto para usuarios internos del software como para las versiones corporativas de las correspondientes compañías.</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <h3 class="t-h4 t-medium mb-1" data-i18n="s05.feature3.heading">Migración progresiva y cero invasiva</h3>
+              <p class="t-p text-slate" data-i18n="s05.feature3.p">A diferencia de muchos otros proyectos en los que trabajé, se realizó una migración y un cambio de UI bastante progresivo y paciente con el usuario, con un onboarding correctamente explicado por el equipo de marketing y en constante comunicación con nuestros usuarios a través de customer service.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="reveal mb-10 md:mb-16">
+        <div id="main-nav-carousel" class="group relative aspect-[1728/1117] rounded-2xl overflow-hidden bg-mist">
+          <div id="main-nav-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+            <img src="vertical-menus-main-nav-1.webp" alt="Antes y después de la UI de navegación de la plataforma principal: de la navegación superior de WebCargo al nuevo menú vertical de Freightos" class="w-full h-full object-cover shrink-0" data-i18n="s05.nav.img1.alt" data-i18n-attr="alt">
+            <img src="vertical-menus-main-nav-2.webp" alt="Nuevo menú vertical unificado de Freightos en la plataforma principal" class="w-full h-full object-cover shrink-0" data-i18n="s05.nav.img2.alt" data-i18n-attr="alt">
+          </div>
+
+          <button type="button" id="main-nav-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button type="button" id="main-nav-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+
+        <div class="hidden sm:flex items-center justify-center gap-2 mt-4">
+          <button type="button" class="main-nav-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="main-nav-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+        </div>
+
+      </div>
+
+      <div class="reveal mb-10 md:mb-16">
+        <div class="grid sm:grid-cols-3 gap-8 lg:gap-16">
+          <div>
+            <p class="t-h3 text-ink mb-2" data-i18n="s05.stat1.label">Hasta <span data-countup class="inline-block tabular-nums" style="min-width:1ch">3</span>* nuevos servicios considerados</p>
+            <p class="t-p text-slate" data-i18n="s05.stat1.p">Gracias a la versatilidad del menú vertical, la dirección pudo plantearse hasta tres nuevos servicios que antes no encajaban en la navegación.</p>
+          </div>
+          <div>
+            <p class="t-h3 text-ink mb-2" data-i18n="s05.stat2.label">~<span data-countup class="inline-block tabular-nums" style="min-width:2ch">50</span>%* menos tiempo de onboarding</p>
+            <p class="t-p text-slate" data-i18n="s05.stat2.p">Tras replantear la arquitectura de la información y la interfaz, cada nueva implementación dentro del menú llevó aproximadamente la mitad de tiempo.</p>
+          </div>
+          <div>
+            <p class="t-h3 text-ink mb-2" data-i18n="s05.stat3.label">Navegación más predecible</p>
+            <p class="t-p text-slate" data-i18n="s05.stat3.p">Las carpetas y los servicios ahora están mucho mejor organizados, y la navegación resultó más clara y coherente tanto para el equipo como para los usuarios.</p>
+          </div>
+          <p class="sm:col-span-3 t-s text-slate" data-i18n="s05.footnote">*Cifras aproximadas, medidas por el equipo de Product Management.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 06 · KEY LEARNINGS ===== -->
+    <section id="s06" class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="t-h5 text-latte-dark" data-i18n="s06.index">06</span>
+        <span class="t-h6 text-slate" data-i18n="s06.eyebrow">Aprendizajes clave</span>
+      </div>
+      <h2 class="reveal t-h2 mb-4" data-i18n="s06.heading">
+        Qué me dejó este proyecto
+      </h2>
+      <p class="reveal t-p text-ink/80" data-i18n="s06.p1">
+        Este fue, hasta la fecha, el proyecto más completo de mi etapa en Freightos. Me permitió tocar prácticamente todos los ámbitos de la experiencia de usuario y el diseño de producto digital: desde la comunicación interna dentro de la empresa y las conversaciones directas con distintos directivos, hasta un proceso de research bastante complejo a nivel de UX, interacción e interfaz, apoyado en metodologías como card sorting y workshops con los distintos equipos de la empresa. Ese recorrido me permitió llegar a una solución mucho más actualizada y fresca que la de otros proyectos que había diseñado antes para la empresa.
+      </p>
+    </section>
+
+    <!-- ===== END OF CASE STUDY ===== -->
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20 text-center">
+      <p class="reveal t-h3 mb-10" data-i18n="cta.heading">
+        ¿Quieres ver más proyectos?
+      </p>
+      <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="wizard-rate-management.html" class="focus-ring inline-flex items-center gap-2 bg-ink text-paper t-s-m px-6 py-3.5 rounded-full hover:bg-slate transition-colors" data-i18n="cta.next">
+          Continuar con Wizard for Rate Management
+        </a>
+        <a href="../index.html#work" class="focus-ring inline-flex items-center gap-2 t-s-m px-6 py-3.5 rounded-full border border-ink/15 hover:bg-latte/40 hover:border-latte-dark transition-colors" data-i18n="cta.back">
+          Volver a todos los proyectos
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const translations = {
+      es: {
+        'nav.about': `Sobre mí`,
+        'nav.contact': `Contacto`,
+        'meta.title': `Vertical Menus — One Stack · Javier Díaz`,
+        'meta.description': `Caso de estudio: unificación de los menús de distintos productos en un único sistema de navegación global.`,
+        'breadcrumb.back': `← Todos los proyectos`,
+        'hero.title': `Menú Vertical`,
+        'hero.subtitle': `Rediseño de la arquitectura de navegación para unificar los diferentes menús de los múltiples productos de la empresa en un único formato.`,
+        'hero.pressLink': `Ver artículo de prensa`,
+        'hero.role.label': `Rol`,
+        'hero.role.value': `Junior UX/UI Designer`,
+        'hero.client.label': `Cliente`,
+        'hero.client.value': `Freightos`,
+        'hero.year.label': `Año`,
+        'hero.year.value': `2023`,
+        'hero.team.label': `Equipo`,
+        'hero.team.tooltip': `Un equipo end-to-end es aquel en el que, como Product Designer, tuve la oportunidad de interactuar con todos los departamentos implicados, de principio a fin del proyecto:`,
+        'hero.tag1': `Design System`,
+        'hero.tag2': `Information Architecture`,
+        'hero.tag3': `Figma`,
+        'hero.tag4': `User Testing`,
+        'hero.tag5': `Research`,
+        'hero.cover.img1.alt': `Menú vertical de Freightos unificado en un único sistema de navegación`,
+        'hero.cover.img2.alt': `Submenú de creación rápida (New) desplegado sobre la plataforma de Freightos`,
+
+        's01.index': `01`,
+        's01.eyebrow': `Punto de partida`,
+        's01.heading': `Por qué necesitábamos un nuevo enfoque`,
+        's01.label1': `Contexto`,
+        's01.p1': `La empresa contaba con diferentes productos y cada uno tenía un sistema de navegación diferente. Por ende, tuvimos que rediseñar y reestructurar toda la arquitectura de la información de cada uno de los productos de la empresa.`,
+        's01.card1.heading': `Los usuarios no encontraban la información que necesitaban`,
+        's01.card1.p': `Recibíamos muchas quejas hacia soporte técnico, ya que los usuarios no lograban completar sus acciones una vez dentro de la plataforma: no conocían bien el producto porque el producto en sí no era intuitivo.`,
+        's01.card2.heading': `Costes de mantenimiento`,
+        's01.card2.p': `Para aplicar cualquier cambio de navegación había que coordinarse con varios equipos distintos, lo que alargaba mucho los tiempos de resolución — a veces tanto que, cuando el cambio por fin se implementaba, el cliente que lo había pedido ya se había dado de baja.`,
+        's01.card3.heading': `Confusión entre productos`,
+        's01.card3.p': `Tanto a nivel de arquitectura de la información como de UX e interfaz, los distintos tipos de usuario que saltaban entre productos se perdían con la información y no conseguían acceder correctamente a funcionalidades que debían funcionar de forma conjunta entre productos.`,
+        's01.oldUi.alt': `Captura de pantalla de la UI y arquitectura de información antigua`,
+        's01.oldUi.caption': `Captura de pantalla de la UI y arquitectura de información antigua.`,
+
+        's02.index': `02`,
+        's02.eyebrow': `Research`,
+        's02.heading': `Cómo investigamos antes de tocar el diseño`,
+        's02.card1.heading': `Card sorting con usuarios reales`,
+        's02.card1.p': `Los usuarios dedicaron una semana a acceder a un link de card sorting totalmente remoto, donde ellos mismos realizaban una serie de tareas que les permitían agrupar los diferentes conceptos en una misma carpeta.`,
+        's02.card2.heading': `Árboles de arquitectura de la información`,
+        's02.card2.p': `Mapeo de la estructura actual de cada producto frente a la estructura ideal que emergía de las sesiones, contrastando a la vez los distintos árboles de información de los diferentes productos para los diferentes usuarios, entre ellos freight forwarders, carriers y shippers.`,
+        's02.card3.heading': `Síntesis y validación de patrones`,
+        's02.card3.p': `Extracción de conclusiones a través del card sorting, combinado con sesiones internas con los product managers y directivos, para consolidar los futuros patrones de la nueva arquitectura de la información.`,
+        's02.label1': `Técnicas de investigación`,
+        's02.p1': `Antes de plantear una solución global, necesitábamos entender cómo pensaban los usuarios sobre la información de cada producto. Combinamos sesiones de card sorting con la construcción de árboles de arquitectura de la información, para contrastar cómo agrupaban mentalmente el contenido frente a cómo estaba estructurado realmente en cada plataforma.`,
+        's02.research.img1.alt': `Detalle adicional de los resultados del card sorting`,
+        's02.research.img2.alt': `Resultados generales de la sesión de card sorting: respuestas completadas, tiempo empleado y ubicación de los participantes`,
+        's02.research.img3.alt': `Matrices de resultados del card sorting mostrando cómo los usuarios agruparon cada tarjeta y los emplazamientos más populares`,
+        's02.research.img4.alt': `Árbol de arquitectura de la información resultante, con la navegación completa organizada por secciones`,
+        's02.research.caption': `Resultados de las sesiones de card sorting y árbol de arquitectura de la información resultante.`,
+        's02.label2': `Workshops con equipos internos`,
+        's02.p2': `Una vez recogida toda la información del research, y con una idea clara de cómo nuestros usuarios visualizaban la información de Freightos en general, el equipo de producto pasó dos semanas seguidas trabajando codo con codo en la misma sala de reuniones siempre que fue posible, construyendo entre todos un modelo final de arquitectura de la información alineado tanto con la postura de los stakeholders como con la de los usuarios finales. Tuve la oportunidad de colaborar con todo el equipo y con mi manager, que aportaba una visión más global de los productos y nos ayudaba a validar si estábamos ubicando cada sección en el lugar correcto.`,
+        's02.workshops.img1.alt': `Equipo de producto celebrando frente al whiteboard con la arquitectura de la información del workshop`,
+        's02.workshops.img2.alt': `Workshop con equipos internos sobre el nuevo sistema de navegación`,
+        's02.workshops.img3.alt': `Workshop con equipos internos sobre el nuevo sistema de navegación`,
+        's02.workshops.img4.alt': `Workshop con equipos internos sobre el nuevo sistema de navegación`,
+        's02.workshops.img5.alt': `Workshop con equipos internos sobre el nuevo sistema de navegación`,
+        's02.workshops.caption': `Workshops presenciales con los equipos internos de producto.`,
+
+        's03.index': `03`,
+        's03.eyebrow': `Del papel a la pantalla`,
+        's03.heading': `De los primeros bocetos a las primeras interacciones`,
+        's03.label1': `Enfoque`,
+        's03.p1': `Antes de lanzarnos a los primeros bocetos, dedicamos tiempo a investigar cómo resolvían el menú vertical otros productos y software del mercado digital. Hicimos un benchmark exhaustivo revisando distintas plataformas, analizando no solo la estructura general de sus menús sino también el detalle: qué microinteracciones ocurrían cuando el usuario empezaba a interactuar con ellos y cómo clasificaban la información en un primer, segundo y tercer nivel.`,
+        's03.sketches.img1.alt': `Primeros bocetos del menú vertical y exploración de la información.`,
+        's03.sketches.img2.alt': `Workshop con equipos de producto sobre los primeros bocetos del menú.`,
+        's03.sketches.img3.alt': `Exploración de microinteracciones del menú vertical.`,
+        's03.sketches.img4.alt': `Clasificación de la información en primer, segundo y tercer nivel.`,
+        's03.sketches.caption': `Primeros bocetos del menú vertical y workshop con los equipos de producto.`,
+        's03.label2': `Header`,
+        's03.p2': `Al estar rediseñando toda la navegación por defecto del sistema, también tuvimos que tocar el header, ya que al final formaba parte del mismo sistema de navegación original. Para cada producto tuvimos que especificar qué elementos del header se iban a incluir y cuáles no, así que construimos una versión global que se desescalaba según el producto en el que se aplicara.`,
+        's03.header.img1.alt': `Referencia de header estudiada durante el rediseño`,
+        's03.header.img2.alt': `Referencia de header estudiada durante el rediseño`,
+        's03.header.img3.alt': `Referencia de header estudiada durante el rediseño`,
+        's03.header.caption': `Referencias de los diferentes headers que estudiamos y sus soluciones finales.`,
+        's03.label3': `Menú vertical`,
+        's03.p3': `Mientras trabajábamos en la propuesta final del header que aplicaría a los diferentes productos, íbamos de la mano trabajando en la propuesta final de lo que sería el futuro menú vertical de Freightos. Estudiamos detenidamente los diferentes tipos de interacción: cómo se abriría la información, si esta se desplegaba en horizontal o en vertical, cómo respondería el componente al pasar el ratón por encima y cómo se vería su versión cerrada. Trabajamos con muchísimo cariño cada uno de los componentes y las interacciones que forman, a día de hoy, el producto final.`,
+        's03.level1.img1.alt': `Diagrama de los posibles casos de uso del menú vertical en su versión drill-down`,
+        's03.level1.img2.alt': `Comportamiento del primer nivel de información del menú vertical`,
+        's03.level1.img3.alt': `Comportamiento del primer nivel de información del menú vertical`,
+        's03.level1.img4.alt': `Comportamiento del primer nivel de información del menú vertical`,
+        's03.level1.caption': `Referencias del comportamiento del menú vertical.`,
+        's03.label4': `Footer`,
+        's03.p4': `Al ser un menú vertical que ocupaba toda la altura de la página, en algunas pantallas del sistema quedaba un pequeño footer suelto, desconectado del resto de la navegación. A partir de la investigación realizada, decidimos integrarlo directamente dentro del propio menú, de forma que sus elementos fueran accesibles tanto con el menú abierto como cerrado.`,
+        's03.footer.img1.alt': `Estados del menú colapsado con acceso a ayuda, términos de servicio, patente y copyright, incluyendo el hover de Terms of service`,
+        's03.footer.img2.alt': `Footer del menú colapsado y expandido con Legal Notice, Terms of service, EU Design Patent y copyright`,
+        's03.footer.caption': `Referencias de la propuesta final del footer.`,
+
+        's04.index': `04`,
+        's04.eyebrow': `Interacciones / Prototipos`,
+        's04.heading': `Cómo tomó forma la interacción final`,
+        's04.label1': `Del boceto al prototipo`,
+        's04.p1': `Cuando se validaron las versiones finales a nivel de UX y UI, se fueron generando diferentes prototipos en Figma que se entregaban a distintos stakeholders y cargos directivos para que pudieran interactuar con el nuevo menú y dar su feedback. Además, se fue creando un prototipo distinto para cada tipo de usuario y producto de la compañía, llegando a más de 8-10 prototipos finales.`,
+        's04.userflow.alt': `User flows del menú vertical para Hybrid Platform, Enterprise Shippers y Sky eBookings`,
+
+        's05.index': `05`,
+        's05.eyebrow': `Solución`,
+        's05.heading': `Un sistema de navegación unificado y fresco`,
+        's05.label1': `Visión`,
+        's05.p1': `El nuevo menú vertical suponía una gran revolución a nivel de navegación y de disfrute del día a día para los usuarios de la compañía. Incluso a nivel interno se convirtió en una forma más rápida y eficaz de encontrar información, tanto para los product managers y developers como para los diferentes equipos de finanzas y de servicio al cliente.`,
+        's05.nav.img1.alt': `Antes y después de la UI de navegación de la plataforma principal: de la navegación superior de WebCargo al nuevo menú vertical de Freightos`,
+        's05.nav.img2.alt': `Nuevo menú vertical unificado de Freightos en la plataforma principal`,
+        's05.label2': `Funcionalidades<br class="hidden md:block"> entregadas`,
+        's05.feature1.heading': `Sistema de navegación modular`,
+        's05.feature1.p': `Se entregó una propuesta muy consolidada y sólida, construida con piezas modulares y reutilizables, para que la navegación pueda crecer y adaptarse a futuras fases del mismo proyecto sin tener que rediseñarla.`,
+        's05.feature2.heading': `Librería de patrones documentada`,
+        's05.feature2.p': `Se documentaron todos y cada uno de los comportamientos posibles del menú vertical y todas sus variantes, tanto para usuarios internos del software como para las versiones corporativas de las correspondientes compañías.`,
+        's05.feature3.heading': `Migración progresiva y cero invasiva`,
+        's05.feature3.p': `A diferencia de muchos otros proyectos en los que trabajé, se realizó una migración y un cambio de UI bastante progresivo y paciente con el usuario, con un onboarding correctamente explicado por el equipo de marketing y en constante comunicación con nuestros usuarios a través de customer service.`,
+        's05.label3': `Resultados`,
+        's05.stat1.label': `Hasta <span data-countup class="inline-block tabular-nums" style="min-width:1ch">3</span>* nuevos servicios considerados`,
+        's05.stat1.p': `Gracias a la versatilidad del menú vertical, la dirección pudo plantearse hasta tres nuevos servicios que antes no encajaban en la navegación.`,
+        's05.stat2.label': `~<span data-countup class="inline-block tabular-nums" style="min-width:2ch">50</span>%* menos tiempo de onboarding`,
+        's05.stat2.p': `Tras replantear la arquitectura de la información y la interfaz, cada nueva implementación dentro del menú llevó aproximadamente la mitad de tiempo.`,
+        's05.stat3.label': `Navegación más predecible`,
+        's05.stat3.p': `Las carpetas y los servicios ahora están mucho mejor organizados, y la navegación resultó más clara y coherente tanto para el equipo como para los usuarios.`,
+        's05.footnote': `*Cifras aproximadas, medidas por el equipo de Product Management.`,
+
+        's06.index': `06`,
+        's06.eyebrow': `Aprendizajes clave`,
+        's06.heading': `Qué me dejó este proyecto`,
+        's06.p1': `Este fue, hasta la fecha, el proyecto más completo de mi etapa en Freightos. Me permitió tocar prácticamente todos los ámbitos de la experiencia de usuario y el diseño de producto digital: desde la comunicación interna dentro de la empresa y las conversaciones directas con distintos directivos, hasta un proceso de research bastante complejo a nivel de UX, interacción e interfaz, apoyado en metodologías como card sorting y workshops con los distintos equipos de la empresa. Ese recorrido me permitió llegar a una solución mucho más actualizada y fresca que la de otros proyectos que había diseñado antes para la empresa.`,
+
+        'cta.heading': `¿Quieres ver más proyectos?`,
+        'cta.next': "Continuar con Wizard for Rate Management",
+        'cta.back': `Volver a todos los proyectos`,
+      },
+      en: {
+        'nav.about': `About`,
+        'nav.contact': `Contact`,
+        'meta.title': `Vertical Menus — One Stack · Javier Díaz`,
+        'meta.description': `Case study: unifying the menus of different products into a single global navigation system.`,
+        'breadcrumb.back': `← All projects`,
+        'hero.title': `Vertical Menu`,
+        'hero.subtitle': `Redesign of the navigation architecture to unify the different menus across the company's multiple products into a single format.`,
+        'hero.pressLink': `View press article`,
+        'hero.role.label': `Role`,
+        'hero.role.value': `Junior UX/UI Designer`,
+        'hero.client.label': `Client`,
+        'hero.client.value': `Freightos`,
+        'hero.year.label': `Year`,
+        'hero.year.value': `2023`,
+        'hero.team.label': `Team`,
+        'hero.team.tooltip': `An end-to-end team is one where, as Product Designer, I had the chance to work with every department involved, from the start to the end of the project:`,
+        'hero.tag1': `Design System`,
+        'hero.tag2': `Information Architecture`,
+        'hero.tag3': `Figma`,
+        'hero.tag4': `User Testing`,
+        'hero.tag5': `Research`,
+        'hero.cover.img1.alt': `Freightos' vertical menu unified into a single navigation system`,
+        'hero.cover.img2.alt': `Quick-create (New) submenu expanded over the Freightos platform`,
+
+        's01.index': `01`,
+        's01.eyebrow': `Starting point`,
+        's01.heading': `Why we needed a new approach`,
+        's01.label1': `Context`,
+        's01.p1': `The company had several different products, each with its own navigation system. As a result, we had to redesign and restructure the information architecture of every product in the company.`,
+        's01.card1.heading': `Users couldn't find the information they needed`,
+        's01.card1.p': `We received a high volume of complaints through technical support, since users couldn't complete their tasks once inside the platform: they didn't know the product well because the product itself wasn't intuitive.`,
+        's01.card2.heading': `Maintenance costs`,
+        's01.card2.p': `Applying any navigation change required coordinating across several different teams, which drew out resolution times considerably — sometimes so much that by the time the change was finally implemented, the client who had requested it had already churned.`,
+        's01.card3.heading': `Confusion between products`,
+        's01.card3.p': `Both at the information architecture level and at the UX/interface level, the different types of users who moved between products got lost in the information and couldn't properly access features that were meant to work together across products.`,
+        's01.oldUi.alt': `Screenshot of the old UI and information architecture`,
+        's01.oldUi.caption': `Screenshot of the old UI and information architecture.`,
+
+        's02.index': `02`,
+        's02.eyebrow': `Research`,
+        's02.heading': `How we researched before touching the design`,
+        's02.card1.heading': `Card sorting with real users`,
+        's02.card1.p': `Users spent a week accessing a fully remote card sorting link, where they carried out a series of tasks that let them group different concepts into the same folder.`,
+        's02.card2.heading': `Information architecture trees`,
+        's02.card2.p': `Mapping each product's current structure against the ideal structure that emerged from the sessions, while contrasting the different information trees of each product for the different users, including freight forwarders, carriers and shippers.`,
+        's02.card3.heading': `Pattern synthesis and validation`,
+        's02.card3.p': `Drawing conclusions from the card sorting, combined with internal sessions with product managers and executives, to consolidate the future patterns of the new information architecture.`,
+        's02.label1': `Research techniques`,
+        's02.p1': `Before proposing a global solution, we needed to understand how users thought about each product's information. We combined card sorting sessions with building information architecture trees, to compare how they mentally grouped content against how it was actually structured on each platform.`,
+        's02.research.img1.alt': `Additional detail from the card sorting results`,
+        's02.research.img2.alt': `Overall results of the card sorting session: completed responses, time spent, and participant locations`,
+        's02.research.img3.alt': `Card sorting result matrices showing how users grouped each card and the most popular placements`,
+        's02.research.img4.alt': `The resulting information architecture tree, with the full navigation organized by section`,
+        's02.research.caption': `Results from the card sorting sessions and the resulting information architecture tree.`,
+        's02.label2': `Workshops with internal teams`,
+        's02.p2': `Once all the research findings were gathered, and with a clear picture of how our users visualized Freightos' information overall, the product team spent two straight weeks working side by side in the same meeting room whenever possible, building a final information architecture model together that aligned with both the stakeholders' position and the end users' needs. I had the opportunity to collaborate with the whole team and with my manager, who brought a more global view of the products and helped us validate whether we were placing each section in the right spot.`,
+        's02.workshops.img1.alt': `Product team celebrating in front of the whiteboard with the workshop's information architecture`,
+        's02.workshops.img2.alt': `Workshop with internal teams on the new navigation system`,
+        's02.workshops.img3.alt': `Workshop with internal teams on the new navigation system`,
+        's02.workshops.img4.alt': `Workshop with internal teams on the new navigation system`,
+        's02.workshops.img5.alt': `Workshop with internal teams on the new navigation system`,
+        's02.workshops.caption': `In-person workshops with the internal product teams.`,
+
+        's03.index': `03`,
+        's03.eyebrow': `From paper to screen`,
+        's03.heading': `From first sketches to first interactions`,
+        's03.label1': `Approach`,
+        's03.p1': `Before jumping into the first sketches, we spent time researching how other digital products and software solved the vertical menu. We ran an exhaustive benchmark across different platforms, analyzing not just the general structure of their menus but also the finer details: what microinteractions occurred as users began interacting with them, and how they classified information across a first, second, and third level.`,
+        's03.sketches.img1.alt': `First sketches of the vertical menu and exploration of the information.`,
+        's03.sketches.img2.alt': `Workshop with product teams on the first menu sketches.`,
+        's03.sketches.img3.alt': `Exploration of the vertical menu's microinteractions.`,
+        's03.sketches.img4.alt': `Classification of information into first, second, and third level.`,
+        's03.sketches.caption': `First sketches of the vertical menu and workshop with the product teams.`,
+        's03.label2': `Header`,
+        's03.p2': `Since we were redesigning the entire default navigation of the system, we also had to touch the header, as it was ultimately part of the same original navigation system. For each product we had to specify which header elements would be included and which wouldn't, so we built a global version that scaled down depending on the product it was applied to.`,
+        's03.header.img1.alt': `Header reference studied during the redesign`,
+        's03.header.img2.alt': `Header reference studied during the redesign`,
+        's03.header.img3.alt': `Header reference studied during the redesign`,
+        's03.header.caption': `References of the different headers we studied and their final solutions.`,
+        's03.label3': `Vertical menu`,
+        's03.p3': `While we worked on the final header proposal that would apply across the different products, we were working hand in hand on the final proposal for what would become Freightos' future vertical menu. We carefully studied the different types of interaction: how information would open, whether it expanded horizontally or vertically, how the component would respond on hover, and what its collapsed version would look like. We worked with great care on every component and interaction that make up, to this day, the final product.`,
+        's03.level1.img1.alt': `Diagram of the possible use cases for the vertical menu in its drill-down version`,
+        's03.level1.img2.alt': `Behavior of the vertical menu's first information level`,
+        's03.level1.img3.alt': `Behavior of the vertical menu's first information level`,
+        's03.level1.img4.alt': `Behavior of the vertical menu's first information level`,
+        's03.level1.caption': `References of the vertical menu's behavior.`,
+        's03.label4': `Footer`,
+        's03.p4': `Since the vertical menu took up the full height of the page, some screens in the system were left with a small, loose footer, disconnected from the rest of the navigation. Based on the research we carried out, we decided to integrate it directly within the menu itself, so its elements would be accessible whether the menu was open or closed.`,
+        's03.footer.img1.alt': `States of the collapsed menu with access to help, terms of service, patent, and copyright, including the hover state of Terms of service`,
+        's03.footer.img2.alt': `Footer of the collapsed and expanded menu with Legal Notice, Terms of service, EU Design Patent, and copyright`,
+        's03.footer.caption': `References of the footer's final proposal.`,
+
+        's04.index': `04`,
+        's04.eyebrow': `Interactions / Prototypes`,
+        's04.heading': `How the final interaction took shape`,
+        's04.label1': `From sketch to prototype`,
+        's04.p1': `Once the final versions were validated at the UX and UI level, we generated different prototypes in Figma that were handed off to various stakeholders and executives so they could interact with the new menu and give feedback. In addition, a separate prototype was created for each type of user and product across the company, reaching more than 8-10 final prototypes.`,
+        's04.userflow.alt': `User flows for the vertical menu across Hybrid Platform, Enterprise Shippers, and Sky eBookings`,
+
+        's05.index': `05`,
+        's05.eyebrow': `Solution`,
+        's05.heading': `A unified, refreshed navigation system`,
+        's05.label1': `Vision`,
+        's05.p1': `The new vertical menu represented a major shift in navigation and day-to-day enjoyment for the company's users. Even internally, it became a faster, more effective way to find information, both for product managers and developers and for the different finance and customer service teams.`,
+        's05.nav.img1.alt': `Before and after from main platform navigation UI: from WebCargo's old top navigation to Freightos' new vertical menu`,
+        's05.nav.img2.alt': `Freightos' new unified vertical menu in the main platform`,
+        's05.label2': `Features<br class="hidden md:block"> delivered`,
+        's05.feature1.heading': `Modular navigation system`,
+        's05.feature1.p': `We delivered a highly consolidated, solid proposal built from modular, reusable pieces, so the navigation can grow and adapt to future phases of the same project without having to be redesigned.`,
+        's05.feature2.heading': `Documented pattern library`,
+        's05.feature2.p': `We documented every possible behavior of the vertical menu and all its variants, for both internal software users and the corporate versions of the corresponding companies.`,
+        's05.feature3.heading': `Progressive, zero-disruption migration`,
+        's05.feature3.p': `Unlike many other projects I worked on, the migration and UI change were carried out gradually and patiently with users, with onboarding clearly explained by the marketing team and constant communication with our users through customer service.`,
+        's05.label3': `Results`,
+        's05.stat1.label': `Up to <span data-countup class="inline-block tabular-nums" style="min-width:1ch">3</span>* new services considered`,
+        's05.stat1.p': `Thanks to the versatility of the vertical menu, leadership could consider up to three new services that previously didn’t fit the navigation.`,
+        's05.stat2.label': `~<span data-countup class="inline-block tabular-nums" style="min-width:2ch">50</span>%* less onboarding time`,
+        's05.stat2.p': `After rethinking the information architecture and the interface, each new implementation inside the menu took roughly half the time.`,
+        's05.stat3.label': `More predictable navigation`,
+        's05.stat3.p': `Folders and services are now much better organized, and navigation felt clearer and more consistent for both the team and users.`,
+        's05.footnote': `*Approximate figures, measured by the Product Management team.`,
+
+        's06.index': `06`,
+        's06.eyebrow': `Key learnings`,
+        's06.heading': `What this project taught me`,
+        's06.p1': `This was, to date, the most complete project of my time at Freightos. It let me touch on virtually every area of user experience and digital product design: from internal communication within the company and direct conversations with various executives, to a fairly complex research process spanning UX, interaction, and interface, supported by methodologies like card sorting and workshops with the company's different teams. That journey led me to a far more current and fresh solution than other projects I had previously designed for the company.`,
+
+        'cta.heading': `Want to see more projects?`,
+        'cta.next': "Continue to Wizard for Rate Management",
+        'cta.back': `Back to all projects`,
+      },
+    };
+
+    function detectLang() {
+      const supported = Object.keys(translations);
+      const candidates = (navigator.languages && navigator.languages.length)
+        ? navigator.languages
+        : [navigator.language || 'en'];
+      for (const candidate of candidates) {
+        const short = candidate.slice(0, 2).toLowerCase();
+        if (supported.includes(short)) return short;
+      }
+      return 'en';
+    }
+
+    function applyTranslations(lang) {
+      const dict = translations[lang] || translations.en;
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        const value = dict[key];
+        if (value === undefined) return;
+
+        if (el.hasAttribute('data-i18n-attr')) {
+          el.setAttribute(el.getAttribute('data-i18n-attr'), value);
+        } else {
+          el.innerHTML = value;
+        }
+      });
+    }
+
+    function updateLangButtons(lang) {
+      document.querySelectorAll('.lang-btn').forEach((btn) => {
+        const active = btn.getAttribute('data-lang') === lang;
+        btn.classList.toggle('bg-ink', active);
+        btn.classList.toggle('text-paper', active);
+        btn.classList.toggle('text-ink/50', !active);
+        btn.classList.toggle('hover:text-ink', !active);
+        btn.setAttribute('aria-pressed', String(active));
+      });
+      const mobileToggle = document.getElementById('lang-toggle-mobile');
+      if (mobileToggle) mobileToggle.textContent = lang.toUpperCase();
+    }
+
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      applyTranslations(lang);
+      updateLangButtons(lang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach((btn) => {
+      btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang')));
+    });
+
+    const mobileLangToggle = document.getElementById('lang-toggle-mobile');
+    if (mobileLangToggle) {
+      mobileLangToggle.addEventListener('click', () => {
+        setLang(document.documentElement.lang === 'es' ? 'en' : 'es');
+      });
+    }
+
+    setLang(localStorage.getItem('lang') || 'en');
+    document.body.classList.add('is-ready');
+
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal:not(.is-visible)');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      revealEls.forEach((el) => observer.observe(el));
+    } else {
+      revealEls.forEach((el) => el.classList.add('is-visible'));
+    }
+
+    // ===== Carruseles =====
+    function initCarousel({ containerId, trackId, prevId, nextId, dotClass, activeDotClass, inactiveDotClass }) {
+      const container = document.getElementById(containerId);
+      const track = document.getElementById(trackId);
+      const prevBtn = document.getElementById(prevId);
+      const nextBtn = document.getElementById(nextId);
+      const dots = Array.from(document.querySelectorAll('.' + dotClass));
+      if (!track) return;
+
+      const slideCount = track.children.length;
+
+      // Carrusel con una sola imagen: sin flechas ni puntos, solo la imagen estática
+      if (slideCount <= 1) {
+        if (prevBtn) prevBtn.remove();
+        if (nextBtn) nextBtn.remove();
+        if (dots.length && dots[0].parentElement) dots[0].parentElement.remove();
+        return;
+      }
+      if (!dots.length) return;
+
+      const autoplayMs = 5000;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let index = 0;
+      let timer = null;
+      let hasEnteredView = false;
+
+      function goTo(i) {
+        index = (i + slideCount) % slideCount;
+        track.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((dot, dotIndex) => {
+          dot.classList.toggle(activeDotClass, dotIndex === index);
+          dot.classList.toggle(inactiveDotClass, dotIndex !== index);
+        });
+      }
+
+      function startAutoplay() {
+        // Autoplay deshabilitado: navegación solo manual (clic, swipe, scroll).
+        return;
+      }
+
+      function stopAutoplay() {
+        if (timer) clearInterval(timer);
+        timer = null;
+      }
+
+      function goToManual(i) {
+        goTo(i);
+        startAutoplay();
+      }
+
+      prevBtn.addEventListener('click', () => goToManual(index - 1));
+      nextBtn.addEventListener('click', () => goToManual(index + 1));
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => goToManual(Number(dot.dataset.index)));
+      });
+
+      if (container) {
+        container.addEventListener('mouseenter', stopAutoplay);
+        container.addEventListener('mouseleave', startAutoplay);
+
+        // Swipe táctil (móvil / tablet)
+        let touchStartX = null;
+        container.addEventListener('touchstart', (e) => {
+          touchStartX = e.touches[0].clientX;
+          stopAutoplay();
+        }, { passive: true });
+        container.addEventListener('touchend', (e) => {
+          if (touchStartX === null) return;
+          const dx = e.changedTouches[0].clientX - touchStartX;
+          if (Math.abs(dx) > 40) {
+            goToManual(dx < 0 ? index + 1 : index - 1);
+          } else {
+            startAutoplay();
+          }
+          touchStartX = null;
+        }, { passive: true });
+
+        // Scroll horizontal de trackpad (dos dedos). El scroll con inercia de macOS
+        // sigue disparando eventos "wheel" durante bastante después del gesto físico,
+        // así que tratamos toda la ráfaga (inercia incluida) como un único gesto:
+        // solo navegamos en el primer evento y reiniciamos el cronómetro con cada
+        // evento nuevo, hasta que haya una pausa real sin eventos.
+        let wheelActive = false;
+        let wheelEndTimer = null;
+        container.addEventListener('wheel', (e) => {
+          if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+          e.preventDefault();
+          clearTimeout(wheelEndTimer);
+          if (!wheelActive) {
+            wheelActive = true;
+            stopAutoplay();
+            goTo(e.deltaX > 0 ? index + 1 : index - 1);
+          }
+          wheelEndTimer = setTimeout(() => {
+            wheelActive = false;
+            startAutoplay();
+          }, 200);
+        }, { passive: false });
+      }
+
+      goTo(0);
+
+      // No arrancar el autoplay hasta que el usuario llegue a este carrusel
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              hasEnteredView = true;
+              startAutoplay();
+              observer.disconnect();
+            }
+          });
+        }, { threshold: 0.4 });
+        observer.observe(container || track);
+      } else {
+        hasEnteredView = true;
+        startAutoplay();
+      }
+    }
+
+    initCarousel({
+      containerId: 'cover-carousel',
+      trackId: 'carousel-track',
+      prevId: 'carousel-prev',
+      nextId: 'carousel-next',
+      dotClass: 'carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-paper/60',
+    });
+
+    initCarousel({
+      containerId: 'research-carousel',
+      trackId: 'research-carousel-track',
+      prevId: 'research-carousel-prev',
+      nextId: 'research-carousel-next',
+      dotClass: 'research-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'sketches-carousel',
+      trackId: 'sketches-carousel-track',
+      prevId: 'sketches-carousel-prev',
+      nextId: 'sketches-carousel-next',
+      dotClass: 'sketches-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'workshops-carousel',
+      trackId: 'workshops-carousel-track',
+      prevId: 'workshops-carousel-prev',
+      nextId: 'workshops-carousel-next',
+      dotClass: 'workshops-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'header-carousel',
+      trackId: 'header-carousel-track',
+      prevId: 'header-carousel-prev',
+      nextId: 'header-carousel-next',
+      dotClass: 'header-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'level1-carousel',
+      trackId: 'level1-carousel-track',
+      prevId: 'level1-carousel-prev',
+      nextId: 'level1-carousel-next',
+      dotClass: 'level1-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'footer-proposal-carousel',
+      trackId: 'footer-proposal-carousel-track',
+      prevId: 'footer-proposal-carousel-prev',
+      nextId: 'footer-proposal-carousel-next',
+      dotClass: 'footer-proposal-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'main-nav-carousel',
+      trackId: 'main-nav-carousel-track',
+      prevId: 'main-nav-carousel-prev',
+      nextId: 'main-nav-carousel-next',
+      dotClass: 'main-nav-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    // ===== Índice de secciones =====
+    (function () {
+      const items = Array.from(document.querySelectorAll('.section-index-item'));
+      if (!items.length) return;
+
+      const sections = items
+        .map((item) => document.getElementById(item.dataset.target))
+        .filter(Boolean);
+
+      items.forEach((item) => {
+        item.addEventListener('click', () => {
+          const target = document.getElementById(item.dataset.target);
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      function setActive(id) {
+        items.forEach((item) => {
+          const dot = item.querySelector('.section-index-dot');
+          const label = item.querySelector('.section-index-label');
+          const active = item.dataset.target === id;
+          dot.classList.toggle('bg-ink', active);
+          dot.classList.toggle('scale-150', active);
+          dot.classList.toggle('bg-ink/20', !active);
+          label.classList.toggle('text-ink', active);
+          label.classList.toggle('font-semibold', active);
+          label.classList.toggle('text-slate', !active);
+        });
+      }
+
+      if ('IntersectionObserver' in window) {
+        const sectionObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) setActive(entry.target.id);
+          });
+        }, { rootMargin: '-45% 0px -50% 0px' });
+        sections.forEach((section) => sectionObserver.observe(section));
+      }
+    })();
+  
+    // ===== Contador animado de cifras =====
+    (function () {
+      const els = Array.from(document.querySelectorAll('[data-countup]'));
+      if (!els.length) return;
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function parse(text) {
+        const m = text.match(/^(\D*)(\d[\d.,]*)(.*)$/);
+        if (!m) return null;
+        const decimals = (m[2].split('.')[1] || '').length;
+        return { prefix: m[1], value: parseFloat(m[2].replace(/,/g, '')), decimals, suffix: m[3] };
+      }
+
+      function run(el, delay) {
+        const final = el.textContent.trim();
+        const parsed = parse(final);
+        if (!parsed || parsed.value < 3 || reduced) return;
+        const duration = 1400;
+        el.textContent = parsed.prefix + (0).toFixed(parsed.decimals) + parsed.suffix;
+        setTimeout(() => {
+          const start = performance.now();
+          function tick(now) {
+            const t = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - t, 3);
+            el.textContent = parsed.prefix + (parsed.value * eased).toFixed(parsed.decimals) + parsed.suffix;
+            if (t < 1) requestAnimationFrame(tick);
+            else el.textContent = final;
+          }
+          requestAnimationFrame(tick);
+        }, delay);
+      }
+
+      if (!('IntersectionObserver' in window)) return;
+      const countObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          countObserver.unobserve(el);
+          const siblings = el.closest('.grid') ? Array.from(el.closest('.grid').querySelectorAll('[data-countup]')) : [el];
+          run(el, siblings.indexOf(el) * 120);
+        });
+      }, { threshold: 0.6 });
+      els.forEach((el) => countObserver.observe(el));
+    })();
+  </script>
+
+  <!-- Visor de imágenes a pantalla completa (solo táctil) -->
+  <script>
+    (function () {
+      if (!window.matchMedia('(hover: none)').matches) return;
+      const main = document.querySelector('main');
+      if (!main) return;
+      const overlay = document.createElement('div');
+      overlay.setAttribute('role', 'dialog');
+      overlay.setAttribute('aria-modal', 'true');
+      overlay.style.cssText = 'position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(10,10,10,0.94);touch-action:pinch-zoom;';
+      const big = document.createElement('img');
+      big.style.cssText = 'max-width:100%;max-height:100%;object-fit:contain;touch-action:pinch-zoom;';
+      big.alt = '';
+      const close = document.createElement('button');
+      close.type = 'button';
+      close.setAttribute('aria-label', 'Cerrar');
+      close.style.cssText = 'position:absolute;top:max(env(safe-area-inset-top),12px);right:12px;width:44px;height:44px;border-radius:9999px;border:0;background:rgba(255,255,255,0.16);color:#fff;font-size:24px;line-height:1;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;';
+      close.textContent = '\u00d7';
+      overlay.appendChild(big);
+      overlay.appendChild(close);
+      document.body.appendChild(overlay);
+
+      function open(img) {
+        big.src = img.currentSrc || img.src;
+        big.alt = img.alt || '';
+        overlay.style.display = 'flex';
+        document.documentElement.style.overflow = 'hidden';
+      }
+      function shut() {
+        overlay.style.display = 'none';
+        big.removeAttribute('src');
+        document.documentElement.style.overflow = '';
+      }
+      overlay.addEventListener('click', shut);
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') shut(); });
+
+      main.addEventListener('click', (e) => {
+        const img = e.target.closest('img');
+        if (!img || img.closest('a, button, header, nav')) return;
+        if (img.hasAttribute('data-nozoom')) return;
+        if (img.getBoundingClientRect().width < 120) return;
+        open(img);
+      });
+    })();
+  </script>
+</body>
+</html>
