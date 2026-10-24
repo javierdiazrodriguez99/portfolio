@@ -81,6 +81,29 @@
   body.is-ready {
     opacity: 1;
   }
+  /* Escala tipográfica (múltiplos de 8, sin decimales): H1–H6 + P */
+  .t-h1 { font-size: 48px; line-height: 56px; font-weight: 600; letter-spacing: -2px; }
+  .t-h2 { font-size: 40px; line-height: 48px; font-weight: 600; letter-spacing: -1px; }
+  .t-h3 { font-size: 32px; line-height: 40px; font-weight: 500; letter-spacing: 0; }
+  .t-h4 { font-size: 20px; line-height: 28px; font-weight: 400; letter-spacing: 0; }
+  .t-h4.t-medium { font-weight: 500; }
+  .t-h5 { font-size: 20px; line-height: 28px; font-weight: 500; letter-spacing: 0; }
+  .t-h6 { font-size: 20px; line-height: 28px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; }
+  .t-s  { font-size: 16px; line-height: 24px; font-weight: 400; letter-spacing: 0; }
+  .t-s-m { font-size: 16px; line-height: 24px; font-weight: 500; letter-spacing: 0; }
+  .t-logo { font-size: 16px; line-height: 24px; font-weight: 600; letter-spacing: 0; }
+  .t-p  { font-size: 20px; line-height: 28px; font-weight: 400; letter-spacing: 0; }
+  @media (min-width: 768px) {
+    .t-logo { font-size: 24px; line-height: 32px; letter-spacing: -1px; }
+    .t-h1 { font-size: 72px; line-height: 80px; letter-spacing: -3px; }
+    .t-h4 { font-size: 24px; line-height: 32px; }
+    }
+  @media (min-width: 1280px) {
+    .t-h1 { font-size: 80px; line-height: 88px; }
+  }
+  @media (max-width: 767px) {
+    .t-meta { font-size: 16px; line-height: 24px; }
+  }
 </style>
 </head>
 
@@ -90,7 +113,7 @@
   <header class="fixed top-0 inset-x-0 z-50 bg-paper/80 backdrop-blur-md">
     <nav class="max-w-[1680px] mx-auto px-6 sm:px-16 h-[68px] sm:h-[136px] flex items-center justify-between">
 
-      <a href="../index.html" class="text-lg sm:text-2xl font-semibold tracking-tight focus-ring rounded whitespace-nowrap shrink-0">
+      <a href="../index.html" class="t-logo focus-ring rounded whitespace-nowrap shrink-0">
         Javier Díaz
       </a>
 
@@ -99,8 +122,8 @@
           <li><a href="../sobre-mi.html" class="inline-block py-2 -my-2 hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
           <li><a href="../contacto.html" class="inline-block py-2 -my-2 hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
         </ul>
-        <button type="button" id="lang-toggle-mobile" class="sm:hidden h-8 px-3 flex items-center justify-center text-base font-medium border border-ink/15 rounded-full [@media(hover:hover)]:hover:bg-latte/40 [-webkit-tap-highlight-color:transparent] transition-colors" aria-label="Cambiar idioma">ES</button>
-        <div class="hidden sm:flex items-center h-8 gap-0.5 text-lg font-medium border border-ink/15 rounded-full p-0.5" role="group" aria-label="Seleccionar idioma">
+        <button type="button" id="lang-toggle-mobile" class="sm:hidden h-8 px-3 flex items-center justify-center t-s-m border border-ink/15 rounded-full [@media(hover:hover)]:hover:bg-latte/40 [-webkit-tap-highlight-color:transparent] transition-colors" aria-label="Cambiar idioma">ES</button>
+        <div class="hidden sm:flex items-center h-8 gap-1 text-base font-medium border border-ink/15 rounded-full p-1" role="group" aria-label="Seleccionar idioma">
           <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="en">EN</button>
           <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="es">ES</button>
         </div>
@@ -137,31 +160,31 @@
 
     <!-- ===== HERO ===== -->
     <section class="max-w-[1680px] mx-auto px-6 sm:px-16 pt-[91px] sm:pt-[159px]">
-      <h1 class="reveal is-visible text-4xl sm:text-5xl md:text-[clamp(3.75rem,2.9167rem+1.3021vw,5rem)] font-semibold tracking-tightest leading-[1.08]" data-i18n="hero.title">
+      <h1 class="reveal is-visible t-h1" data-i18n="hero.title">
         Asistente de Gestión de Tarifas
       </h1>
 
-      <p class="reveal is-visible mt-6 text-lg md:text-[clamp(1.25rem,1.0833rem+0.2604vw,1.5rem)] text-slate leading-relaxed" data-i18n="hero.subtitle">
+      <p class="reveal is-visible mt-6 t-h4 text-slate" data-i18n="hero.subtitle">
         Diseño de un wizard para gestionar de forma masiva las tarifas de compraventa entre transportistas y shippers, sobre bases de datos de millones de registros.
       </p>
 
-      <div class="reveal is-visible mt-12 pt-8 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-8 sm:gap-8">
+      <div class="reveal is-visible mt-8 sm:mt-12 pt-0 sm:pt-8 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-6 sm:gap-8">
         <div>
-          <p class="text-base font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.role.label">Rol</p>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink" data-i18n="hero.role.value">Product Designer</p>
+          <p class="t-s-m uppercase tracking-[2px] text-slate mb-1 sm:mb-2" data-i18n="hero.role.label">Rol</p>
+          <p class="t-h5 t-meta text-ink" data-i18n="hero.role.value">Product Designer</p>
         </div>
         <div>
-          <p class="text-base font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.client.label">Cliente</p>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink" data-i18n="hero.client.value">Transportistas</p>
+          <p class="t-s-m uppercase tracking-[2px] text-slate mb-1 sm:mb-2" data-i18n="hero.client.label">Cliente</p>
+          <p class="t-h5 t-meta text-ink" data-i18n="hero.client.value">Transportistas</p>
         </div>
         <div>
-          <p class="text-base font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.year.label">Año</p>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink" data-i18n="hero.year.value">2024</p>
+          <p class="t-s-m uppercase tracking-[2px] text-slate mb-1 sm:mb-2" data-i18n="hero.year.label">Año</p>
+          <p class="t-h5 t-meta text-ink" data-i18n="hero.year.value">2024</p>
         </div>
         <div>
-          <p class="text-base font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.team.label">Equipo</p>
+          <p class="t-s-m uppercase tracking-[2px] text-slate mb-1 sm:mb-2" data-i18n="hero.team.label">Equipo</p>
           <div class="relative inline-block group">
-            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink">
+            <p class="t-h5 t-meta text-ink">
               <span tabindex="0" aria-describedby="team-tooltip" class="focus-ring rounded">End-to-end</span>
             </p>
             <div id="team-tooltip" role="tooltip" class="pointer-events-none absolute bottom-full right-0 mb-3 z-20 w-max max-w-[min(360px,calc(100vw-3rem))] rounded-xl bg-ink px-4 py-3 text-base text-paper shadow-sm opacity-0 translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:translate-y-0">
@@ -172,7 +195,7 @@
         </div>
       </div>
 
-      <div id="cover-carousel" class="reveal group mt-10 md:mt-20 relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+      <div id="cover-carousel" class="reveal group mt-8 md:mt-20 relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
         <div id="carousel-track" class="flex h-full transition-transform duration-500 ease-out">
           <img src="wizard-rate-management-cover.png" data-i18n="hero.carousel.alt1" data-i18n-attr="alt" alt="Tariff Manager: listado de archivos de tarifas con su estado de validación" class="w-full h-full object-cover shrink-0">
           <img src="wizard-rate-management-cover-2.png" data-i18n="hero.carousel.alt2" data-i18n-attr="alt" alt="Pantalla de revisión de datos del wizard, con detección de errores por fila" class="w-full h-full object-cover shrink-0">
@@ -195,35 +218,35 @@
     <!-- ===== 01 · STARTING POINT ===== -->
     <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s01">
       <div class="reveal flex items-center gap-4 mb-5">
-        <span class="text-base font-medium text-latte-dark">01</span>
-        <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s01.eyebrow">Punto de partida</span>
+        <span class="t-h5 text-latte-dark">01</span>
+        <span class="t-h6 text-slate" data-i18n="s01.eyebrow">Punto de partida</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-8 md:mb-12" data-i18n="s01.heading">
+      <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="s01.heading">
         Por qué necesitábamos un nuevo enfoque
       </h2>
 
       <div class="reveal mb-8 md:mb-14">
-        <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s01.p1">
+        <p class="t-p text-ink/80" data-i18n="s01.p1">
           Los equipos de operaciones gestionaban las tarifas de compraventa entre transportistas y shippers a través de archivos de Excel de millones de filas, sin validación automática ni trazabilidad de los cambios. Cualquier actualización masiva de tarifas era un proceso manual, lento y arriesgado.
         </p>
       </div>
 
       <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 pt-0 md:pt-10">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s01.card1.title">Errores silenciosos</h3>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s01.card1.body">
+          <h3 class="t-h4 t-medium mb-2" data-i18n="s01.card1.title">Errores silenciosos</h3>
+          <p class="t-p text-slate" data-i18n="s01.card1.body">
             Un error de tipeo en una celda podía afectar a miles de tarifas sin que nadie lo notara hasta más tarde.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s01.card2.title">Sin trazabilidad</h3>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s01.card2.body">
+          <h3 class="t-h4 t-medium mb-2" data-i18n="s01.card2.title">Sin trazabilidad</h3>
+          <p class="t-p text-slate" data-i18n="s01.card2.body">
             No había forma de saber quién había cambiado una tarifa concreta, ni cuándo, ni por qué.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s01.card3.title">Procesos manuales</h3>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s01.card3.body">
+          <h3 class="t-h4 t-medium mb-2" data-i18n="s01.card3.title">Procesos manuales</h3>
+          <p class="t-p text-slate" data-i18n="s01.card3.body">
             Cargar y validar un archivo de tarifas podía llevar horas de trabajo manual y repetitivo.
           </p>
         </div>
@@ -233,15 +256,15 @@
     <!-- ===== 02 · RESEARCH ===== -->
     <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s02">
       <div class="reveal flex items-center gap-4 mb-5">
-        <span class="text-base font-medium text-latte-dark">02</span>
-        <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s02.eyebrow">Research</span>
+        <span class="t-h5 text-latte-dark">02</span>
+        <span class="t-h6 text-slate" data-i18n="s02.eyebrow">Research</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-8 md:mb-12" data-i18n="s02.heading">
+      <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="s02.heading">
         La interfaz existente
       </h2>
 
       <div class="reveal mb-8 md:mb-14">
-        <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s02.p1">
+        <p class="t-p text-ink/80" data-i18n="s02.p1">
           Debido a la urgencia que tenía la compañía en arreglar este proceso, ya que estaba dando muchos errores tanto a nivel interno como a nivel de nuestros clientes, las técnicas de investigación previas antes de llegar al concepto final fueron casi nulas. Básicamente lo que se hizo fue un refresh de la interfaz de usuario y se añadieron algunas funcionalidades nuevas en comparación a la UI anterior.
         </p>
       </div>
@@ -270,15 +293,15 @@
     <!-- ===== 03 · DEL PAPEL A LA PANTALLA ===== -->
     <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s03">
       <div class="reveal flex items-center gap-4 mb-5">
-        <span class="text-base font-medium text-latte-dark">03</span>
-        <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s03.eyebrow">Del papel a la pantalla</span>
+        <span class="t-h5 text-latte-dark">03</span>
+        <span class="t-h6 text-slate" data-i18n="s03.eyebrow">Del papel a la pantalla</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-8 md:mb-12" data-i18n="s03.heading">
+      <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="s03.heading">
         De los primeros bocetos a las primeras interacciones
       </h2>
 
       <div class="reveal mb-10 md:mb-16">
-        <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s03.p1">
+        <p class="t-p text-ink/80" data-i18n="s03.p1">
           Para llevar a cabo este proyecto se tuvo en cuenta referencias de proyectos anteriores en los que tuve la oportunidad de trabajar, tanto a nivel de user experience como a nivel de user interface.
         </p>
       </div>
@@ -304,7 +327,7 @@
       <p class="reveal text-base text-slate mt-3" data-i18n="s03.caption1">Referencias de proyectos anteriores utilizadas como punto de partida del flujo y la interfaz.</p>
 
       <div class="reveal mb-10 md:mb-16 mt-10 md:mt-16">
-        <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s03.p2">
+        <p class="t-p text-ink/80" data-i18n="s03.p2">
           A medida que íbamos desarrollando las diferentes funcionalidades y procesos de la subida de archivos, recibíamos feedback constante — por no decir diario — del equipo técnico, que validaba las propuestas del equipo de diseño de producto. Muchas veces había cosas que se podían realizar y otras que no, y teníamos que adaptarnos a las condiciones técnicas limitadas que ofrecía la empresa en ese momento.
         </p>
       </div>
@@ -331,59 +354,59 @@
     <!-- ===== 04 · SOLUTION ===== -->
     <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s04">
       <div class="reveal flex items-center gap-4 mb-5">
-        <span class="text-base font-medium text-latte-dark">04</span>
-        <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s04.eyebrow">Solución</span>
+        <span class="t-h5 text-latte-dark">04</span>
+        <span class="t-h6 text-slate" data-i18n="s04.eyebrow">Solución</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-8 md:mb-12" data-i18n="s04.heading">
+      <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="s04.heading">
         Un wizard guiado = mil dolores de cabeza menos
       </h2>
 
       <div class="reveal mb-10 md:mb-16">
-        <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s04.p1">
+        <p class="t-p text-ink/80" data-i18n="s04.p1">
           En vez de seguir dependiendo de archivos de Excel sueltos, diseñamos un wizard paso a paso que guía al usuario desde la carga del archivo hasta la validación y confirmación de los cambios, detectando errores automáticamente antes de que lleguen a producción. A pesar de no haber podido testear la propuesta con usuarios reales, el resultado fue bastante óptimo: nuestros transportistas quedaron conformes con la nueva funcionalidad y destacaron que la interfaz se veía mucho más limpia, y que el proceso podía ser más íntimo entre el usuario y la plataforma, en vez de tener que pasar por una revisión del soporte interno de la empresa.
         </p>
       </div>
 
       <div class="reveal mb-10 md:mb-16">
-        <p class="text-base font-medium tracking-widest uppercase text-slate mb-8" data-i18n="s03.label2">Carga de archivos</p>
+        <p class="t-h6 text-slate mb-8" data-i18n="s03.label2">Carga de archivos</p>
 
-        <div class="flex flex-col gap-8 md:flex-row md:items-stretch md:gap-0">
-          <div class="md:flex-1 md:pr-6">
-            <span class="w-7 h-7 rounded-full bg-latte text-ink text-base font-medium flex items-center justify-center mb-4">1</span>
-            <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium text-ink mb-2" data-i18n="s03.step1.title">Landing page de archivos</h3>
-            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s03.step1.body">Una página donde se podían ver todas las tarifas y archivos que se habían subido al sistema. Si no existía ninguno, aparecía un empty state.</p>
+        <div class="flex flex-col gap-8 xl:flex-row md:items-stretch md:gap-0">
+          <div class="xl:flex-1 xl:pr-6">
+            <span class="w-7 h-7 rounded-full bg-latte text-ink t-h5 flex items-center justify-center mb-4">1</span>
+            <h3 class="t-h5 text-ink mb-2" data-i18n="s03.step1.title">Landing page de archivos</h3>
+            <p class="t-p text-slate" data-i18n="s03.step1.body">Una página donde se podían ver todas las tarifas y archivos que se habían subido al sistema. Si no existía ninguno, aparecía un empty state.</p>
           </div>
-          <div class="hidden md:flex items-start pt-3 text-ink/20 shrink-0">
+          <div class="hidden xl:flex items-start pt-3 text-ink/20 shrink-0">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
           </div>
-          <div class="md:flex-1 md:px-6">
-            <span class="w-7 h-7 rounded-full bg-latte text-ink text-base font-medium flex items-center justify-center mb-4">2</span>
-            <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium text-ink mb-2" data-i18n="s03.step2.title">Subida del archivo</h3>
-            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s03.step2.body">Dos formas de subirlo: haciendo clic en el botón de subir archivos, o arrastrándolo directamente a la pantalla.</p>
+          <div class="xl:flex-1 xl:px-6">
+            <span class="w-7 h-7 rounded-full bg-latte text-ink t-h5 flex items-center justify-center mb-4">2</span>
+            <h3 class="t-h5 text-ink mb-2" data-i18n="s03.step2.title">Subida del archivo</h3>
+            <p class="t-p text-slate" data-i18n="s03.step2.body">Dos formas de subirlo: haciendo clic en el botón de subir archivos, o arrastrándolo directamente a la pantalla.</p>
           </div>
-          <div class="hidden md:flex items-start pt-3 text-ink/20 shrink-0">
+          <div class="hidden xl:flex items-start pt-3 text-ink/20 shrink-0">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
           </div>
-          <div class="md:flex-1 md:px-6">
-            <span class="w-7 h-7 rounded-full bg-latte text-ink text-base font-medium flex items-center justify-center mb-4">3</span>
-            <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium text-ink mb-2" data-i18n="s03.step3.title">Procesamiento en segundo plano</h3>
-            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s03.step3.body">Al ser una fase beta, la carga era algo más lenta de lo habitual: el archivo se procesaba mientras el usuario seguía trabajando en otras páginas, y una notificación push avisaba cuando terminaba y había que revisarlo.</p>
+          <div class="xl:flex-1 xl:px-6">
+            <span class="w-7 h-7 rounded-full bg-latte text-ink t-h5 flex items-center justify-center mb-4">3</span>
+            <h3 class="t-h5 text-ink mb-2" data-i18n="s03.step3.title">Procesamiento en segundo plano</h3>
+            <p class="t-p text-slate" data-i18n="s03.step3.body">Al ser una fase beta, la carga era algo más lenta de lo habitual: el archivo se procesaba mientras el usuario seguía trabajando en otras páginas, y una notificación push avisaba cuando terminaba y había que revisarlo.</p>
           </div>
-          <div class="hidden md:flex items-start pt-3 text-ink/20 shrink-0">
+          <div class="hidden xl:flex items-start pt-3 text-ink/20 shrink-0">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
           </div>
-          <div class="md:flex-1 md:px-6">
-            <span class="w-7 h-7 rounded-full bg-latte text-ink text-base font-medium flex items-center justify-center mb-4">4</span>
-            <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium text-ink mb-2" data-i18n="s03.step4.title">Revisión con IA</h3>
-            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s03.step4.body">En la página de revisión se visualizaba todo el contenido subido, y la IA identificaba errores o posibles confusiones al introducir los datos en el Excel — uno de los primeros proyectos donde empezamos a implementar IA, detectando errores mientras el archivo aún se estaba procesando.</p>
+          <div class="xl:flex-1 xl:px-6">
+            <span class="w-7 h-7 rounded-full bg-latte text-ink t-h5 flex items-center justify-center mb-4">4</span>
+            <h3 class="t-h5 text-ink mb-2" data-i18n="s03.step4.title">Revisión con IA</h3>
+            <p class="t-p text-slate" data-i18n="s03.step4.body">En la página de revisión se visualizaba todo el contenido subido, y la IA identificaba errores o posibles confusiones al introducir los datos en el Excel — uno de los primeros proyectos donde empezamos a implementar IA, detectando errores mientras el archivo aún se estaba procesando.</p>
           </div>
-          <div class="hidden md:flex items-start pt-3 text-ink/20 shrink-0">
+          <div class="hidden xl:flex items-start pt-3 text-ink/20 shrink-0">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
           </div>
-          <div class="md:flex-1 md:pl-6">
-            <span class="w-7 h-7 rounded-full bg-latte text-ink text-base font-medium flex items-center justify-center mb-4">5</span>
-            <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium text-ink mb-2" data-i18n="s03.step5.title">Confirmación</h3>
-            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s03.step5.body">Una vez revisados los errores, se completaba la subida y el archivo quedaba añadido correctamente al sistema.</p>
+          <div class="xl:flex-1 xl:pl-6">
+            <span class="w-7 h-7 rounded-full bg-latte text-ink t-h5 flex items-center justify-center mb-4">5</span>
+            <h3 class="t-h5 text-ink mb-2" data-i18n="s03.step5.title">Confirmación</h3>
+            <p class="t-p text-slate" data-i18n="s03.step5.body">Una vez revisados los errores, se completaba la subida y el archivo quedaba añadido correctamente al sistema.</p>
           </div>
         </div>
       </div>
@@ -416,29 +439,29 @@
 
       <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 mt-10 md:mt-20 mb-10 md:mb-16">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s04.feature1.title">Rediseño completo a nivel de precio, usuario e interfaz</h3>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s04.feature1.body">No tenía nada que ver con la versión anterior: se reformula toda la interfaz y las diferentes funcionalidades del sistema para garantizar que el proceso de subida de archivos sea el elemento central a nivel visual.</p>
+          <h3 class="t-h4 t-medium mb-2" data-i18n="s04.feature1.title">Rediseño completo a nivel de precio, usuario e interfaz</h3>
+          <p class="t-p text-slate" data-i18n="s04.feature1.body">No tenía nada que ver con la versión anterior: se reformula toda la interfaz y las diferentes funcionalidades del sistema para garantizar que el proceso de subida de archivos sea el elemento central a nivel visual.</p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s04.feature2.title">Validación automática</h3>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s04.feature2.body">El sistema detecta errores e inconsistencias antes de aplicar los cambios gracias a la inteligencia artificial, evitando errores a posteriori y garantizando un resultado mejor que el que estábamos acostumbrados.</p>
+          <h3 class="t-h4 t-medium mb-2" data-i18n="s04.feature2.title">Validación automática</h3>
+          <p class="t-p text-slate" data-i18n="s04.feature2.body">El sistema detecta errores e inconsistencias antes de aplicar los cambios gracias a la inteligencia artificial, evitando errores a posteriori y garantizando un resultado mejor que el que estábamos acostumbrados.</p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s04.feature3.title">Menos carga de trabajo a nivel interno</h3>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s04.feature3.body">Los equipos internos de la empresa se descargaron de bastante trabajo y pudieron enfocarse en la mejora de otras funcionalidades.</p>
+          <h3 class="t-h4 t-medium mb-2" data-i18n="s04.feature3.title">Menos carga de trabajo a nivel interno</h3>
+          <p class="t-p text-slate" data-i18n="s04.feature3.body">Los equipos internos de la empresa se descargaron de bastante trabajo y pudieron enfocarse en la mejora de otras funcionalidades.</p>
         </div>
       </div>
 
       <div class="reveal grid sm:grid-cols-2 gap-x-8 gap-y-10 md:gap-x-10">
         <div>
-          <p class="text-4xl md:text-[clamp(3rem,2.3333rem+1.04167vw,4rem)] font-semibold tracking-tightest mb-2 tabular-nums" data-countup data-i18n="s04.stat1.number">+5K*</p>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink mb-1" data-i18n="s04.stat1.label">Filas por archivo</p>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s04.stat1.body">Cada archivo contenía más de 5.000 filas, y en aquel momento trabajábamos con más de 50 transportistas.</p>
+          <p class="t-h2 mb-2 tabular-nums" data-countup data-i18n="s04.stat1.number">+5K*</p>
+          <p class="t-h5 text-ink mb-1" data-i18n="s04.stat1.label">Filas por archivo</p>
+          <p class="t-p text-slate" data-i18n="s04.stat1.body">Cada archivo contenía más de 5.000 filas, y en aquel momento trabajábamos con más de 50 transportistas.</p>
         </div>
         <div>
-          <p class="text-4xl md:text-[clamp(3rem,2.3333rem+1.04167vw,4rem)] font-semibold tracking-tightest mb-2 tabular-nums" data-countup data-i18n="s04.stat2.number">90%*</p>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink mb-1" data-i18n="s04.stat2.label">Errores detectados antes de producción</p>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s04.stat2.body">Se automatiza todo el proceso de subida e interpretación de las tarifas, garantizando el mínimo error posible.</p>
+          <p class="t-h2 mb-2 tabular-nums" data-countup data-i18n="s04.stat2.number">90%*</p>
+          <p class="t-h5 text-ink mb-1" data-i18n="s04.stat2.label">Errores detectados antes de producción</p>
+          <p class="t-p text-slate" data-i18n="s04.stat2.body">Se automatiza todo el proceso de subida e interpretación de las tarifas, garantizando el mínimo error posible.</p>
         </div>
       </div>
       <p class="reveal text-base text-slate mt-6" data-i18n="s04.footnote">*Cifras aproximadas, medidas por el equipo de Product Managers.</p>
@@ -447,27 +470,27 @@
     <!-- ===== 05 · KEY LEARNINGS ===== -->
     <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s05">
       <div class="reveal flex items-center gap-4 mb-5">
-        <span class="text-base font-medium text-latte-dark">05</span>
-        <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s05.eyebrow">Aprendizajes clave</span>
+        <span class="t-h5 text-latte-dark">05</span>
+        <span class="t-h6 text-slate" data-i18n="s05.eyebrow">Aprendizajes clave</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-8" data-i18n="s05.heading">
+      <h2 class="reveal t-h2 mb-4" data-i18n="s05.heading">
         Qué me dejó este proyecto
       </h2>
-      <p class="reveal text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s05.p1">
+      <p class="reveal t-p text-ink/80" data-i18n="s05.p1">
         Este proyecto me permitió visualizar una nueva rama del diseño de producto: la de trabajar con funcionalidades que manejan archivos muy pesados, con muchísimos datos y cargas de información constantes. Esto me dejó como resultado una habilidad más a nivel personal y profesional como Product Designer: la de poder simplificar incluso los procesos de experiencia de usuario más complejos del mercado.
       </p>
     </section>
 
     <!-- ===== END OF CASE STUDY ===== -->
     <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20 text-center">
-      <p class="reveal text-lg md:text-[clamp(1.25rem,1.0833rem+0.2604vw,1.5rem)] font-medium tracking-tight mb-10" data-i18n="cta.heading">
+      <p class="reveal t-h3 mb-10" data-i18n="cta.heading">
         ¿Quieres ver más proyectos?
       </p>
       <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="notification-system.html" class="focus-ring inline-flex items-center gap-2 bg-ink text-paper text-base font-medium px-6 py-3.5 rounded-full hover:bg-slate transition-colors" data-i18n="cta.next">
+        <a href="notification-system.html" class="focus-ring inline-flex items-center gap-2 bg-ink text-paper t-s-m px-6 py-3.5 rounded-full hover:bg-slate transition-colors" data-i18n="cta.next">
           Continuar con Notification System
         </a>
-        <a href="../index.html#work" class="focus-ring inline-flex items-center gap-2 text-base font-medium px-6 py-3.5 rounded-full border border-ink/15 hover:bg-latte/40 hover:border-latte-dark transition-colors" data-i18n="cta.back">
+        <a href="../index.html#work" class="focus-ring inline-flex items-center gap-2 t-s-m px-6 py-3.5 rounded-full border border-ink/15 hover:bg-latte/40 hover:border-latte-dark transition-colors" data-i18n="cta.back">
           Volver a todos los proyectos
         </a>
       </div>

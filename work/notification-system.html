@@ -81,6 +81,29 @@
   body.is-ready {
     opacity: 1;
   }
+  /* Escala tipográfica (múltiplos de 8, sin decimales): H1–H6 + P */
+  .t-h1 { font-size: 48px; line-height: 56px; font-weight: 600; letter-spacing: -2px; }
+  .t-h2 { font-size: 40px; line-height: 48px; font-weight: 600; letter-spacing: -1px; }
+  .t-h3 { font-size: 32px; line-height: 40px; font-weight: 500; letter-spacing: 0; }
+  .t-h4 { font-size: 20px; line-height: 28px; font-weight: 400; letter-spacing: 0; }
+  .t-h4.t-medium { font-weight: 500; }
+  .t-h5 { font-size: 20px; line-height: 28px; font-weight: 500; letter-spacing: 0; }
+  .t-h6 { font-size: 20px; line-height: 28px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; }
+  .t-s  { font-size: 16px; line-height: 24px; font-weight: 400; letter-spacing: 0; }
+  .t-s-m { font-size: 16px; line-height: 24px; font-weight: 500; letter-spacing: 0; }
+  .t-logo { font-size: 16px; line-height: 24px; font-weight: 600; letter-spacing: 0; }
+  .t-p  { font-size: 20px; line-height: 28px; font-weight: 400; letter-spacing: 0; }
+  @media (min-width: 768px) {
+    .t-logo { font-size: 24px; line-height: 32px; letter-spacing: -1px; }
+    .t-h1 { font-size: 72px; line-height: 80px; letter-spacing: -3px; }
+    .t-h4 { font-size: 24px; line-height: 32px; }
+    }
+  @media (min-width: 1280px) {
+    .t-h1 { font-size: 80px; line-height: 88px; }
+  }
+  @media (max-width: 767px) {
+    .t-meta { font-size: 16px; line-height: 24px; }
+  }
 </style>
 </head>
 
@@ -90,7 +113,7 @@
   <header class="fixed top-0 inset-x-0 z-50 bg-paper/80 backdrop-blur-md">
     <nav class="max-w-[1680px] mx-auto px-6 sm:px-16 h-[68px] sm:h-[136px] flex items-center justify-between">
 
-      <a href="../index.html" class="text-lg sm:text-2xl font-semibold tracking-tight focus-ring rounded whitespace-nowrap shrink-0">
+      <a href="../index.html" class="t-logo focus-ring rounded whitespace-nowrap shrink-0">
         Javier Díaz
       </a>
 
@@ -99,8 +122,8 @@
           <li><a href="../sobre-mi.html" class="inline-block py-2 -my-2 hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
           <li><a href="../contacto.html" class="inline-block py-2 -my-2 hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
         </ul>
-        <button type="button" id="lang-toggle-mobile" class="sm:hidden h-8 px-3 flex items-center justify-center text-base font-medium border border-ink/15 rounded-full [@media(hover:hover)]:hover:bg-latte/40 [-webkit-tap-highlight-color:transparent] transition-colors" aria-label="Cambiar idioma">ES</button>
-        <div class="hidden sm:flex items-center h-8 gap-0.5 text-lg font-medium border border-ink/15 rounded-full p-0.5" role="group" aria-label="Seleccionar idioma">
+        <button type="button" id="lang-toggle-mobile" class="sm:hidden h-8 px-3 flex items-center justify-center t-s-m border border-ink/15 rounded-full [@media(hover:hover)]:hover:bg-latte/40 [-webkit-tap-highlight-color:transparent] transition-colors" aria-label="Cambiar idioma">ES</button>
+        <div class="hidden sm:flex items-center h-8 gap-1 text-base font-medium border border-ink/15 rounded-full p-1" role="group" aria-label="Seleccionar idioma">
           <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="en">EN</button>
           <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="es">ES</button>
         </div>
@@ -138,13 +161,13 @@
     <!-- ===== PASSWORD GATE ===== -->
     <section id="password-gate" class="max-w-[1680px] mx-auto px-6 sm:px-16 pt-[91px] sm:pt-[159px] pb-20 min-h-[60vh] flex flex-col justify-center">
       <div class="max-w-xl mx-auto text-center w-full">
-      <h1 class="text-3xl sm:text-4xl font-semibold tracking-tightest leading-[1.1] mb-8" data-i18n="gate.heading">
+      <h1 class="t-h2 mb-8" data-i18n="gate.heading">
         Este proyecto está protegido
       </h1>
       <form id="password-form" class="flex flex-col gap-3" autocomplete="off">
         <label for="password-input" class="sr-only" data-i18n="gate.label">Contraseña</label>
         <input type="password" id="password-input" name="password" autocomplete="off" placeholder="Introduce la contraseña" data-i18n="gate.placeholder" data-i18n-attr="placeholder" class="focus-ring w-full text-center px-6 py-3.5 rounded-full border border-ink/15 bg-paper text-ink placeholder:text-slate/60">
-        <button type="submit" class="focus-ring inline-flex items-center justify-center gap-2 bg-ink text-paper text-base font-medium px-6 py-3.5 rounded-full hover:bg-slate transition-colors" data-i18n="gate.button">
+        <button type="submit" class="focus-ring inline-flex items-center justify-center gap-2 bg-ink text-paper t-s-m px-6 py-3.5 rounded-full hover:bg-slate transition-colors" data-i18n="gate.button">
           Acceder
         </button>
         <p id="password-error" class="hidden text-base text-red-600/80 mt-1" data-i18n="gate.error">Contraseña incorrecta. Inténtalo de nuevo.</p>
@@ -156,31 +179,31 @@
 
     <!-- ===== HERO ===== -->
     <section class="max-w-[1680px] mx-auto px-6 sm:px-16 pt-[91px] sm:pt-[159px]">
-      <h1 class="reveal is-visible text-4xl sm:text-5xl md:text-[clamp(3.75rem,2.9167rem+1.3021vw,5rem)] font-semibold tracking-tightest leading-[1.08]" data-i18n="hero.title">
+      <h1 class="reveal is-visible t-h1" data-i18n="hero.title">
         Sistema de notificaciones
       </h1>
 
-      <p class="reveal is-visible mt-6 text-lg md:text-[clamp(1.25rem,1.0833rem+0.2604vw,1.5rem)] text-slate leading-relaxed" data-i18n="hero.subtitle">
+      <p class="reveal is-visible mt-6 t-h4 text-slate" data-i18n="hero.subtitle">
         Sistema de notificaciones por email que alerta a los usuarios de las acciones relevantes que ocurren en relación a sus shipments.
       </p>
 
-      <div class="reveal is-visible mt-12 pt-8 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-8 sm:gap-8">
+      <div class="reveal is-visible mt-8 sm:mt-12 pt-0 sm:pt-8 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-6 sm:gap-8">
         <div>
-          <p class="text-base font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.role.label">Rol</p>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink" data-i18n="hero.role.value">Product Designer</p>
+          <p class="t-s-m uppercase tracking-[2px] text-slate mb-1 sm:mb-2" data-i18n="hero.role.label">Rol</p>
+          <p class="t-h5 t-meta text-ink" data-i18n="hero.role.value">Product Designer</p>
         </div>
         <div>
-          <p class="text-base font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.usertype.label">Tipo de usuario</p>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink" data-i18n="hero.usertype.value">Freight Forwarders y Shippers</p>
+          <p class="t-s-m uppercase tracking-[2px] text-slate mb-1 sm:mb-2" data-i18n="hero.usertype.label">Tipo de usuario</p>
+          <p class="t-h5 t-meta text-ink" data-i18n="hero.usertype.value">Freight Forwarders y Shippers</p>
         </div>
         <div>
-          <p class="text-base font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.year.label">Año</p>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink" data-i18n="hero.year.value">2025-2026</p>
+          <p class="t-s-m uppercase tracking-[2px] text-slate mb-1 sm:mb-2" data-i18n="hero.year.label">Año</p>
+          <p class="t-h5 t-meta text-ink" data-i18n="hero.year.value">2025-2026</p>
         </div>
         <div>
-          <p class="text-base font-medium tracking-widest uppercase text-slate mb-2" data-i18n="hero.team.label">Equipo</p>
+          <p class="t-s-m uppercase tracking-[2px] text-slate mb-1 sm:mb-2" data-i18n="hero.team.label">Equipo</p>
           <div class="relative inline-block group">
-            <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] font-medium text-ink">
+            <p class="t-h5 t-meta text-ink">
               <span tabindex="0" aria-describedby="team-tooltip" class="focus-ring rounded">End-to-end</span>
             </p>
             <div id="team-tooltip" role="tooltip" class="pointer-events-none absolute bottom-full right-0 mb-3 z-20 w-max max-w-[min(360px,calc(100vw-3rem))] rounded-xl bg-ink px-4 py-3 text-base text-paper shadow-sm opacity-0 translate-y-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:translate-y-0">
@@ -191,7 +214,7 @@
         </div>
       </div>
 
-      <div id="cover-carousel" class="reveal group mt-10 md:mt-20 relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+      <div id="cover-carousel" class="reveal group mt-8 md:mt-20 relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
         <div id="carousel-track" class="flex h-full transition-transform duration-500 ease-out">
           <img src="notification-system-cover.png" alt="Tooltip de notificaciones activas sobre un contacto de envío en la plataforma" data-i18n="hero.img1.alt" data-i18n-attr="alt" class="w-full h-full object-cover shrink-0">
           <img src="notification-system-cover-2.png" alt="Estado del envío marcado como En tránsito con el icono de notificaciones" data-i18n="hero.img2.alt" data-i18n-attr="alt" class="w-full h-full object-cover shrink-0">
@@ -216,35 +239,35 @@
     <!-- ===== 01 · STARTING POINT ===== -->
     <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s01">
       <div class="reveal flex items-center gap-4 mb-5">
-        <span class="text-base font-medium text-latte-dark">01</span>
-        <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s01.eyebrow">Punto de partida</span>
+        <span class="t-h5 text-latte-dark">01</span>
+        <span class="t-h6 text-slate" data-i18n="s01.eyebrow">Punto de partida</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight max-w-2xl mb-8 md:mb-12" data-i18n="s01.heading">
+      <h2 class="reveal t-h2 max-w-2xl mb-4 md:mb-6" data-i18n="s01.heading">
         Por qué necesitábamos un nuevo enfoque
       </h2>
 
       <div class="reveal mb-8 md:mb-14">
-        <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s01.context.p">
+        <p class="t-p text-ink/80" data-i18n="s01.context.p">
           En la plataforma, los freight forwarders y los shippers gestionan shipments (envíos de carga) junto a muchas otras partes implicadas. Constantemente ocurrían acciones relevantes para ellos — cambios de estado, mensajes, alertas — pero no existía ningún sistema centralizado para avisarles. La única vía era que el propio usuario entrara y comprobara manualmente si algo había cambiado.
         </p>
       </div>
 
       <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 pt-0 md:pt-10">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s01.card1.heading">Información que había que ir a buscar</h3>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s01.card1.p">
+          <h3 class="t-h4 t-medium mb-2" data-i18n="s01.card1.heading">Información que había que ir a buscar</h3>
+          <p class="t-p text-slate" data-i18n="s01.card1.p">
             Los usuarios tenían que volver una y otra vez a cada shipment para ver qué había cambiado, sin que nada les avisara cuando ocurría algo.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s01.card2.heading">Errores y carga de soporte</h3>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s01.card2.p">
+          <h3 class="t-h4 t-medium mb-2" data-i18n="s01.card2.heading">Errores y carga de soporte</h3>
+          <p class="t-p text-slate" data-i18n="s01.card2.p">
             Los usuarios no podían seguir el progreso de sus reservas y cotizaciones con otros clientes y stakeholders, y eso se traducía en errores y tickets de soporte. No era solo una cuestión de comodidad, sino de coordinación y de coste operativo.
           </p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s01.card3.heading">Sin control sobre qué se comunicaba ni a quién</h3>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s01.card3.p">
+          <h3 class="t-h4 t-medium mb-2" data-i18n="s01.card3.heading">Sin control sobre qué se comunicaba ni a quién</h3>
+          <p class="t-p text-slate" data-i18n="s01.card3.p">
             Producto planteó como requisito clave que forwarders y shippers pudieran configurar las notificaciones de cada shipment y decidir quién recibía cada tipo de información. Sin esa granularidad, no había forma de adaptar la información a cada stakeholder.
           </p>
         </div>
@@ -254,36 +277,36 @@
     <!-- ===== 02 · RESEARCH ===== -->
     <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s02">
       <div class="reveal flex items-center gap-4 mb-5">
-        <span class="text-base font-medium text-latte-dark">02</span>
-        <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s02.eyebrow">Research</span>
+        <span class="t-h5 text-latte-dark">02</span>
+        <span class="t-h6 text-slate" data-i18n="s02.eyebrow">Research</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-8 md:mb-12" data-i18n="s02.heading">
+      <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="s02.heading">
         Cómo investigamos antes de diseñar las notificaciones
       </h2>
 
       <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 mb-10 md:mb-16">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s02.card1.heading">Entrevistas con usuarios y soporte</h3>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s02.card1.p">Nuestros usuarios pedían encarecidamente que, de alguna manera, se pudiera identificar cada uno de los cambios que ocurrían durante su experiencia de usuario en la plataforma.</p>
+          <h3 class="t-h4 t-medium mb-2" data-i18n="s02.card1.heading">Entrevistas con usuarios y soporte</h3>
+          <p class="t-p text-slate" data-i18n="s02.card1.p">Nuestros usuarios pedían encarecidamente que, de alguna manera, se pudiera identificar cada uno de los cambios que ocurrían durante su experiencia de usuario en la plataforma.</p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s02.card2.heading">Análisis de tickets de soporte</h3>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s02.card2.p">Llegaban muchísimos tickets de error reportados por usuarios, porque no podían estar al tanto del proceso de sus bookings o de sus cotizaciones con otros clientes y stakeholders.</p>
+          <h3 class="t-h4 t-medium mb-2" data-i18n="s02.card2.heading">Análisis de tickets de soporte</h3>
+          <p class="t-p text-slate" data-i18n="s02.card2.p">Llegaban muchísimos tickets de error reportados por usuarios, porque no podían estar al tanto del proceso de sus bookings o de sus cotizaciones con otros clientes y stakeholders.</p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s02.card3.heading">Benchmark de sistemas de notificaciones</h3>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s02.card3.p">Analizamos sistemas de notificaciones de otros softwares para identificar los patrones de experiencia de usuario e interfaz que mejor funcionaban.</p>
+          <h3 class="t-h4 t-medium mb-2" data-i18n="s02.card3.heading">Benchmark de sistemas de notificaciones</h3>
+          <p class="t-p text-slate" data-i18n="s02.card3.p">Analizamos sistemas de notificaciones de otros softwares para identificar los patrones de experiencia de usuario e interfaz que mejor funcionaban.</p>
         </div>
       </div>
 
       <div class="reveal mb-8 md:mb-14">
-        <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s02.requirements.p">
+        <p class="t-p text-ink/80" data-i18n="s02.requirements.p">
           Desde product management nos plantearon un requisito clave: permitir que forwarders y shippers pudieran configurar notificaciones para cada envío y decidir quién recibía cada tipo de información. Se plantearon dos opciones: mostrar los tipos de notificación y asignar personas a cada uno, o añadir personas y elegir qué tipo de información recibiría cada una. Elegimos la primera: asignar personas a cada tipo de notificación. Así se mantiene la misma estructura para todos y cada uno de los shipments, y es igual tanto para freight forwarders como para shippers. Plantearlo al revés complicaba mucho el diseño y el desarrollo, y resultaba menos intuitivo como producto.
         </p>
       </div>
 
       <div class="reveal mb-10 md:mb-16 mt-10 md:mt-20">
-        <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s02.benchmark.p">
+        <p class="t-p text-ink/80" data-i18n="s02.benchmark.p">
           Se realizaron diferentes estudios sobre otras propuestas vistas en otros softwares. Predominaban side panels accesibles desde casi cualquier parte de la plataforma, permitiendo a los usuarios seleccionar qué notificaciones se recibirían tanto de un pedido como de todos en general.
         </p>
       </div>
@@ -312,35 +335,35 @@
     <!-- ===== 03 · DEL PAPEL A LA PANTALLA ===== -->
     <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s03">
       <div class="reveal flex items-center gap-4 mb-5">
-        <span class="text-base font-medium text-latte-dark">03</span>
-        <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s03.eyebrow">Del papel a la pantalla</span>
+        <span class="t-h5 text-latte-dark">03</span>
+        <span class="t-h6 text-slate" data-i18n="s03.eyebrow">Del papel a la pantalla</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-8 md:mb-12" data-i18n="s03.heading">
+      <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="s03.heading">
         De los primeros bocetos a las primeras interacciones
       </h2>
 
       <div class="reveal mb-10 md:mb-16">
-        <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s03.approach.p">
+        <p class="t-p text-ink/80" data-i18n="s03.approach.p">
           Desde la dirección de producto se promovía buscar soluciones para varios escenarios. Teníamos ventaja porque ya en su momento había planteado una propuesta rápida para los senior product managers, donde daba una idea sobre cómo podríamos apañar esta nueva funcionalidad en un futuro.
         </p>
       </div>
 
       <div class="reveal grid sm:grid-cols-4 gap-x-8 gap-y-10 md:gap-x-10 mb-10 md:mb-16">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s03.card1.heading">Pre-booking</h3>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s03.card1.p">Añadir el mismo componente de notificaciones en el lado de pre-booking, antes de confirmar el envío.</p>
+          <h3 class="t-h4 t-medium mb-2" data-i18n="s03.card1.heading">Pre-booking</h3>
+          <p class="t-p text-slate" data-i18n="s03.card1.p">Añadir el mismo componente de notificaciones en el lado de pre-booking, antes de confirmar el envío.</p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s03.card2.heading">Creación de contacto</h3>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s03.card2.p">Permitir añadir notificaciones directamente al crear o seleccionar un contacto.</p>
+          <h3 class="t-h4 t-medium mb-2" data-i18n="s03.card2.heading">Creación de contacto</h3>
+          <p class="t-p text-slate" data-i18n="s03.card2.p">Permitir añadir notificaciones directamente al crear o seleccionar un contacto.</p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s03.card3.heading">Vista general de envíos</h3>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s03.card3.p">Añadir notificaciones desde la vista general de envíos, sin tener que entrar en cada uno.</p>
+          <h3 class="t-h4 t-medium mb-2" data-i18n="s03.card3.heading">Vista general de envíos</h3>
+          <p class="t-p text-slate" data-i18n="s03.card3.p">Añadir notificaciones desde la vista general de envíos, sin tener que entrar en cada uno.</p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s03.card4.heading">Ficha de contacto</h3>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s03.card4.p">Añadir notificaciones haciendo clic directamente sobre cada contacto.</p>
+          <h3 class="t-h4 t-medium mb-2" data-i18n="s03.card4.heading">Ficha de contacto</h3>
+          <p class="t-p text-slate" data-i18n="s03.card4.p">Añadir notificaciones haciendo clic directamente sobre cada contacto.</p>
         </div>
       </div>
 
@@ -367,26 +390,26 @@
       <p class="reveal text-base text-slate mt-3" data-i18n="s03.caption1">Primeros bocetos del sistema de notificaciones y escenarios planteados por producto.</p>
 
       <div class="reveal mb-10 mt-10 md:mt-20">
-        <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s03.pivot.p">
+        <p class="t-p text-ink/80" data-i18n="s03.pivot.p">
           Al principio había muchos requirements y el alcance se fue simplificando tanto que perdimos diseños ya trabajados que finalmente no se incluyeron. Así arrancamos (arriba, el alcance inicial) y así terminamos (abajo, lo que finalmente quedó).
         </p>
       </div>
 
       <div class="reveal grid sm:grid-cols-4 gap-x-8 gap-y-10 md:gap-x-10 mb-10">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2 text-ink/50" data-i18n="s03.discarded.card1.heading">Pre-booking</h3>
+          <h3 class="t-h4 t-medium mb-2 text-ink/50" data-i18n="s03.discarded.card1.heading">Pre-booking</h3>
           <p class="text-base text-slate/50 leading-relaxed" data-i18n="s03.discarded.card1.p">Añadir el mismo componente de notificaciones en el lado de pre-booking, antes de confirmar el envío.</p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2 text-ink/50" data-i18n="s03.discarded.card2.heading">Creación de contacto</h3>
+          <h3 class="t-h4 t-medium mb-2 text-ink/50" data-i18n="s03.discarded.card2.heading">Creación de contacto</h3>
           <p class="text-base text-slate/50 leading-relaxed" data-i18n="s03.discarded.card2.p">Permitir añadir notificaciones directamente al crear o seleccionar un contacto.</p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2 text-ink/50" data-i18n="s03.discarded.card3.heading">Vista general de envíos</h3>
+          <h3 class="t-h4 t-medium mb-2 text-ink/50" data-i18n="s03.discarded.card3.heading">Vista general de envíos</h3>
           <p class="text-base text-slate/50 leading-relaxed" data-i18n="s03.discarded.card3.p">Añadir notificaciones desde la vista general de envíos, sin tener que entrar en cada uno.</p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2 text-ink/50" data-i18n="s03.discarded.card4.heading">Ficha de contacto</h3>
+          <h3 class="t-h4 t-medium mb-2 text-ink/50" data-i18n="s03.discarded.card4.heading">Ficha de contacto</h3>
           <p class="text-base text-slate/50 leading-relaxed" data-i18n="s03.discarded.card4.p">Añadir notificaciones haciendo clic directamente sobre cada contacto.</p>
         </div>
       </div>
@@ -397,21 +420,21 @@
 
       <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 mb-10 md:mb-16">
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s03.final.card1.heading">Activar/Desactivar notificaciones</h3>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s03.final.card1.p">Los usuarios podían activar o desactivar las notificaciones directamente desde la vista general de envíos.</p>
+          <h3 class="t-h4 t-medium mb-2" data-i18n="s03.final.card1.heading">Activar/Desactivar notificaciones</h3>
+          <p class="t-p text-slate" data-i18n="s03.final.card1.p">Los usuarios podían activar o desactivar las notificaciones directamente desde la vista general de envíos.</p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s03.final.cardNotify.heading">Notificar a terceras personas</h3>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s03.final.cardNotify.p">Los usuarios podían personalizar las notificaciones que recibía cada uno de los contactos del envío.</p>
+          <h3 class="t-h4 t-medium mb-2" data-i18n="s03.final.cardNotify.heading">Notificar a terceras personas</h3>
+          <p class="t-p text-slate" data-i18n="s03.final.cardNotify.p">Los usuarios podían personalizar las notificaciones que recibía cada uno de los contactos del envío.</p>
         </div>
         <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s03.final.card2.heading">Añadir y modificar tarjetas de contacto del propio envío</h3>
-          <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s03.final.card2.p">Se permitía añadir y modificar las tarjetas de contacto asociadas a cada envío, sin salir del flujo principal.</p>
+          <h3 class="t-h4 t-medium mb-2" data-i18n="s03.final.card2.heading">Añadir y modificar tarjetas de contacto del propio envío</h3>
+          <p class="t-p text-slate" data-i18n="s03.final.card2.p">Se permitía añadir y modificar las tarjetas de contacto asociadas a cada envío, sin salir del flujo principal.</p>
         </div>
       </div>
 
       <div class="reveal mb-10 md:mb-16">
-        <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s03.prebooking.p">
+        <p class="t-p text-ink/80" data-i18n="s03.prebooking.p">
           Pre-booking: por cuestiones de roadmap, esta parte quedó exenta de rediseño y se mantuvo como estaba hasta el momento.
         </p>
       </div>
@@ -435,7 +458,7 @@
       <p class="reveal text-base text-slate mt-3" data-i18n="s03.caption2">Flow actual de las páginas de pre-booking (no se dispone de capturas completas).</p>
 
       <div class="reveal mb-10 md:mb-16 mt-10 md:mt-20">
-        <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s03.contact.p">
+        <p class="t-p text-ink/80" data-i18n="s03.contact.p">
           En cuanto a la creación de contacto, también se mantuvo fuera del proyecto final de momento: la propuesta está hecha, pero no se pudo integrar debido a cuestiones técnicas del equipo de desarrollo, y porque para el equipo directivo no era realmente una prioridad finalmente.
         </p>
       </div>
@@ -462,15 +485,15 @@
     <!-- ===== 04 · SOLUTION ===== -->
     <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s04">
       <div class="reveal flex items-center gap-4 mb-5">
-        <span class="text-base font-medium text-latte-dark">04</span>
-        <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s04.eyebrow">Solución</span>
+        <span class="t-h5 text-latte-dark">04</span>
+        <span class="t-h6 text-slate" data-i18n="s04.eyebrow">Solución</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-8 md:mb-12" data-i18n="s04.heading">
+      <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="s04.heading">
         Un sistema de notificaciones más sencillo de lo esperado
       </h2>
 
       <div class="reveal mb-10 md:mb-16">
-        <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s04.approach.p">
+        <p class="t-p text-ink/80" data-i18n="s04.approach.p">
           Tras percibir estos cambios de roadmap mientras el proyecto estaba en pleno desarrollo de diseño, me alineé bastante rápido con los diferentes stakeholders y definimos, en tiempo récord, un sistema de notificaciones simplificado que pudiera solventar las principales prioridades del equipo de producto. El proyecto aún no se ha lanzado, así que lo que sigue es la solución diseñada, no un producto en vivo.
         </p>
       </div>
@@ -479,8 +502,8 @@
         <ul>
           <li class="py-5 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <div>
-              <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-1" data-i18n="s04.feature1.heading">Activar y desactivar notificaciones de manera general</h3>
-              <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s04.feature1.p">Se buscaba una solución que permitiera modificar rápidamente si un envío debería de recibir notificaciones o no.</p>
+              <h3 class="t-h4 t-medium mb-1" data-i18n="s04.feature1.heading">Activar y desactivar notificaciones de manera general</h3>
+              <p class="t-p text-slate" data-i18n="s04.feature1.p">Se buscaba una solución que permitiera modificar rápidamente si un envío debería de recibir notificaciones o no.</p>
             </div>
           </li>
         </ul>
@@ -508,8 +531,8 @@
         <ul>
           <li class="py-5 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <div>
-              <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-1" data-i18n="s04.feature2.heading">Notificar a terceras personas</h3>
-              <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s04.feature2.p">Diseñamos una solución que permitía customizar las notificaciones que recibiría cada uno de los contactos del envío.</p>
+              <h3 class="t-h4 t-medium mb-1" data-i18n="s04.feature2.heading">Notificar a terceras personas</h3>
+              <p class="t-p text-slate" data-i18n="s04.feature2.p">Diseñamos una solución que permitía customizar las notificaciones que recibiría cada uno de los contactos del envío.</p>
             </div>
           </li>
         </ul>
@@ -537,8 +560,8 @@
         <ul>
           <li class="py-5 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
             <div>
-              <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-1" data-i18n="s04.feature3.heading">Añadir y modificar contactos del envío</h3>
-              <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s04.feature3.p">Dentro de la industria logística hay muchas personas involucradas dentro del proceso de envío. Por ello, era interesante poder seleccionar contactos y modificar sus datos, en caso de que fuese necesario.</p>
+              <h3 class="t-h4 t-medium mb-1" data-i18n="s04.feature3.heading">Añadir y modificar contactos del envío</h3>
+              <p class="t-p text-slate" data-i18n="s04.feature3.p">Dentro de la industria logística hay muchas personas involucradas dentro del proceso de envío. Por ello, era interesante poder seleccionar contactos y modificar sus datos, en caso de que fuese necesario.</p>
             </div>
           </li>
         </ul>
@@ -573,38 +596,38 @@
       <p class="reveal text-base text-slate mt-3" data-i18n="s04.item03.caption">Detalle de campana, tarjeta de contacto en Contacts v2, y modal de edición de Notify party.</p>
 
       <div class="reveal mt-10 md:mt-20">
-        <h3 class="text-lg md:text-[clamp(1.125rem,0.9583rem+0.2604vw,1.375rem)] font-medium mb-2" data-i18n="s04.expected.heading">Impacto esperado</h3>
-        <p class="text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-slate leading-relaxed" data-i18n="s04.expected.p">Al no haberse publicado todavía, no hay resultados medidos. Lo que se esperaba era que los usuarios pudieran recibir más emails sobre el estado de sus shipments y reducir las llamadas al servicio de atención al cliente.</p>
+        <h3 class="t-h4 t-medium mb-2" data-i18n="s04.expected.heading">Impacto esperado</h3>
+        <p class="t-p text-slate" data-i18n="s04.expected.p">Al no haberse publicado todavía, no hay resultados medidos. Lo que se esperaba era que los usuarios pudieran recibir más emails sobre el estado de sus shipments y reducir las llamadas al servicio de atención al cliente.</p>
       </div>
     </section>
 
     <!-- ===== 05 · KEY LEARNINGS ===== -->
     <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s05">
       <div class="reveal flex items-center gap-4 mb-5">
-        <span class="text-base font-medium text-latte-dark">05</span>
-        <span class="text-base font-medium tracking-widest uppercase text-slate" data-i18n="s05.eyebrow">Aprendizajes clave</span>
+        <span class="t-h5 text-latte-dark">05</span>
+        <span class="t-h6 text-slate" data-i18n="s05.eyebrow">Aprendizajes clave</span>
       </div>
-      <h2 class="reveal text-2xl md:text-[clamp(1.875rem,1.625rem+0.390625vw,2.25rem)] font-semibold tracking-tight mb-8" data-i18n="s05.heading">
+      <h2 class="reveal t-h2 mb-4" data-i18n="s05.heading">
         Qué me dejó este proyecto
       </h2>
-      <p class="reveal text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed" data-i18n="s05.p1">
+      <p class="reveal t-p text-ink/80" data-i18n="s05.p1">
         A veces hay proyectos que conllevan más o menos prioridad dentro de un roadmap. Con este en concreto, pude observar cómo los requisitos pueden cambiar de la noche a la mañana y la agilidad que hay que tener para adaptarse a las nuevas visiones externas. Me llevo mucho entrenamiento para futuros proyectos que conlleven situaciones similares.
       </p>
-      <p class="reveal text-base md:text-[clamp(1rem,0.9167rem+0.1302vw,1.125rem)] text-ink/80 leading-relaxed mt-6" data-i18n="s05.p2">
+      <p class="reveal t-p text-ink/80 mt-6" data-i18n="s05.p2">
         También comentar que este proyecto no ha sido publicado aún en el sistema, por eso todo lo que vemos en esta página es estrictamente confidencial.
       </p>
     </section>
 
     <!-- ===== END OF CASE STUDY ===== -->
     <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20 text-center">
-      <p class="reveal text-lg md:text-[clamp(1.25rem,1.0833rem+0.2604vw,1.5rem)] font-medium tracking-tight mb-10" data-i18n="cta.heading">
+      <p class="reveal t-h3 mb-10" data-i18n="cta.heading">
         ¿Quieres ver más proyectos?
       </p>
       <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="swap.html" class="focus-ring inline-flex items-center gap-2 bg-ink text-paper text-base font-medium px-6 py-3.5 rounded-full hover:bg-slate transition-colors" data-i18n="cta.next">
+        <a href="swap.html" class="focus-ring inline-flex items-center gap-2 bg-ink text-paper t-s-m px-6 py-3.5 rounded-full hover:bg-slate transition-colors" data-i18n="cta.next">
           Continuar con SWAP
         </a>
-        <a href="../index.html#work" class="focus-ring inline-flex items-center gap-2 text-base font-medium px-6 py-3.5 rounded-full border border-ink/15 hover:bg-latte/40 hover:border-latte-dark transition-colors" data-i18n="cta.back">
+        <a href="../index.html#work" class="focus-ring inline-flex items-center gap-2 t-s-m px-6 py-3.5 rounded-full border border-ink/15 hover:bg-latte/40 hover:border-latte-dark transition-colors" data-i18n="cta.back">
           Volver a todos los proyectos
         </a>
       </div>
@@ -965,39 +988,6 @@
           errorEl.classList.remove('hidden');
           input.value = '';
           input.focus();
-        }
-      });
-    })();
-
-    // ===== Copiar email =====
-    (function () {
-      const btn = document.getElementById('copy-email');
-      const label = document.getElementById('copy-email-label');
-      const copyIcon = document.getElementById('copy-icon');
-      const checkIcon = document.getElementById('check-icon');
-      if (!btn || !label) return;
-      const email = 'hola@javierdr.com';
-      const defaultText = label.textContent;
-      let resetTimer = null;
-
-      function showCopied(text) {
-        label.textContent = text;
-        if (copyIcon) copyIcon.classList.add('hidden');
-        if (checkIcon) checkIcon.classList.remove('hidden');
-        clearTimeout(resetTimer);
-        resetTimer = setTimeout(() => {
-          label.textContent = defaultText;
-          if (checkIcon) checkIcon.classList.add('hidden');
-          if (copyIcon) copyIcon.classList.remove('hidden');
-        }, 2000);
-      }
-
-      btn.addEventListener('click', async () => {
-        try {
-          await navigator.clipboard.writeText(email);
-          showCopied('¡Copiado!');
-        } catch (err) {
-          showCopied(email);
         }
       });
     })();
