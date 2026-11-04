@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="meta.title">Circadia · Javier Díaz</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" data-i18n="meta.description" data-i18n-attr="content" content="Caso de estudio: compañero de sueño y recuperación para personal de enfermería con turnos rotativos.">
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#1A1917',
+          slate: '#6E6A64',
+          paper: '#FFFFFF',
+          mist: '#FAF9F7',
+          latte: '#E5D9C5',
+          'latte-dark': '#D4C4B7',
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+        },
+        letterSpacing: {
+          tightest: '-0.04em',
+        },
+      },
+    },
+  }
+</script>
+
+<!-- Google Fonts: Inter -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  html { font-family: 'Inter', sans-serif; }
+  ::selection { background-color: #E5D9C5; color: #1A1917; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  .focus-ring:focus-visible {
+    outline: 2px solid #1A1917;
+    outline-offset: 3px;
+  }
+
+  .card-img {
+    background-image:
+      linear-gradient(135deg, #F0EBE1 0%, #E5D9C5 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .card-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.5), transparent 60%);
+  }
+
+  body {
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+  body.is-ready {
+    opacity: 1;
+  }
+  /* Escala tipográfica (múltiplos de 8, sin decimales): H1–H6 + P */
+  .t-h1 { font-size: 48px; line-height: 56px; font-weight: 600; letter-spacing: -2px; }
+  .t-h2 { font-size: 40px; line-height: 48px; font-weight: 600; letter-spacing: -1px; }
+  .t-h3 { font-size: 32px; line-height: 40px; font-weight: 500; letter-spacing: 0; }
+  .t-h4 { font-size: 20px; line-height: 28px; font-weight: 400; letter-spacing: 0; }
+  .t-h4.t-medium { font-weight: 500; }
+  .t-h5 { font-size: 20px; line-height: 28px; font-weight: 500; letter-spacing: 0; }
+  .t-h6 { font-size: 20px; line-height: 28px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; }
+  .t-s  { font-size: 16px; line-height: 24px; font-weight: 400; letter-spacing: 0; }
+  .t-s-m { font-size: 16px; line-height: 24px; font-weight: 500; letter-spacing: 0; }
+  .t-logo { font-size: 16px; line-height: 24px; font-weight: 600; letter-spacing: 0; }
+  .t-p  { font-size: 20px; line-height: 28px; font-weight: 400; letter-spacing: 0; }
+  @media (min-width: 768px) {
+    .t-logo { font-size: 24px; line-height: 32px; letter-spacing: -1px; }
+    .t-h1 { font-size: 72px; line-height: 80px; letter-spacing: -3px; }
+    .t-h4 { font-size: 24px; line-height: 32px; }
+    }
+  @media (min-width: 1280px) {
+    .t-h1 { font-size: 80px; line-height: 88px; }
+  }
+  @media (max-width: 767px) {
+    .t-h2.t-down { font-size: 32px; line-height: 40px; font-weight: 500; letter-spacing: 0; }
+  }
+  @media (max-width: 767px) {
+    .t-meta { font-size: 16px; line-height: 24px; }
+  }
+</style>
+</head>
+
+<body class="bg-paper text-ink antialiased min-h-screen flex flex-col">
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-paper/80 backdrop-blur-md">
+    <nav class="max-w-[1680px] mx-auto px-6 sm:px-16 h-[68px] sm:h-[136px] flex items-center justify-between">
+
+      <a href="../index.html" class="t-logo focus-ring rounded whitespace-nowrap shrink-0">
+        Javier Díaz
+      </a>
+
+      <div class="flex items-center gap-4 sm:gap-8 shrink-0">
+        <ul class="flex items-center gap-4 sm:gap-10 text-base sm:text-xl text-slate whitespace-nowrap">
+          <li><a href="../sobre-mi.html" class="inline-block py-2 -my-2 hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
+          <li><a href="../contacto.html" class="inline-block py-2 -my-2 hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
+        </ul>
+        <button type="button" id="lang-toggle-mobile" class="sm:hidden h-8 px-3 flex items-center justify-center t-s-m border border-ink/15 rounded-full [@media(hover:hover)]:hover:bg-latte/40 [-webkit-tap-highlight-color:transparent] transition-colors" aria-label="Cambiar idioma">ES</button>
+        <div class="hidden sm:flex items-center h-8 gap-1 t-s-m border border-ink/15 rounded-full p-1" role="group" aria-label="Seleccionar idioma">
+          <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="en">EN</button>
+          <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="es">ES</button>
+        </div>
+      </div>
+
+    </nav>
+  </header>
+
+  <main class="flex-1">
+
+    <!-- ===== PASSWORD GATE ===== -->
+    <section id="password-gate" class="max-w-[1680px] mx-auto px-6 sm:px-16 pt-[91px] sm:pt-[159px] pb-20 min-h-[60vh] flex flex-col justify-center">
+      <div class="max-w-xl mx-auto text-center w-full">
+      <h1 class="t-h2 mb-8" data-i18n="gate.heading">
+        Este proyecto está protegido
+      </h1>
+      <form id="password-form" class="flex flex-col gap-3" autocomplete="off">
+        <label for="password-input" class="sr-only" data-i18n="gate.label">Contraseña</label>
+        <input type="password" id="password-input" name="password" autocomplete="off" placeholder="Introduce la contraseña" data-i18n="gate.placeholder" data-i18n-attr="placeholder" class="focus-ring w-full text-center px-6 py-3.5 rounded-full border border-ink/15 bg-paper text-ink placeholder:text-slate/60">
+        <button type="submit" class="focus-ring inline-flex items-center justify-center gap-2 bg-ink text-paper t-s-m px-6 py-4 rounded-full hover:bg-slate transition-colors" data-i18n="gate.button">
+          Acceder
+        </button>
+        <p id="password-error" class="hidden text-base text-red-600/80 mt-1" data-i18n="gate.error">Contraseña incorrecta. Inténtalo de nuevo.</p>
+      </form>
+      </div>
+    </section>
+
+    <div id="protected-content" class="hidden">
+
+    <!-- ===== ÍNDICE DE SECCIONES ===== -->
+    <nav id="section-index" class="group/index hidden xl:flex flex-col items-end gap-4 fixed right-6 top-1/2 -translate-y-1/2 z-30" aria-label="Índice de secciones">
+      <button type="button" class="section-index-item flex items-center gap-3 focus-ring rounded" data-target="s01">
+        <span class="section-index-label text-base text-slate whitespace-nowrap opacity-0 max-w-0 group-hover/index:opacity-100 group-hover/index:max-w-[480px] overflow-hidden transition-all duration-300 ease-out bg-paper/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-ink/15" data-i18n="s01.eyebrow">El reto</span>
+        <span class="section-index-dot w-1.5 h-1.5 rounded-full bg-ink/20 transition-all shrink-0"></span>
+      </button>
+      <button type="button" class="section-index-item flex items-center gap-3 focus-ring rounded" data-target="s02">
+        <span class="section-index-label text-base text-slate whitespace-nowrap opacity-0 max-w-0 group-hover/index:opacity-100 group-hover/index:max-w-[480px] overflow-hidden transition-all duration-300 ease-out bg-paper/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-ink/15" data-i18n="s02.eyebrow">Planificación del tiempo</span>
+        <span class="section-index-dot w-1.5 h-1.5 rounded-full bg-ink/20 transition-all shrink-0"></span>
+      </button>
+      <button type="button" class="section-index-item flex items-center gap-3 focus-ring rounded" data-target="s03">
+        <span class="section-index-label text-base text-slate whitespace-nowrap opacity-0 max-w-0 group-hover/index:opacity-100 group-hover/index:max-w-[480px] overflow-hidden transition-all duration-300 ease-out bg-paper/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-ink/15" data-i18n="s03.eyebrow">Benchmark</span>
+        <span class="section-index-dot w-1.5 h-1.5 rounded-full bg-ink/20 transition-all shrink-0"></span>
+      </button>
+      <button type="button" class="section-index-item flex items-center gap-3 focus-ring rounded" data-target="s04">
+        <span class="section-index-label text-base text-slate whitespace-nowrap opacity-0 max-w-0 group-hover/index:opacity-100 group-hover/index:max-w-[480px] overflow-hidden transition-all duration-300 ease-out bg-paper/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-ink/15" data-i18n="s04.eyebrow">Entrevista con usuaria</span>
+        <span class="section-index-dot w-1.5 h-1.5 rounded-full bg-ink/20 transition-all shrink-0"></span>
+      </button>
+      <button type="button" class="section-index-item flex items-center gap-3 focus-ring rounded" data-target="s05">
+        <span class="section-index-label text-base text-slate whitespace-nowrap opacity-0 max-w-0 group-hover/index:opacity-100 group-hover/index:max-w-[480px] overflow-hidden transition-all duration-300 ease-out bg-paper/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-ink/15" data-i18n="s05.eyebrow">Branding</span>
+        <span class="section-index-dot w-1.5 h-1.5 rounded-full bg-ink/20 transition-all shrink-0"></span>
+      </button>
+      <button type="button" class="section-index-item flex items-center gap-3 focus-ring rounded" data-target="s06">
+        <span class="section-index-label text-base text-slate whitespace-nowrap opacity-0 max-w-0 group-hover/index:opacity-100 group-hover/index:max-w-[480px] overflow-hidden transition-all duration-300 ease-out bg-paper/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-ink/15" data-i18n="s06.eyebrow">Arquitectura de información</span>
+        <span class="section-index-dot w-1.5 h-1.5 rounded-full bg-ink/20 transition-all shrink-0"></span>
+      </button>
+      <button type="button" class="section-index-item flex items-center gap-3 focus-ring rounded" data-target="s07">
+        <span class="section-index-label text-base text-slate whitespace-nowrap opacity-0 max-w-0 group-hover/index:opacity-100 group-hover/index:max-w-[480px] overflow-hidden transition-all duration-300 ease-out bg-paper/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-ink/15" data-i18n="s07.eyebrow">Wireframes</span>
+        <span class="section-index-dot w-1.5 h-1.5 rounded-full bg-ink/20 transition-all shrink-0"></span>
+      </button>
+      <button type="button" class="section-index-item flex items-center gap-3 focus-ring rounded" data-target="s08">
+        <span class="section-index-label text-base text-slate whitespace-nowrap opacity-0 max-w-0 group-hover/index:opacity-100 group-hover/index:max-w-[480px] overflow-hidden transition-all duration-300 ease-out bg-paper/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-ink/15" data-i18n="s08.eyebrow">Alta fidelidad</span>
+        <span class="section-index-dot w-1.5 h-1.5 rounded-full bg-ink/20 transition-all shrink-0"></span>
+      </button>
+      <button type="button" class="section-index-item flex items-center gap-3 focus-ring rounded" data-target="s09">
+        <span class="section-index-label text-base text-slate whitespace-nowrap opacity-0 max-w-0 group-hover/index:opacity-100 group-hover/index:max-w-[480px] overflow-hidden transition-all duration-300 ease-out bg-paper/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-ink/15" data-i18n="s09.eyebrow">Alcance del MVP</span>
+        <span class="section-index-dot w-1.5 h-1.5 rounded-full bg-ink/20 transition-all shrink-0"></span>
+      </button>
+      <button type="button" class="section-index-item flex items-center gap-3 focus-ring rounded" data-target="s10">
+        <span class="section-index-label text-base text-slate whitespace-nowrap opacity-0 max-w-0 group-hover/index:opacity-100 group-hover/index:max-w-[480px] overflow-hidden transition-all duration-300 ease-out bg-paper/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-ink/15" data-i18n="s10.eyebrow">Uso de IA</span>
+        <span class="section-index-dot w-1.5 h-1.5 rounded-full bg-ink/20 transition-all shrink-0"></span>
+      </button>
+      <button type="button" class="section-index-item flex items-center gap-3 focus-ring rounded" data-target="s11">
+        <span class="section-index-label text-base text-slate whitespace-nowrap opacity-0 max-w-0 group-hover/index:opacity-100 group-hover/index:max-w-[480px] overflow-hidden transition-all duration-300 ease-out bg-paper/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-ink/15" data-i18n="s11.eyebrow">Aprendizajes clave</span>
+        <span class="section-index-dot w-1.5 h-1.5 rounded-full bg-ink/20 transition-all shrink-0"></span>
+      </button>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 pt-[91px] sm:pt-[159px]">
+      <h1 class="reveal is-visible t-h1" data-i18n="hero.title">Circadia</h1>
+
+      <p class="reveal is-visible mt-6 t-h4 text-slate" data-i18n="hero.subtitle">Un compañero de sueño y recuperación para personal de enfermería con turnos rotativos. Parte del turno real, es calmado y no presiona: sin puntuaciones, sin rachas y sin notificaciones por defecto.</p>
+
+      <div class="reveal is-visible mt-8 sm:mt-12 pt-0 sm:pt-8 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-6 sm:gap-8">
+        <div>
+          <p class="t-h6 text-slate mb-1 sm:mb-2" data-i18n="hero.role.label">Rol</p>
+          <p class="t-h5 t-meta text-ink" data-i18n="hero.role.value">Product Designer</p>
+        </div>
+        <div>
+          <p class="t-h6 text-slate mb-1 sm:mb-2" data-i18n="hero.format.label">Formato</p>
+          <p class="t-h5 t-meta text-ink" data-i18n="hero.format.value">Reto de diseño de producto · 4 h</p>
+        </div>
+        <div>
+          <p class="t-h6 text-slate mb-1 sm:mb-2" data-i18n="hero.year.label">Año</p>
+          <p class="t-h5 t-meta text-ink" data-i18n="hero.year.value">2026</p>
+        </div>
+        <div>
+          <p class="t-h6 text-slate mb-1 sm:mb-2" data-i18n="hero.team.label">Equipo</p>
+          <p class="t-h5 t-meta text-ink" data-i18n="hero.team.value">Individual</p>
+        </div>
+      </div>
+
+      <div class="mt-16 md:mt-20">
+      <div id="hero-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-[#F7F1E8]">
+        <div id="hero-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="circadia/cover-clean.png" alt="Logotipo de Circadia" data-i18n="hero.img1.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-16 md:p-32 shrink-0" loading="lazy"><div class="w-full h-full shrink-0 flex items-center justify-center gap-6 md:gap-12 p-6 md:p-10"><img src="circadia/hifi-today.png" alt="Pantalla Today en alta fidelidad" data-i18n="hero.img2.alt" data-i18n-attr="alt" class="h-full w-auto object-contain" loading="lazy"><img src="circadia/hifi-roster.png" alt="Pantalla Roster en alta fidelidad" data-i18n="hero.img3.alt" data-i18n-attr="alt" class="h-full w-auto object-contain" loading="lazy"></div><img src="circadia/brand-colour.png" alt="Dirección de color de Circadia, versión día y noche" data-i18n="hero.img4.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-0 shrink-0" loading="lazy">
+        </div>
+        <button type="button" id="hero-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button type="button" id="hero-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+        <div class="absolute bottom-3 inset-x-0 hidden sm:flex items-center justify-center gap-2"><button type="button" class="hero-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button><button type="button" class="hero-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button><button type="button" class="hero-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button></div>
+      </div>
+      </div>
+    </section>
+
+    <!-- ===== 01 · EL RETO ===== -->
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s01">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="t-h5 text-latte-dark">01</span>
+        <span class="t-h6 text-slate" data-i18n="s01.eyebrow">El reto</span>
+      </div>
+      <h2 class="reveal t-h2 max-w-2xl mb-4 md:mb-6" data-i18n="s01.heading">Un compañero de sueño para quienes trabajan por turnos</h2>
+<div class="reveal mb-12"><p class="t-p text-slate" data-i18n="s01.context">Circadia es una startup en fase inicial que desarrolla apoyo para el sueño y la recuperación de personas con turnos rotativos, empezando por enfermeras de hospital. Los turnos rotativos alteran el ritmo circadiano, y eso se traduce en burnout, errores médicos y abandono de la profesión: un problema que los hospitales pagan cada vez más por resolver.</p></div><div class="reveal mb-6"><h3 class="t-h4 t-medium mb-2" data-i18n="s01.goals.h">La app debía ayudar a una enfermera a…</h3></div><div class="reveal mb-8 md:mb-14 grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10">
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s01g.c1.h">Una ventana de sueño personalizada</h3><div class="t-p text-slate" data-i18n="s01g.c1.p">Una recomendación construida a partir de su roster real de turnos rotativos.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s01g.c2.h">Guía simple y accionable</h3><div class="t-p text-slate" data-i18n="s01g.c2.p">Consejos sobre exposición a la luz, cafeína y siestas, ajustados a los cambios de turno.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s01g.c3.h">Deuda de sueño y tendencia de recuperación</h3><div class="t-p text-slate" data-i18n="s01g.c3.p">Ver cómo evolucionan con el tiempo, ligadas a lo fielmente que ha seguido la guía.</div></div>
+</div><div class="reveal mb-6"><p class="t-p text-slate" data-i18n="s01.task">La tarea era diseñar una app móvil en la que una enfermera conecte o introduzca su roster y reciba una guía de sueño construida a su alrededor. Las usuarias principales son enfermeras de hospital con turnos de 8 a 12 horas (rotaciones de día y noche). No existía marca, así que tenía que definir una que se leyera calmada y fiable, no clínica ni estéril: una herramienta que se consulta agotada, no una app de estilo de vida.</p></div><div class="reveal mb-12"><p class="t-p text-slate" data-i18n="s01.paths">Además, Circadia exploraba en paralelo dos vías de distribución —vender a los presupuestos de bienestar y salud laboral de los hospitales (B2B2C) o ir directo a las enfermeras (B2C)—, ambas abiertas, y pedía tener una opinión al respecto.</p></div><div class="reveal mb-6"><h3 class="t-h4 t-medium mb-2" data-i18n="s01.deliv.h">Qué pedía el reto</h3></div><div class="reveal mb-6 grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10">
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s01d.c1.h">Entregables obligatorios</h3><div class="t-p text-slate" data-i18n="s01d.c1.p"><ul class="list-disc pl-5 space-y-1.5"><li>Benchmark básico de 2-3 apps de salud existentes</li><li>Dirección de marca aproximada: logo o símbolo, color principal, color de acento y una nota sobre tipografía o tono</li><li>Arquitectura de información de la app</li><li>3-4 wireframes de media fidelidad con los flujos principales (onboarding o entrada de turnos y dashboard, obligatorios)</li><li>2 páginas en alta fidelidad a elegir</li><li>Una presentación en Loom de menos de 5 minutos</li></ul></div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s01d.c2.h">Reglas del juego</h3><div class="t-p text-slate" data-i18n="s01d.c2.p"><ul class="list-disc pl-5 space-y-1.5"><li>Herramienta: Figma</li><li>Alcance de unas 4 horas: se evalúa como si hubiera durado 4 horas</li><li>No perderse en investigación profunda de personas: explicitar supuestos y avanzar</li><li>Si se usan benchmarks, decir qué se toma de ellos</li><li>Explicar dónde ayudó la IA, dónde estorbó y dónde la corregí</li></ul></div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s01d.c3.h">Apartado opcional</h3><div class="t-p text-slate" data-i18n="s01d.c3.p">Pensar más allá de la pantalla: cómo plantear el alcance como un proyecto real, el calendario hasta un MVP en App Store y Play Store, qué minas técnicas, clínicas o de adopción podrían dinamitarlo y quién es el comprador real, la enfermera o el hospital.</div></div>
+</div><div class="reveal mb-8 md:mb-14"><p class="t-p text-slate" data-i18n="s01.done">Cubrí todo lo que pedía el reto, incluido el apartado opcional. Esta página recoge ese trabajo tal y como lo hice en Figma.</p></div><div class="reveal mb-6"><h3 class="t-h4 t-medium mb-2" data-i18n="s01.approach.h">Mi enfoque</h3></div><div class="reveal mb-8 md:mb-14 grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10">
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s01.c1.h">Partir del turno real</h3><div class="t-p text-slate" data-i18n="s01.c1.p">El diseño arranca del roster y de las restricciones reales de la persona, no de recomendaciones genéricas de higiene del sueño.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s01.c2.h">Validar pronto</h3><div class="t-p text-slate" data-i18n="s01.c2.p">Una entrevista con una enfermera de hospital (rotación de 2 tardes, 2 mañanas y 2 libres) cambió el diseño: rehice los wireframes y la arquitectura de información.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s01.c3.h">Calma: pull, no push</h3><div class="t-p text-slate" data-i18n="s01.c3.p">Sin puntuaciones, sin rachas y sin notificaciones por defecto. La app se abre cuando la persona quiere, no cuando la app lo decide.</div></div>
+</div><div class="reveal mb-6"><p class="t-p text-slate" data-i18n="s01.empathy">Más allá del sueño, este reto me permitió empatizar con el día a día del personal de enfermería y poner el foco en su salud mental: una herramienta que acompaña sin juzgar ni presionar a personas para las que el cansancio es el estado por defecto.</p></div><div class="reveal"><p class="t-p text-slate" data-i18n="s01.note">Los horarios, fechas y consejos que aparecen en las pantallas son datos de ejemplo.</p></div>
+    </section>
+
+    <!-- ===== 02 · PLANIFICACIÓN DEL TIEMPO ===== -->
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s02">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="t-h5 text-latte-dark">02</span>
+        <span class="t-h6 text-slate" data-i18n="s02.eyebrow">Planificación del tiempo</span>
+      </div>
+      <h2 class="reveal t-h2 max-w-2xl mb-4 md:mb-6" data-i18n="s02.heading">Un reto acotado a unas 4 horas</h2>
+<div class="reveal mb-8 md:mb-14"><p class="t-p text-slate" data-i18n="s02.p1">Dividí el reto en bloques con minutos asignados (240 en total) para decidir qué merecía más tiempo y qué se quedaba en una versión mínima. El tiempo real se pasó un poco —solo la dirección de marca llevó 35 minutos en lugar de 25—, pero mantuve cada bloque acotado para que el resultado pudiera valorarse como si hubiera sido en 4 horas.</p></div><div class="reveal overflow-x-auto rounded-2xl bg-paper"><img src="circadia/time.png" alt="Reparto del tiempo del reto en bloques, de 10 a 45 minutos cada uno, hasta un total de 240 minutos" data-i18n="s02.img" data-i18n-attr="alt" class="block w-full h-auto min-w-[720px]" loading="lazy"></div><p class="reveal text-base text-slate mt-3" data-i18n="s02.img.cap">Reparto del tiempo: 240 minutos en total, con el mayor bloque dedicado al diseño de alta fidelidad.</p>
+    </section>
+
+    <!-- ===== 03 · BENCHMARK ===== -->
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s03">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="t-h5 text-latte-dark">03</span>
+        <span class="t-h6 text-slate" data-i18n="s03.eyebrow">Benchmark</span>
+      </div>
+      <h2 class="reveal t-h2 max-w-2xl mb-4 md:mb-6" data-i18n="s03.heading">Qué hacen bien (y mal) las apps de turnos y sueño</h2>
+<div class="reveal mb-8 md:mb-14"><p class="t-p text-slate" data-i18n="s03.p1">El reto pedía analizar 2-3 apps de salud existentes (Rise, Oura, Whoop, RISE Science u otras a elección). Elegí Timeshifter, AfterShift y Oura —las dos primeras centradas en el trabajo por turnos—, además de mirar Apple Clock, a partir de fichas de App Store, páginas de ayuda oficiales y unas pocas reseñas de usuarios. Para cada app anoté qué tomar prestado y qué evitar.</p></div><div id="bench-carousel" class="reveal group relative aspect-[3.4/1] rounded-2xl overflow-hidden border border-ink/15 bg-paper">
+        <div id="bench-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="circadia/bench-timeshifter.png" alt="Benchmark de Timeshifter: capturas de la app y resumen de qué tomar prestado y qué evitar" data-i18n="s03.img1.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-3 shrink-0" loading="lazy"><img src="circadia/bench-aftershift.png" alt="Benchmark de AfterShift: capturas de la app y resumen de qué tomar prestado y qué evitar" data-i18n="s03.img2.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-3 shrink-0" loading="lazy"><img src="circadia/bench-oura.png" alt="Benchmark de Oura: capturas de la app y resumen de qué tomar prestado y qué evitar" data-i18n="s03.img3.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-3 shrink-0" loading="lazy">
+        </div>
+        <button type="button" id="bench-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button type="button" id="bench-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+        <div class="absolute bottom-3 inset-x-0 hidden sm:flex items-center justify-center gap-2"><button type="button" class="bench-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button><button type="button" class="bench-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button><button type="button" class="bench-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button></div>
+      </div>
+      <p class="reveal text-base text-slate mt-3" data-i18n="bench.cap">Timeshifter, AfterShift y Oura: capturas y conclusiones de qué tomar prestado y qué evitar.</p><div class="reveal mt-10 md:mt-20 mb-6"><h3 class="t-h4 t-medium mb-2" data-i18n="s03.principles.h">Principios de diseño</h3></div><div class="reveal mb-12"><p class="t-p text-slate" data-i18n="s03.principles.p">Una enfermera abriría Circadia después del turno, con poca luz y poca energía: la fatiga es el estado por defecto, no un caso límite. De ahí salieron siete principios y un criterio para el modo oscuro.</p></div><div class="reveal mb-10 grid sm:grid-cols-4 gap-x-8 gap-y-10 md:gap-x-10">
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s03p.c1.h">1. Reducir la carga innecesaria</h3><div class="t-p text-slate" data-i18n="s03p.c1.p">Una acción principal por pantalla. Nada decorativo sin significado.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s03p.c2.h">2. Valores por defecto antes que entrada manual</h3><div class="t-p text-slate" data-i18n="s03p.c2.p">Plantillas de rotación, patrones rellenados y entradas reutilizadas: nunca hay que escribir un roster completo a mano.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s03p.c3.h">3. Patrones familiares</h3><div class="t-p text-slate" data-i18n="s03p.c3.p">Barra de pestañas, calendario y widgets nativos estándar. Nada nuevo que aprender.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s03p.c4.h">4. Lo prioritario primero</h3><div class="t-p text-slate" data-i18n="s03p.c4.p">La próxima ventana de sueño y «qué hacer ahora» arriba. Todo lo demás, plegado.</div></div>
+</div><div class="reveal mb-6 grid sm:grid-cols-4 gap-x-8 gap-y-10 md:gap-x-10">
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s03q.c1.h">5. Visuales calmados</h3><div class="t-p text-slate" data-i18n="s03q.c1.p">Paleta apagada, espacio generoso y movimiento contenido.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s03q.c2.h">6. Notificaciones con mesura</h3><div class="t-p text-slate" data-i18n="s03q.c2.p">Pocas, ligadas al turno, con control por tipo y opción de resumen diario.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s03q.c3.h">7. Privacidad visible, no escondida</h3><div class="t-p text-slate" data-i18n="s03q.c3.p">Un bloque claro de «quién ve qué». Nada individual se comparte con el hospital sin consentimiento.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s03q.c4.h">Modo oscuro</h3><div class="t-p text-slate" data-i18n="s03q.c4.p">Una decisión de usabilidad, no de estilo: uso frecuente, poca luz y poco contenido multimedia. Sigue el ajuste del sistema, evita tipografías muy finas o muy gruesas, usa colores desaturados y superficies más claras sobre las oscuras.</div></div>
+</div><div class="reveal mt-10 md:mt-20 mb-6"><h3 class="t-h4 t-medium mb-2" data-i18n="s03.vs.h">Principios frente al benchmark</h3></div><div class="reveal mb-10"><p class="t-p text-slate" data-i18n="s03.vs.p">Contrasté cada app con los principios de Circadia: qué hace bien, dónde se queda corta y dónde no hay evidencia.</p></div><div class="reveal overflow-x-auto rounded-2xl border border-ink/15 bg-paper"><img src="circadia/bench-vs.png" alt="Tabla de principios frente al benchmark de Timeshifter, AfterShift y Oura" data-i18n="s03.vs.img" data-i18n-attr="alt" class="block w-full h-auto min-w-[900px]" loading="lazy"></div><div class="reveal mt-10 md:mt-20 mb-6"><h3 class="t-h4 t-medium mb-2" data-i18n="s03.best.h">Buenas prácticas para Circadia</h3></div><div class="reveal mb-10"><p class="t-p text-slate" data-i18n="s03.best.p">Destilé el benchmark, junto con NN/g y WCAG para accesibilidad, en diez buenas prácticas: qué aplicar, de dónde tomarlo, qué evitar y en qué pantalla se refleja.</p></div><div class="reveal overflow-x-auto rounded-2xl border border-ink/15 bg-paper"><img src="circadia/bench-matrix.png" alt="Tabla de buenas prácticas para Circadia con los diez principios, de dónde tomarlos y qué evitar" data-i18n="s03.best.img" data-i18n-attr="alt" class="block w-full h-auto min-w-[900px]" loading="lazy"></div><p class="reveal text-base text-slate mt-3" data-i18n="s03.best.img.cap">La evidencia del benchmark procede de fichas de App Store, páginas de ayuda y pocas reseñas: son señales, no datos concluyentes. El límite de notificaciones y el modelo de privacidad son decisiones de producto, no reglas de las apps analizadas.</p>
+    </section>
+
+    <!-- ===== 04 · ENTREVISTA CON USUARIA ===== -->
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s04">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="t-h5 text-latte-dark">04</span>
+        <span class="t-h6 text-slate" data-i18n="s04.eyebrow">Entrevista con usuaria</span>
+      </div>
+      <h2 class="reveal t-h2 max-w-2xl mb-4 md:mb-6" data-i18n="s04.heading">Una conversación que cambió el diseño</h2>
+<div class="reveal mb-12"><p class="t-p text-slate" data-i18n="s04.p1">Hablé con una enfermera de hospital en España con rotación fija de 2 tardes, 2 mañanas y 2 días libres. Fue una única conversación con un contacto cercano, así que la trato como hipótesis de partida y no como patrón: confianza baja y posible sesgo de cortesía.</p></div><div class="reveal mb-8 md:mb-14 grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10">
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s04.c1.h">La transición más dura</h3><div class="t-p text-slate" data-i18n="s04.c1.p">De tarde a mañana: termina a las 21:00, empieza a las 07:00 y duerme unas 5 horas con las tareas del hogar de por medio. Dormirse después del turno de tarde le cuesta.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s04.c2.h">Control sobre su atención</h3><div class="t-p text-slate" data-i18n="s04.c2.p">Abriría una app durante el día, a su ritmo, y no quiere notificaciones. Hoy corta las pantallas antes de dormir y lee; no usa ninguna app de sueño.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s04.c3.h">Consejos prácticos, no datos</h3><div class="t-p text-slate" data-i18n="s04.c3.p">Quiere consejos para desconectar después del turno de tarde. No le molesta que el hospital vea los datos y preferiría una app que recomiende su empleador.</div></div>
+</div><div class="reveal mt-10 md:mt-20 mb-6"><h3 class="t-h4 t-medium mb-2" data-i18n="s04.ins.h">Siete conclusiones (a tratar como hipótesis)</h3></div><div class="reveal mb-8 md:mb-14 grid sm:grid-cols-4 gap-x-8 gap-y-10 md:gap-x-10">
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s04i.c1.h">1. El problema es el tiempo, no la información</h3><div class="t-p text-slate" data-i18n="s04i.c1.p">Con tan poco margen entre turnos, el valor está en ayudar a usar bien una ventana corta, no en medirla.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s04i.c2.h">2. El roster se configura una vez</h3><div class="t-p text-slate" data-i18n="s04i.c2.p">Se planifica con meses de antelación y casi no cambia. El onboarding debe hacerlo sin esfuerzo y la app no puede depender de editarlo para que vuelvan.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s04i.c3.h">3. Quiere respuestas, no datos</h3><div class="t-p text-slate" data-i18n="s04i.c3.p">No tiene hábito de seguimiento y pidió consejos prácticos. La guía es el núcleo; registrar el sueño, opcional.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s04i.c4.h">4. Control sobre su atención</h3><div class="t-p text-slate" data-i18n="s04i.c4.p">Pull por defecto; push solo si la persona lo activa.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s04i.c5.h">5. La confianza pasa por el empleador</h3><div class="t-p text-slate" data-i18n="s04i.c5.p">Preferiría una app recomendada por su hospital. Sugiere que una distribución B2B2C podría ser natural, pero es una sola voz y hay que validarla.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s04i.c6.h">6. La poca urgencia esconde un dolor concreto</h3><div class="t-p text-slate" data-i18n="s04i.c6.p">«Nada que cambiaría» indica que el problema está normalizado. El dolor aparece en un momento: desconectar tras el turno de tarde. Diseñar para ese momento.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s04i.c7.h">7. Las rotaciones reales difieren de las oficiales</h3><div class="t-p text-slate" data-i18n="s04i.c7.p">Los equipos adaptan el patrón. La app debe aceptar el roster tal y como es, con tipos de turno configurables.</div></div>
+</div><div class="reveal grid sm:grid-cols-2 gap-6 mb-3"><div class="overflow-hidden rounded-2xl bg-[#E6E6E6]"><img src="circadia/interview-1.png" alt="Notas de la entrevista: perfil, lo que escuché, supuestos de diseño y qué aplicar en el diseño" data-i18n="s04.img1" data-i18n-attr="alt" class="block w-full h-auto" loading="lazy"></div><div class="overflow-hidden rounded-2xl bg-[#F7F1E8]"><img src="circadia/interview-2.png" alt="Conclusiones clave de la entrevista, con confianza baja y siguiente paso" data-i18n="s04.img2" data-i18n-attr="alt" class="block w-full h-auto" loading="lazy"></div></div><p class="reveal text-base text-slate mb-8 md:mb-14" data-i18n="s04.cap">Notas de la entrevista y conclusiones clave, tal y como las documenté (notas parafraseadas, no literales).</p><div class="reveal mb-6"><h3 class="t-h4 t-medium mb-2" data-i18n="s04.change.h">Lo que cambió en el diseño</h3></div><div class="reveal mb-6"><p class="t-p text-slate" data-i18n="s04.change.p">La entrevista desmontó una suposición: el ejemplo de rotación con noches no era la realidad de esta persona. Cambié la rotación de ejemplo a Mañana / Tarde / Libre (la noche sigue disponible) y rehice los wireframes y la arquitectura de información. Today empieza por la próxima ventana de sueño y un consejo para desconectar; la cuenta atrás vive en el widget, no en notificaciones push; y Progress se queda en lenguaje llano, sin puntuaciones.</p></div><div class="reveal"><p class="t-p text-slate" data-i18n="s04.next">Siguiente paso: validar con 2-3 enfermeras más, idealmente con una rotación que incluya noches.</p></div>
+    </section>
+
+    <!-- ===== 05 · BRANDING ===== -->
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s05">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="t-h5 text-latte-dark">05</span>
+        <span class="t-h6 text-slate" data-i18n="s05.eyebrow">Branding</span>
+      </div>
+      <h2 class="reveal t-h2 max-w-2xl mb-4 md:mb-6" data-i18n="s05.heading">Una marca cálida en un sector azul</h2>
+<div class="reveal mb-10"><p class="t-p text-slate" data-i18n="s05.p1">Analicé la identidad de Timeshifter, AfterShift y Oura (estilo y tono, paleta, pros y contras). Timeshifter transmite autoridad científica pero poca calidez; AfterShift es calmada y honesta pero sin autoridad institucional; Oura es sobria, aunque con un aire premium de estilo de vida que el reto pedía evitar.</p></div><div class="reveal overflow-x-auto rounded-2xl border border-ink/15 bg-paper"><img src="circadia/brand-benchmark.png" alt="Tabla de benchmark de identidad de marca de Timeshifter, AfterShift y Oura con estilo, paleta, pros y contras" data-i18n="s05.img1" data-i18n-attr="alt" class="block w-full h-auto min-w-[820px]" loading="lazy"></div><div class="reveal mt-10 md:mt-20 mb-6"><h3 class="t-h4 t-medium mb-2" data-i18n="s05.colour.h">Dirección de color: cálida, no azul</h3></div><div class="reveal mb-10"><p class="t-p text-slate" data-i18n="s05.colour.p">Circadia usa una paleta cálida —crema, café, latte y ámbar— en lugar del azul que domina el sector: «café con leche» para el día y «espresso» para la noche. Acepté el riesgo de que un marrón cálido se lea más como estilo de vida que como clínico.</p></div><div class="reveal mb-10 grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10">
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s05.c1.h">Diferencia</h3><div class="t-p text-slate" data-i18n="s05.c1.p">Una paleta cálida destaca en una categoría donde el azul está en todas partes.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s05.c2.h">De clínico a calmado</h3><div class="t-p text-slate" data-i18n="s05.c2.p">El reto pedía calma y confianza, no frialdad. Una base blanca rota y cálida suaviza la interfaz sin perder claridad.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s05.c3.h">Encaja con quien mira la pantalla</h3><div class="t-p text-slate" data-i18n="s05.c3.p">Se abre agotada, tras un turno y con poca luz. Los colores cálidos y de baja estimulación se llevan mejor que los fríos y brillantes.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s05.c4.h">Coherente con el mensaje</h3><div class="t-p text-slate" data-i18n="s05.c4.p">Circadia recomienda cuidar la luz alrededor del sueño: una interfaz cálida de noche es consistente. El efecto del color es pequeño frente al brillo, así que el modo noche también lo baja.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s05.c5.h">Puede inspirar confianza</h3><div class="t-p text-slate" data-i18n="s05.c5.p">La confianza viene del contraste, la tipografía clara y la coherencia, no del azul: el café sobre crema alcanza un contraste de 10,3:1.</div></div>
+</div><div class="reveal overflow-x-auto rounded-2xl border border-ink/15 bg-paper"><img src="circadia/brand-colour.png" alt="Dirección de color de Circadia: paleta de día (café con leche) y de noche (espresso) con valores hexadecimales y contraste" data-i18n="s05.img2" data-i18n-attr="alt" class="block w-full h-auto min-w-[820px]" loading="lazy"></div><p class="reveal text-base text-slate mt-3" data-i18n="s05.img2.cap">Reglas para el modo noche: sigue el ajuste del sistema, superficies más claras sobre las oscuras (Espresso < Roast < Cocoa), acentos desaturados, sin negro puro y con divisores y tarjetas visibles.</p><div class="reveal mt-10 md:mt-20 mb-6"><h3 class="t-h4 t-medium mb-2" data-i18n="s05.system.h">Sistema de marca</h3></div><div class="reveal mb-10"><p class="t-p text-slate" data-i18n="s05.system.p">El isotipo «sol en el hueco» (de seis conceptos explorados), Figtree como tipografía (de tres pares probados), reglas de uso del logotipo, escala tipográfica, componentes de interfaz y una voz tranquila, clara y nunca insistente: una herramienta, no un coach. Es una app de bienestar, sin diagnósticos ni afirmaciones médicas.</p></div><div class="reveal max-w-4xl mx-auto overflow-hidden rounded-2xl bg-[#F4F1EC]"><img src="circadia/brand-elements.png" alt="Identidad de marca de Circadia: logotipo, color, tipografía Figtree, interfaz y voz" data-i18n="s05.img3" data-i18n-attr="alt" class="block w-full h-auto" loading="lazy"></div>
+    </section>
+
+    <!-- ===== 06 · ARQUITECTURA DE INFORMACIÓN ===== -->
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s06">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="t-h5 text-latte-dark">06</span>
+        <span class="t-h6 text-slate" data-i18n="s06.eyebrow">Arquitectura de información</span>
+      </div>
+      <h2 class="reveal t-h2 max-w-2xl mb-4 md:mb-6" data-i18n="s06.heading">Un mapa de flujo para una app calmada</h2>
+<div class="reveal mb-10"><p class="t-p text-slate" data-i18n="s06.p1">El mapa organiza la app en un onboarding y cuatro pestañas: Today, Roster, Progress y Profile. En azul, las pantallas principales; en ámbar, las decisiones que salieron de la entrevista y del riesgo B2B2C.</p></div><div class="reveal overflow-x-auto rounded-2xl border border-ink/15 bg-paper"><img src="circadia/ia.png" alt="Mapa de arquitectura de información de Circadia: onboarding, Today, Roster, Progress y Profile" data-i18n="s06.img" data-i18n-attr="alt" class="block w-full h-auto min-w-[1000px]" loading="lazy"></div><div class="mb-16"></div><div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10">
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s06.c1.h">Introducir el roster una vez</h3><div class="t-p text-slate" data-i18n="s06.c1.p">Añadir turnos ofrece tres vías: elegir o crear un patrón de rotación, importar el calendario o añadir turnos a mano. Después, vista previa de la semana, horarios y notificaciones opt-in, desactivadas por defecto.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s06.c2.h">Today primero</h3><div class="t-p text-slate" data-i18n="s06.c2.p">La próxima ventana de sueño con su motivo, consejos tras el turno sin push, registro de sueño en un toque (opcional) y edición del turno de hoy, que abre el detalle del día en Roster.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s06.c3.h">Privacidad visible</h3><div class="t-p text-slate" data-i18n="s06.c3.p">En Profile, «Privacidad y datos» deja compartir con el empleador desactivado. Progress habla en palabras, sin puntuaciones ni rachas, y exporta solo para uno mismo, en local.</div></div>
+</div>
+    </section>
+
+    <!-- ===== 07 · WIREFRAMES ===== -->
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s07">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="t-h5 text-latte-dark">07</span>
+        <span class="t-h6 text-slate" data-i18n="s07.eyebrow">Wireframes</span>
+      </div>
+      <h2 class="reveal t-h2 max-w-2xl mb-4 md:mb-6" data-i18n="s07.heading">De cajas grises a contenido real</h2>
+<div class="reveal mb-4"><h3 class="t-h4 t-medium mb-2" data-i18n="s07.low.h">Wireframes de baja fidelidad</h3></div><div class="reveal mb-10"><p class="t-p text-slate" data-i18n="s07.low.p">Cajas grises y etiquetas para decidir layout y jerarquía, sin marca ni color. Cuatro pantallas —onboarding, Today, Roster y Progress— hechas dos veces: antes y después de la entrevista.</p></div><div id="lowfi-carousel" class="reveal group relative aspect-[2/1] rounded-2xl overflow-hidden border border-ink/15 bg-paper">
+        <div id="lowfi-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="circadia/lowfi-before.png" alt="Wireframes de baja fidelidad antes de la entrevista, con una rotación de día y noche" data-i18n="s07.img1.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-3 md:p-6 shrink-0" loading="lazy"><img src="circadia/lowfi-after.png" alt="Wireframes de baja fidelidad después de la entrevista, con una rotación de mañana y tarde" data-i18n="s07.img2.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-3 md:p-6 shrink-0" loading="lazy">
+        </div>
+        <button type="button" id="lowfi-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button type="button" id="lowfi-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+        <div class="absolute bottom-3 inset-x-0 hidden sm:flex items-center justify-center gap-2"><button type="button" class="lowfi-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button><button type="button" class="lowfi-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button></div>
+      </div>
+      <p class="reveal text-base text-slate mt-3" data-i18n="lowfi.cap">Primera versión (con una rotación de día y noche) y versión tras la entrevista (mañana, tarde y libre).</p><div class="mb-14"></div><div class="reveal mb-6 grid sm:grid-cols-4 gap-x-8 gap-y-10 md:gap-x-10">
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s07.c1.h">Onboarding</h3><div class="t-p text-slate" data-i18n="s07.c1.p">Tres vías de entrada, con el patrón primero: lo más rápido para rotaciones. Una vista previa de la semana confirma el plan. Se puede omitir y las etiquetas de turno siempre llevan icono y texto.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s07.c2.h">Today</h3><div class="t-p text-slate" data-i18n="s07.c2.p">Una cosa primero: la próxima ventana de sueño. Registrar el sueño es opcional y lleva un toque. Editar el turno está a un toque, aquí y en Roster.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s07.c3.h">Roster</h3><div class="t-p text-slate" data-i18n="s07.c3.p">Lista semanal por defecto y vista mensual. Hoy aparece resaltado y tocar una fila edita ese día. Los cambios de patrón y los turnos extra se pueden deshacer.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s07.c4.h">Progress</h3><div class="t-p text-slate" data-i18n="s07.c4.p">Lenguaje llano, sin puntuaciones ni rachas. Una línea de tiempo de sueño frente a turnos, no un anillo. La privacidad se indica justo donde se muestran los datos.</div></div>
+</div><div class="reveal mt-10 md:mt-20 mb-6"><h3 class="t-h4 t-medium mb-2" data-i18n="s07.mid.h">Wireframes de media fidelidad</h3></div><div class="reveal mb-10"><p class="t-p text-slate" data-i18n="s07.mid.p">Estructura con contenido real y el color de marca aplicado con moderación: onboarding, Today, Roster y Progress.</p></div><div class="reveal grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"><div class="rounded-2xl bg-mist p-3 md:p-5"><img src="circadia/midfi-01-onboarding.png" alt="Onboarding: añade tus turnos" data-i18n="s07.mid1" data-i18n-attr="alt" class="block w-full h-auto" loading="lazy"></div><div class="rounded-2xl bg-mist p-3 md:p-5"><img src="circadia/midfi-02-today.png" alt="Today con la próxima ventana de sueño" data-i18n="s07.mid2" data-i18n-attr="alt" class="block w-full h-auto" loading="lazy"></div><div class="rounded-2xl bg-mist p-3 md:p-5"><img src="circadia/midfi-03-roster.png" alt="Roster con la lista semanal" data-i18n="s07.mid3" data-i18n-attr="alt" class="block w-full h-auto" loading="lazy"></div><div class="rounded-2xl bg-mist p-3 md:p-5"><img src="circadia/midfi-04-progress.png" alt="Progress con la semana en palabras" data-i18n="s07.mid4" data-i18n-attr="alt" class="block w-full h-auto" loading="lazy"></div></div>
+    </section>
+
+    <!-- ===== 08 · ALTA FIDELIDAD ===== -->
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s08">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="t-h5 text-latte-dark">08</span>
+        <span class="t-h6 text-slate" data-i18n="s08.eyebrow">Alta fidelidad</span>
+      </div>
+      <h2 class="reveal t-h2 max-w-2xl mb-4 md:mb-6" data-i18n="s08.heading">Today y Roster</h2>
+<div class="reveal mb-8 md:mb-14"><p class="t-p text-slate" data-i18n="s08.p">Dos pantallas en alta fidelidad, Today y Roster, con la marca aplicada y Liquid Glass de Apple solo en la capa de navegación (barra de pestañas y controles superiores), nunca en el contenido.</p></div><div class="reveal grid md:grid-cols-2 gap-x-10 gap-y-16 mb-10 md:mb-16"><div>
+        <div class="rounded-2xl bg-[#F7F1E8] flex justify-center py-8 mb-8"><img src="circadia/hifi-today.png" alt="Pantalla Today en alta fidelidad con la próxima ventana de sueño de 23:00 a 05:30" data-i18n="s08t.img" data-i18n-attr="alt" class="block h-[560px] w-auto max-w-full" loading="lazy"></div>
+        <h3 class="t-h4 t-medium mb-2" data-i18n="s08t.h">Hi-fi 1 · Today</h3>
+        <p class="t-p text-slate mb-4" data-i18n="s08t.p">Hay que decirle a la persona cuándo dormir. La próxima ventana de sueño es el elemento más grande de la pantalla, con su motivo al lado (turnaround corto, turno de mañana a las 07:00). Debajo, tres consejos breves para desconectar tras el turno; registrar el sueño es opcional y lleva un toque.</p>
+        <div class="t-p text-slate mb-4" data-i18n="s08t.li"><ul class="list-disc pl-5 space-y-1.5"><li><strong class="font-medium text-ink">Pull, no push:</strong> nada aquí envía notificaciones; se abre cuando se quiere, que es lo que pidió la persona entrevistada.</li><li><strong class="font-medium text-ink">Calma y claridad:</strong> sin puntuaciones, sin rachas, sin alertas rojas.</li><li>La etiqueta de turno usa icono y texto, nunca solo color. Las tarjetas son sólidas y usan la paleta de marca.</li><li>Liquid Glass solo en la navegación. El texto sobre crema y latte mantiene contraste WCAG AA.</li></ul></div>
+        <p class="t-p text-slate" data-i18n="s08t.note">Nota: horarios y consejos son datos de ejemplo.</p>
+      </div><div>
+        <div class="rounded-2xl bg-[#F7F1E8] flex justify-center py-8 mb-8"><img src="circadia/hifi-roster.png" alt="Pantalla Roster en alta fidelidad con la semana del 5 al 11 de octubre" data-i18n="s08r.img" data-i18n-attr="alt" class="block h-[560px] w-auto max-w-full" loading="lazy"></div>
+        <h3 class="t-h4 t-medium mb-2" data-i18n="s08r.h">Hi-fi 2 · Roster</h3>
+        <p class="t-p text-slate mb-4" data-i18n="s08r.p">El roster lo gobierna todo, así que aquí es donde se introduce la información. Muestra la semana de un vistazo: hoy resaltado, cada turno como icono, etiqueta y horas, y los días libres claramente más discretos. Un aviso de «Short turnaround» marca el paso de tarde a mañana, el momento más duro para la persona entrevistada.</p>
+        <div class="t-p text-slate mb-4" data-i18n="s08r.li"><ul class="list-disc pl-5 space-y-1.5"><li>Lista semanal por defecto y vista mensual a un toque.</li><li>La rotación se define una vez y se edita desde un solo sitio («2 Afternoon · 2 Morning · 2 Off»), porque los turnos se planifican con meses de antelación y rara vez cambian.</li><li>Añadir un turno extra e importar el calendario viven en un control de cristal arriba, separado del contenido.</li><li>Cualquier edición se puede deshacer y nunca borra el resto del plan.</li></ul></div>
+        <p class="t-p text-slate" data-i18n="s08r.note">Nota: fechas y turnos son datos de ejemplo de una conversación con un usuario.</p>
+      </div></div><div class="reveal mb-4"><h3 class="t-h4 t-medium mb-2" data-i18n="s08.comp.h">Componentes</h3></div><div class="reveal mb-10"><p class="t-p text-slate" data-i18n="s08.comp.p">Una biblioteca mínima de componentes: botones primario y secundario, chips, etiquetas de turno (Mañana, Tarde, Noche y Libre, siempre con icono) y barra de pestañas con sus cuatro estados. Primero en wireframe y después con la marca.</p></div><div id="comps-carousel" class="reveal group relative aspect-[3.6/1] rounded-2xl overflow-hidden border border-ink/15 bg-paper">
+        <div id="comps-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="circadia/components-1.png" alt="Componentes en wireframe: botones, chips, etiquetas de turno y barra de pestañas" data-i18n="s08.comp.img1" data-i18n-attr="alt" class="w-full h-full object-contain p-2 md:p-4 shrink-0" loading="lazy"><img src="circadia/components-2.png" alt="Componentes con la marca aplicada: botones, chips, etiquetas de turno y barra de pestañas" data-i18n="s08.comp.img2" data-i18n-attr="alt" class="w-full h-full object-contain p-2 md:p-4 shrink-0" loading="lazy">
+        </div>
+        <button type="button" id="comps-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button type="button" id="comps-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+        <div class="absolute bottom-3 inset-x-0 hidden sm:flex items-center justify-center gap-2"><button type="button" class="comps-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button><button type="button" class="comps-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button></div>
+      </div>
+      <p class="reveal text-base text-slate mt-3" data-i18n="comps.cap">Componentes en wireframe y con la marca aplicada.</p>
+    </section>
+
+    <!-- ===== 09 · ALCANCE DEL MVP ===== -->
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s09">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="t-h5 text-latte-dark">09</span>
+        <span class="t-h6 text-slate" data-i18n="s09.eyebrow">Alcance del MVP</span>
+      </div>
+      <h2 class="reveal t-h2 max-w-2xl mb-4 md:mb-6" data-i18n="s09.heading">Alcance, riesgos y comprador</h2>
+<div class="reveal mb-12"><p class="t-p text-slate" data-i18n="s09.p1">El apartado opcional del reto: pensar más allá de las pantallas, con el alcance como proyecto real, un calendario hasta un MVP en App Store y Play Store, las minas que podrían dinamitarlo y quién es el comprador real. El objetivo del MVP es demostrar que una enfermera abre la app por iniciativa propia y encuentra útil la ventana de sueño en las dos primeras semanas.</p></div><div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 mb-8 md:mb-14"><div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s09.in.h">Dentro del MVP</h3><div class="t-p text-slate" data-i18n="s09.in.p"><ul class="list-disc pl-5 space-y-1.5"><li>Añadir turnos: patrón de rotación, importar calendario y edición manual</li><li>Today: próxima ventana de sueño, su motivo y unos consejos para desconectar</li><li>Roster: lista semanal, rotación y aviso de «short turnaround»</li><li>Nota de privacidad clara: los datos se quedan en el dispositivo</li><li>Ventana de sueño basada en reglas (sin modelo de IA ni datos de wearables)</li><li>Widget en la pantalla de inicio</li></ul></div></div><div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s09.out.h">Fuera del MVP (por ahora)</h3><div class="t-p text-slate" data-i18n="s09.out.p"><ul class="list-disc pl-5 space-y-1.5"><li>Panel para el empleador o cualquier dato compartido con el hospital</li><li>Integraciones con wearables</li><li>Notificaciones push activadas por defecto</li><li>Puntuaciones, rachas y programas de coaching</li><li>Gráficos de progreso (solo un resumen semanal en palabras, si da tiempo)</li></ul></div></div><div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s09.time.h">Calendario de ejemplo</h3><div class="t-p text-slate" data-i18n="s09.time.p"><ul class="list-disc pl-5 space-y-1.5"><li><strong class="font-medium text-ink">Semanas 1-2:</strong> entrada del roster y Today con la lógica de la ventana de sueño</li><li><strong class="font-medium text-ink">Semanas 3-4:</strong> Roster, widget, onboarding y nota de privacidad</li><li><strong class="font-medium text-ink">Semanas 5-6:</strong> pruebas con 5-8 enfermeras de distintas rotaciones, correcciones y lanzamiento a un piloto</li></ul></div></div></div><div class="reveal mt-10 md:mt-20 mb-6"><h3 class="t-h4 t-medium mb-2" data-i18n="s09.land.h">Minas a evitar</h3></div><div class="reveal mb-6 grid sm:grid-cols-4 gap-x-8 gap-y-10 md:gap-x-10">
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s09b.c1.h">Confianza en el empleador</h3><div class="t-p text-slate" data-i18n="s09b.c1.p">Si una enfermera sospecha que el hospital ve su sueño, deja de usarla. Mitigación: sin compartir por defecto, lenguaje claro y datos solo agregados y anónimos.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s09b.c2.h">Afirmaciones médicas</h3><div class="t-p text-slate" data-i18n="s09b.c2.p">La guía de sueño puede derivar en consejo médico. Se posiciona como herramienta de bienestar, no como producto sanitario, y necesita revisión legal y clínica.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s09b.c3.h">Protección de datos</h3><div class="t-p text-slate" data-i18n="s09b.c3.p">Los datos de sueño y turnos pueden considerarse sensibles. Recoger lo mínimo, guardarlos en el dispositivo cuando se pueda y revisar el RGPD.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s09b.c4.h">Guía equivocada</h3><div class="t-p text-slate" data-i18n="s09b.c4.p">Una mala ventana de sueño podría llevar a dormir o a conducir cansada. Lógica simple, explicable y revisada por una persona experta en sueño.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s09b.c5.h">Exactitud del roster</h3><div class="t-p text-slate" data-i18n="s09b.c5.p">Los turnos se intercambian y se editan. Hay que hacer la edición rápida y no borrar nunca el plan.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s09b.c6.h">Poca urgencia percibida</h3><div class="t-p text-slate" data-i18n="s09b.c6.p">La persona entrevistada no cambiaría nada. El valor debe aparecer en un momento concreto: desconectar tras el turno de tarde.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s09b.c7.h">Compra hospitalaria</h3><div class="t-p text-slate" data-i18n="s09b.c7.p">Vender a un hospital puede llevar mucho tiempo. El MVP no debe depender de ello.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s09b.c8.h">Dependencia de una sola rotación</h3><div class="t-p text-slate" data-i18n="s09b.c8.p">Una entrevista es un patrón. Probar otros, incluidos los que tienen noches.</div></div>
+</div><div class="reveal mt-10 md:mt-20 mb-6"><h3 class="t-h4 t-medium mb-2" data-i18n="s09.buyer.h">¿Quién es el comprador?</h3></div><div class="reveal grid sm:grid-cols-2 gap-x-8 gap-y-10 md:gap-x-10 mb-8 md:mb-14"><div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s09.b1.h">Enfermera (B2C)</h3><div class="t-p text-slate" data-i18n="s09.b1.p"><ul class="list-disc pl-5 space-y-1.5"><li>Decide si se usa cada día</li><li>Feedback rápido y sin procesos de compra</li><li>Es probable una baja disposición a pagar (sin probar)</li><li>Difícil de captar sin un canal</li></ul></div></div><div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s09.b2.h">Hospital (B2B2C)</h3><div class="t-p text-slate" data-i18n="s09.b2.p"><ul class="list-disc pl-5 space-y-1.5"><li>Existe presupuesto en salud laboral y bienestar (por validar)</li><li>Distribución: la persona entrevistada prefiere una app recomendada por el empleador</li><li>Venta lenta y riesgo de que se perciba como herramienta de control</li><li>Quiere métricas, lo que aleja el producto de la enfermera</li></ul></div></div></div><div class="reveal mb-6"><h3 class="t-h4 t-medium mb-2" data-i18n="s09.pos.h">Mi posición (hipótesis)</h3></div><div class="reveal mb-10"><p class="t-p text-slate" data-i18n="s09.pos.p">Diseñar primero para la enfermera y tratar al hospital como canal y comprador posterior.</p></div><div class="reveal"><h3 class="t-h4 t-medium mb-2" data-i18n="s09.val.h">Siguiente validación</h3><div class="t-p text-slate" data-i18n="s09.val.p"><ul class="list-disc pl-5 space-y-1.5"><li>Entrevistar a 5-8 enfermeras más (otras rotaciones, incluidas las de noche)</li><li>Preguntar por la disposición a pagar y la confianza en una app recomendada por el empleador</li><li>Hablar con alguien de salud laboral sobre presupuestos y compras</li><li>Pedir una opinión legal sobre datos y afirmaciones médicas</li></ul></div></div>
+    </section>
+
+    <!-- ===== 10 · USO DE IA ===== -->
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s10">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="t-h5 text-latte-dark">10</span>
+        <span class="t-h6 text-slate" data-i18n="s10.eyebrow">Uso de IA</span>
+      </div>
+      <h2 class="reveal t-h2 max-w-2xl mb-4 md:mb-6" data-i18n="s10.heading">Dónde ayudó la IA y dónde la corregí</h2>
+<div class="reveal mb-12"><p class="t-p text-slate" data-i18n="s10.p1">Usé Claude y ChatGPT para investigar, sintetizar y plantear opciones; Claude con el conector de Figma para construir wireframes directamente en Figma; la búsqueda web para el benchmark y para contrastar fuentes; y scripts de Python escritos por Claude para calcular contrastes y exportar SVG y PNG. Las entrevistas, las decisiones y las correcciones fueron mías.</p></div><div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10"><div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s10.a.h">Dónde me ahorró tiempo</h3><div class="t-p text-slate" data-i18n="s10.a.p"><ul class="list-disc pl-5 space-y-1.5"><li>Filtrar el briefing y destacar las acciones principales</li><li>Planificar el tiempo de cada etapa</li><li>Convertir las notas en bruto de la entrevista en una lista limpia de conclusiones</li><li>Comparar principios de diseño con los temas de investigación</li><li>Comparar muchos productos y fuentes con rapidez</li><li>Proponer opciones sobre las que reaccionar (6 conceptos de isotipo y 3 pares tipográficos)</li></ul></div></div><div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s10.b.h">Dónde la corregí</h3><div class="t-p text-slate" data-i18n="s10.b.p"><ul class="list-disc pl-5 space-y-1.5"><li><strong class="font-medium text-ink">Suposición errónea:</strong> el ejemplo de rotación incluía noches. La entrevista mostró otro patrón real (2 tardes, 2 mañanas, 2 libres) y cambié los wireframes y la IA.</li><li><strong class="font-medium text-ink">Fidelidad:</strong> el briefing pedía media fidelidad y la IA ya daba mockups de «alta fidelidad» con un solo prompt.</li><li><strong class="font-medium text-ink">Tipografías:</strong> los SVG dependían de una fuente instalada y mostraban la equivocada.</li><li><strong class="font-medium text-ink">Figma:</strong> la IA duplicó una página y se perdieron los wireframes; los reconstruí desde cero. El conector alcanzó su límite y la alta fidelidad se hizo en SVG.</li><li><strong class="font-medium text-ink">Liquid Glass:</strong> no se puede reproducir exactamente en Figma, así que usé los componentes originales del kit de UI de Apple que encontré entre los recursos de Figma.</li><li><strong class="font-medium text-ink">Fuentes:</strong> una página de Apple no se pudo leer y un blog sobre contraste era una fuente débil; lo contrasté con otras y lo traté como señal.</li></ul></div></div><div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s10.c.h">Lo que decidí yo</h3><div class="t-p text-slate" data-i18n="s10.c.p"><ul class="list-disc pl-5 space-y-1.5"><li>Qué apps analizar en el benchmark</li><li>Preparar y hacer la investigación con una enfermera real</li><li>Una paleta marrón cálida en lugar del azul de la categoría, aceptando el riesgo de que parezca más estilo de vida que clínica</li><li>El isotipo «sol en el hueco» y Figtree como tipografía</li><li>Un tono calmado, sin puntuaciones, sin rachas y sin notificaciones push</li><li>Liquid Glass solo en la capa de navegación, no en el contenido</li><li>Today y Roster como las dos pantallas en alta fidelidad</li></ul></div></div></div>
+    </section>
+
+    <!-- ===== 11 · APRENDIZAJES CLAVE ===== -->
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20" id="s11">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="t-h5 text-latte-dark">11</span>
+        <span class="t-h6 text-slate" data-i18n="s11.eyebrow">Aprendizajes clave</span>
+      </div>
+      <h2 class="reveal t-h2 max-w-2xl mb-4 md:mb-6" data-i18n="s11.heading">Qué me dejó este reto</h2>
+<div class="reveal mb-6"><p class="t-p text-slate" data-i18n="s11.p1">Lo que más me llevo es la empatía con el rol del personal de enfermería: entender cómo se organizan sus turnos, qué les agota y qué necesitan en el poco tiempo que tienen para descansar. Eso me llevó a poner la salud mental en el centro del diseño: calma, sin presión y con la persona al mando.</p></div><div class="reveal"><p class="t-p text-slate" data-i18n="s11.p2">También aprendí a trabajar con un tiempo muy acotado: decidir qué merece profundidad (la entrevista, la marca, dos pantallas en alta fidelidad) y dejar explícito qué queda como hipótesis por validar, empezando por contrastar lo aprendido con más enfermeras.</p></div>
+    </section>
+
+    <!-- ===== FIN ===== -->
+    <section class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20 text-center">
+      <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="../index.html#work" class="focus-ring inline-flex items-center gap-2 t-s-m px-6 py-3.5 rounded-full border border-ink/15 hover:bg-latte/40 hover:border-latte-dark transition-colors" data-i18n="cta.back">Volver a todos los proyectos</a>
+      </div>
+    </section>
+
+    </div>
+
+  </main>
+
+  <script>
+    const translations = {
+  "es": {
+    "meta.title": "Circadia · Javier Díaz",
+    "meta.description": "Caso de estudio: compañero de sueño y recuperación para personal de enfermería con turnos rotativos.",
+    "hero.title": "Circadia",
+    "hero.subtitle": "Un compañero de sueño y recuperación para personal de enfermería con turnos rotativos. Parte del turno real, es calmado y no presiona: sin puntuaciones, sin rachas y sin notificaciones por defecto.",
+    "hero.role.label": "Rol",
+    "hero.format.label": "Formato",
+    "hero.year.label": "Año",
+    "hero.team.label": "Equipo",
+    "hero.role.value": "Product Designer",
+    "hero.format.value": "Reto de diseño de producto · 4 h",
+    "hero.year.value": "2026",
+    "hero.team.value": "Individual",
+    "hero.img1.alt": "Logotipo de Circadia",
+    "hero.img2.alt": "Pantalla Today en alta fidelidad",
+    "hero.img3.alt": "Pantalla Roster en alta fidelidad",
+    "hero.img4.alt": "Dirección de color de Circadia, versión día y noche",
+    "s01.context": "Circadia es una startup en fase inicial que desarrolla apoyo para el sueño y la recuperación de personas con turnos rotativos, empezando por enfermeras de hospital. Los turnos rotativos alteran el ritmo circadiano, y eso se traduce en burnout, errores médicos y abandono de la profesión: un problema que los hospitales pagan cada vez más por resolver.",
+    "s01.goals.h": "La app debía ayudar a una enfermera a…",
+    "s01g.c1.h": "Una ventana de sueño personalizada",
+    "s01g.c1.p": "Una recomendación construida a partir de su roster real de turnos rotativos.",
+    "s01g.c2.h": "Guía simple y accionable",
+    "s01g.c2.p": "Consejos sobre exposición a la luz, cafeína y siestas, ajustados a los cambios de turno.",
+    "s01g.c3.h": "Deuda de sueño y tendencia de recuperación",
+    "s01g.c3.p": "Ver cómo evolucionan con el tiempo, ligadas a lo fielmente que ha seguido la guía.",
+    "s01.task": "La tarea era diseñar una app móvil en la que una enfermera conecte o introduzca su roster y reciba una guía de sueño construida a su alrededor. Las usuarias principales son enfermeras de hospital con turnos de 8 a 12 horas (rotaciones de día y noche). No existía marca, así que tenía que definir una que se leyera calmada y fiable, no clínica ni estéril: una herramienta que se consulta agotada, no una app de estilo de vida.",
+    "s01.paths": "Además, Circadia exploraba en paralelo dos vías de distribución —vender a los presupuestos de bienestar y salud laboral de los hospitales (B2B2C) o ir directo a las enfermeras (B2C)—, ambas abiertas, y pedía tener una opinión al respecto.",
+    "s01.deliv.h": "Qué pedía el reto",
+    "s01d.c1.h": "Entregables obligatorios",
+    "s01d.c1.p": "<ul class=\"list-disc pl-5 space-y-1.5\"><li>Benchmark básico de 2-3 apps de salud existentes</li><li>Dirección de marca aproximada: logo o símbolo, color principal, color de acento y una nota sobre tipografía o tono</li><li>Arquitectura de información de la app</li><li>3-4 wireframes de media fidelidad con los flujos principales (onboarding o entrada de turnos y dashboard, obligatorios)</li><li>2 páginas en alta fidelidad a elegir</li><li>Una presentación en Loom de menos de 5 minutos</li></ul>",
+    "s01d.c2.h": "Reglas del juego",
+    "s01d.c2.p": "<ul class=\"list-disc pl-5 space-y-1.5\"><li>Herramienta: Figma</li><li>Alcance de unas 4 horas: se evalúa como si hubiera durado 4 horas</li><li>No perderse en investigación profunda de personas: explicitar supuestos y avanzar</li><li>Si se usan benchmarks, decir qué se toma de ellos</li><li>Explicar dónde ayudó la IA, dónde estorbó y dónde la corregí</li></ul>",
+    "s01d.c3.h": "Apartado opcional",
+    "s01d.c3.p": "Pensar más allá de la pantalla: cómo plantear el alcance como un proyecto real, el calendario hasta un MVP en App Store y Play Store, qué minas técnicas, clínicas o de adopción podrían dinamitarlo y quién es el comprador real, la enfermera o el hospital.",
+    "s01.done": "Cubrí todo lo que pedía el reto, incluido el apartado opcional. Esta página recoge ese trabajo tal y como lo hice en Figma.",
+    "s01.approach.h": "Mi enfoque",
+    "s01.c1.h": "Partir del turno real",
+    "s01.c1.p": "El diseño arranca del roster y de las restricciones reales de la persona, no de recomendaciones genéricas de higiene del sueño.",
+    "s01.c2.h": "Validar pronto",
+    "s01.c2.p": "Una entrevista con una enfermera de hospital (rotación de 2 tardes, 2 mañanas y 2 libres) cambió el diseño: rehice los wireframes y la arquitectura de información.",
+    "s01.c3.h": "Calma: pull, no push",
+    "s01.c3.p": "Sin puntuaciones, sin rachas y sin notificaciones por defecto. La app se abre cuando la persona quiere, no cuando la app lo decide.",
+    "s01.empathy": "Más allá del sueño, este reto me permitió empatizar con el día a día del personal de enfermería y poner el foco en su salud mental: una herramienta que acompaña sin juzgar ni presionar a personas para las que el cansancio es el estado por defecto.",
+    "s01.note": "Los horarios, fechas y consejos que aparecen en las pantallas son datos de ejemplo.",
+    "s01.eyebrow": "El reto",
+    "s01.heading": "Un compañero de sueño para quienes trabajan por turnos",
+    "s02.p1": "Dividí el reto en bloques con minutos asignados (240 en total) para decidir qué merecía más tiempo y qué se quedaba en una versión mínima. El tiempo real se pasó un poco —solo la dirección de marca llevó 35 minutos en lugar de 25—, pero mantuve cada bloque acotado para que el resultado pudiera valorarse como si hubiera sido en 4 horas.",
+    "s02.img": "Reparto del tiempo del reto en bloques, de 10 a 45 minutos cada uno, hasta un total de 240 minutos",
+    "s02.img.cap": "Reparto del tiempo: 240 minutos en total, con el mayor bloque dedicado al diseño de alta fidelidad.",
+    "s02.eyebrow": "Planificación del tiempo",
+    "s02.heading": "Un reto acotado a unas 4 horas",
+    "s03.p1": "El reto pedía analizar 2-3 apps de salud existentes (Rise, Oura, Whoop, RISE Science u otras a elección). Elegí Timeshifter, AfterShift y Oura —las dos primeras centradas en el trabajo por turnos—, además de mirar Apple Clock, a partir de fichas de App Store, páginas de ayuda oficiales y unas pocas reseñas de usuarios. Para cada app anoté qué tomar prestado y qué evitar.",
+    "s03.img1.alt": "Benchmark de Timeshifter: capturas de la app y resumen de qué tomar prestado y qué evitar",
+    "s03.img2.alt": "Benchmark de AfterShift: capturas de la app y resumen de qué tomar prestado y qué evitar",
+    "s03.img3.alt": "Benchmark de Oura: capturas de la app y resumen de qué tomar prestado y qué evitar",
+    "bench.cap": "Timeshifter, AfterShift y Oura: capturas y conclusiones de qué tomar prestado y qué evitar.",
+    "s03.principles.h": "Principios de diseño",
+    "s03.principles.p": "Una enfermera abriría Circadia después del turno, con poca luz y poca energía: la fatiga es el estado por defecto, no un caso límite. De ahí salieron siete principios y un criterio para el modo oscuro.",
+    "s03p.c1.h": "1. Reducir la carga innecesaria",
+    "s03p.c1.p": "Una acción principal por pantalla. Nada decorativo sin significado.",
+    "s03p.c2.h": "2. Valores por defecto antes que entrada manual",
+    "s03p.c2.p": "Plantillas de rotación, patrones rellenados y entradas reutilizadas: nunca hay que escribir un roster completo a mano.",
+    "s03p.c3.h": "3. Patrones familiares",
+    "s03p.c3.p": "Barra de pestañas, calendario y widgets nativos estándar. Nada nuevo que aprender.",
+    "s03p.c4.h": "4. Lo prioritario primero",
+    "s03p.c4.p": "La próxima ventana de sueño y «qué hacer ahora» arriba. Todo lo demás, plegado.",
+    "s03q.c1.h": "5. Visuales calmados",
+    "s03q.c1.p": "Paleta apagada, espacio generoso y movimiento contenido.",
+    "s03q.c2.h": "6. Notificaciones con mesura",
+    "s03q.c2.p": "Pocas, ligadas al turno, con control por tipo y opción de resumen diario.",
+    "s03q.c3.h": "7. Privacidad visible, no escondida",
+    "s03q.c3.p": "Un bloque claro de «quién ve qué». Nada individual se comparte con el hospital sin consentimiento.",
+    "s03q.c4.h": "Modo oscuro",
+    "s03q.c4.p": "Una decisión de usabilidad, no de estilo: uso frecuente, poca luz y poco contenido multimedia. Sigue el ajuste del sistema, evita tipografías muy finas o muy gruesas, usa colores desaturados y superficies más claras sobre las oscuras.",
+    "s03.vs.h": "Principios frente al benchmark",
+    "s03.vs.p": "Contrasté cada app con los principios de Circadia: qué hace bien, dónde se queda corta y dónde no hay evidencia.",
+    "s03.vs.img": "Tabla de principios frente al benchmark de Timeshifter, AfterShift y Oura",
+    "s03.best.h": "Buenas prácticas para Circadia",
+    "s03.best.p": "Destilé el benchmark, junto con NN/g y WCAG para accesibilidad, en diez buenas prácticas: qué aplicar, de dónde tomarlo, qué evitar y en qué pantalla se refleja.",
+    "s03.best.img": "Tabla de buenas prácticas para Circadia con los diez principios, de dónde tomarlos y qué evitar",
+    "s03.best.img.cap": "La evidencia del benchmark procede de fichas de App Store, páginas de ayuda y pocas reseñas: son señales, no datos concluyentes. El límite de notificaciones y el modelo de privacidad son decisiones de producto, no reglas de las apps analizadas.",
+    "s03.eyebrow": "Benchmark",
+    "s03.heading": "Qué hacen bien (y mal) las apps de turnos y sueño",
+    "s04.p1": "Hablé con una enfermera de hospital en España con rotación fija de 2 tardes, 2 mañanas y 2 días libres. Fue una única conversación con un contacto cercano, así que la trato como hipótesis de partida y no como patrón: confianza baja y posible sesgo de cortesía.",
+    "s04.c1.h": "La transición más dura",
+    "s04.c1.p": "De tarde a mañana: termina a las 21:00, empieza a las 07:00 y duerme unas 5 horas con las tareas del hogar de por medio. Dormirse después del turno de tarde le cuesta.",
+    "s04.c2.h": "Control sobre su atención",
+    "s04.c2.p": "Abriría una app durante el día, a su ritmo, y no quiere notificaciones. Hoy corta las pantallas antes de dormir y lee; no usa ninguna app de sueño.",
+    "s04.c3.h": "Consejos prácticos, no datos",
+    "s04.c3.p": "Quiere consejos para desconectar después del turno de tarde. No le molesta que el hospital vea los datos y preferiría una app que recomiende su empleador.",
+    "s04.ins.h": "Siete conclusiones (a tratar como hipótesis)",
+    "s04i.c1.h": "1. El problema es el tiempo, no la información",
+    "s04i.c1.p": "Con tan poco margen entre turnos, el valor está en ayudar a usar bien una ventana corta, no en medirla.",
+    "s04i.c2.h": "2. El roster se configura una vez",
+    "s04i.c2.p": "Se planifica con meses de antelación y casi no cambia. El onboarding debe hacerlo sin esfuerzo y la app no puede depender de editarlo para que vuelvan.",
+    "s04i.c3.h": "3. Quiere respuestas, no datos",
+    "s04i.c3.p": "No tiene hábito de seguimiento y pidió consejos prácticos. La guía es el núcleo; registrar el sueño, opcional.",
+    "s04i.c4.h": "4. Control sobre su atención",
+    "s04i.c4.p": "Pull por defecto; push solo si la persona lo activa.",
+    "s04i.c5.h": "5. La confianza pasa por el empleador",
+    "s04i.c5.p": "Preferiría una app recomendada por su hospital. Sugiere que una distribución B2B2C podría ser natural, pero es una sola voz y hay que validarla.",
+    "s04i.c6.h": "6. La poca urgencia esconde un dolor concreto",
+    "s04i.c6.p": "«Nada que cambiaría» indica que el problema está normalizado. El dolor aparece en un momento: desconectar tras el turno de tarde. Diseñar para ese momento.",
+    "s04i.c7.h": "7. Las rotaciones reales difieren de las oficiales",
+    "s04i.c7.p": "Los equipos adaptan el patrón. La app debe aceptar el roster tal y como es, con tipos de turno configurables.",
+    "s04.img1": "Notas de la entrevista: perfil, lo que escuché, supuestos de diseño y qué aplicar en el diseño",
+    "s04.img2": "Conclusiones clave de la entrevista, con confianza baja y siguiente paso",
+    "s04.cap": "Notas de la entrevista y conclusiones clave, tal y como las documenté (notas parafraseadas, no literales).",
+    "s04.change.h": "Lo que cambió en el diseño",
+    "s04.change.p": "La entrevista desmontó una suposición: el ejemplo de rotación con noches no era la realidad de esta persona. Cambié la rotación de ejemplo a Mañana / Tarde / Libre (la noche sigue disponible) y rehice los wireframes y la arquitectura de información. Today empieza por la próxima ventana de sueño y un consejo para desconectar; la cuenta atrás vive en el widget, no en notificaciones push; y Progress se queda en lenguaje llano, sin puntuaciones.",
+    "s04.next": "Siguiente paso: validar con 2-3 enfermeras más, idealmente con una rotación que incluya noches.",
+    "s04.eyebrow": "Entrevista con usuaria",
+    "s04.heading": "Una conversación que cambió el diseño",
+    "s05.p1": "Analicé la identidad de Timeshifter, AfterShift y Oura (estilo y tono, paleta, pros y contras). Timeshifter transmite autoridad científica pero poca calidez; AfterShift es calmada y honesta pero sin autoridad institucional; Oura es sobria, aunque con un aire premium de estilo de vida que el reto pedía evitar.",
+    "s05.img1": "Tabla de benchmark de identidad de marca de Timeshifter, AfterShift y Oura con estilo, paleta, pros y contras",
+    "s05.colour.h": "Dirección de color: cálida, no azul",
+    "s05.colour.p": "Circadia usa una paleta cálida —crema, café, latte y ámbar— en lugar del azul que domina el sector: «café con leche» para el día y «espresso» para la noche. Acepté el riesgo de que un marrón cálido se lea más como estilo de vida que como clínico.",
+    "s05.c1.h": "Diferencia",
+    "s05.c1.p": "Una paleta cálida destaca en una categoría donde el azul está en todas partes.",
+    "s05.c2.h": "De clínico a calmado",
+    "s05.c2.p": "El reto pedía calma y confianza, no frialdad. Una base blanca rota y cálida suaviza la interfaz sin perder claridad.",
+    "s05.c3.h": "Encaja con quien mira la pantalla",
+    "s05.c3.p": "Se abre agotada, tras un turno y con poca luz. Los colores cálidos y de baja estimulación se llevan mejor que los fríos y brillantes.",
+    "s05.c4.h": "Coherente con el mensaje",
+    "s05.c4.p": "Circadia recomienda cuidar la luz alrededor del sueño: una interfaz cálida de noche es consistente. El efecto del color es pequeño frente al brillo, así que el modo noche también lo baja.",
+    "s05.c5.h": "Puede inspirar confianza",
+    "s05.c5.p": "La confianza viene del contraste, la tipografía clara y la coherencia, no del azul: el café sobre crema alcanza un contraste de 10,3:1.",
+    "s05.img2": "Dirección de color de Circadia: paleta de día (café con leche) y de noche (espresso) con valores hexadecimales y contraste",
+    "s05.img2.cap": "Reglas para el modo noche: sigue el ajuste del sistema, superficies más claras sobre las oscuras (Espresso < Roast < Cocoa), acentos desaturados, sin negro puro y con divisores y tarjetas visibles.",
+    "s05.system.h": "Sistema de marca",
+    "s05.system.p": "El isotipo «sol en el hueco» (de seis conceptos explorados), Figtree como tipografía (de tres pares probados), reglas de uso del logotipo, escala tipográfica, componentes de interfaz y una voz tranquila, clara y nunca insistente: una herramienta, no un coach. Es una app de bienestar, sin diagnósticos ni afirmaciones médicas.",
+    "s05.img3": "Identidad de marca de Circadia: logotipo, color, tipografía Figtree, interfaz y voz",
+    "s05.eyebrow": "Branding",
+    "s05.heading": "Una marca cálida en un sector azul",
+    "s06.p1": "El mapa organiza la app en un onboarding y cuatro pestañas: Today, Roster, Progress y Profile. En azul, las pantallas principales; en ámbar, las decisiones que salieron de la entrevista y del riesgo B2B2C.",
+    "s06.img": "Mapa de arquitectura de información de Circadia: onboarding, Today, Roster, Progress y Profile",
+    "s06.c1.h": "Introducir el roster una vez",
+    "s06.c1.p": "Añadir turnos ofrece tres vías: elegir o crear un patrón de rotación, importar el calendario o añadir turnos a mano. Después, vista previa de la semana, horarios y notificaciones opt-in, desactivadas por defecto.",
+    "s06.c2.h": "Today primero",
+    "s06.c2.p": "La próxima ventana de sueño con su motivo, consejos tras el turno sin push, registro de sueño en un toque (opcional) y edición del turno de hoy, que abre el detalle del día en Roster.",
+    "s06.c3.h": "Privacidad visible",
+    "s06.c3.p": "En Profile, «Privacidad y datos» deja compartir con el empleador desactivado. Progress habla en palabras, sin puntuaciones ni rachas, y exporta solo para uno mismo, en local.",
+    "s06.eyebrow": "Arquitectura de información",
+    "s06.heading": "Un mapa de flujo para una app calmada",
+    "s07.low.h": "Wireframes de baja fidelidad",
+    "s07.low.p": "Cajas grises y etiquetas para decidir layout y jerarquía, sin marca ni color. Cuatro pantallas —onboarding, Today, Roster y Progress— hechas dos veces: antes y después de la entrevista.",
+    "s07.img1.alt": "Wireframes de baja fidelidad antes de la entrevista, con una rotación de día y noche",
+    "s07.img2.alt": "Wireframes de baja fidelidad después de la entrevista, con una rotación de mañana y tarde",
+    "lowfi.cap": "Primera versión (con una rotación de día y noche) y versión tras la entrevista (mañana, tarde y libre).",
+    "s07.c1.h": "Onboarding",
+    "s07.c1.p": "Tres vías de entrada, con el patrón primero: lo más rápido para rotaciones. Una vista previa de la semana confirma el plan. Se puede omitir y las etiquetas de turno siempre llevan icono y texto.",
+    "s07.c2.h": "Today",
+    "s07.c2.p": "Una cosa primero: la próxima ventana de sueño. Registrar el sueño es opcional y lleva un toque. Editar el turno está a un toque, aquí y en Roster.",
+    "s07.c3.h": "Roster",
+    "s07.c3.p": "Lista semanal por defecto y vista mensual. Hoy aparece resaltado y tocar una fila edita ese día. Los cambios de patrón y los turnos extra se pueden deshacer.",
+    "s07.c4.h": "Progress",
+    "s07.c4.p": "Lenguaje llano, sin puntuaciones ni rachas. Una línea de tiempo de sueño frente a turnos, no un anillo. La privacidad se indica justo donde se muestran los datos.",
+    "s07.mid.h": "Wireframes de media fidelidad",
+    "s07.mid.p": "Estructura con contenido real y el color de marca aplicado con moderación: onboarding, Today, Roster y Progress.",
+    "s07.mid1": "Onboarding: añade tus turnos",
+    "s07.mid2": "Today con la próxima ventana de sueño",
+    "s07.mid3": "Roster con la lista semanal",
+    "s07.mid4": "Progress con la semana en palabras",
+    "s07.eyebrow": "Wireframes",
+    "s07.heading": "De cajas grises a contenido real",
+    "s08.p": "Dos pantallas en alta fidelidad, Today y Roster, con la marca aplicada y Liquid Glass de Apple solo en la capa de navegación (barra de pestañas y controles superiores), nunca en el contenido.",
+    "s08t.h": "Hi-fi 1 · Today",
+    "s08t.p": "Hay que decirle a la persona cuándo dormir. La próxima ventana de sueño es el elemento más grande de la pantalla, con su motivo al lado (turnaround corto, turno de mañana a las 07:00). Debajo, tres consejos breves para desconectar tras el turno; registrar el sueño es opcional y lleva un toque.",
+    "s08t.li": "<ul class=\"list-disc pl-5 space-y-1.5\"><li><strong class=\"font-medium text-ink\">Pull, no push:</strong> nada aquí envía notificaciones; se abre cuando se quiere, que es lo que pidió la persona entrevistada.</li><li><strong class=\"font-medium text-ink\">Calma y claridad:</strong> sin puntuaciones, sin rachas, sin alertas rojas.</li><li>La etiqueta de turno usa icono y texto, nunca solo color. Las tarjetas son sólidas y usan la paleta de marca.</li><li>Liquid Glass solo en la navegación. El texto sobre crema y latte mantiene contraste WCAG AA.</li></ul>",
+    "s08t.note": "Nota: horarios y consejos son datos de ejemplo.",
+    "s08t.img": "Pantalla Today en alta fidelidad con la próxima ventana de sueño de 23:00 a 05:30",
+    "s08r.h": "Hi-fi 2 · Roster",
+    "s08r.p": "El roster lo gobierna todo, así que aquí es donde se introduce la información. Muestra la semana de un vistazo: hoy resaltado, cada turno como icono, etiqueta y horas, y los días libres claramente más discretos. Un aviso de «Short turnaround» marca el paso de tarde a mañana, el momento más duro para la persona entrevistada.",
+    "s08r.li": "<ul class=\"list-disc pl-5 space-y-1.5\"><li>Lista semanal por defecto y vista mensual a un toque.</li><li>La rotación se define una vez y se edita desde un solo sitio («2 Afternoon · 2 Morning · 2 Off»), porque los turnos se planifican con meses de antelación y rara vez cambian.</li><li>Añadir un turno extra e importar el calendario viven en un control de cristal arriba, separado del contenido.</li><li>Cualquier edición se puede deshacer y nunca borra el resto del plan.</li></ul>",
+    "s08r.note": "Nota: fechas y turnos son datos de ejemplo de una conversación con un usuario.",
+    "s08r.img": "Pantalla Roster en alta fidelidad con la semana del 5 al 11 de octubre",
+    "s08.comp.h": "Componentes",
+    "s08.comp.p": "Una biblioteca mínima de componentes: botones primario y secundario, chips, etiquetas de turno (Mañana, Tarde, Noche y Libre, siempre con icono) y barra de pestañas con sus cuatro estados. Primero en wireframe y después con la marca.",
+    "s08.comp.img1": "Componentes en wireframe: botones, chips, etiquetas de turno y barra de pestañas",
+    "s08.comp.img2": "Componentes con la marca aplicada: botones, chips, etiquetas de turno y barra de pestañas",
+    "comps.cap": "Componentes en wireframe y con la marca aplicada.",
+    "s08.eyebrow": "Alta fidelidad",
+    "s08.heading": "Today y Roster",
+    "s09.p1": "El apartado opcional del reto: pensar más allá de las pantallas, con el alcance como proyecto real, un calendario hasta un MVP en App Store y Play Store, las minas que podrían dinamitarlo y quién es el comprador real. El objetivo del MVP es demostrar que una enfermera abre la app por iniciativa propia y encuentra útil la ventana de sueño en las dos primeras semanas.",
+    "s09.in.h": "Dentro del MVP",
+    "s09.in.p": "<ul class=\"list-disc pl-5 space-y-1.5\"><li>Añadir turnos: patrón de rotación, importar calendario y edición manual</li><li>Today: próxima ventana de sueño, su motivo y unos consejos para desconectar</li><li>Roster: lista semanal, rotación y aviso de «short turnaround»</li><li>Nota de privacidad clara: los datos se quedan en el dispositivo</li><li>Ventana de sueño basada en reglas (sin modelo de IA ni datos de wearables)</li><li>Widget en la pantalla de inicio</li></ul>",
+    "s09.out.h": "Fuera del MVP (por ahora)",
+    "s09.out.p": "<ul class=\"list-disc pl-5 space-y-1.5\"><li>Panel para el empleador o cualquier dato compartido con el hospital</li><li>Integraciones con wearables</li><li>Notificaciones push activadas por defecto</li><li>Puntuaciones, rachas y programas de coaching</li><li>Gráficos de progreso (solo un resumen semanal en palabras, si da tiempo)</li></ul>",
+    "s09.time.h": "Calendario de ejemplo",
+    "s09.time.p": "<ul class=\"list-disc pl-5 space-y-1.5\"><li><strong class=\"font-medium text-ink\">Semanas 1-2:</strong> entrada del roster y Today con la lógica de la ventana de sueño</li><li><strong class=\"font-medium text-ink\">Semanas 3-4:</strong> Roster, widget, onboarding y nota de privacidad</li><li><strong class=\"font-medium text-ink\">Semanas 5-6:</strong> pruebas con 5-8 enfermeras de distintas rotaciones, correcciones y lanzamiento a un piloto</li></ul>",
+    "s09.land.h": "Minas a evitar",
+    "s09b.c1.h": "Confianza en el empleador",
+    "s09b.c1.p": "Si una enfermera sospecha que el hospital ve su sueño, deja de usarla. Mitigación: sin compartir por defecto, lenguaje claro y datos solo agregados y anónimos.",
+    "s09b.c2.h": "Afirmaciones médicas",
+    "s09b.c2.p": "La guía de sueño puede derivar en consejo médico. Se posiciona como herramienta de bienestar, no como producto sanitario, y necesita revisión legal y clínica.",
+    "s09b.c3.h": "Protección de datos",
+    "s09b.c3.p": "Los datos de sueño y turnos pueden considerarse sensibles. Recoger lo mínimo, guardarlos en el dispositivo cuando se pueda y revisar el RGPD.",
+    "s09b.c4.h": "Guía equivocada",
+    "s09b.c4.p": "Una mala ventana de sueño podría llevar a dormir o a conducir cansada. Lógica simple, explicable y revisada por una persona experta en sueño.",
+    "s09b.c5.h": "Exactitud del roster",
+    "s09b.c5.p": "Los turnos se intercambian y se editan. Hay que hacer la edición rápida y no borrar nunca el plan.",
+    "s09b.c6.h": "Poca urgencia percibida",
+    "s09b.c6.p": "La persona entrevistada no cambiaría nada. El valor debe aparecer en un momento concreto: desconectar tras el turno de tarde.",
+    "s09b.c7.h": "Compra hospitalaria",
+    "s09b.c7.p": "Vender a un hospital puede llevar mucho tiempo. El MVP no debe depender de ello.",
+    "s09b.c8.h": "Dependencia de una sola rotación",
+    "s09b.c8.p": "Una entrevista es un patrón. Probar otros, incluidos los que tienen noches.",
+    "s09.buyer.h": "¿Quién es el comprador?",
+    "s09.b1.h": "Enfermera (B2C)",
+    "s09.b1.p": "<ul class=\"list-disc pl-5 space-y-1.5\"><li>Decide si se usa cada día</li><li>Feedback rápido y sin procesos de compra</li><li>Es probable una baja disposición a pagar (sin probar)</li><li>Difícil de captar sin un canal</li></ul>",
+    "s09.b2.h": "Hospital (B2B2C)",
+    "s09.b2.p": "<ul class=\"list-disc pl-5 space-y-1.5\"><li>Existe presupuesto en salud laboral y bienestar (por validar)</li><li>Distribución: la persona entrevistada prefiere una app recomendada por el empleador</li><li>Venta lenta y riesgo de que se perciba como herramienta de control</li><li>Quiere métricas, lo que aleja el producto de la enfermera</li></ul>",
+    "s09.pos.h": "Mi posición (hipótesis)",
+    "s09.pos.p": "Diseñar primero para la enfermera y tratar al hospital como canal y comprador posterior.",
+    "s09.val.h": "Siguiente validación",
+    "s09.val.p": "<ul class=\"list-disc pl-5 space-y-1.5\"><li>Entrevistar a 5-8 enfermeras más (otras rotaciones, incluidas las de noche)</li><li>Preguntar por la disposición a pagar y la confianza en una app recomendada por el empleador</li><li>Hablar con alguien de salud laboral sobre presupuestos y compras</li><li>Pedir una opinión legal sobre datos y afirmaciones médicas</li></ul>",
+    "s09.eyebrow": "Alcance del MVP",
+    "s09.heading": "Alcance, riesgos y comprador",
+    "s10.p1": "Usé Claude y ChatGPT para investigar, sintetizar y plantear opciones; Claude con el conector de Figma para construir wireframes directamente en Figma; la búsqueda web para el benchmark y para contrastar fuentes; y scripts de Python escritos por Claude para calcular contrastes y exportar SVG y PNG. Las entrevistas, las decisiones y las correcciones fueron mías.",
+    "s10.a.h": "Dónde me ahorró tiempo",
+    "s10.a.p": "<ul class=\"list-disc pl-5 space-y-1.5\"><li>Filtrar el briefing y destacar las acciones principales</li><li>Planificar el tiempo de cada etapa</li><li>Convertir las notas en bruto de la entrevista en una lista limpia de conclusiones</li><li>Comparar principios de diseño con los temas de investigación</li><li>Comparar muchos productos y fuentes con rapidez</li><li>Proponer opciones sobre las que reaccionar (6 conceptos de isotipo y 3 pares tipográficos)</li></ul>",
+    "s10.b.h": "Dónde la corregí",
+    "s10.b.p": "<ul class=\"list-disc pl-5 space-y-1.5\"><li><strong class=\"font-medium text-ink\">Suposición errónea:</strong> el ejemplo de rotación incluía noches. La entrevista mostró otro patrón real (2 tardes, 2 mañanas, 2 libres) y cambié los wireframes y la IA.</li><li><strong class=\"font-medium text-ink\">Fidelidad:</strong> el briefing pedía media fidelidad y la IA ya daba mockups de «alta fidelidad» con un solo prompt.</li><li><strong class=\"font-medium text-ink\">Tipografías:</strong> los SVG dependían de una fuente instalada y mostraban la equivocada.</li><li><strong class=\"font-medium text-ink\">Figma:</strong> la IA duplicó una página y se perdieron los wireframes; los reconstruí desde cero. El conector alcanzó su límite y la alta fidelidad se hizo en SVG.</li><li><strong class=\"font-medium text-ink\">Liquid Glass:</strong> no se puede reproducir exactamente en Figma, así que usé los componentes originales del kit de UI de Apple que encontré entre los recursos de Figma.</li><li><strong class=\"font-medium text-ink\">Fuentes:</strong> una página de Apple no se pudo leer y un blog sobre contraste era una fuente débil; lo contrasté con otras y lo traté como señal.</li></ul>",
+    "s10.c.h": "Lo que decidí yo",
+    "s10.c.p": "<ul class=\"list-disc pl-5 space-y-1.5\"><li>Qué apps analizar en el benchmark</li><li>Preparar y hacer la investigación con una enfermera real</li><li>Una paleta marrón cálida en lugar del azul de la categoría, aceptando el riesgo de que parezca más estilo de vida que clínica</li><li>El isotipo «sol en el hueco» y Figtree como tipografía</li><li>Un tono calmado, sin puntuaciones, sin rachas y sin notificaciones push</li><li>Liquid Glass solo en la capa de navegación, no en el contenido</li><li>Today y Roster como las dos pantallas en alta fidelidad</li></ul>",
+    "s10.eyebrow": "Uso de IA",
+    "s10.heading": "Dónde ayudó la IA y dónde la corregí",
+    "s11.p1": "Lo que más me llevo es la empatía con el rol del personal de enfermería: entender cómo se organizan sus turnos, qué les agota y qué necesitan en el poco tiempo que tienen para descansar. Eso me llevó a poner la salud mental en el centro del diseño: calma, sin presión y con la persona al mando.",
+    "s11.p2": "También aprendí a trabajar con un tiempo muy acotado: decidir qué merece profundidad (la entrevista, la marca, dos pantallas en alta fidelidad) y dejar explícito qué queda como hipótesis por validar, empezando por contrastar lo aprendido con más enfermeras.",
+    "s11.eyebrow": "Aprendizajes clave",
+    "s11.heading": "Qué me dejó este reto",
+    "cta.back": "Volver a todos los proyectos",
+    "gate.heading": "Este proyecto está protegido",
+    "gate.label": "Contraseña",
+    "gate.placeholder": "Introduce la contraseña",
+    "gate.button": "Acceder",
+    "gate.error": "Contraseña incorrecta. Inténtalo de nuevo.",
+    "nav.about": "Sobre mí",
+    "nav.contact": "Contacto"
+  },
+  "en": {
+    "meta.title": "Circadia · Javier Díaz",
+    "meta.description": "Case study: a sleep-and-recovery companion for nurses on rotating shifts.",
+    "hero.title": "Circadia",
+    "hero.subtitle": "A sleep-and-recovery companion for nurses on rotating shifts. It starts from the real roster and stays calm: no scores, no streaks and no default notifications.",
+    "hero.role.label": "Role",
+    "hero.format.label": "Format",
+    "hero.year.label": "Year",
+    "hero.team.label": "Team",
+    "hero.role.value": "Product Designer",
+    "hero.format.value": "Product design challenge · 4 h",
+    "hero.year.value": "2026",
+    "hero.team.value": "Solo",
+    "hero.img1.alt": "Circadia logo",
+    "hero.img2.alt": "Today screen in high fidelity",
+    "hero.img3.alt": "Roster screen in high fidelity",
+    "hero.img4.alt": "Circadia colour direction, day and night",
+    "s01.context": "Circadia is an early-stage startup building sleep and recovery support for shift workers, starting with hospital nurses on rotating shifts. Rotating shifts disrupt the circadian rhythm, which shows up as burnout, medical errors and nurse attrition: a problem hospitals increasingly pay to solve.",
+    "s01.goals.h": "The app should help a nurse…",
+    "s01g.c1.h": "A personalised sleep window",
+    "s01g.c1.p": "A recommendation built from their actual rotating roster.",
+    "s01g.c2.h": "Simple, actionable guidance",
+    "s01g.c2.p": "Guidance on light exposure, caffeine and napping, timed to shift changes.",
+    "s01g.c3.h": "Sleep debt and recovery trend",
+    "s01g.c3.p": "See them over time, tied to how closely the guidance was followed.",
+    "s01.task": "The task was to design a mobile app that lets a nurse connect or enter their shift roster and get sleep guidance built around it. The core users are hospital nurses on rotating 8-12h shifts (day and night rotations). There was no existing brand, so I had to define one that reads as calm and trustworthy rather than clinical or sterile: a tool people check while exhausted, not a lifestyle app.",
+    "s01.paths": "Circadia was also exploring two distribution paths in parallel —selling into hospital wellness and occupational-health budgets (B2B2C) or going direct to nurses (B2C)— both still open, and asked for an opinion on them.",
+    "s01.deliv.h": "What the challenge asked for",
+    "s01d.c1.h": "Mandatory deliverables",
+    "s01d.c1.p": "<ul class=\"list-disc pl-5 space-y-1.5\"><li>Basic benchmarking of 2-3 existing health apps</li><li>Rough brand direction: logo or mark, a primary colour, an accent colour and a note on type or tone</li><li>Rough information architecture of the app</li><li>3-4 mid-fidelity wireframes covering the core flows (onboarding or shift input and main dashboard, mandatory)</li><li>2 fully designed (high-fidelity) pages of my choice</li><li>A Loom presentation under 5 minutes</li></ul>",
+    "s01d.c2.h": "Ground rules",
+    "s01d.c2.p": "<ul class=\"list-disc pl-5 space-y-1.5\"><li>Tool: Figma</li><li>Scoped to about 4 hours: evaluated as if it took 4 hours</li><li>Don't get lost in deep persona research: state assumptions and move on</li><li>If benchmarks are used, say what was taken from them</li><li>Explain where AI sped things up, where it got in the way and where it was overridden</li></ul>",
+    "s01d.c3.h": "Optional section",
+    "s01d.c3.p": "Thinking beyond the screen: how to scope it as a real project, a rough timeline to get an MVP into the App Store and Play Store, which technical, clinical or adoption landmines could blow up that timeline, and who the actual buyer is, the nurse or the hospital.",
+    "s01.done": "I covered everything the challenge asked for, including the optional section. This page collects that work as I did it in Figma.",
+    "s01.approach.h": "My approach",
+    "s01.c1.h": "Start from the real roster",
+    "s01.c1.p": "The design starts from the real roster and constraints of the person, not from generic sleep-hygiene advice.",
+    "s01.c2.h": "Validate early",
+    "s01.c2.p": "One interview with a hospital nurse (rotation of 2 afternoons, 2 mornings and 2 off) reshaped the design: I rebuilt the wireframes and the information architecture.",
+    "s01.c3.h": "Calm: pull, not push",
+    "s01.c3.p": "No scores, no streaks and no default notifications. The person opens the app when they want to, not when the app decides.",
+    "s01.empathy": "Beyond sleep, this challenge let me empathise with the daily reality of nurses and focus on their mental health: a tool that supports without judging or pressuring people for whom fatigue is the default state.",
+    "s01.note": "Times, dates and tips shown in the screens are example data.",
+    "s01.eyebrow": "The challenge",
+    "s01.heading": "A sleep companion for people who work in shifts",
+    "s02.p1": "I split the challenge into blocks with assigned minutes (240 in total) to decide what deserved more time and what stayed minimal. Real time ran over a little —brand direction alone took 35 minutes instead of 25— but I kept every block scoped so the outcome could be judged as if it had taken 4 hours.",
+    "s02.img": "Time split of the challenge in blocks of 10 to 45 minutes each, adding up to 240 minutes",
+    "s02.img.cap": "Time split: 240 minutes in total, with the largest block dedicated to the high-fidelity design.",
+    "s02.eyebrow": "Time scheduling",
+    "s02.heading": "A challenge scoped to about 4 hours",
+    "s03.p1": "The challenge asked to analyse 2-3 existing health apps (Rise, Oura, Whoop, RISE Science or my own picks). I chose Timeshifter, AfterShift and Oura —the first two focused on shift work— and also looked at Apple Clock, using App Store listings, official help pages and a small number of user reviews. For each app I noted what to borrow and what to avoid.",
+    "s03.img1.alt": "Timeshifter benchmark: app screenshots and a summary of what to borrow and what to avoid",
+    "s03.img2.alt": "AfterShift benchmark: app screenshots and a summary of what to borrow and what to avoid",
+    "s03.img3.alt": "Oura benchmark: app screenshots and a summary of what to borrow and what to avoid",
+    "bench.cap": "Timeshifter, AfterShift and Oura: screenshots and takeaways on what to borrow and what to avoid.",
+    "s03.principles.h": "Design principles",
+    "s03.principles.p": "A nurse would open Circadia after a shift, in low light and with little energy: fatigue is the default state, not an edge case. That led to seven principles and a rule for dark mode.",
+    "s03p.c1.h": "1. Reduce extraneous load",
+    "s03p.c1.p": "One primary action per screen. Nothing decorative without meaning.",
+    "s03p.c2.h": "2. Smart defaults over manual entry",
+    "s03p.c2.p": "Rotation templates, prefilled patterns and reused input, so nobody has to type a full roster by hand.",
+    "s03p.c3.h": "3. Familiar patterns",
+    "s03p.c3.p": "Standard tab bar, calendar and native widgets. Nothing new to learn.",
+    "s03p.c4.h": "4. High priority first",
+    "s03p.c4.p": "Next sleep window and \"do this now\" at the top. Everything else collapsed.",
+    "s03q.c1.h": "5. Calm visuals",
+    "s03q.c1.p": "Muted palette, generous spacing, restrained motion.",
+    "s03q.c2.h": "6. Notifications with restraint",
+    "s03q.c2.p": "Few, timed to the shift, with control by type and a daily summary option.",
+    "s03q.c3.h": "7. Privacy visible, not buried",
+    "s03q.c3.p": "A clear \"who sees what\" block. Nothing individual is shared with the hospital without consent.",
+    "s03q.c4.h": "Dark mode",
+    "s03q.c4.p": "A usability choice, not a style: frequent use, low light and little media content. It follows the system setting, avoids very thin or very bold type, uses desaturated colours and lighter surfaces on top of darker ones.",
+    "s03.vs.h": "Principles vs benchmarking",
+    "s03.vs.p": "I measured each app against Circadia's principles: what it does well, where it falls short and where there is no evidence.",
+    "s03.vs.img": "Table of principles against the benchmark of Timeshifter, AfterShift and Oura",
+    "s03.best.h": "Best practices for Circadia",
+    "s03.best.p": "I distilled the benchmark, together with NN/g and WCAG for accessibility, into ten best practices: what to apply, where to borrow it from, what to avoid and where it shows in the product.",
+    "s03.best.img": "Table of best practices for Circadia with the ten principles, what to borrow and what to avoid",
+    "s03.best.img.cap": "Benchmark evidence comes from App Store listings, help pages and a few reviews: signals, not conclusive data. The notification cap and the privacy model are product decisions, not rules from the benchmarked apps.",
+    "s03.eyebrow": "Benchmark",
+    "s03.heading": "What shift and sleep apps do well (and badly)",
+    "s04.p1": "I spoke with a hospital nurse in Spain on a fixed rotation of 2 afternoons, 2 mornings and 2 days off. It was a single conversation with a close contact, so I treat it as a starting hypothesis, not a pattern: low confidence and possible politeness bias.",
+    "s04.c1.h": "The hardest transition",
+    "s04.c1.p": "Afternoon to morning: they finish at 21:00, start at 07:00 and sleep about 5 hours with household chores in between. Falling asleep after the afternoon shift is hard.",
+    "s04.c2.h": "Control over attention",
+    "s04.c2.p": "They would open an app during the day, on their own terms, and do not want notifications. Today they cut screens before bed and read; they use no sleep app.",
+    "s04.c3.h": "Practical tips, not data",
+    "s04.c3.p": "They want practical tips to wind down after the afternoon shift. They are not bothered if the hospital sees the data and would prefer an app the employer recommends.",
+    "s04.ins.h": "Seven insights (to be treated as hypotheses)",
+    "s04i.c1.h": "1. The problem is time, not information",
+    "s04i.c1.p": "With so little room between shifts, the value is in using a short window well, not in measuring it.",
+    "s04i.c2.h": "2. The roster is a set-up task",
+    "s04i.c2.p": "It is planned months ahead and rarely changes. Onboarding must make it effortless and the app cannot rely on editing it as a reason to come back.",
+    "s04i.c3.h": "3. Wants answers, not data",
+    "s04i.c3.p": "No tracking habit and they asked for practical tips. Guidance is the core, logging is optional.",
+    "s04i.c4.h": "4. Control over attention",
+    "s04i.c4.p": "Pull by default, push only if the person opts in.",
+    "s04i.c5.h": "5. Trust runs through the employer",
+    "s04i.c5.p": "They would prefer an app their hospital recommends. This hints that B2B2C distribution could feel natural, but it is one voice and needs validating.",
+    "s04i.c6.h": "6. Low urgency hides a specific pain",
+    "s04i.c6.p": "\"Nothing I would change\" signals the problem is normalised. The pain shows up in one moment: winding down after the afternoon shift. Design for that moment.",
+    "s04i.c7.h": "7. Real rotations differ from the official ones",
+    "s04i.c7.p": "Teams adapt the pattern. The app must accept the roster as it really is, with configurable shift types.",
+    "s04.img1": "Interview notes: profile, what I heard, design assumptions and what should apply in the design",
+    "s04.img2": "Key insights from the interview, with low confidence and next step",
+    "s04.cap": "Interview notes and key insights as I documented them (notes paraphrased, not verbatim).",
+    "s04.change.h": "What changed in the design",
+    "s04.change.p": "The interview broke an assumption: the example rotation with night shifts was not this person's reality. I changed the example rotation to Morning / Afternoon / Off (night stays available) and rebuilt the wireframes and the information architecture. Today leads with the next sleep window and one wind-down tip; the countdown lives in the widget, not in push notifications; and Progress stays in plain language, with no scores.",
+    "s04.next": "Next step: validate with 2-3 more nurses, ideally with a rotation that includes nights.",
+    "s04.eyebrow": "User interview",
+    "s04.heading": "A conversation that changed the design",
+    "s05.p1": "I analysed the identity of Timeshifter, AfterShift and Oura (style and tone, palette, pros and cons). Timeshifter conveys scientific authority but little warmth; AfterShift is calm and honest but has little institutional authority; Oura is restrained, but with a premium lifestyle feel the brief asked to avoid.",
+    "s05.img1": "Brand identity benchmark table of Timeshifter, AfterShift and Oura with style, palette, pros and cons",
+    "s05.colour.h": "Colour direction: warm, not blue",
+    "s05.colour.p": "Circadia uses a warm palette —cream, coffee, latte and amber— instead of the blue that dominates the sector: \"café con leche\" for day and \"espresso\" for night. I accepted the risk that a warm brown reads as lifestyle rather than clinical.",
+    "s05.c1.h": "It differentiates",
+    "s05.c1.p": "A warm palette stands out in a category where blue is everywhere.",
+    "s05.c2.h": "From clinical to calm",
+    "s05.c2.p": "The brief asks for calm and trustworthy, not clinical. A warm off-white base softens the interface without losing clarity.",
+    "s05.c3.h": "It fits who is looking",
+    "s05.c3.p": "It is opened exhausted, after a shift and in low light. Warm, low-stimulation colours are easier to live with than cold, bright ones.",
+    "s05.c4.h": "It matches the message",
+    "s05.c4.p": "Circadia tells nurses to manage light around their sleep, so a warm interface at night is consistent. Colour matters little next to brightness, so night mode also lowers brightness.",
+    "s05.c5.h": "It can still be trustworthy",
+    "s05.c5.p": "Trust comes from contrast, clear type and consistency, not from blue: coffee on cream reaches 10.3:1 contrast.",
+    "s05.img2": "Circadia colour direction: day (café con leche) and night (espresso) palettes with hex values and contrast ratios",
+    "s05.img2.cap": "Night mode rules: follows the system setting, lighter surfaces on top of darker ones (Espresso < Roast < Cocoa), desaturated accents, no pure black and visible dividers and cards.",
+    "s05.system.h": "Brand system",
+    "s05.system.p": "The \"sun in the gap\" isotype (out of six concepts explored), Figtree as the typeface (out of three pairings tested), logo usage rules, a type scale, interface components and a calm, plain, never pushy voice: a tool, not a coach. It is a wellness app, with no diagnoses and no medical claims.",
+    "s05.img3": "Circadia brand identity: logo, colour, Figtree typography, interface and voice",
+    "s05.eyebrow": "Branding",
+    "s05.heading": "A warm brand in a blue sector",
+    "s06.p1": "The map organises the app into an onboarding and four tabs: Today, Roster, Progress and Profile. In blue, the main screens; in amber, the decisions shaped by the interview and the B2B2C risk.",
+    "s06.img": "Circadia information architecture map: onboarding, Today, Roster, Progress and Profile",
+    "s06.c1.h": "Enter the roster once",
+    "s06.c1.p": "Adding shifts offers three paths: pick or build a rotation pattern, import the calendar or add shifts manually. Then a week preview, shift times and opt-in notifications, off by default.",
+    "s06.c2.h": "Today first",
+    "s06.c2.p": "The next sleep window with the reason why, wind-down tips with no push, one-tap sleep logging (optional) and editing today's shift, which opens the day detail in Roster.",
+    "s06.c3.h": "Privacy visible",
+    "s06.c3.p": "In Profile, \"Privacy and data\" keeps employer sharing off. Progress speaks in words, with no scores or streaks, and exports only for yourself, locally.",
+    "s06.eyebrow": "Information architecture",
+    "s06.heading": "A flow map for a calm app",
+    "s07.low.h": "Low-fidelity wireframes",
+    "s07.low.p": "Grey boxes and labels to decide layout and hierarchy, with no brand and no colour. Four screens —onboarding, Today, Roster and Progress— made twice: before and after the interview.",
+    "s07.img1.alt": "Low-fidelity wireframes before the interview, with a day and night rotation",
+    "s07.img2.alt": "Low-fidelity wireframes after the interview, with a morning and afternoon rotation",
+    "lowfi.cap": "First version (with a day and night rotation) and the version after the interview (morning, afternoon and off).",
+    "s07.c1.h": "Onboarding",
+    "s07.c1.p": "Three input paths, pattern first: fastest for rotations. A week preview confirms the plan. It is skippable and shift tags always use icon and label.",
+    "s07.c2.h": "Today",
+    "s07.c2.p": "One thing first: the next sleep window. Logging sleep is optional and takes one tap. Editing the shift is one tap away, here and in Roster.",
+    "s07.c3.h": "Roster",
+    "s07.c3.p": "Week list by default and a month toggle. Today is highlighted and tapping a row edits that day. Pattern edits and extra shifts are undoable.",
+    "s07.c4.h": "Progress",
+    "s07.c4.p": "Plain language, no scores, no streaks. A sleep vs shifts timeline, not a ring. Privacy is stated right where data is shown.",
+    "s07.mid.h": "Mid-fidelity wireframes",
+    "s07.mid.p": "Structure with real content and brand colour applied sparingly: onboarding, Today, Roster and Progress.",
+    "s07.mid1": "Onboarding: add your shifts",
+    "s07.mid2": "Today with the next sleep window",
+    "s07.mid3": "Roster with the week list",
+    "s07.mid4": "Progress with the week in words",
+    "s07.eyebrow": "Wireframes",
+    "s07.heading": "From grey boxes to real content",
+    "s08.p": "Two high-fidelity screens, Today and Roster, with the brand applied and Apple's Liquid Glass only on the navigation layer (tab bar and top controls), never on content.",
+    "s08t.h": "Hi-fi 1 · Today",
+    "s08t.p": "We need to tell the user when to sleep. The next sleep window is the biggest element on screen, with the reason beside it (short turnaround, morning shift at 07:00). Below it, three short tips for winding down after the shift; logging sleep is optional and takes one tap.",
+    "s08t.li": "<ul class=\"list-disc pl-5 space-y-1.5\"><li><strong class=\"font-medium text-ink\">Pull, not push:</strong> nothing here sends notifications; the user opens the app when they want to, which is what the interviewed nurse asked for.</li><li><strong class=\"font-medium text-ink\">Calm and plain:</strong> no scores, no streaks, no red alerts.</li><li>The shift tag uses icon and label, never colour alone. Cards are solid and use the brand palette.</li><li>Liquid Glass only on the navigation layer. Text on cream and latte surfaces keeps WCAG AA contrast.</li></ul>",
+    "s08t.note": "Note: times and tips are example data.",
+    "s08t.img": "Today screen in high fidelity with the next sleep window from 23:00 to 05:30",
+    "s08r.h": "Hi-fi 2 · Roster",
+    "s08r.p": "The roster drives everything, so this screen is where input happens. It shows the week at a glance: today highlighted, each shift as icon, label and hours, and days off clearly quieter. A \"Short turnaround\" flag marks the afternoon-to-morning change, the hardest moment for the nurse I interviewed.",
+    "s08r.li": "<ul class=\"list-disc pl-5 space-y-1.5\"><li>Week list by default, month view one tap away.</li><li>The rotation is set once and editable from one place (\"2 Afternoon · 2 Morning · 2 Off\"), because shifts are planned months ahead and rarely change.</li><li>Add extra shift and calendar import live in a glass control at the top, kept apart from the content.</li><li>Any edit is undoable and never wipes the rest of the plan.</li></ul>",
+    "s08r.note": "Note: dates and shifts are example data from one user conversation.",
+    "s08r.img": "Roster screen in high fidelity showing the week of 5 to 11 October",
+    "s08.comp.h": "Components",
+    "s08.comp.p": "A minimal component library: primary and secondary buttons, chips, shift tags (Morning, Afternoon, Night and Off, always with an icon) and a tab bar with its four states. First as a wireframe, then with the brand applied.",
+    "s08.comp.img1": "Wireframe components: buttons, chips, shift tags and tab bar",
+    "s08.comp.img2": "Branded components: buttons, chips, shift tags and tab bar",
+    "comps.cap": "Components as wireframes and with the brand applied.",
+    "s08.eyebrow": "High fidelity",
+    "s08.heading": "Today and Roster",
+    "s09.p1": "The optional part of the challenge: thinking beyond the screens, with scope as a real project, a timeline to an MVP in the App Store and Play Store, the landmines that could blow it up and who the actual buyer is. The goal of the MVP is to prove that a nurse opens the app on their own and finds the sleep window useful within the first two weeks.",
+    "s09.in.h": "In the MVP",
+    "s09.in.p": "<ul class=\"list-disc pl-5 space-y-1.5\"><li>Add shifts: rotation pattern, calendar import and manual edit</li><li>Today: next sleep window, the reason for it and a few wind-down tips</li><li>Roster: week list, rotation and short-turnaround flag</li><li>Plain privacy note: data stays on the device</li><li>Rule-based sleep window (no AI model, no wearable data)</li><li>Home screen widget</li></ul>",
+    "s09.out.h": "Out of the MVP (for now)",
+    "s09.out.p": "<ul class=\"list-disc pl-5 space-y-1.5\"><li>Employer dashboard or any data sharing with the hospital</li><li>Wearable integrations</li><li>Push notifications on by default</li><li>Scores, streaks, coaching programmes</li><li>Progress charts (only a simple weekly summary in words, if time allows)</li></ul>",
+    "s09.time.h": "Example timeline",
+    "s09.time.p": "<ul class=\"list-disc pl-5 space-y-1.5\"><li><strong class=\"font-medium text-ink\">Weeks 1-2:</strong> roster input and Today with the sleep window logic</li><li><strong class=\"font-medium text-ink\">Weeks 3-4:</strong> Roster, widget, onboarding and privacy note</li><li><strong class=\"font-medium text-ink\">Weeks 5-6:</strong> test with 5-8 nurses on different rotations, fix, and release to a pilot</li></ul>",
+    "s09.land.h": "Landmines",
+    "s09b.c1.h": "Employer trust",
+    "s09b.c1.p": "If a nurse suspects the hospital can see their sleep, they stop using it. Mitigation: no sharing by default, plain wording, aggregated and anonymous data only.",
+    "s09b.c2.h": "Health and medical claims",
+    "s09b.c2.p": "Sleep guidance can drift into advice. Position it as a wellbeing tool, not a medical device. It needs legal and clinical review.",
+    "s09b.c3.h": "Data protection",
+    "s09b.c3.p": "Sleep and roster data may count as sensitive. Collect the minimum, keep it on the device where possible, check GDPR.",
+    "s09b.c4.h": "Wrong guidance",
+    "s09b.c4.p": "A bad sleep window could push someone to sleep or drive tired. Keep the logic simple, explainable and reviewed by a sleep expert.",
+    "s09b.c5.h": "Roster accuracy",
+    "s09b.c5.p": "Shifts get swapped or edited. Make editing fast and never wipe the plan.",
+    "s09b.c6.h": "Low felt urgency",
+    "s09b.c6.p": "The nurse we interviewed would not change anything. The value must show up in one moment: winding down after the afternoon shift.",
+    "s09b.c7.h": "Hospital procurement",
+    "s09b.c7.p": "Selling to a hospital can take a long time. Do not make the MVP depend on it.",
+    "s09b.c8.h": "Dependence on one rotation",
+    "s09b.c8.p": "One interview is one pattern. Test others, including nights.",
+    "s09.buyer.h": "Who is the buyer?",
+    "s09.b1.h": "Nurse (B2C)",
+    "s09.b1.p": "<ul class=\"list-disc pl-5 space-y-1.5\"><li>Decides whether it is used every day</li><li>Fast feedback, no procurement</li><li>Low willingness to pay is likely (not tested)</li><li>Hard to acquire without a channel</li></ul>",
+    "s09.b2.h": "Hospital (B2B2C)",
+    "s09.b2.p": "<ul class=\"list-disc pl-5 space-y-1.5\"><li>Budget exists in occupational health and wellbeing (to be validated)</li><li>Distribution: the nurse we interviewed prefers an app the employer recommends</li><li>Slow sales, and a risk of the app being seen as a monitoring tool</li><li>Wants metrics, which pulls the product away from the nurse</li></ul>",
+    "s09.pos.h": "My position (hypothesis)",
+    "s09.pos.p": "Design for the nurse first, and treat the hospital as a channel and a later buyer.",
+    "s09.val.h": "Next validation",
+    "s09.val.p": "<ul class=\"list-disc pl-5 space-y-1.5\"><li>Interview 5-8 more nurses (different rotations, including nights)</li><li>Ask about willingness to pay and trust in an employer-recommended app</li><li>Talk to someone in occupational health about budgets and procurement</li><li>Get a legal opinion on data and medical claims</li></ul>",
+    "s09.eyebrow": "MVP scoping",
+    "s09.heading": "Scope, risks and buyer",
+    "s10.p1": "I used Claude and ChatGPT for research, synthesis and options; Claude with the Figma connector to build wireframes directly in Figma; web search for benchmarking and checking sources; and Python scripts written by Claude for contrast ratios, SVG boards and PNG exports. The interview, the decisions and the corrections were mine.",
+    "s10.a.h": "Where AI saved time",
+    "s10.a.p": "<ul class=\"list-disc pl-5 space-y-1.5\"><li>Filtering the briefing and highlighting main action items</li><li>Providing time scheduling for each stage</li><li>Turning raw interview notes into a clean list of insights</li><li>Comparing design principles with research topics</li><li>Comparing many products and sources quickly</li><li>Producing options to react to (6 isotype concepts, 3 type pairings)</li></ul>",
+    "s10.b.h": "Where I corrected it",
+    "s10.b.p": "<ul class=\"list-disc pl-5 space-y-1.5\"><li><strong class=\"font-medium text-ink\">Wrong assumption:</strong> the example rotation included night shifts. The interview showed a different real pattern (2 afternoons, 2 mornings, 2 off), so I changed the wireframes and the IA.</li><li><strong class=\"font-medium text-ink\">Fidelity:</strong> the brief asks for mid-fi wireframes and the AI was already providing \"high-fidelity\" mockups from a single prompt.</li><li><strong class=\"font-medium text-ink\">Fonts:</strong> SVGs depended on an installed font and showed the wrong typeface.</li><li><strong class=\"font-medium text-ink\">Figma:</strong> the AI duplicated a page and the wireframes were lost; I rebuilt them from scratch. The connector then hit its plan limit, so hi-fi was done as SVG.</li><li><strong class=\"font-medium text-ink\">Liquid Glass:</strong> it cannot be reproduced exactly in Figma, so I used the original components from the Apple UI kit I found among Figma resources.</li><li><strong class=\"font-medium text-ink\">Sources:</strong> one Apple page could not be read and a blog post on contrast issues is a weak source; I cross-checked it and treated it as a signal.</li></ul>",
+    "s10.c.h": "What I decided myself",
+    "s10.c.p": "<ul class=\"list-disc pl-5 space-y-1.5\"><li>Which apps to analyse in the benchmark</li><li>Preparing and researching with a real nurse</li><li>A warm brown palette instead of the blue that dominates the category, accepting the risk that it reads as lifestyle rather than clinical</li><li>The \"sun in the gap\" isotype and Figtree as the typeface</li><li>A calm tone with no scores, no streaks and no push notifications</li><li>Liquid Glass only on the navigation layer, not on content</li><li>Today and Roster as the two hi-fi screens</li></ul>",
+    "s10.eyebrow": "AI log",
+    "s10.heading": "Where AI helped and where I corrected it",
+    "s11.p1": "What I take away most is empathy with the role of nurses: understanding how their shifts are organised, what exhausts them and what they need in the little time they have to rest. That led me to put mental health at the centre of the design: calm, no pressure and with the person in control.",
+    "s11.p2": "I also learned to work within a very tight timebox: deciding what deserves depth (the interview, the brand, two hi-fi screens) and being explicit about what remains a hypothesis to validate, starting with testing what I learned with more nurses.",
+    "s11.eyebrow": "Key learnings",
+    "s11.heading": "What this challenge left me",
+    "cta.back": "Back to all projects",
+    "gate.heading": "This project is protected",
+    "gate.label": "Password",
+    "gate.placeholder": "Enter the password",
+    "gate.button": "Enter",
+    "gate.error": "Incorrect password. Please try again.",
+    "nav.about": "About",
+    "nav.contact": "Contact"
+  }
+};
+
+    function applyTranslations(lang) {
+      const dict = translations[lang] || translations.en;
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        const value = dict[key];
+        if (value === undefined) return;
+
+        if (el.hasAttribute('data-i18n-attr')) {
+          el.setAttribute(el.getAttribute('data-i18n-attr'), value);
+        } else {
+          el.innerHTML = value;
+        }
+      });
+    }
+
+    function updateLangButtons(lang) {
+      document.querySelectorAll('.lang-btn').forEach((btn) => {
+        const active = btn.getAttribute('data-lang') === lang;
+        btn.classList.toggle('bg-ink', active);
+        btn.classList.toggle('text-paper', active);
+        btn.classList.toggle('text-ink/50', !active);
+        btn.classList.toggle('hover:text-ink', !active);
+        btn.setAttribute('aria-pressed', String(active));
+      });
+      const mobileToggle = document.getElementById('lang-toggle-mobile');
+      if (mobileToggle) mobileToggle.textContent = lang.toUpperCase();
+    }
+
+    function setLang(lang) {
+      try { localStorage.setItem('lang', lang); } catch (e) {}
+      applyTranslations(lang);
+      updateLangButtons(lang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach((btn) => {
+      btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang')));
+    });
+
+    const mobileLangToggle = document.getElementById('lang-toggle-mobile');
+    if (mobileLangToggle) {
+      mobileLangToggle.addEventListener('click', () => {
+        setLang(document.documentElement.lang === 'es' ? 'en' : 'es');
+      });
+    }
+
+    let savedLang = null;
+    try { savedLang = localStorage.getItem('lang'); } catch (e) {}
+    setLang(savedLang || 'en');
+    document.body.classList.add('is-ready');
+
+    // ===== Contraseña del proyecto =====
+    (function () {
+      const gate = document.getElementById('password-gate');
+      const content = document.getElementById('protected-content');
+      const form = document.getElementById('password-form');
+      const input = document.getElementById('password-input');
+      const errorEl = document.getElementById('password-error');
+      if (!gate || !content || !form || !input) return;
+
+      const storageKey = 'unlock-circadia';
+      const correctHash = '0c4832e5fb4aed721164a0321c06fadbdf64195374e57ce3acff57874c3fae8d';
+
+      async function sha256(text) {
+        const buffer = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+        return Array.from(new Uint8Array(buffer)).map((b) => b.toString(16).padStart(2, '0')).join('');
+      }
+
+      function unlock() {
+        gate.classList.add('hidden');
+        content.classList.remove('hidden');
+      }
+
+      if (sessionStorage.getItem(storageKey) === '1') {
+        unlock();
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const value = input.value.trim();
+        if (!value) return;
+        const hash = await sha256(value);
+        if (hash === correctHash) {
+          errorEl.classList.add('hidden');
+          sessionStorage.setItem(storageKey, '1');
+          unlock();
+        } else {
+          errorEl.classList.remove('hidden');
+          input.value = '';
+          input.focus();
+        }
+      });
+    })();
+
+
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal:not(.is-visible)');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      revealEls.forEach((el) => observer.observe(el));
+    } else {
+      revealEls.forEach((el) => el.classList.add('is-visible'));
+    }
+
+    // ===== Carruseles =====
+    function initCarousel({ containerId, trackId, prevId, nextId, dotClass, activeDotClass, inactiveDotClass }) {
+      const container = document.getElementById(containerId);
+      const track = document.getElementById(trackId);
+      const prevBtn = document.getElementById(prevId);
+      const nextBtn = document.getElementById(nextId);
+      const dots = Array.from(document.querySelectorAll('.' + dotClass));
+      if (!track) return;
+
+      const slideCount = track.children.length;
+
+      // Carrusel con una sola imagen: sin flechas ni puntos, solo la imagen estática
+      if (slideCount <= 1) {
+        if (prevBtn) prevBtn.remove();
+        if (nextBtn) nextBtn.remove();
+        if (dots.length && dots[0].parentElement) dots[0].parentElement.remove();
+        return;
+      }
+      if (!dots.length) return;
+
+      const autoplayMs = 5000;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let index = 0;
+      let timer = null;
+      let hasEnteredView = false;
+
+      function goTo(i) {
+        index = (i + slideCount) % slideCount;
+        track.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((dot, dotIndex) => {
+          dot.classList.toggle(activeDotClass, dotIndex === index);
+          dot.classList.toggle(inactiveDotClass, dotIndex !== index);
+        });
+      }
+
+      function startAutoplay() {
+        if (reducedMotion || !hasEnteredView) return;
+        stopAutoplay();
+        timer = setInterval(() => goTo(index + 1), autoplayMs);
+      }
+
+      function stopAutoplay() {
+        if (timer) clearInterval(timer);
+        timer = null;
+      }
+
+      function goToManual(i) {
+        goTo(i);
+        startAutoplay();
+      }
+
+      prevBtn.addEventListener('click', () => goToManual(index - 1));
+      nextBtn.addEventListener('click', () => goToManual(index + 1));
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => goToManual(Number(dot.dataset.index)));
+      });
+
+      if (container) {
+        container.addEventListener('mouseenter', stopAutoplay);
+        container.addEventListener('mouseleave', startAutoplay);
+
+        // Swipe táctil (móvil / tablet)
+        let touchStartX = null;
+        container.addEventListener('touchstart', (e) => {
+          touchStartX = e.touches[0].clientX;
+          stopAutoplay();
+        }, { passive: true });
+        container.addEventListener('touchend', (e) => {
+          if (touchStartX === null) return;
+          const dx = e.changedTouches[0].clientX - touchStartX;
+          if (Math.abs(dx) > 40) {
+            goToManual(dx < 0 ? index + 1 : index - 1);
+          } else {
+            startAutoplay();
+          }
+          touchStartX = null;
+        }, { passive: true });
+
+        // Scroll horizontal de trackpad (dos dedos). El scroll con inercia de macOS
+        // sigue disparando eventos "wheel" durante bastante después del gesto físico,
+        // así que tratamos toda la ráfaga (inercia incluida) como un único gesto:
+        // solo navegamos en el primer evento y reiniciamos el cronómetro con cada
+        // evento nuevo, hasta que haya una pausa real sin eventos.
+        let wheelActive = false;
+        let wheelEndTimer = null;
+        container.addEventListener('wheel', (e) => {
+          if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+          e.preventDefault();
+          clearTimeout(wheelEndTimer);
+          if (!wheelActive) {
+            wheelActive = true;
+            stopAutoplay();
+            goTo(e.deltaX > 0 ? index + 1 : index - 1);
+          }
+          wheelEndTimer = setTimeout(() => {
+            wheelActive = false;
+            startAutoplay();
+          }, 200);
+        }, { passive: false });
+      }
+
+      goTo(0);
+
+      // No arrancar el autoplay hasta que el usuario llegue a este carrusel
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              hasEnteredView = true;
+              startAutoplay();
+              observer.disconnect();
+            }
+          });
+        }, { threshold: 0.4 });
+        observer.observe(container || track);
+      } else {
+        hasEnteredView = true;
+        startAutoplay();
+      }
+    }
+
+
+    initCarousel({
+      containerId: 'hero-carousel',
+      trackId: 'hero-track',
+      prevId: 'hero-prev',
+      nextId: 'hero-next',
+      dotClass: 'hero-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'bench-carousel',
+      trackId: 'bench-track',
+      prevId: 'bench-prev',
+      nextId: 'bench-next',
+      dotClass: 'bench-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'lowfi-carousel',
+      trackId: 'lowfi-track',
+      prevId: 'lowfi-prev',
+      nextId: 'lowfi-next',
+      dotClass: 'lowfi-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'comps-carousel',
+      trackId: 'comps-track',
+      prevId: 'comps-prev',
+      nextId: 'comps-next',
+      dotClass: 'comps-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    // ===== Índice de secciones =====
+    (function () {
+      const items = Array.from(document.querySelectorAll('.section-index-item'));
+      if (!items.length) return;
+
+      const sections = items
+        .map((item) => document.getElementById(item.dataset.target))
+        .filter(Boolean);
+
+      items.forEach((item) => {
+        item.addEventListener('click', () => {
+          const target = document.getElementById(item.dataset.target);
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      function setActive(id) {
+        items.forEach((item) => {
+          const dot = item.querySelector('.section-index-dot');
+          const label = item.querySelector('.section-index-label');
+          const active = item.dataset.target === id;
+          dot.classList.toggle('bg-ink', active);
+          dot.classList.toggle('scale-150', active);
+          dot.classList.toggle('bg-ink/20', !active);
+          label.classList.toggle('text-ink', active);
+          label.classList.toggle('font-semibold', active);
+          label.classList.toggle('text-slate', !active);
+        });
+      }
+
+      if ('IntersectionObserver' in window) {
+        const sectionObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) setActive(entry.target.id);
+          });
+        }, { rootMargin: '-45% 0px -50% 0px' });
+        sections.forEach((section) => sectionObserver.observe(section));
+      }
+    })();
+  </script>
+
+  <!-- Visor de imágenes a pantalla completa (solo táctil) -->
+  <script>
+    (function () {
+      if (!window.matchMedia('(hover: none)').matches) return;
+      const main = document.querySelector('main');
+      if (!main) return;
+      const overlay = document.createElement('div');
+      overlay.setAttribute('role', 'dialog');
+      overlay.setAttribute('aria-modal', 'true');
+      overlay.style.cssText = 'position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(10,10,10,0.94);touch-action:pinch-zoom;';
+      const big = document.createElement('img');
+      big.style.cssText = 'max-width:100%;max-height:100%;object-fit:contain;touch-action:pinch-zoom;';
+      big.alt = '';
+      const close = document.createElement('button');
+      close.type = 'button';
+      close.setAttribute('aria-label', 'Cerrar');
+      close.style.cssText = 'position:absolute;top:max(env(safe-area-inset-top),12px);right:12px;width:44px;height:44px;border-radius:9999px;border:0;background:rgba(255,255,255,0.16);color:#fff;font-size:24px;line-height:1;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;';
+      close.textContent = '\u00d7';
+      overlay.appendChild(big);
+      overlay.appendChild(close);
+      document.body.appendChild(overlay);
+
+      function open(img) {
+        big.src = img.currentSrc || img.src;
+        big.alt = img.alt || '';
+        overlay.style.display = 'flex';
+        document.documentElement.style.overflow = 'hidden';
+      }
+      function shut() {
+        overlay.style.display = 'none';
+        big.removeAttribute('src');
+        document.documentElement.style.overflow = '';
+      }
+      overlay.addEventListener('click', shut);
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') shut(); });
+
+      main.addEventListener('click', (e) => {
+        const img = e.target.closest('img');
+        if (!img || img.closest('a, button, header, nav')) return;
+        if (img.hasAttribute('data-nozoom')) return;
+        if (img.getBoundingClientRect().width < 120) return;
+        open(img);
+      });
+    })();
+  </script>
+</body>
+</html>
