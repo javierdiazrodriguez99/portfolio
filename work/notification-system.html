@@ -158,24 +158,8 @@
       </button>
     </nav>
 
-    <!-- ===== PASSWORD GATE ===== -->
-    <section id="password-gate" class="max-w-[1680px] mx-auto px-6 sm:px-16 pt-[91px] sm:pt-[159px] pb-20 min-h-[60vh] flex flex-col justify-center">
-      <div class="max-w-xl mx-auto text-center w-full">
-      <h1 class="t-h2 mb-8" data-i18n="gate.heading">
-        Este proyecto está protegido
-      </h1>
-      <form id="password-form" class="flex flex-col gap-3" autocomplete="off">
-        <label for="password-input" class="sr-only" data-i18n="gate.label">Contraseña</label>
-        <input type="password" id="password-input" name="password" autocomplete="off" placeholder="Introduce la contraseña" data-i18n="gate.placeholder" data-i18n-attr="placeholder" class="focus-ring w-full text-center px-6 py-3.5 rounded-full border border-ink/15 bg-paper text-ink placeholder:text-slate/60">
-        <button type="submit" class="focus-ring inline-flex items-center justify-center gap-2 bg-ink text-paper t-s-m px-6 py-3.5 rounded-full hover:bg-slate transition-colors" data-i18n="gate.button">
-          Acceder
-        </button>
-        <p id="password-error" class="hidden text-base text-red-600/80 mt-1" data-i18n="gate.error">Contraseña incorrecta. Inténtalo de nuevo.</p>
-      </form>
-      </div>
-    </section>
 
-    <div id="protected-content" class="hidden">
+    <div id="protected-content">
 
     <!-- ===== HERO ===== -->
     <section class="max-w-[1680px] mx-auto px-6 sm:px-16 pt-[91px] sm:pt-[159px]">
@@ -949,48 +933,6 @@
     setLang(localStorage.getItem('lang') || 'en');
     document.body.classList.add('is-ready');
 
-    // ===== Contraseña del proyecto =====
-    (function () {
-      const gate = document.getElementById('password-gate');
-      const content = document.getElementById('protected-content');
-      const form = document.getElementById('password-form');
-      const input = document.getElementById('password-input');
-      const errorEl = document.getElementById('password-error');
-      if (!gate || !content || !form || !input) return;
-
-      const storageKey = 'unlock-notification-system';
-      const correctHash = '0c4832e5fb4aed721164a0321c06fadbdf64195374e57ce3acff57874c3fae8d';
-
-      async function sha256(text) {
-        const buffer = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
-        return Array.from(new Uint8Array(buffer)).map((b) => b.toString(16).padStart(2, '0')).join('');
-      }
-
-      function unlock() {
-        gate.classList.add('hidden');
-        content.classList.remove('hidden');
-      }
-
-      if (sessionStorage.getItem(storageKey) === '1') {
-        unlock();
-      }
-
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const value = input.value.trim();
-        if (!value) return;
-        const hash = await sha256(value);
-        if (hash === correctHash) {
-          errorEl.classList.add('hidden');
-          sessionStorage.setItem(storageKey, '1');
-          unlock();
-        } else {
-          errorEl.classList.remove('hidden');
-          input.value = '';
-          input.focus();
-        }
-      });
-    })();
 
 
     // Scroll reveal
