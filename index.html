@@ -201,6 +201,17 @@
   .t-s-m { font-size: 16px; line-height: 24px; font-weight: 500; letter-spacing: 0; }
   .t-logo { font-size: 16px; line-height: 24px; font-weight: 600; letter-spacing: 0; }
   .t-p  { font-size: 20px; line-height: 28px; font-weight: 400; letter-spacing: 0; }
+  /* Escala en móvil: el párrafo baja a 16 px y el resto en proporción */
+  @media (max-width: 767px) {
+    .t-h1 { font-size: 40px; line-height: 48px; letter-spacing: -1.5px; }
+    .t-h2 { font-size: 32px; line-height: 40px; letter-spacing: -0.5px; }
+    .t-h3 { font-size: 24px; line-height: 32px; }
+    .t-h4 { font-size: 18px; line-height: 26px; }
+    .t-h5 { font-size: 16px; line-height: 24px; }
+    .t-h6 { font-size: 14px; line-height: 20px; letter-spacing: 1.5px; }
+    .t-p  { font-size: 16px; line-height: 24px; }
+    .t-s, .t-s-m { font-size: 14px; line-height: 20px; }
+  }
   @media (min-width: 768px) {
     .t-logo { font-size: 24px; line-height: 32px; letter-spacing: -1px; }
     .t-h1 { font-size: 72px; line-height: 80px; letter-spacing: -3px; }
@@ -210,13 +221,13 @@
     .t-h1 { font-size: 80px; line-height: 88px; }
   }
   @media (max-width: 767px) {
-    .t-h2.t-down { font-size: 32px; line-height: 40px; font-weight: 500; letter-spacing: 0; }
+    .t-h2.t-down { font-size: 28px; line-height: 36px; font-weight: 500; letter-spacing: 0; }
   }
 
   /* Portada de Vertical Menu: degradado original de Freightos + tipografía que escala con la tarjeta */
   .vm-cover { container-type: inline-size; background: linear-gradient(180deg, #00296B 0%, #02296C 36%, #14317A 52%, #3A4B91 70%, #6670B5 88%, #807CC7 100%); }
   .vm-cover-title { color: #fff; font-weight: 700; font-size: 7.6cqw; line-height: 1; letter-spacing: -0.03em; }
-  .vm-cover-sub { color: #36DFD4; font-weight: 600; font-size: 2.25cqw; margin-top: 2.6cqw; }
+  .vm-cover-sub { color: #36DFD4; font-weight: 600; font-size: max(11px, 2.25cqw); margin-top: 2.6cqw; }
   .vm-cover .vm-panel { clip-path: inset(0 100% 0 0); transition: clip-path 0.55s cubic-bezier(0.22, 1, 0.36, 1); box-shadow: 6px 0 16px rgba(0, 0, 0, 0.06); }
   .vm-cover .vm-active { opacity: 0; transition: opacity 0.3s ease; }
   @media (hover: hover) {
