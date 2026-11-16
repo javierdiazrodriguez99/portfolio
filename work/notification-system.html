@@ -105,6 +105,14 @@
     .t-s, .t-s-m { font-size: 14px; line-height: 20px; }
     /* Captions y notas bajo las imágenes */
     p.text-base[data-i18n*="cap"], p.text-base[data-i18n$=".lim"], p.text-base[data-i18n*="footnote"] { font-size: 14px; line-height: 20px; }
+    /* Header */
+    .t-logo.nav-logo { font-size: 19px; line-height: 28px; letter-spacing: -0.5px; }
+    .nav-links { font-size: 17px; line-height: 28px; column-gap: 14px; }
+    .nav-lang { font-size: 16px; line-height: 24px; height: 36px; }
+  }
+  @media (max-width: 374px) {
+    .t-logo.nav-logo { font-size: 17px; }
+    .nav-links { font-size: 16px; column-gap: 12px; }
   }
   @media (min-width: 768px) {
     .t-logo { font-size: 24px; line-height: 32px; letter-spacing: -1px; }
@@ -126,16 +134,16 @@
   <header class="fixed top-0 inset-x-0 z-50 bg-paper/80 backdrop-blur-md">
     <nav class="max-w-[1680px] mx-auto px-6 sm:px-16 h-[68px] sm:h-[136px] flex items-center justify-between">
 
-      <a href="../index.html" class="t-logo focus-ring rounded whitespace-nowrap shrink-0">
+      <a href="../index.html" class="t-logo nav-logo focus-ring rounded whitespace-nowrap shrink-0">
         Javier Díaz
       </a>
 
       <div class="flex items-center gap-4 sm:gap-8 shrink-0">
-        <ul class="flex items-center gap-4 sm:gap-10 text-base sm:text-xl text-slate whitespace-nowrap">
+        <ul class="nav-links flex items-center gap-4 sm:gap-10 text-base sm:text-xl text-slate whitespace-nowrap">
           <li><a href="../sobre-mi.html" class="inline-block py-2 -my-2 hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
           <li><a href="../contacto.html" class="inline-block py-2 -my-2 hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
         </ul>
-        <button type="button" id="lang-toggle-mobile" class="sm:hidden h-8 px-3 flex items-center justify-center t-s-m border border-ink/15 rounded-full [@media(hover:hover)]:hover:bg-latte/40 [-webkit-tap-highlight-color:transparent] transition-colors" aria-label="Cambiar idioma">ES</button>
+        <button type="button" id="lang-toggle-mobile" class="nav-lang sm:hidden h-8 px-3 flex items-center justify-center t-s-m border border-ink/15 rounded-full [@media(hover:hover)]:hover:bg-latte/40 [-webkit-tap-highlight-color:transparent] transition-colors" aria-label="Cambiar idioma">ES</button>
         <div class="hidden sm:flex items-center h-8 gap-1 text-base font-medium border border-ink/15 rounded-full p-1" role="group" aria-label="Seleccionar idioma">
           <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="en">EN</button>
           <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="es">ES</button>
