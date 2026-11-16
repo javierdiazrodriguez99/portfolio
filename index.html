@@ -68,10 +68,8 @@
     .reveal { opacity: 1; transform: none; }
   }
 
-  /* Saludo del preloader: el doble que el título de página (t-h1); en móvil se limita al ancho para que quepa «こんにちは» */
-  #preloader-word { font-size: min(80px, 17vw); line-height: 1.1; letter-spacing: -3px; }
-  @media (min-width: 768px) { #preloader-word { font-size: 144px; letter-spacing: -6px; } }
-  @media (min-width: 1280px) { #preloader-word { font-size: 160px; } }
+  /* Saludo del preloader en móvil: el doble que el título de página, limitado al ancho para que quepa «こんにちは» */
+  @media (max-width: 767px) { #preloader-word { font-size: min(80px, 17vw); line-height: 1.1; letter-spacing: -3px; } }
   .preloader-hint {
     --hint-start: 18px;
     --hint-end: -14px;
