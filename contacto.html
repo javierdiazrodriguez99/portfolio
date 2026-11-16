@@ -100,6 +100,19 @@
   .t-s-m { font-size: 16px; line-height: 24px; font-weight: 500; letter-spacing: 0; }
   .t-logo { font-size: 16px; line-height: 24px; font-weight: 600; letter-spacing: 0; }
   .t-p  { font-size: 20px; line-height: 28px; font-weight: 400; letter-spacing: 0; }
+  /* Escala en móvil: el párrafo baja a 16 px y el resto en proporción */
+  @media (max-width: 767px) {
+    .t-h1 { font-size: 40px; line-height: 48px; letter-spacing: -1.5px; }
+    .t-h2 { font-size: 32px; line-height: 40px; letter-spacing: -0.5px; }
+    .t-h3 { font-size: 24px; line-height: 32px; }
+    .t-h4 { font-size: 18px; line-height: 26px; }
+    .t-h5 { font-size: 16px; line-height: 24px; }
+    .t-h6 { font-size: 14px; line-height: 20px; letter-spacing: 1.5px; }
+    .t-p  { font-size: 16px; line-height: 24px; }
+    .t-s, .t-s-m { font-size: 14px; line-height: 20px; }
+    /* Captions y notas bajo las imágenes */
+    p.text-base[data-i18n*="cap"], p.text-base[data-i18n$=".lim"], p.text-base[data-i18n*="footnote"] { font-size: 14px; line-height: 20px; }
+  }
   @media (min-width: 768px) {
     .t-logo { font-size: 24px; line-height: 32px; letter-spacing: -1px; }
     .t-h1 { font-size: 72px; line-height: 80px; letter-spacing: -3px; }
