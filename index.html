@@ -218,21 +218,16 @@
   .vm-cover { container-type: inline-size; background: linear-gradient(180deg, #00296B 0%, #02296C 36%, #14317A 52%, #3A4B91 70%, #6670B5 88%, #807CC7 100%); }
   .vm-cover-title { color: #fff; font-weight: 700; font-size: 7.6cqw; line-height: 1; letter-spacing: -0.03em; }
   .vm-cover-sub { color: #36DFD4; font-weight: 600; font-size: 2.25cqw; margin-top: 2.6cqw; }
-  /* Portada de Qonto: una pantalla de escritorio grande y centrada; al pasar el ratón (o al hacer scroll en móvil)
-     se reduce y se va a la izquierda, y aparecen a su derecha los dos pasos siguientes, solapados (izquierda delante, derecha detrás) */
-  .qonto-cover .qc-step { position: absolute; left: 30%; top: 40%; width: 40%; height: auto; transform-origin: 50% 0; border-radius: 0.375rem; box-shadow: 0 16px 32px rgba(30, 25, 60, 0.2); transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease; }
-  .qonto-cover .qc-step-1 { transform: translateY(-24%) scale(2.1); z-index: 3; }
-  .qonto-cover .qc-step-2 { z-index: 2; }
-  .qonto-cover .qc-step-3 { z-index: 1; }
-  .qonto-cover .qc-step-2, .qonto-cover .qc-step-3 { opacity: 0; transform: scale(0.96); }
+  /* Portada de Qonto: la primera pantalla del flujo delante, algo a la izquierda, con los dos pasos siguientes
+     asomando por detrás a la derecha. Al pasar el ratón (o al hacer scroll en móvil) hace un poco de zoom */
+  .qonto-cover .qc-step { position: absolute; height: auto; border-radius: 0.375rem; transform-origin: 0 0; transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+  .qonto-cover .qc-step-1 { left: 3%; top: 32.5%; width: 82%; z-index: 3; box-shadow: 0 20px 40px rgba(30, 25, 60, 0.22); }
+  .qonto-cover .qc-step-2 { left: 12%; top: 36%; width: 80%; z-index: 2; box-shadow: 0 14px 30px rgba(30, 25, 60, 0.16); }
+  .qonto-cover .qc-step-3 { left: 21%; top: 39.5%; width: 76%; z-index: 1; box-shadow: 0 10px 24px rgba(30, 25, 60, 0.12); }
   @media (hover: hover) {
-    .group:hover .qonto-cover .qc-step-1 { transform: translateX(-65%); }
-    .group:hover .qonto-cover .qc-step-2 { opacity: 1; transform: none; transition-delay: 0.15s; }
-    .group:hover .qonto-cover .qc-step-3 { opacity: 1; transform: translateX(65%); transition-delay: 0.25s; }
+    .group:hover .qonto-cover .qc-step { transform: scale(1.04); }
   }
-  .is-active .qonto-cover .qc-step-1 { transform: translateX(-65%); }
-  .is-active .qonto-cover .qc-step-2 { opacity: 1; transform: none; transition-delay: 0.15s; }
-  .is-active .qonto-cover .qc-step-3 { opacity: 1; transform: translateX(65%); transition-delay: 0.25s; }
+  .is-active .qonto-cover .qc-step { transform: scale(1.04); }
 </style>
 </head>
 
@@ -355,8 +350,8 @@
         </article>
 
         <!-- Qonto -->
-        <!-- Portada con el mismo esquema que Circadia: logo arriba y pantalla del flujo saliendo por abajo.
-             Al pasar el ratón (o al hacer scroll en móvil) la primera pantalla se va a la izquierda y aparecen los dos pasos siguientes -->
+        <!-- Portada con el mismo esquema que Circadia: logo arriba y pantalla del flujo saliendo por abajo,
+             con los pasos siguientes asomando por detrás -->
         <article class="reveal group" data-category="personal" data-scroll-anim>
           <a href="work/qonto.html" class="focus-ring block rounded-2xl">
             <div class="qonto-cover aspect-[4/3] rounded-2xl mb-6 overflow-hidden relative bg-[#ECEAF3]">
