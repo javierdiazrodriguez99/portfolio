@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title data-i18n="meta.title">Cierre de cuenta · Javier Díaz</title>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-<meta name="robots" content="noindex, nofollow">
 <meta name="description" data-i18n="meta.description" data-i18n-attr="content" content="Caso de estudio: rediseño del flujo de cierre de cuenta de Qonto (ejercicio de diseño de producto).">
 
 <!-- Tailwind CDN -->
@@ -138,25 +137,9 @@
 
   <main class="flex-1">
 
-    <!-- ===== PASSWORD GATE ===== -->
-    <section id="password-gate" class="max-w-[1680px] mx-auto px-6 sm:px-16 pt-[91px] sm:pt-[159px] pb-20 min-h-[60vh] flex flex-col justify-center">
-      <div class="max-w-xl mx-auto text-center w-full">
-      <h1 class="t-h2 mb-8" data-i18n="gate.heading">
-        Este proyecto está protegido
-      </h1>
-      <form id="password-form" class="flex flex-col gap-3" autocomplete="off">
-        <label for="password-input" class="sr-only" data-i18n="gate.label">Contraseña</label>
-        <input type="password" id="password-input" name="password" autocomplete="off" placeholder="Introduce la contraseña" data-i18n="gate.placeholder" data-i18n-attr="placeholder" class="focus-ring w-full text-center px-6 py-3.5 rounded-full border border-ink/15 bg-paper text-ink placeholder:text-slate/60">
-        <button type="submit" class="focus-ring inline-flex items-center justify-center gap-2 bg-ink text-paper t-s-m px-6 py-4 rounded-full hover:bg-slate transition-colors" data-i18n="gate.button">
-          Acceder
-        </button>
-        <p id="password-error" class="hidden text-base text-red-600/80 mt-1" data-i18n="gate.error">Contraseña incorrecta. Inténtalo de nuevo.</p>
-      </form>
-      </div>
-    </section>
 
 
-    <div id="protected-content" class="hidden">
+    <div id="protected-content">
 
     <nav id="section-index" class="group/index hidden xl:flex flex-col items-end gap-4 fixed right-6 top-1/2 -translate-y-1/2 z-30" aria-label="Índice de secciones">
       <button type="button" class="section-index-item flex items-center gap-3 focus-ring rounded" data-target="s01">
@@ -205,12 +188,12 @@
     <section class="max-w-[1680px] mx-auto px-6 sm:px-16 pt-[91px] sm:pt-[159px]">
       <h1 class="reveal is-visible t-h1" data-i18n="hero.title">Cierre de cuenta</h1>
 
-      <p class="reveal is-visible mt-6 t-h4 text-slate" data-i18n="hero.subtitle">Rediseño del flujo de cierre de cuenta para que marcharse sea claro, justo y seguro, y para que Qonto entienda por qué se van sus clientes y recupere a los que de verdad puede ayudar. Proteger primero, aprender después y retener solo cuando realmente ayuda.</p>
+      <p class="reveal is-visible mt-6 t-h4 text-slate" data-i18n="hero.subtitle">Rediseño del flujo de cierre de cuenta para que marcharse sea claro, justo y seguro.</p>
 
       <div class="reveal is-visible mt-8 sm:mt-12 pt-0 sm:pt-8 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-6 sm:gap-8">
         <div><p class="t-h6 text-slate mb-1 sm:mb-2" data-i18n="hero.role.label">Rol</p><p class="t-h5 t-meta text-ink" data-i18n="hero.role.value">Product Designer</p></div>
         <div><p class="t-h6 text-slate mb-1 sm:mb-2" data-i18n="hero.year.label">Año</p><p class="t-h5 t-meta text-ink" data-i18n="hero.year.value">2026</p></div>
-        <div><p class="t-h6 text-slate mb-1 sm:mb-2" data-i18n="hero.team.label">Equipo</p><p class="t-h5 t-meta text-ink" data-i18n="hero.team.value">Individual</p></div>
+        <div><p class="t-h6 text-slate mb-1 sm:mb-2" data-i18n="hero.team.label">Formato</p><p class="t-h5 t-meta text-ink" data-i18n="hero.team.value">Caso de estudio</p></div>
       </div>
 
       <div class="mt-16 md:mt-20">
@@ -241,7 +224,7 @@
         <span class="t-h6 text-slate" data-i18n="s03.eyebrow">Análisis del flujo actual</span>
       </div>
       <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="s03.heading">Un flujo que informa, pero no ayuda</h2>
-<div class="reveal mb-8 md:mb-14"><p class="t-p text-slate" data-i18n="s03.p1">Analicé una a una las cinco pantallas del flujo actual: qué funciona y conviene conservar, los puntos de dolor (posibles riesgos para la persona) y las mejoras de diseño. Esta tabla resume el análisis.</p></div><div class="reveal overflow-x-auto rounded-2xl border border-ink/15 bg-paper"><img src="qonto/flow-summary.png" alt="Tabla resumen del análisis del flujo actual, pantalla a pantalla: qué funciona, puntos de dolor y mejoras" data-i18n="s03.img" data-i18n-attr="alt" class="block w-full h-auto min-w-[900px] md:min-w-0" loading="lazy"></div><p class="reveal text-base text-slate mt-3" data-i18n="s03.img.cap">Resumen del análisis de las cinco pantallas: introducción, motivos, detalle del motivo, consecuencias y confirmación.</p><div class="reveal mt-10 md:mt-20 mb-6"><h3 class="t-h4 t-medium mb-2" data-i18n="s03.ins.h">Seis conclusiones</h3></div><div class="reveal mb-8 md:mb-14 grid sm:grid-cols-2 gap-x-8 gap-y-10 md:gap-x-10">
+<div class="reveal mb-8 md:mb-14"><p class="t-p text-slate" data-i18n="s03.p1">Analicé una a una las cinco pantallas del flujo actual: qué funciona y conviene conservar, los puntos de dolor (posibles riesgos para la persona) y las mejoras de diseño. Esta tabla resume el análisis.</p></div><div class="reveal overflow-x-auto rounded-2xl border border-ink/15 bg-paper"><img src="qonto/flow-summary.png" alt="Tabla resumen del análisis del flujo actual, pantalla a pantalla: qué funciona, puntos de dolor y mejoras" data-i18n="s03.img" data-i18n-attr="alt" class="block w-full h-auto min-w-[900px] md:min-w-0" loading="lazy"></div><p class="reveal text-base text-slate mt-3" data-i18n="s03.img.cap">Resumen del análisis de las cinco pantallas: introducción, motivos, detalle del motivo, consecuencias y confirmación.</p><div class="reveal mt-10 md:mt-20 mb-8 md:mb-14 grid sm:grid-cols-2 gap-x-8 gap-y-10 md:gap-x-10">
 <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s03i.c1.h">Dice qué hacer, pero no ayuda a hacerlo</h3><div class="t-p text-slate" data-i18n="s03i.c1.p">Los requisitos (saldo a 0 €, sin pagos pendientes) se listan al inicio y se repiten al final, pero nunca se comprueban ni se pueden resolver dentro del flujo.</div></div>
 <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s03i.c2.h">Pregunta por qué se van, pero no escucha</h3><div class="t-p text-slate" data-i18n="s03i.c2.p">Dos capas de preguntas y el flujo sigue igual para todos. Quien solo pausa, reduce o cambia de titular quizá no necesita cerrar.</div></div>
 <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s03i.c3.h">El estado del cierre nunca está claro</h3><div class="t-p text-slate" data-i18n="s03i.c3.p">«Estás cerrando», «si cumples los requisitos», «permanentemente» y, al final, una pantalla de «éxito».</div></div>
@@ -282,18 +265,21 @@
         <span class="t-h6 text-slate" data-i18n="s06.eyebrow">Estrategia de producto</span>
       </div>
       <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="s06.heading">Del análisis a cinco hipótesis</h2>
-<div class="reveal mb-6"><h3 class="t-h4 t-medium mb-2" data-i18n="s06.prob.h">El problema</h3></div><div class="reveal mb-8 md:mb-14"><p class="t-p text-slate" data-i18n="s06.prob.p">Para una empresa, cerrar una cuenta no es un momento sino una migración: mover el dinero, compartir los nuevos datos bancarios, avisar a la asesoría y conseguir la aprobación de otras personas. El flujo actual lo trata como una lista de requisitos que leer y un formulario que rellenar: enumera requisitos sin ayudar a cumplirlos, pregunta por qué se van sin actuar sobre la respuesta y deja poco claros el estado del cierre y los siguientes pasos. Como resultado, las empresas cargan solas con el riesgo y el esfuerzo, y Qonto pierde la oportunidad de aprender de quienes no necesitaban irse.</p></div><div class="reveal mt-10 md:mt-20 mb-6"><h3 class="t-h4 t-medium mb-2" data-i18n="s06.goals.h">Objetivos</h3></div><div class="reveal mb-8 md:mb-14 grid sm:grid-cols-2 gap-x-8 gap-y-10 md:gap-x-10"><div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s06g.c1.h">Para la persona</h3><div class="t-p text-slate" data-i18n="s06g.c1.p"><ul class="list-disc pl-5 space-y-1.5"><li>Irse con seguridad: sin pagos rotos, adeudos fallidos ni cargos sorpresa</li><li>Saber exactamente qué hacer, cuándo se cierra la cuenta y cuánto costará</li><li>Superar la transición: mover el dinero, compartir los nuevos datos bancarios y avisar a la asesoría</li><li>Conservar el acceso a los extractos y tener una prueba del cierre</li><li>Saber si cerrar es siquiera necesario (una pausa, un plan más barato, un cambio de titular)</li></ul></div></div><div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s06g.c2.h">Para el negocio</h3><div class="t-p text-slate" data-i18n="s06g.c2.p"><ul class="list-disc pl-5 space-y-1.5"><li>Retener a los clientes que no necesitaban irse, con ofertas relevantes para ellos</li><li>Capturar motivos de cierre estructurados y accionables</li><li>Reducir los contactos a soporte y el trabajo manual de Ops</li><li>Cumplir con la conservación de datos, las aprobaciones y la información obligatoria</li><li>Dejar una buena última impresión, para que puedan volver</li></ul></div></div></div><div class="reveal mt-10 md:mt-20 mb-6"><h3 class="t-h4 t-medium mb-2" data-i18n="s06.hyp.h">Cinco hipótesis</h3></div><div class="reveal mb-8 md:mb-14 grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10">
+<div class="reveal mb-8 md:mb-14"><p class="t-p text-slate" data-i18n="s06.prob.p">Para una empresa, cerrar una cuenta no es un momento sino una migración: mover el dinero, compartir los nuevos datos bancarios, avisar a la asesoría y conseguir la aprobación de otras personas. El flujo actual lo trata como una lista de requisitos que leer y un formulario que rellenar: enumera requisitos sin ayudar a cumplirlos, pregunta por qué se van sin actuar sobre la respuesta y deja poco claros el estado del cierre y los siguientes pasos. Como resultado, las empresas cargan solas con el riesgo y el esfuerzo, y Qonto pierde la oportunidad de aprender de quienes no necesitaban irse.</p></div><div class="reveal mt-10 md:mt-20 mb-6"><h3 class="t-h4 t-medium mb-2" data-i18n="s06.goals.h">Objetivos</h3></div><div class="reveal mb-8 md:mb-14 grid sm:grid-cols-2 gap-x-8 gap-y-10 md:gap-x-10"><div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s06g.c1.h">Para la persona</h3><div class="t-p text-slate" data-i18n="s06g.c1.p"><ul class="list-disc pl-5 space-y-1.5"><li>Irse con seguridad: sin pagos rotos, adeudos fallidos ni cargos sorpresa</li><li>Saber exactamente qué hacer, cuándo se cierra la cuenta y cuánto costará</li><li>Superar la transición: mover el dinero, compartir los nuevos datos bancarios y avisar a la asesoría</li><li>Conservar el acceso a los extractos y tener una prueba del cierre</li><li>Saber si cerrar es siquiera necesario (una pausa, un plan más barato, un cambio de titular)</li></ul></div></div><div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s06g.c2.h">Para el negocio</h3><div class="t-p text-slate" data-i18n="s06g.c2.p"><ul class="list-disc pl-5 space-y-1.5"><li>Retener a los clientes que no necesitaban irse, con ofertas relevantes para ellos</li><li>Capturar motivos de cierre estructurados y accionables</li><li>Reducir los contactos a soporte y el trabajo manual de Ops</li><li>Cumplir con la conservación de datos, las aprobaciones y la información obligatoria</li><li>Dejar una buena última impresión, para que puedan volver</li></ul></div></div></div><div class="reveal mt-10 md:mt-20 grid md:grid-cols-2 gap-x-10 gap-y-14">
+<div><div class="mb-6"><h3 class="t-h4 t-medium mb-2" data-i18n="s06.hyp.h">Cinco hipótesis</h3></div><div class="grid gap-y-10">
 <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s06h.c1.h">H1 · Requisitos sobre los que se puede actuar</h3><div class="t-p text-slate" data-i18n="s06h.c1.p">Creemos que mostrar cada requisito con su estado real y una acción en línea (por ejemplo, «Transferir el saldo restante») reducirá los cierres aplazados y los contactos a soporte, porque hoy hay que salir del flujo para comprobarlos y arreglarlos.</div></div>
 <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s06h.c2.h">H2 · Siguiente paso según el motivo</h3><div class="t-p text-slate" data-i18n="s06h.c2.p">Creemos que preguntar el motivo una sola vez y adaptar el siguiente paso a él llevará a más usuarios a mantener su cuenta sin dañar la satisfacción.</div></div>
-<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s06h.c3.h">H3 · Apoyo en la transición</h3><div class="t-p text-slate" data-i18n="s06h.c3.p">Creemos que ayudar a planificar la fecha de cierre, ver los cobros y adeudos entrantes, exportar extractos y avisar a la asesoría reducirá los problemas tras el cierre, porque para una empresa cerrar es una migración, no un momento.</div></div>
-<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s06h.c4.h">H4 · Estado claro y prueba de cierre</h3><div class="t-p text-slate" data-i18n="s06h.c4.p">Creemos que indicar la fecha de cierre, el coste, qué deja de funcionar y qué se conserva, junto con una confirmación del cierre, reducirá las quejas y generará confianza.</div></div>
-<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s06h.c5.h">H5 · Roles y aprobaciones visibles</h3><div class="t-p text-slate" data-i18n="s06h.c5.p">Creemos que mostrar quién puede cerrar, quién debe aprobar y avisar a otros administradores evitará cierres discutidos o inesperados, porque en una empresa cerrar es una decisión compartida.</div></div>
-</div><div class="reveal mt-10 md:mt-20 mb-6"><h3 class="t-h4 t-medium mb-2" data-i18n="s06.met.h">Métricas de éxito</h3></div><div class="reveal mb-0 grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10">
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s06h.c3.h">H3 · Apoyo en la transición</h3><div class="t-p text-slate" data-i18n="s06h.c3.p">Creemos que ayudar a planificar la fecha de cierre, ver los cobros y adeudos entrantes, exportar extractos y avisar a la asesoría reducirá los problemas tras el cierre, porque para una empresa cerrar es una migración, no un momento.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s06h.c4.h">H4 · Estado claro y prueba de cierre</h3><div class="t-p text-slate" data-i18n="s06h.c4.p">Creemos que indicar la fecha de cierre, el coste, qué deja de funcionar y qué se conserva, junto con una confirmación del cierre, reducirá las quejas y generará confianza.</div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s06h.c5.h">H5 · Roles y aprobaciones visibles</h3><div class="t-p text-slate" data-i18n="s06h.c5.p">Creemos que mostrar quién puede cerrar, quién debe aprobar y avisar a otros administradores evitará cierres discutidos o inesperados, porque en una empresa cerrar es una decisión compartida.</div></div>
+</div></div>
+<div><div class="mb-6"><h3 class="t-h4 t-medium mb-2" data-i18n="s06.met.h">Métricas de éxito</h3></div><div class="grid gap-y-10">
 <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s06m.c1.h">Principales</h3><div class="t-p text-slate" data-i18n="s06m.c1.p"><ul class="list-disc pl-5 space-y-1.5"><li>Solicitudes de cierre completadas sin contactar con soporte (H1, H4)</li><li>Cierres completados en la fecha prevista, sin aplazarse (H1)</li></ul></div></div>
 <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s06m.c2.h">Operaciones</h3><div class="t-p text-slate" data-i18n="s06m.c2.p"><ul class="list-disc pl-5 space-y-1.5"><li>Tickets de soporte por cierre, durante y después del flujo (H1, H3, H4)</li><li>Incidencias tras el cierre: adeudos fallidos, transferencias devueltas, cargos inesperados (H3, H4)</li></ul></div></div>
-<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s06m.c3.h">Win-back</h3><div class="t-p text-slate" data-i18n="s06m.c3.p"><ul class="list-disc pl-5 space-y-1.5"><li>Usuarios que eligen una alternativa y siguen activos a los 90 días (H2)</li></ul></div></div>
-<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s06m.c4.h">Información</h3><div class="t-p text-slate" data-i18n="s06m.c4.p"><ul class="list-disc pl-5 space-y-1.5"><li>Cierres con un motivo accionable, no omitido ni vago (H2)</li></ul></div></div>
-<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s06m.c5.h">Guardarraíles</h3><div class="t-p text-slate" data-i18n="s06m.c5.p"><ul class="list-disc pl-5 space-y-1.5"><li>Tiempo de finalización de quienes ya han decidido cerrar (sin fricción añadida)</li><li>Satisfacción de quienes cierran, con una breve encuesta de salida (sin pérdida de confianza)</li><li>Cierres cancelados antes de la fecha prevista (un pico indicaría consecuencias poco claras)</li></ul></div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s06m.c3.h">Win-back</h3><div class="t-p text-slate" data-i18n="s06m.c3.p"><ul class="list-disc pl-5 space-y-1.5"><li>Usuarios que eligen una alternativa y siguen activos a los 90 días (H2)</li></ul></div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s06m.c4.h">Información</h3><div class="t-p text-slate" data-i18n="s06m.c4.p"><ul class="list-disc pl-5 space-y-1.5"><li>Cierres con un motivo accionable, no omitido ni vago (H2)</li></ul></div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s06m.c5.h">Guardarraíles</h3><div class="t-p text-slate" data-i18n="s06m.c5.p"><ul class="list-disc pl-5 space-y-1.5"><li>Tiempo de finalización de quienes ya han decidido cerrar (sin fricción añadida)</li><li>Satisfacción de quienes cierran, con una breve encuesta de salida (sin pérdida de confianza)</li><li>Cierres cancelados antes de la fecha prevista (un pico indicaría consecuencias poco claras)</li></ul></div></div>
+</div></div>
 </div>
     </section>
 
@@ -314,7 +300,7 @@
         <span class="t-h6 text-slate" data-i18n="s08.eyebrow">Wireframes de baja fidelidad</span>
       </div>
       <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="s08.heading">De la lógica a las pantallas</h2>
-<div class="reveal mb-6"><h3 class="t-h4 t-medium mb-2" data-i18n="s01.scn.h">El escenario que diseñé</h3></div><div class="reveal mb-6"><p class="t-p text-slate" data-i18n="s01.scn.p">Una pequeña empresa encuentra Qonto demasiado caro y decide cerrar su cuenta. Qonto le sugiere un plan más ligero, pero lo rechaza y continúa. Antes de cerrar, mueve el saldo restante a su nuevo banco, revisa qué dejará de funcionar y qué se mantiene, y completa el cierre.</p></div><div class="reveal mb-10"><p class="reveal text-base text-slate " data-i18n="s01.note">Los nombres de cuenta, importes y fechas que aparecen en las pantallas son datos de ejemplo.</p></div><div class="reveal mb-10"><p class="t-p text-slate" data-i18n="s08.p1">Antes de pasar a alta fidelidad probé la estructura con wireframes de baja fidelidad del escenario propuesto: el motivo, la opción de un plan más ligero, prepararse para cerrar (con y sin resolver el saldo), la última revisión y la confirmación. Cada pantalla lleva anotada su intención.</p></div><div id="lowfi-carousel" class="reveal group relative aspect-[2/1] rounded-2xl overflow-hidden bg-paper border border-ink/15">
+<div class="reveal mb-10"><blockquote class="border-l-2 border-latte-dark pl-6 md:pl-8"><p class="t-h4 text-ink/80" data-i18n="s01.scn.p">«Una pequeña empresa encuentra Qonto demasiado caro y decide cerrar su cuenta. Qonto le sugiere un plan más ligero, pero lo rechaza y continúa. Antes de cerrar, mueve el saldo restante a su nuevo banco, revisa qué dejará de funcionar y qué se mantiene, y completa el cierre.»</p></blockquote></div><div class="reveal mb-10"><p class="t-p text-slate" data-i18n="s08.p1">Antes de pasar a alta fidelidad probé la estructura con wireframes de baja fidelidad del escenario propuesto: el motivo, la opción de un plan más ligero, prepararse para cerrar (con y sin resolver el saldo), la última revisión y la confirmación. Cada pantalla lleva anotada su intención.</p></div><div id="lowfi-carousel" class="reveal group relative aspect-[2/1] rounded-2xl overflow-hidden bg-paper border border-ink/15">
         <div id="lowfi-track" class="flex h-full transition-transform duration-500 ease-out"><img src="qonto/lofi-1.png" alt="Wireframe de baja fidelidad del paso 1: por qué cierras tu cuenta" data-i18n="s08.i1" data-i18n-attr="alt" class="w-full h-full object-contain p-3 md:p-6 shrink-0" loading="lazy"><img src="qonto/lofi-2.png" alt="Wireframe de baja fidelidad del paso 2: una opción para ti" data-i18n="s08.i2" data-i18n-attr="alt" class="w-full h-full object-contain p-3 md:p-6 shrink-0" loading="lazy"><img src="qonto/lofi-3.png" alt="Wireframe de baja fidelidad del paso 3: prepárate para cerrar" data-i18n="s08.i3" data-i18n-attr="alt" class="w-full h-full object-contain p-3 md:p-6 shrink-0" loading="lazy"><img src="qonto/lofi-4.png" alt="Wireframe de baja fidelidad del paso 3.1: resolver el saldo restante" data-i18n="s08.i4" data-i18n-attr="alt" class="w-full h-full object-contain p-3 md:p-6 shrink-0" loading="lazy"><img src="qonto/lofi-5.png" alt="Wireframe de baja fidelidad del paso 4: una última mirada antes de cerrar" data-i18n="s08.i5" data-i18n-attr="alt" class="w-full h-full object-contain p-3 md:p-6 shrink-0" loading="lazy"><img src="qonto/lofi-6.png" alt="Wireframe de baja fidelidad del paso 5: la cuenta se cierra en la fecha indicada" data-i18n="s08.i6" data-i18n-attr="alt" class="w-full h-full object-contain p-3 md:p-6 shrink-0" loading="lazy">
         </div>
         <button type="button" id="lowfi-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
@@ -330,7 +316,7 @@
         <span class="t-h6 text-slate" data-i18n="s09.eyebrow">Alta fidelidad</span>
       </div>
       <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="s09.heading">La solución en alta fidelidad</h2>
-<div class="reveal mb-10"><p class="t-p text-slate" data-i18n="s09.p1">Diseñé seis pantallas con el sistema de diseño de Qonto y contenido realista. Cada una responde a una o varias de las hipótesis.</p></div><div class="reveal grid sm:grid-cols-2 gap-x-8 gap-y-12 md:gap-x-10"><div><div class="overflow-hidden rounded-2xl border border-ink/15 bg-paper mb-5 aspect-[4/3]"><img src="qonto/hifi-1.png" alt="Pantalla en alta fidelidad: por qué cierras tu cuenta" data-i18n="s09.i1" data-i18n-attr="alt" class="block w-full h-full object-cover object-top" loading="lazy"></div><h3 class="t-h4 t-medium mb-2" data-i18n="s09.c1.h">1. ¿Por qué te vas?</h3><p class="t-p text-slate" data-i18n="s09.c1.p">Pregunto el motivo una sola vez, al principio, para que el resto del flujo se adapte. Las opciones usan las palabras de un dueño de negocio, «Prefiero no decirlo» evita forzar una respuesta que no encaja, y «Mantener mi cuenta» y «Habla con nosotros» están siempre a un clic. (H2)</p></div><div><div class="overflow-hidden rounded-2xl border border-ink/15 bg-paper mb-5 aspect-[4/3]"><img src="qonto/hifi-2.png" alt="Pantalla en alta fidelidad: un plan más ligero" data-i18n="s09.i2" data-i18n-attr="alt" class="block w-full h-full object-cover object-top" loading="lazy"></div><h3 class="t-h4 t-medium mb-2" data-i18n="s09.c2.h">2. Recuperar: un plan más ligero</h3><p class="t-p text-slate" data-i18n="s09.c2.p">Cuando el motivo es el precio, sugiero un plan más barato antes de seguir. Se muestran ambos planes lado a lado, con lo que se conserva (IBAN, historial, configuración) y lo que cambia. «Continuar con el cierre» pesa igual que «Cambiar a este plan», así que la oferta nunca parece una trampa. (H2)</p></div><div><div class="overflow-hidden rounded-2xl border border-ink/15 bg-paper mb-5 aspect-[4/3]"><img src="qonto/hifi-3.png" alt="Pantalla en alta fidelidad: prepárate para cerrar" data-i18n="s09.i3" data-i18n-attr="alt" class="block w-full h-full object-cover object-top" loading="lazy"></div><h3 class="t-h4 t-medium mb-2" data-i18n="s09.c3.h">3. Prepárate para cerrar</h3><p class="t-p text-slate" data-i18n="s09.c3.p">Los requisitos pasan de lista de reglas a checklist: solo lo que bloquea el cierre pide acción y el resto es informativo, para que nada sorprenda después. Los extractos se pueden descargar en cualquier momento. (H1, H3)</p></div><div><div class="overflow-hidden rounded-2xl border border-ink/15 bg-paper mb-5 aspect-[4/3]"><img src="qonto/hifi-4.png" alt="Pantalla en alta fidelidad: mover el saldo restante" data-i18n="s09.i4" data-i18n-attr="alt" class="block w-full h-full object-cover object-top" loading="lazy"></div><h3 class="t-h4 t-medium mb-2" data-i18n="s09.c4.h">3.1 Mover el saldo restante</h3><p class="t-p text-slate" data-i18n="s09.c4.p">El bloqueo más común se resuelve sin salir del flujo: la persona añade el IBAN de su nueva cuenta y se envía todo el saldo. Si aún no tiene otra cuenta, puede dejar el dinero en Qonto por ahora. Esta opción es una propuesta que hay que validar con Ops, Compliance y Finanzas. (H1, H3)</p></div><div><div class="overflow-hidden rounded-2xl border border-ink/15 bg-paper mb-5 aspect-[4/3]"><img src="qonto/hifi-5.png" alt="Pantalla en alta fidelidad: una última mirada antes de cerrar" data-i18n="s09.i5" data-i18n-attr="alt" class="block w-full h-full object-cover object-top" loading="lazy"></div><h3 class="t-h4 t-medium mb-2" data-i18n="s09.c5.h">4. Una última mirada antes de cerrar</h3><p class="t-p text-slate" data-i18n="s09.c5.p">Un resumen con la fecha de cierre y cómo se reembolsa la parte no usada del plan; al lado, qué deja de funcionar y qué se conserva. Con un interruptor se avisa al equipo que perderá el acceso. Una confirmación explícita deja claro que cerrar es permanente y «Mantener mi cuenta» sigue junto a la acción final. (H4, H5)</p></div><div><div class="overflow-hidden rounded-2xl border border-ink/15 bg-paper mb-5 aspect-[4/3]"><img src="qonto/hifi-6.png" alt="Pantalla en alta fidelidad: tu cuenta se cierra en la fecha indicada" data-i18n="s09.i6" data-i18n-attr="alt" class="block w-full h-full object-cover object-top" loading="lazy"></div><h3 class="t-h4 t-medium mb-2" data-i18n="s09.c6.h">5. Tu cuenta se cierra el [fecha]</h3><p class="t-p text-slate" data-i18n="s09.c6.p">Un estado claro: la fecha de cierre, una confirmación por email, una prueba descargable y una línea de tiempo de lo que ocurre, incluido hasta cuándo se puede cancelar. Debajo, tareas para una transición ordenada: compartir los nuevos datos bancarios, avisar a la asesoría y mover los adeudos. (H3, H4)</p></div></div>
+<div class="reveal mb-10"><p class="t-p text-slate" data-i18n="s09.p1">Diseñé seis pantallas con el sistema de diseño de Qonto y contenido realista. Cada una responde a una o varias de las hipótesis.</p></div><div class="reveal grid sm:grid-cols-2 gap-x-8 gap-y-12 md:gap-x-10"><div><div class="overflow-hidden rounded-2xl border border-ink/10 bg-[#F3F2F6] mb-5 aspect-[4/3]"><img src="qonto/hifi-1.png?v=2" alt="Pantalla en alta fidelidad: por qué cierras tu cuenta" data-i18n="s09.i1" data-i18n-attr="alt" class="block w-full h-full object-contain p-3 md:p-5" loading="lazy"></div><h3 class="t-h4 t-medium mb-2" data-i18n="s09.c1.h">1. ¿Por qué te vas?</h3><p class="t-p text-slate" data-i18n="s09.c1.p">Pregunto el motivo una sola vez, al principio, para que el resto del flujo se adapte. Las opciones usan las palabras de un dueño de negocio, «Prefiero no decirlo» evita forzar una respuesta que no encaja, y «Mantener mi cuenta» y «Habla con nosotros» están siempre a un clic. (H2)</p></div><div><div class="overflow-hidden rounded-2xl border border-ink/10 bg-[#F3F2F6] mb-5 aspect-[4/3]"><img src="qonto/hifi-2.png?v=2" alt="Pantalla en alta fidelidad: un plan más ligero" data-i18n="s09.i2" data-i18n-attr="alt" class="block w-full h-full object-contain p-3 md:p-5" loading="lazy"></div><h3 class="t-h4 t-medium mb-2" data-i18n="s09.c2.h">2. Recuperar: un plan más ligero</h3><p class="t-p text-slate" data-i18n="s09.c2.p">Cuando el motivo es el precio, sugiero un plan más barato antes de seguir. Se muestran ambos planes lado a lado, con lo que se conserva (IBAN, historial, configuración) y lo que cambia. «Continuar con el cierre» pesa igual que «Cambiar a este plan», así que la oferta nunca parece una trampa. (H2)</p></div><div><div class="overflow-hidden rounded-2xl border border-ink/10 bg-[#F3F2F6] mb-5 aspect-[4/3]"><img src="qonto/hifi-3.png?v=2" alt="Pantalla en alta fidelidad: prepárate para cerrar" data-i18n="s09.i3" data-i18n-attr="alt" class="block w-full h-full object-contain p-3 md:p-5" loading="lazy"></div><h3 class="t-h4 t-medium mb-2" data-i18n="s09.c3.h">3. Prepárate para cerrar</h3><p class="t-p text-slate" data-i18n="s09.c3.p">Los requisitos pasan de lista de reglas a checklist: solo lo que bloquea el cierre pide acción y el resto es informativo, para que nada sorprenda después. Los extractos se pueden descargar en cualquier momento. (H1, H3)</p></div><div><div class="overflow-hidden rounded-2xl border border-ink/10 bg-[#F3F2F6] mb-5 aspect-[4/3]"><img src="qonto/hifi-4.png?v=2" alt="Pantalla en alta fidelidad: mover el saldo restante" data-i18n="s09.i4" data-i18n-attr="alt" class="block w-full h-full object-contain p-3 md:p-5" loading="lazy"></div><h3 class="t-h4 t-medium mb-2" data-i18n="s09.c4.h">3.1 Mover el saldo restante</h3><p class="t-p text-slate" data-i18n="s09.c4.p">El bloqueo más común se resuelve sin salir del flujo: la persona añade el IBAN de su nueva cuenta y se envía todo el saldo. Si aún no tiene otra cuenta, puede dejar el dinero en Qonto por ahora. Esta opción es una propuesta que hay que validar con Ops, Compliance y Finanzas. (H1, H3)</p></div><div><div class="overflow-hidden rounded-2xl border border-ink/10 bg-[#F3F2F6] mb-5 aspect-[4/3]"><img src="qonto/hifi-5.png?v=2" alt="Pantalla en alta fidelidad: una última mirada antes de cerrar" data-i18n="s09.i5" data-i18n-attr="alt" class="block w-full h-full object-contain p-3 md:p-5" loading="lazy"></div><h3 class="t-h4 t-medium mb-2" data-i18n="s09.c5.h">4. Una última mirada antes de cerrar</h3><p class="t-p text-slate" data-i18n="s09.c5.p">Un resumen con la fecha de cierre y cómo se reembolsa la parte no usada del plan; al lado, qué deja de funcionar y qué se conserva. Con un interruptor se avisa al equipo que perderá el acceso. Una confirmación explícita deja claro que cerrar es permanente y «Mantener mi cuenta» sigue junto a la acción final. (H4, H5)</p></div><div><div class="overflow-hidden rounded-2xl border border-ink/10 bg-[#F3F2F6] mb-5 aspect-[4/3]"><img src="qonto/hifi-6.png?v=2" alt="Pantalla en alta fidelidad: tu cuenta se cierra en la fecha indicada" data-i18n="s09.i6" data-i18n-attr="alt" class="block w-full h-full object-contain p-3 md:p-5" loading="lazy"></div><h3 class="t-h4 t-medium mb-2" data-i18n="s09.c6.h">5. Tu cuenta se cierra el [fecha]</h3><p class="t-p text-slate" data-i18n="s09.c6.p">Un estado claro: la fecha de cierre, una confirmación por email, una prueba descargable y una línea de tiempo de lo que ocurre, incluido hasta cuándo se puede cancelar. Debajo, tareas para una transición ordenada: compartir los nuevos datos bancarios, avisar a la asesoría y mover los adeudos. (H3, H4)</p></div></div>
     </section>
 
     <!-- ===== 09 ===== -->
@@ -341,8 +327,8 @@
       </div>
       <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="s10.heading">Qué haría a continuación</h2>
 <div class="reveal mb-0 grid sm:grid-cols-4 gap-x-8 gap-y-10 md:gap-x-10">
-<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s10.c1.h">Validar el diseño</h3><div class="t-p text-slate" data-i18n="s10.c1.p">Test de usabilidad con 5–6 administradores de empresa, centrado en la checklist y en la oferta de plan. Comprobar que «Prefiero no decirlo» no se usa en exceso y que se entiende qué se detiene y qué se conserva.</div></div>
-<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s10.c2.h">Validar con el equipo</h3><div class="t-p text-slate" data-i18n="s10.c2.p"><ul class="list-disc pl-5 space-y-1.5"><li>Producto: qué alternativas se pueden ofrecer (plan más ligero, pausa, traspaso de titularidad)</li><li>Ingeniería: si la checklist puede mostrar en tiempo real el estado de cada requisito</li><li>Ops, Compliance y Finanzas: la propuesta de cuenta de custodia y los plazos de conservación de datos</li><li>Content Design: el texto final y la redacción exigida legalmente</li></ul></div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s10.c2.h">Validar con el equipo</h3><div class="t-p text-slate" data-i18n="s10.c2.p"><ul class="list-disc pl-5 space-y-1.5"><li>Producto: qué alternativas se pueden ofrecer (plan más ligero, pausa, traspaso de titularidad)</li><li>Ingeniería: si la checklist puede mostrar en tiempo real el estado de cada requisito</li><li>Ops, Compliance y Finanzas: la propuesta de cuenta de custodia y los plazos de conservación de datos</li><li>Content Design: el texto final y la redacción exigida legalmente</li></ul></div></div>
+<div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s10.c1.h">Validar el diseño</h3><div class="t-p text-slate" data-i18n="s10.c1.p">Test de usabilidad con 5–6 administradores de empresa, centrado en la checklist y en la oferta de plan. Comprobar que «Prefiero no decirlo» no se usa en exceso y que se entiende qué se detiene y qué se conserva.</div></div>
 <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s10.c3.h">Medir</h3><div class="t-p text-slate" data-i18n="s10.c3.p">Obtener de Datos las bases de referencia de las métricas de éxito definidas en la estrategia. Lanzarlo como test A/B frente al flujo actual, vigilando de cerca los guardarraíles.</div></div>
 <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8"><h3 class="t-h4 t-medium mb-2" data-i18n="s10.c4.h">Explorar más adelante</h3><div class="t-p text-slate" data-i18n="s10.c4.p"><ul class="list-disc pl-5 space-y-1.5"><li>Emails recordatorio antes de la fecha de cierre</li><li>Flujos para los otros motivos (pausa, traspaso de titularidad)</li><li>Versión móvil del flujo</li></ul></div></div>
 </div>
@@ -375,13 +361,13 @@
     "meta.title": "Cierre de cuenta · Javier Díaz",
     "meta.description": "Caso de estudio: rediseño del flujo de cierre de cuenta de Qonto (ejercicio de diseño de producto).",
     "hero.title": "Cierre de cuenta",
-    "hero.subtitle": "Rediseño del flujo de cierre de cuenta para que marcharse sea claro, justo y seguro, y para que Qonto entienda por qué se van sus clientes y recupere a los que de verdad puede ayudar. Proteger primero, aprender después y retener solo cuando realmente ayuda.",
+    "hero.subtitle": "Rediseño del flujo de cierre de cuenta para que marcharse sea claro, justo y seguro.",
     "hero.role.label": "Rol",
     "hero.year.label": "Año",
-    "hero.team.label": "Equipo",
+    "hero.team.label": "Formato",
     "hero.role.value": "Product Designer",
     "hero.year.value": "2026",
-    "hero.team.value": "Individual",
+    "hero.team.value": "Caso de estudio",
     "hero.i0": "Tres pasos del nuevo flujo de cierre de cuenta: por qué te vas, prepárate para cerrar y una última mirada antes de cerrar",
     "s01.p1": "Cerrar una cuenta es un momento sensible y de alto impacto: suele ser el último contacto con el cliente, pero también una oportunidad única para aprender de su experiencia y, cuando es posible, recuperarlo.",
     "s01g.c1.h": "Un cierre seguro",
@@ -395,7 +381,6 @@
     "s03.p1": "Analicé una a una las cinco pantallas del flujo actual: qué funciona y conviene conservar, los puntos de dolor (posibles riesgos para la persona) y las mejoras de diseño. Esta tabla resume el análisis.",
     "s03.img": "Tabla resumen del análisis del flujo actual, pantalla a pantalla: qué funciona, puntos de dolor y mejoras",
     "s03.img.cap": "Resumen del análisis de las cinco pantallas: introducción, motivos, detalle del motivo, consecuencias y confirmación.",
-    "s03.ins.h": "Seis conclusiones",
     "s03i.c1.h": "Dice qué hacer, pero no ayuda a hacerlo",
     "s03i.c1.p": "Los requisitos (saldo a 0 €, sin pagos pendientes) se listan al inicio y se repiten al final, pero nunca se comprueban ni se pueden resolver dentro del flujo.",
     "s03i.c2.h": "Pregunta por qué se van, pero no escucha",
@@ -431,7 +416,6 @@
     "s05.lim": "Limitación: un solo participante. Estas conclusiones son hipótesis que habría que contrastar con los datos de Qonto y con más entrevistas.",
     "s05.eyebrow": "Entrevista de usuario",
     "s05.heading": "Una conversación que cambió el enfoque",
-    "s06.prob.h": "El problema",
     "s06.prob.p": "Para una empresa, cerrar una cuenta no es un momento sino una migración: mover el dinero, compartir los nuevos datos bancarios, avisar a la asesoría y conseguir la aprobación de otras personas. El flujo actual lo trata como una lista de requisitos que leer y un formulario que rellenar: enumera requisitos sin ayudar a cumplirlos, pregunta por qué se van sin actuar sobre la respuesta y deja poco claros el estado del cierre y los siguientes pasos. Como resultado, las empresas cargan solas con el riesgo y el esfuerzo, y Qonto pierde la oportunidad de aprender de quienes no necesitaban irse.",
     "s06.goals.h": "Objetivos",
     "s06g.c1.h": "Para la persona",
@@ -473,9 +457,7 @@
     "s08.i4": "Wireframe de baja fidelidad del paso 3.1: resolver el saldo restante",
     "s08.i5": "Wireframe de baja fidelidad del paso 4: una última mirada antes de cerrar",
     "s08.i6": "Wireframe de baja fidelidad del paso 5: la cuenta se cierra en la fecha indicada",
-    "s01.scn.h": "El escenario que diseñé",
-    "s01.scn.p": "Una pequeña empresa encuentra Qonto demasiado caro y decide cerrar su cuenta. Qonto le sugiere un plan más ligero, pero lo rechaza y continúa. Antes de cerrar, mueve el saldo restante a su nuevo banco, revisa qué dejará de funcionar y qué se mantiene, y completa el cierre.",
-    "s01.note": "Los nombres de cuenta, importes y fechas que aparecen en las pantallas son datos de ejemplo.",
+    "s01.scn.p": "«Una pequeña empresa encuentra Qonto demasiado caro y decide cerrar su cuenta. Qonto le sugiere un plan más ligero, pero lo rechaza y continúa. Antes de cerrar, mueve el saldo restante a su nuevo banco, revisa qué dejará de funcionar y qué se mantiene, y completa el cierre.»",
     "s08.p1": "Antes de pasar a alta fidelidad probé la estructura con wireframes de baja fidelidad del escenario propuesto: el motivo, la opción de un plan más ligero, prepararse para cerrar (con y sin resolver el saldo), la última revisión y la confirmación. Cada pantalla lleva anotada su intención.",
     "s08.cap": "Seis pantallas, con anotaciones: por ejemplo, «Validar con stakeholders» en la solución para el saldo restante.",
     "s08.eyebrow": "Wireframes de baja fidelidad",
@@ -528,13 +510,13 @@
     "meta.title": "Account Closing · Javier Díaz",
     "meta.description": "Case study: redesign of Qonto’s account closing flow (product design exercise).",
     "hero.title": "Account Closing",
-    "hero.subtitle": "A redesign of the account closing flow so that leaving is clear, fair and safe, while Qonto learns why customers leave and wins back those it can genuinely help. Protect first, learn second, retain only when it truly helps the user.",
+    "hero.subtitle": "A redesign of the account closing flow so that leaving is clear, fair and safe.",
     "hero.role.label": "Role",
     "hero.year.label": "Year",
-    "hero.team.label": "Team",
+    "hero.team.label": "Format",
     "hero.role.value": "Product Designer",
     "hero.year.value": "2026",
-    "hero.team.value": "Solo",
+    "hero.team.value": "Case study",
     "hero.i0": "Three steps of the new account closing flow: why you are leaving, get ready to close and one last look before you close",
     "s01.p1": "Closing an account is a sensitive, high-impact moment: it is often the last touchpoint with a customer, but also a unique chance to learn from their experience and, when possible, win them back.",
     "s01g.c1.h": "A safe closing",
@@ -548,7 +530,6 @@
     "s03.p1": "I analysed the five screens of the current flow one by one: what works and should be kept, the pain points (possible risks for the user) and the design improvements. This table summarises the analysis.",
     "s03.img": "Summary table of the current flow analysis, screen by screen: what works, pain points and improvements",
     "s03.img.cap": "Summary of the analysis of the five screens: introduction, closing reasons, reason details, consequences and confirmation.",
-    "s03.ins.h": "Six insights",
     "s03i.c1.h": "It tells users what to do, but doesn’t help them do it",
     "s03i.c1.p": "Requirements (€0 balance, no pending payments) are listed at the start and repeated at the end, but never checked or fixable inside the flow.",
     "s03i.c2.h": "It asks why users leave, but doesn’t listen",
@@ -584,7 +565,6 @@
     "s05.lim": "Limitation: a single participant. These insights are hypotheses to validate with Qonto’s data and more interviews.",
     "s05.eyebrow": "User interview",
     "s05.heading": "A conversation that shaped the approach",
-    "s06.prob.h": "Problem statement",
     "s06.prob.p": "For a business, closing an account isn’t a single moment but a migration: moving money, sharing new bank details, informing the accountant and getting approval from others. The current flow treats it as a checklist to read and a form to fill. It lists requirements without helping users meet them, asks why they leave without acting on the answer, and leaves the closing status and next steps unclear. As a result, businesses carry the risk and effort alone, and Qonto misses the chance to learn from those who didn’t need to leave.",
     "s06.goals.h": "Goals",
     "s06g.c1.h": "For the user",
@@ -626,9 +606,7 @@
     "s08.i4": "Low-fi wireframe of step 3.1: fix the remaining balance",
     "s08.i5": "Low-fi wireframe of step 4: one last look before you close",
     "s08.i6": "Low-fi wireframe of step 5: your account closes on the given date",
-    "s01.scn.h": "The scenario I designed",
-    "s01.scn.p": "A small business finds Qonto too expensive and decides to close its account. Qonto suggests a lighter plan, but the user declines and continues. Before closing, the user moves the remaining balance to a new bank, reviews what will stop and what will stay, and goes ahead with the closing.",
-    "s01.note": "The account names, amounts and dates shown on the screens are sample data.",
+    "s01.scn.p": "“A small business finds Qonto too expensive and decides to close its account. Qonto suggests a lighter plan, but the user declines and continues. Before closing, the user moves the remaining balance to a new bank, reviews what will stop and what will stay, and goes ahead with the closing.”",
     "s08.p1": "Before moving to high fidelity I tested the structure with low-fidelity wireframes of the proposed scenario: the reason, the lighter-plan option, getting ready to close (with and without fixing the balance), the last review and the confirmation. Each screen carries a note on its intent.",
     "s08.cap": "Six screens, with annotations: for example, “Validate with stakeholders” on the remaining-balance solution.",
     "s08.eyebrow": "Low-fi wireframes",
@@ -731,48 +709,6 @@
     setLang(savedLang || 'en');
     document.body.classList.add('is-ready');
 
-    // ===== Contraseña del proyecto =====
-    (function () {
-      const gate = document.getElementById('password-gate');
-      const content = document.getElementById('protected-content');
-      const form = document.getElementById('password-form');
-      const input = document.getElementById('password-input');
-      const errorEl = document.getElementById('password-error');
-      if (!gate || !content || !form || !input) return;
-
-      const storageKey = 'unlock-qonto';
-      const correctHash = '0c4832e5fb4aed721164a0321c06fadbdf64195374e57ce3acff57874c3fae8d';
-
-      async function sha256(text) {
-        const buffer = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
-        return Array.from(new Uint8Array(buffer)).map((b) => b.toString(16).padStart(2, '0')).join('');
-      }
-
-      function unlock() {
-        gate.classList.add('hidden');
-        content.classList.remove('hidden');
-      }
-
-      if (sessionStorage.getItem(storageKey) === '1') {
-        unlock();
-      }
-
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const value = input.value.trim();
-        if (!value) return;
-        const hash = await sha256(value);
-        if (hash === correctHash) {
-          errorEl.classList.add('hidden');
-          sessionStorage.setItem(storageKey, '1');
-          unlock();
-        } else {
-          errorEl.classList.remove('hidden');
-          input.value = '';
-          input.focus();
-        }
-      });
-    })();
 
 
 
