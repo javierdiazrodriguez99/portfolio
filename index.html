@@ -213,6 +213,10 @@
     .t-h2.t-down { font-size: 32px; line-height: 40px; font-weight: 500; letter-spacing: 0; }
   }
 
+  /* Portada de Vertical Menu: degradado original de Freightos + tipografía que escala con la tarjeta */
+  .vm-cover { container-type: inline-size; background: linear-gradient(180deg, #00296B 0%, #02296C 36%, #14317A 52%, #3A4B91 70%, #6670B5 88%, #807CC7 100%); }
+  .vm-cover-title { color: #fff; font-weight: 700; font-size: 7.6cqw; line-height: 1; letter-spacing: -0.03em; }
+  .vm-cover-sub { color: #36DFD4; font-weight: 600; font-size: 2.25cqw; margin-top: 2.6cqw; }
   /* Portada de Qonto: al pasar el ratón (o al hacer scroll en móvil) las pantallas se abren en abanico */
   .qonto-cover .qc-step { transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1); transform-origin: 50% 100%; }
   @media (hover: hover) {
@@ -308,10 +312,15 @@
       <div id="work-grid" class="grid sm:grid-cols-2 gap-x-8 gap-y-16">
 
         <!-- Vertical Menu -->
-        <article class="reveal group" data-category="freightos">
+        <article class="reveal group" data-category="freightos" data-scroll-anim>
           <a href="work/vertical-menus.html" class="focus-ring block rounded-2xl">
-            <div class="relative aspect-[4/3] rounded-2xl mb-6 overflow-hidden">
-              <img src="work/vertical-menus-cover.png" alt="Menú vertical de Freightos unificado en un único sistema de navegación" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.015]">
+            <!-- Portada con el mismo esquema que SWAP: texto a la izquierda, producto saliendo por la derecha y por abajo -->
+            <div class="vm-cover relative aspect-[4/3] rounded-2xl mb-6 overflow-hidden">
+              <div class="vm-cover-text absolute left-[7%] top-[40%]" aria-hidden="true">
+                <p class="vm-cover-title">Vertical<br>Menu</p>
+                <p class="vm-cover-sub">Freightos · Global navigation</p>
+              </div>
+              <img src="work/vertical-menus-cover-window.png" alt="Menú vertical de Freightos unificado en un único sistema de navegación" class="absolute left-[44%] top-[20%] w-[110%] max-w-none h-auto rounded-[10px] shadow-[0_30px_60px_rgba(0,0,0,0.45)] transition-transform duration-500 ease-out group-hover:-translate-y-[3%] anim-up">
               <span class="absolute top-3 left-3 hidden sm:inline-flex items-center leading-6 gap-2 sm:gap-0 sm:group-hover:gap-1.5 bg-paper/90 backdrop-blur-sm text-ink t-s-m p-3 rounded-full shadow-sm transition-[gap] duration-300">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 w-6 h-6 p-[2px]"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
                 <span class="max-w-[440px] opacity-100 sm:max-w-0 sm:opacity-0 sm:group-hover:max-w-[440px] sm:group-hover:opacity-100 sm:group-hover:pr-1 overflow-hidden whitespace-nowrap transition-all duration-300 ease-out" data-i18n="project1.favorite">El proyecto que más me representa</span>
