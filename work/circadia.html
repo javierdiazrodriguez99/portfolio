@@ -225,11 +225,8 @@
       <div class="mt-16 md:mt-20">
       <div id="hero-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-[#F7F1E8]">
         <div id="hero-track" class="flex h-full transition-transform duration-500 ease-out">
-          <img src="circadia/cover-clean.png" alt="Logotipo de Circadia" data-i18n="hero.img1.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-16 md:p-32 shrink-0" loading="lazy"><div class="w-full h-full shrink-0 flex items-center justify-center gap-6 md:gap-12 p-6 md:p-10"><img src="circadia/hifi-today.png" alt="Pantalla Today en alta fidelidad" data-i18n="hero.img2.alt" data-i18n-attr="alt" class="h-full w-auto object-contain" loading="lazy"><img src="circadia/hifi-roster.png" alt="Pantalla Roster en alta fidelidad" data-i18n="hero.img3.alt" data-i18n-attr="alt" class="h-full w-auto object-contain" loading="lazy"></div><img src="circadia/brand-colour.png" alt="Dirección de color de Circadia, versión día y noche" data-i18n="hero.img4.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-0 shrink-0" loading="lazy">
+          <div class="w-full h-full shrink-0 flex items-center justify-center gap-6 md:gap-12 p-6 md:p-10"><img src="circadia/hifi-today.png" alt="Pantalla Today en alta fidelidad" data-i18n="hero.img2.alt" data-i18n-attr="alt" class="h-full w-auto object-contain" loading="lazy"><img src="circadia/hifi-roster.png" alt="Pantalla Roster en alta fidelidad" data-i18n="hero.img3.alt" data-i18n-attr="alt" class="h-full w-auto object-contain" loading="lazy"></div>
         </div>
-        <button type="button" id="hero-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-        <button type="button" id="hero-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
-        <div class="absolute bottom-3 inset-x-0 hidden sm:flex items-center justify-center gap-2"><button type="button" class="hero-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button><button type="button" class="hero-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button><button type="button" class="hero-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button></div>
       </div>
       </div>
     </section>
@@ -418,10 +415,8 @@
     "hero.role.value": "Product Designer",
     "hero.format.value": "Caso de estudio",
     "hero.year.value": "2026",
-    "hero.img1.alt": "Logotipo de Circadia",
     "hero.img2.alt": "Pantalla Today en alta fidelidad",
     "hero.img3.alt": "Pantalla Roster en alta fidelidad",
-    "hero.img4.alt": "Dirección de color de Circadia, versión día y noche",
     "s01.context": "Circadia es una startup en fase inicial que desarrolla apoyo para el sueño y la recuperación de personas con turnos rotativos, empezando por enfermeras de hospital. Los turnos rotativos alteran el ritmo circadiano, y eso se traduce en burnout, errores médicos y abandono de la profesión: un problema que los hospitales pagan cada vez más por resolver.",
     "s01.goals.h": "La app debía ayudar a una enfermera a…",
     "s01g.c1.h": "Una ventana de sueño personalizada",
@@ -639,10 +634,8 @@
     "hero.role.value": "Product Designer",
     "hero.format.value": "Case study",
     "hero.year.value": "2026",
-    "hero.img1.alt": "Circadia logo",
     "hero.img2.alt": "Today screen in high fidelity",
     "hero.img3.alt": "Roster screen in high fidelity",
-    "hero.img4.alt": "Circadia colour direction, day and night",
     "s01.context": "Circadia is an early-stage startup building sleep and recovery support for shift workers, starting with hospital nurses on rotating shifts. Rotating shifts disrupt the circadian rhythm, which shows up as burnout, medical errors and nurse attrition: a problem hospitals increasingly pay to solve.",
     "s01.goals.h": "The app should help a nurse…",
     "s01g.c1.h": "A personalised sleep window",
@@ -1086,15 +1079,6 @@
     }
 
 
-    initCarousel({
-      containerId: 'hero-carousel',
-      trackId: 'hero-track',
-      prevId: 'hero-prev',
-      nextId: 'hero-next',
-      dotClass: 'hero-dot',
-      activeDotClass: 'bg-ink',
-      inactiveDotClass: 'bg-ink/25',
-    });
 
     initCarousel({
       containerId: 'bench-carousel',
