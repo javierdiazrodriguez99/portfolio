@@ -226,7 +226,11 @@
   .is-active .vm-cover .vm-panel { clip-path: inset(0 -10% 0 0); }
   .is-active .vm-cover .vm-active { opacity: 1; }
   /* Portadas de Wizard y Notification System: mismo esquema que Vertical Menu */
-  .fx-title-sm { font-size: 5.2cqw; }
+  .fx-title-sm { font-size: 5cqw; }
+  .vm-cover-title, .vm-cover-sub { white-space: pre-line; }
+  /* Lema de la portada de SWAP como texto, para poder traducirlo */
+  .swap-cover { container-type: inline-size; }
+  .swap-tagline { color: #fff; font-weight: 600; font-size: 1.94cqw; line-height: 1; white-space: nowrap; }
   .wz-dim { background: rgba(10, 20, 50, 0); transition: background 0.4s ease; }
   .wz-zone { opacity: 0; transform: scale(0.92); transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
   .ns-panel { transform: translateX(105%); transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
@@ -340,8 +344,8 @@
             <!-- Portada con el mismo esquema que SWAP: texto a la izquierda, producto saliendo por la derecha y por abajo -->
             <div class="vm-cover relative aspect-[4/3] rounded-2xl mb-6 overflow-hidden">
               <div class="vm-cover-text absolute left-[7%] top-[40%]" aria-hidden="true">
-                <p class="vm-cover-title">Vertical<br>Menu</p>
-                <p class="vm-cover-sub">Global Navigation</p>
+                <p class="vm-cover-title" data-i18n="project1.coverTitle">Menú<br>Vertical</p>
+                <p class="vm-cover-sub" data-i18n="project1.coverSub">Navegación global</p>
               </div>
               <!-- En reposo, menú cerrado (solo iconos); al pasar el ratón se despliega el panel hacia la derecha -->
               <div class="absolute left-[44%] top-[20%] w-[110%] rounded-[10px] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.45)]">
@@ -416,8 +420,8 @@
           <a href="work/wizard-rate-management.html" class="focus-ring block rounded-2xl">
             <div class="vm-cover relative aspect-[4/3] rounded-2xl mb-6 overflow-hidden">
               <div class="vm-cover-text absolute left-[7%] top-[34%]" aria-hidden="true">
-                <p class="vm-cover-title fx-title-sm">Wizard for<br>Rate<br>Management</p>
-                <p class="vm-cover-sub">Bulk Rate Upload</p>
+                <p class="vm-cover-title fx-title-sm" data-i18n="project3.coverTitle">Asistente de<br>Gestión de<br>Tarifas</p>
+                <p class="vm-cover-sub" data-i18n="project3.coverSub">Carga masiva de tarifas</p>
               </div>
               <div class="absolute left-[44%] top-[20%] w-[110%] rounded-[10px] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.45)]">
                 <img src="work/wizard-rate-management-cover-window.png" alt="Tariff Manager: listado de archivos de tarifas con su estado de validación" class="block w-full h-auto">
@@ -453,8 +457,8 @@
           <a href="work/notification-system.html" class="focus-ring block rounded-2xl">
             <div class="vm-cover relative aspect-[4/3] rounded-2xl mb-6 overflow-hidden">
               <div class="vm-cover-text absolute left-[7%] top-[38%]" aria-hidden="true">
-                <p class="vm-cover-title fx-title-sm">Notification<br>System</p>
-                <p class="vm-cover-sub">Email Alerts</p>
+                <p class="vm-cover-title fx-title-sm" data-i18n="project2.coverTitle">Sistema de<br>notificaciones</p>
+                <p class="vm-cover-sub" data-i18n="project2.coverSub">Alertas por email</p>
               </div>
               <div class="absolute left-[44%] top-[20%] w-[100%] rounded-[10px] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.45)]">
                 <img src="work/notification-system-cover-window.png" alt="Contactos de un envío con el aviso de notificaciones activas" class="block w-full h-auto">
@@ -489,8 +493,9 @@
         <!-- SWAP -->
         <article class="reveal group" data-category="master" data-scroll-anim>
           <a href="work/swap.html" class="focus-ring block rounded-2xl">
-            <div class="relative aspect-[4/3] rounded-2xl mb-6 overflow-hidden bg-[#3f78d1]">
+            <div class="swap-cover relative aspect-[4/3] rounded-2xl mb-6 overflow-hidden bg-[#3f78d1]">
               <img src="work/swap-cover-2-base.webp" alt="" aria-hidden="true" class="absolute inset-x-0 top-[7.7%] w-full h-auto">
+              <p class="swap-tagline absolute left-0 w-[41.3%] top-[56.6%] text-center" aria-hidden="true" data-i18n="project5.coverTag">Compartir | Despertar | Acción | Personas</p>
               <div class="absolute inset-x-0 bottom-0 aspect-[1440/878]">
                 
                 <img src="work/swap-cover-2-right.webp" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full drop-shadow-[18px_24px_26px_rgba(20,50,110,0.4)] transition-transform duration-500 ease-out group-hover:-translate-y-[3%] anim-up">
@@ -953,6 +958,13 @@
     // ===== Traducción automática según el idioma del navegador =====
     const translations = {
       es: {
+        'project1.coverTitle': 'Menú\nVertical',
+        'project1.coverSub': 'Navegación global',
+        'project3.coverTitle': 'Asistente de\nGestión de\nTarifas',
+        'project3.coverSub': 'Carga masiva de tarifas',
+        'project2.coverTitle': 'Sistema de\nnotificaciones',
+        'project2.coverSub': 'Alertas por email',
+        'project5.coverTag': 'Compartir | Despertar | Acción | Personas',
         'meta.title': 'Javier Díaz — Product Designer',
         'meta.description': 'Portfolio de Javier Díaz, Product Designer con 4 años de experiencia diseñando productos digitales.',
         'nav.about': 'Sobre mí',
@@ -1029,6 +1041,13 @@
         'copyEmail.default': 'Enviar un email',
       },
       en: {
+        'project1.coverTitle': 'Vertical\nMenu',
+        'project1.coverSub': 'Global Navigation',
+        'project3.coverTitle': 'Wizard for\nRate\nManagement',
+        'project3.coverSub': 'Bulk Rate Upload',
+        'project2.coverTitle': 'Notification\nSystem',
+        'project2.coverSub': 'Email Alerts',
+        'project5.coverTag': 'Share | Wake | Action | People',
         'meta.title': 'Javier Díaz — Product Designer',
         'meta.description': 'Portfolio of Javier Díaz, a Product Designer with 4 years of experience designing digital products.',
         'nav.about': 'About',
