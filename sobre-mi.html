@@ -185,7 +185,7 @@
           Sobre mí
         </h1>
 
-        <a id="cv-download-link" href="javier-diaz-cv-es.pdf" download class="hidden sm:inline-flex items-center gap-2 t-s-m px-6 py-3.5 rounded-full border border-ink/15 hover:bg-latte/40 hover:border-latte-dark transition-colors focus-ring shrink-0">
+        <a id="cv-download-link" href="javier-diaz-cv-es.pdf?v=2" download class="hidden sm:inline-flex items-center gap-2 t-s-m px-6 py-3.5 rounded-full border border-ink/15 hover:bg-latte/40 hover:border-latte-dark transition-colors focus-ring shrink-0">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           <span data-i18n="cv.download">Descargar CV</span>
         </a>
@@ -196,7 +196,7 @@
           <div class="aspect-[3/4] md:aspect-[4/3] xl:aspect-auto xl:absolute xl:inset-0 rounded-2xl overflow-hidden">
             <img src="javier-diaz.jpeg" alt="Javier Díaz" class="w-full h-full object-cover md:object-[50%_45%] xl:object-[50%_55%]">
           </div>
-          <a id="cv-download-link-mobile" href="javier-diaz-cv-es.pdf" download class="sm:hidden mt-6 w-full flex items-center justify-center gap-2 t-s-m px-6 py-3.5 rounded-full border border-ink/15 transition-colors focus-ring [-webkit-tap-highlight-color:transparent]">
+          <a id="cv-download-link-mobile" href="javier-diaz-cv-es.pdf?v=2" download class="sm:hidden mt-6 w-full flex items-center justify-center gap-2 t-s-m px-6 py-3.5 rounded-full border border-ink/15 transition-colors focus-ring [-webkit-tap-highlight-color:transparent]">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             <span data-i18n="cv.download">Descargar CV</span>
           </a>
@@ -844,7 +844,7 @@
       ['cv-download-link', 'cv-download-link-mobile'].forEach((id) => {
         const cvLink = document.getElementById(id);
         if (cvLink) {
-          cvLink.href = lang === 'es' ? 'javier-diaz-cv-es.pdf' : 'javier-diaz-cv.pdf';
+          cvLink.href = lang === 'es' ? 'javier-diaz-cv-es.pdf?v=2' : 'javier-diaz-cv.pdf?v=2';
         }
       });
     }
