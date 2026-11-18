@@ -66,6 +66,9 @@
   /* El footer de "Let's talk" mantiene su contraste: gris oscuro con texto claro */
   :root[data-theme="dark"] #contact { --c-ink: 34 33 31; --c-paper: 237 234 228; --c-latte: 214 205 190; --c-slate: 120 115 108; }
   :root[data-theme="dark"] h3 img.w-5 { filter: brightness(0) invert(1) opacity(.85) !important; }
+  .icon-dark { display: none; }
+  :root[data-theme="dark"] .icon-light { display: none; }
+  :root[data-theme="dark"] h3 img.icon-dark { display: block; filter: none !important; }
   :root[data-theme="dark"] .logo-marquee img { filter: grayscale(1) invert(1) opacity(0.45); }
   :root[data-theme="dark"] main img:not(.logo-marquee img) { filter: brightness(0.8) contrast(1.02); transition: filter .3s ease; }
   :root[data-theme="dark"] main a:hover img:not(.logo-marquee img), :root[data-theme="dark"] main img:not(.logo-marquee img):hover { filter: brightness(0.92); }
@@ -460,7 +463,8 @@
             <div>
               <h3 class="t-h4 t-medium mb-2 flex items-center gap-3">
                 <span class="relative inline-flex group/tooltip">
-                  <img src="qonto-icon.svg" alt="" class="w-5 h-5 shrink-0">
+                  <img src="qonto-icon.svg" alt="" class="w-5 h-5 shrink-0 icon-light">
+                  <img src="qonto-icon-dark.svg" alt="" class="w-5 h-5 shrink-0 icon-dark">
                   <span class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap bg-ink text-paper t-s-m px-2 py-1 rounded opacity-0 group-hover/tooltip:opacity-100 transition-opacity">Qonto</span>
                 </span>
                 <a href="work/qonto.html" class="focus-ring rounded hover:text-slate transition-colors" data-i18n="project7.title">Cierre de cuenta</a>
