@@ -8,18 +8,27 @@
 <meta name="description" content="Caso de estudio: unificación de los menús de distintos productos en un único sistema de navegación global." data-i18n="meta.description" data-i18n-attr="content">
 
 <!-- Tailwind CDN -->
+<script>
+  // Tema: se aplica antes de pintar para evitar parpadeos (claro / oscuro / según el sistema)
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
     theme: {
       extend: {
         colors: {
-          ink: '#1A1917',
-          slate: '#6E6A64',
-          paper: '#FFFFFF',
-          mist: '#FAF9F7',
-          latte: '#E5D9C5',
-          'latte-dark': '#D4C4B7',
+          ink: 'rgb(var(--c-ink) / <alpha-value>)',
+          slate: 'rgb(var(--c-slate) / <alpha-value>)',
+          paper: 'rgb(var(--c-paper) / <alpha-value>)',
+          mist: 'rgb(var(--c-mist) / <alpha-value>)',
+          latte: 'rgb(var(--c-latte) / <alpha-value>)',
+          'latte-dark': 'rgb(var(--c-latte-dark) / <alpha-value>)',
         },
         fontFamily: {
           sans: ['Inter', 'sans-serif'],
@@ -38,6 +47,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+  /* ===== Tema claro / oscuro ===== */
+  :root { --c-ink: 26 25 23; --c-slate: 110 106 100; --c-paper: 255 255 255; --c-mist: 250 249 247; --c-latte: 229 217 197; --c-latte-dark: 212 196 183; color-scheme: light; }
+  :root[data-theme="dark"] { --c-ink: 237 234 228; --c-slate: 163 158 150; --c-paper: 18 17 16; --c-mist: 28 27 25; --c-latte: 46 42 37; --c-latte-dark: 90 80 70; color-scheme: dark; }
+  :root[data-theme="dark"] ::selection { background-color: #5A5046; color: #EDEAE4; }
+  /* El footer de "Let's talk" mantiene su contraste: gris oscuro con texto claro */
+  :root[data-theme="dark"] #contact { --c-ink: 34 33 31; --c-paper: 237 234 228; }
+  :root[data-theme="dark"] .logo-marquee img { filter: grayscale(1) invert(1) opacity(0.45); }
+  :root[data-theme="dark"] main img:not(.logo-marquee img) { filter: brightness(0.94); }
+  html { transition: background-color .3s ease; }
+  .theme-icon-moon { display: block; } .theme-icon-sun { display: none; }
+  :root[data-theme="dark"] .theme-icon-moon { display: none; } :root[data-theme="dark"] .theme-icon-sun { display: block; }
   html { font-family: 'Inter', sans-serif; }
   ::selection { background-color: #E5D9C5; color: #1A1917; }
 
@@ -143,6 +163,10 @@
           <li><a href="../sobre-mi.html" class="inline-block py-2 -my-2 hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.about">Sobre mí</a></li>
           <li><a href="../contacto.html" class="inline-block py-2 -my-2 hover:text-ink transition-colors focus-ring rounded" data-i18n="nav.contact">Contacto</a></li>
         </ul>
+        <button type="button" id="theme-toggle" class="h-8 w-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full border border-ink/15 text-ink hover:bg-latte/40 transition-colors focus-ring shrink-0" aria-label="Cambiar entre modo claro y oscuro">
+          <svg class="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
         <button type="button" id="lang-toggle-mobile" class="nav-lang sm:hidden h-8 px-3 flex items-center justify-center t-s-m border border-ink/15 rounded-full [@media(hover:hover)]:hover:bg-latte/40 [-webkit-tap-highlight-color:transparent] transition-colors" aria-label="Cambiar idioma">ES</button>
         <div class="hidden sm:flex items-center h-8 gap-1 t-s-m border border-ink/15 rounded-full p-1" role="group" aria-label="Seleccionar idioma">
           <button type="button" class="lang-btn h-full px-2.5 flex items-center justify-center rounded-full transition-colors" data-lang="en">EN</button>
@@ -1303,6 +1327,23 @@
         if (img.hasAttribute('data-nozoom')) return;
         if (img.getBoundingClientRect().width < 120) return;
         open(img);
+      });
+    })();
+  </script>
+<script>
+    // ===== Botón de tema claro / oscuro =====
+    (function () {
+      const btn = document.getElementById('theme-toggle');
+      if (!btn) return;
+      btn.addEventListener('click', () => {
+        const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+      });
+      // Si la persona no ha elegido, seguir los cambios del sistema
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        let saved = null; try { saved = localStorage.getItem('theme'); } catch (err) {}
+        if (saved !== 'light' && saved !== 'dark') document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
       });
     })();
   </script>
