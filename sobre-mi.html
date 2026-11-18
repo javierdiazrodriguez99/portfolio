@@ -66,6 +66,9 @@
   /* El footer de "Let's talk" mantiene su contraste: gris oscuro con texto claro */
   :root[data-theme="dark"] #contact { --c-ink: 34 33 31; --c-paper: 237 234 228; --c-latte: 214 205 190; --c-slate: 120 115 108; }
   :root[data-theme="dark"] h3 img.w-5 { filter: brightness(0) invert(1) opacity(.85) !important; }
+  .icon-dark { display: none; }
+  :root[data-theme="dark"] .icon-light { display: none; }
+  :root[data-theme="dark"] img.icon-dark { display: block; filter: none !important; }
   :root[data-theme="dark"] img.logo-mono { filter: brightness(0) invert(1) opacity(.85) !important; }
   :root[data-theme="dark"] .logo-marquee img { filter: grayscale(1) invert(1) opacity(0.45); }
   :root[data-theme="dark"] main img:not(.logo-marquee img) { filter: brightness(0.8) contrast(1.02); transition: filter .3s ease; }
@@ -318,7 +321,8 @@
         <li class="py-3 md:py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4">
           <div class="flex items-center gap-4">
             <div class="w-12 h-12 flex items-center justify-center shrink-0">
-              <img src="logo-elisava-isotype.png" alt="" class="logo-mono max-w-full max-h-full w-auto h-auto object-contain">
+              <img src="logo-elisava-isotype.png" alt="" class="max-w-full max-h-full w-auto h-auto object-contain icon-light">
+              <img src="logo-elisava-isotype-dark.png" alt="" class="max-w-full max-h-full w-auto h-auto object-contain icon-dark">
             </div>
             <div>
               <div class="flex flex-wrap items-baseline gap-x-3"><p class="t-h5 text-ink" data-i18n="edu1.title">Máster en Dirección en Diseño de Experiencias y Servicios Digitales</p><span class="sm:hidden basis-full t-s text-slate">2021 — 2022</span></div>
@@ -332,7 +336,8 @@
         <li class="py-3 md:py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4">
           <div class="flex items-center gap-4">
             <div class="w-12 h-12 flex items-center justify-center shrink-0">
-              <img src="logo-ull-isotype.png" alt="" class="logo-mono max-w-full max-h-full w-auto h-auto object-contain">
+              <img src="logo-ull-isotype.png" alt="" class="max-w-full max-h-full w-auto h-auto object-contain icon-light">
+              <img src="logo-ull-isotype-dark.png" alt="" class="max-w-full max-h-full w-auto h-auto object-contain icon-dark">
             </div>
             <div>
               <div class="flex flex-wrap items-baseline gap-x-3"><p class="t-h5 text-ink" data-i18n="edu2.title">Grado en Diseño</p><span class="sm:hidden basis-full t-s text-slate">2017 — 2021</span></div>
