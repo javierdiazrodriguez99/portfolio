@@ -329,11 +329,8 @@
       <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="s07.heading">De cajas grises a contenido real</h2>
 <div class="reveal mb-4"><h3 class="t-h4 t-medium mb-2" data-i18n="s07.low.h">Wireframes de baja fidelidad</h3></div><div class="reveal mb-10"><p class="t-p text-slate" data-i18n="s07.low.p">Cajas grises para decidir la estructura y la jerarquía: cuatro pantallas, hechas antes y después de la entrevista.</p></div><div id="lowfi-carousel" class="reveal group relative aspect-[2/1] rounded-2xl overflow-hidden border border-ink/15 bg-paper">
         <div id="lowfi-track" class="flex h-full transition-transform duration-500 ease-out">
-          <img src="circadia/lowfi-before.png" alt="Wireframes de baja fidelidad antes de la entrevista, con una rotación de día y noche" data-i18n="s07.img1.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-3 md:p-6 shrink-0" loading="lazy"><img src="circadia/lowfi-after.png" alt="Wireframes de baja fidelidad después de la entrevista, con una rotación de mañana y tarde" data-i18n="s07.img2.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-3 md:p-6 shrink-0" loading="lazy">
+          <img src="circadia/lowfi-before.png" alt="Wireframes de baja fidelidad antes de la entrevista, con una rotación de día y noche" data-i18n="s07.img1.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-3 md:p-6 shrink-0" loading="lazy">
         </div>
-        <button type="button" id="lowfi-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-        <button type="button" id="lowfi-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
-        <div class="absolute bottom-3 inset-x-0 hidden sm:flex items-center justify-center gap-2"><button type="button" class="lowfi-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button><button type="button" class="lowfi-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button></div>
       </div>
       <div class="mb-14"></div><div class="reveal mb-6 grid sm:grid-cols-4 gap-x-8 gap-y-10 md:gap-x-10">
 <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px"><h3 class="t-h4 t-medium mb-2" data-i18n="s07.c1.h">Onboarding</h3><div class="t-p text-slate" data-i18n="s07.c1.p">Tres vías de entrada, primero el patrón, y una vista previa de la semana para confirmar.</div></div>
@@ -540,7 +537,6 @@
     "s07.low.h": "Wireframes de baja fidelidad",
     "s07.low.p": "Cajas grises para decidir la estructura y la jerarquía: cuatro pantallas, hechas antes y después de la entrevista.",
     "s07.img1.alt": "Wireframes de baja fidelidad antes de la entrevista, con una rotación de día y noche",
-    "s07.img2.alt": "Wireframes de baja fidelidad después de la entrevista, con una rotación de mañana y tarde",
     "s07.c1.h": "Onboarding",
     "s07.c1.p": "Tres vías de entrada, primero el patrón, y una vista previa de la semana para confirmar.",
     "s07.c2.h": "Today",
@@ -756,7 +752,6 @@
     "s07.low.h": "Low-fidelity wireframes",
     "s07.low.p": "Grey boxes to decide layout and hierarchy: four screens, made before and after the interview.",
     "s07.img1.alt": "Low-fidelity wireframes before the interview, with a day and night rotation",
-    "s07.img2.alt": "Low-fidelity wireframes after the interview, with a morning and afternoon rotation",
     "s07.c1.h": "Onboarding",
     "s07.c1.p": "Three input paths, pattern first, and a week preview to confirm.",
     "s07.c2.h": "Today",
@@ -1046,15 +1041,6 @@
       inactiveDotClass: 'bg-ink/25',
     });
 
-    initCarousel({
-      containerId: 'lowfi-carousel',
-      trackId: 'lowfi-track',
-      prevId: 'lowfi-prev',
-      nextId: 'lowfi-next',
-      dotClass: 'lowfi-dot',
-      activeDotClass: 'bg-ink',
-      inactiveDotClass: 'bg-ink/25',
-    });
 
 
     // ===== Índice de secciones =====
