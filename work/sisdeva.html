@@ -54,6 +54,7 @@
   :root[data-theme="dark"] ::selection { background-color: #5A5046; color: #EDEAE4; }
   /* El footer de "Let's talk" mantiene su contraste: gris oscuro con texto claro */
   :root[data-theme="dark"] #contact { --c-ink: 34 33 31; --c-paper: 237 234 228; --c-latte: 214 205 190; --c-slate: 120 115 108; }
+  :root[data-theme="dark"] h3 img.w-5 { filter: brightness(0) invert(1) opacity(.85) !important; }
   :root[data-theme="dark"] .logo-marquee img { filter: grayscale(1) invert(1) opacity(0.45); }
   :root[data-theme="dark"] main img:not(.logo-marquee img) { filter: brightness(0.8) contrast(1.02); transition: filter .3s ease; }
   :root[data-theme="dark"] main a:hover img:not(.logo-marquee img), :root[data-theme="dark"] main img:not(.logo-marquee img):hover { filter: brightness(0.92); }
