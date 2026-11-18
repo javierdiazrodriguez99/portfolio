@@ -74,19 +74,10 @@
   :root[data-theme="dark"] .theme-btn:hover .theme-icon-moon { transform: rotate(-25deg) scale(.9); }
   body { transition: background-color .3s ease, color .3s ease; }
   @media (prefers-reduced-motion: reduce) { .theme-btn svg, .theme-btn::before { transition: none; } }
-  /* Botones: mismo comportamiento que el botón de tema (aro que aparece con rebote e icono que gira) */
-  :is(a, button).rounded-full:not(.theme-btn):not(.lang-btn):not([class*="dot"]):not(.w-2) { --ring: rgb(var(--c-ink) / .45); }
-  #contact :is(a, button).rounded-full { --ring: rgb(var(--c-paper) / .6); }
-  :is(a, button).rounded-full:not(.theme-btn):not(.lang-btn):not([class*="dot"]):not(.w-2):not(.absolute):not(.fixed) { position: relative; }
-  :is(a, button).rounded-full:not(.theme-btn):not(.lang-btn):not([class*="dot"]):not(.w-2)::after {
-    content: ""; position: absolute; inset: -4px; border-radius: 9999px; border: 1.5px solid var(--ring);
-    opacity: 0; transform: scale(.85); pointer-events: none;
-    transition: opacity .25s ease, transform .35s cubic-bezier(.34, 1.56, .64, 1);
-  }
-  :is(a, button).rounded-full:not(.theme-btn):not(.lang-btn):not([class*="dot"]):not(.w-2):is(:hover, :focus-visible)::after { opacity: 1; transform: scale(1); }
-  :is(a, button).rounded-full:not(.theme-btn):not(.lang-btn):not([class*="dot"]):not(.w-2) svg { transition: transform .5s cubic-bezier(.34, 1.56, .64, 1); }
-  :is(a, button).rounded-full:not(.theme-btn):not(.lang-btn):not([class*="dot"]):not(.w-2):hover svg { transform: rotate(-12deg) scale(1.12); }
-  @media (prefers-reduced-motion: reduce) { :is(a, button).rounded-full::after, :is(a, button).rounded-full svg { transition: none !important; } }
+  /* Botones: al pasar el ratón se remarca el borde (sin animar el icono) */
+  :is(a, button).rounded-full:not(.theme-btn):not(.lang-btn):not([class*="dot"]):not(.w-2) { --ring: rgb(var(--c-ink) / .7); transition-property: color, background-color, border-color, box-shadow; transition-duration: .2s; }
+  #contact :is(a, button).rounded-full { --ring: rgb(var(--c-paper) / .85); }
+  :is(a, button).rounded-full:not(.theme-btn):not(.lang-btn):not([class*="dot"]):not(.w-2):is(:hover, :focus-visible) { border-color: var(--ring) !important; box-shadow: 0 0 0 1px var(--ring); }
   html { font-family: 'Inter', sans-serif; }
   ::selection { background-color: #E5D9C5; color: #1A1917; }
 
