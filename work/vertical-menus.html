@@ -372,6 +372,12 @@
         <h3 class="t-h4 t-medium mb-6" data-i18n="find.h">Qué reveló el card sorting</h3>
         <div class="grid md:grid-cols-3 gap-4 md:gap-6"><div class="rounded-2xl border border-ink/15 bg-paper p-6 md:p-8"><h3 class="t-h4 t-medium mb-3" data-i18n="find.c1.h">Los usuarios agrupan por tarea, no por producto</h3><p class="t-p text-slate" data-i18n="find.c1.p">Tracking, estadísticas, calculadoras y AWB acabaron juntos en «Tools» (hasta un 75 %), sin importar el modo de transporte. → Agrupé las utilidades en una única sección en lugar de repetirlas en cada producto.</p></div><div class="rounded-2xl border border-ink/15 bg-paper p-6 md:p-8"><h3 class="t-h4 t-medium mb-3" data-i18n="find.c2.h">Las tarifas no tenían un sitio claro</h3><p class="t-p text-slate" data-i18n="find.c2.p">La subida de tarifas, los cargos locales, los recargos y las condiciones se repartían al 50 % entre Quotes y Rate Management. → Reuní todo lo relacionado con tarifas y precios en una sola sección.</p></div><div class="rounded-2xl border border-ink/15 bg-paper p-6 md:p-8"><h3 class="t-h4 t-medium mb-3" data-i18n="find.c3.h">Las reservas son el ancla; la administración va aparte</h3><p class="t-p text-slate" data-i18n="find.c3.p">El panel de eBookings fue a My eBookings en el 100 % de los casos, mientras que usuarios y contactos iban a Accounts y Settings. → Las reservas quedan arriba del menú y la cuenta y la administración pasan a la parte inferior.</p></div></div>
       </div>
+      <div class="reveal mb-10 md:mb-16">
+        <h3 class="t-h4 t-medium mb-3" data-i18n="flows.h">Flujos y casos límite del menú</h3>
+        <p class="t-p text-slate mb-6 md:mb-8" data-i18n="flows.p">Mapeé cómo se movería un usuario por el menú en cada caso: sin nada seleccionado, con un elemento ya seleccionado o con un submenú abierto, además de los casos límite. Así detecté pronto qué niveles y estados tenía que cubrir el diseño.</p>
+        <div class="rounded-2xl overflow-hidden bg-[#E1E1E1] aspect-[16/9]"><img src="vertical-menus-usecases.webp" alt="Diagrama de los posibles casos de uso del menú vertical en su versión drill-down" data-i18n="s03.level1.img1.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-9" loading="lazy"></div>
+        <p class="t-s text-slate mt-3" data-i18n="flows.cap">Posibles casos de uso del menú vertical (versión drill-down).</p>
+      </div>
 
 
 
@@ -504,7 +510,6 @@
 
       <div id="level1-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-[#E1E1E1]">
         <div id="level1-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
-          <img src="vertical-menus-usecases.webp" alt="Diagrama de los posibles casos de uso del menú vertical en su versión drill-down" class="w-full h-full object-contain p-6 md:p-9 shrink-0" data-i18n="s03.level1.img1.alt" data-i18n-attr="alt">
           <img src="vertical-menus-level1-1.png" alt="Comportamiento del primer nivel de información del menú vertical" class="w-full h-full object-contain p-6 md:p-9 shrink-0" data-i18n="s03.level1.img2.alt" data-i18n-attr="alt">
           <img src="vertical-menus-level1-2.png" alt="Comportamiento del primer nivel de información del menú vertical" class="w-full h-full object-contain p-6 md:p-9 shrink-0" data-i18n="s03.level1.img3.alt" data-i18n-attr="alt">
           <img src="vertical-menus-level1-3.png" alt="Comportamiento del primer nivel de información del menú vertical" class="w-full h-full object-contain p-6 md:p-9 shrink-0" data-i18n="s03.level1.img4.alt" data-i18n-attr="alt">
@@ -521,7 +526,6 @@
           <button type="button" class="level1-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
           <button type="button" class="level1-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
           <button type="button" class="level1-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
-          <button type="button" class="level1-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="3" aria-label="Ir a la imagen 4"></button>
         </div>
       </div>
       <p class="reveal t-s text-slate mt-3" data-i18n="s03.level1.caption">Referencias del comportamiento del menú vertical.</p>
@@ -701,6 +705,9 @@
   <script>
     const translations = {
       es: {
+        'flows.h': `Flujos y casos límite del menú`,
+        'flows.p': `Mapeé cómo se movería un usuario por el menú en cada caso: sin nada seleccionado, con un elemento ya seleccionado o con un submenú abierto, además de los casos límite. Así detecté pronto qué niveles y estados tenía que cubrir el diseño.`,
+        'flows.cap': `Posibles casos de uso del menú vertical (versión drill-down).`,
         'diff.li': `<ul class="list-disc pl-5 space-y-2"><li>Replantear muchos aspectos de la UI que vinieron condicionados por otros equipos.</li><li>Añadir pequeñas funcionalidades de IA para buscar páginas y saltar entre secciones de forma mucho más eficiente que la propuesta actual.</li><li>Reducir el número de CTAs del header e ir al grano con el más importante.</li></ul>`,
         'diff.h': `Qué haría diferente`,
         'impact.heading': `Qué cambió tras el lanzamiento`,
@@ -873,6 +880,9 @@
         'cta.back': `Volver a todos los proyectos`,
       },
       en: {
+        'flows.h': `Menu flows and edge cases`,
+        'flows.p': `I mapped how a user would move through the menu in every case: with nothing selected, with an item already selected or with a submenu open, plus the edge cases. This showed early which levels and states the design had to cover.`,
+        'flows.cap': `Possible use cases for the vertical menu (drill-down version).`,
         'diff.li': `<ul class="list-disc pl-5 space-y-2"><li>Rework many UI decisions that were shaped by other teams’ constraints.</li><li>Add small AI features to search pages and jump between sections far more efficiently than the current proposal.</li><li>Cut down the number of CTAs in the header and lead with the most important one.</li></ul>`,
         'diff.h': `What I’d do differently`,
         'impact.heading': `What changed after launch`,
