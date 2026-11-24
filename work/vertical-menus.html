@@ -47,6 +47,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+  /* Tooltip de término (definición al pasar el ratón; en móvil se muestra la tarjeta) */
+  .reveal:has(.ff-term) { position: relative; z-index: 20; }
+  .ff-term { position: relative; color: rgb(var(--c-ink)); text-decoration: underline dotted; text-decoration-thickness: 1.5px; text-underline-offset: 4px; cursor: help; outline: none; }
+  .ff-tip { display: none; }
+  @media (min-width: 768px) {
+    .ff-tip { display: block; position: absolute; left: 0; top: calc(100% + 10px); z-index: 30; width: 360px; padding: 16px 18px; white-space: normal; border-radius: 12px; border: 1px solid rgb(var(--c-ink) / .15); background: rgb(var(--c-paper)); box-shadow: 0 12px 32px rgb(0 0 0 / .12); font-size: 16px; line-height: 24px; color: rgb(var(--c-ink) / .85); text-decoration: none; cursor: default; opacity: 0; isolation: isolate; transform: translateY(-4px); pointer-events: none; transition: opacity .2s ease, transform .2s ease; }
+    .ff-tip-h { display: block; font-weight: 600; color: rgb(var(--c-ink)); margin-bottom: 4px; }
+    .ff-term:hover .ff-tip, .ff-term:focus .ff-tip { opacity: 1; transform: none; pointer-events: auto; }
+  }
+  .ff-tip-h { display: none; }
+  @media (min-width: 768px) { .ff-tip-h { display: block; } }
   /* ===== Tema claro / oscuro ===== */
   :root { --c-ink: 26 25 23; --c-slate: 110 106 100; --c-paper: 255 255 255; --c-mist: 250 249 247; --c-latte: 229 217 197; --c-latte-dark: 212 196 183; color-scheme: light; }
   :root[data-theme="dark"] { --c-ink: 237 234 228; --c-slate: 163 158 150; --c-paper: 18 17 16; --c-mist: 28 27 25; --c-latte: 46 42 37; --c-latte-dark: 90 80 70; color-scheme: dark; }
@@ -299,16 +310,14 @@
         <span class="t-h6 text-slate" data-i18n="s01.eyebrow">Punto de partida</span>
       </div>
       <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="s01.heading">Por qué necesitábamos un nuevo enfoque</h2>
-      <div class="reveal rounded-2xl mb-8 md:mb-10 border border-ink/15 bg-paper p-6 md:p-8">
-        <h3 class="t-h4 t-medium mb-3" data-i18n="s02.ff.h">¿Quiénes son los transportistas?</h3>
-        <p class="t-p text-slate" data-i18n="s02.ff.p">Son las empresas de logística que organizan los envíos de mercancía en nombre de importadores y exportadores. En Freightos comparan y reservan tarifas de transporte aéreo y marítimo con las navieras y aerolíneas, gestionan cotizaciones y reservas y hacen el seguimiento de los envíos de sus propios clientes. Eran nuestros usuarios principales.</p>
-      </div>
-
-
       <div class="reveal mb-8 md:mb-14">
         <p class="t-p text-slate" data-i18n="s01.p1">
-          Los transportistas trabajaban con varios productos de Freightos, cada uno con su propia navegación. No encontraban lo que necesitaban, cada cambio de navegación tardaba semanas entre equipos y pasar de un producto a otro parecía usar empresas distintas. ¿Cómo podíamos darles una forma única y clara de moverse por toda la plataforma?
+          Los <span class="ff-term" tabindex="0">transportistas<span class="ff-tip" role="tooltip"><span class="ff-tip-h">Transportistas</span>Empresas de logística que organizan los envíos de importadores y exportadores. En Freightos comparan y reservan tarifas aéreas y marítimas, gestionan cotizaciones y reservas y siguen los envíos de sus clientes.</span></span> trabajaban con varios productos de Freightos, cada uno con su propia navegación. No encontraban lo que necesitaban, cada cambio de navegación tardaba semanas entre equipos y pasar de un producto a otro parecía usar empresas distintas. ¿Cómo podíamos darles una forma única y clara de moverse por toda la plataforma?
         </p>
+      </div>
+      <div class="reveal md:hidden rounded-2xl mb-8 border border-ink/15 bg-paper p-6 md:p-8">
+        <h3 class="t-h4 t-medium mb-3" data-i18n="s02.ff.h">¿Quiénes son los transportistas?</h3>
+        <p class="t-p text-slate" data-i18n="s02.ff.p">Son las empresas de logística que organizan los envíos de mercancía en nombre de importadores y exportadores. En Freightos comparan y reservan tarifas de transporte aéreo y marítimo con las navieras y aerolíneas, gestionan cotizaciones y reservas y hacen el seguimiento de los envíos de sus propios clientes. Eran nuestros usuarios principales.</p>
       </div>
 
       <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 pt-0 md:pt-10">
@@ -776,7 +785,7 @@
         's01.eyebrow': `Problem statement`,
         's01.heading': `Por qué necesitábamos un nuevo enfoque`,
         's01.label1': `Contexto`,
-        's01.p1': `Los transportistas trabajaban con varios productos de Freightos, cada uno con su propia navegación. No encontraban lo que necesitaban, cada cambio de navegación tardaba semanas entre equipos y pasar de un producto a otro parecía usar empresas distintas. ¿Cómo podíamos darles una forma única y clara de moverse por toda la plataforma?`,
+        's01.p1': `Los <span class="ff-term" tabindex="0">transportistas<span class="ff-tip" role="tooltip"><span class="ff-tip-h">Transportistas</span>Empresas de logística que organizan los envíos de importadores y exportadores. En Freightos comparan y reservan tarifas aéreas y marítimas, gestionan cotizaciones y reservas y siguen los envíos de sus clientes.</span></span> trabajaban con varios productos de Freightos, cada uno con su propia navegación. No encontraban lo que necesitaban, cada cambio de navegación tardaba semanas entre equipos y pasar de un producto a otro parecía usar empresas distintas. ¿Cómo podíamos darles una forma única y clara de moverse por toda la plataforma?`,
         's01.card1.heading': `Los usuarios no encontraban la información que necesitaban`,
         's01.card1.p': `Muchas quejas a soporte: no lograban completar sus tareas porque el producto no era intuitivo.`,
         's01.card2.heading': `Costes de mantenimiento`,
@@ -951,7 +960,7 @@
         's01.eyebrow': `Problem statement`,
         's01.heading': `Why we needed a new approach`,
         's01.label1': `Context`,
-        's01.p1': `Freight forwarders worked across several Freightos products, each with its own navigation. They couldn’t find what they needed, every navigation change took weeks across teams, and moving between products felt like using different companies. How might we give them one clear, shared way to move around the whole platform?`,
+        's01.p1': `<span class="ff-term" tabindex="0">Freight forwarders<span class="ff-tip" role="tooltip"><span class="ff-tip-h">Freight forwarders</span>Logistics companies that organise shipments for importers and exporters. On Freightos they compare and book air and ocean rates, manage quotes and bookings, and track their customers’ shipments.</span></span> worked across several Freightos products, each with its own navigation. They couldn’t find what they needed, every navigation change took weeks across teams, and moving between products felt like using different companies. How might we give them one clear, shared way to move around the whole platform?`,
         's01.card1.heading': `Users couldn't find the information they needed`,
         's01.card1.p': `Lots of support complaints: users couldn’t complete their tasks because the product wasn’t intuitive.`,
         's01.card2.heading': `Maintenance costs`,
