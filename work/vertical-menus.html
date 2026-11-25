@@ -224,6 +224,10 @@
         <span class="section-index-label t-s text-slate whitespace-nowrap opacity-0 max-w-0 group-hover/index:opacity-100 group-hover/index:max-w-[280px] overflow-hidden transition-all duration-300 ease-out bg-paper/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-ink/15" data-i18n="s02.eyebrow">Research</span>
         <span class="section-index-dot w-1.5 h-1.5 rounded-full bg-ink/20 transition-all shrink-0"></span>
       </button>
+      <button type="button" class="section-index-item flex items-center gap-3 focus-ring rounded" data-target="flows">
+        <span class="section-index-label t-s text-slate whitespace-nowrap opacity-0 max-w-0 group-hover/index:opacity-100 group-hover/index:max-w-[280px] overflow-hidden transition-all duration-300 ease-out bg-paper/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-ink/15" data-i18n="flows.eyebrow">Flujos del menú</span>
+        <span class="section-index-dot w-1.5 h-1.5 rounded-full bg-ink/20 transition-all shrink-0"></span>
+      </button>
       <button type="button" class="section-index-item flex items-center gap-3 focus-ring rounded" data-target="s03">
         <span class="section-index-label t-s text-slate whitespace-nowrap opacity-0 max-w-0 group-hover/index:opacity-100 group-hover/index:max-w-[280px] overflow-hidden transition-all duration-300 ease-out bg-paper/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-ink/15" data-i18n="s03.eyebrow">Decisiones de diseño clave</span>
         <span class="section-index-dot w-1.5 h-1.5 rounded-full bg-ink/20 transition-all shrink-0"></span>
@@ -263,7 +267,7 @@
         </div>
         <div>
           <p class="t-s-m uppercase tracking-[2px] text-slate mb-1 sm:mb-2" data-i18n="hero.client.label">Usuario</p>
-          <p class="t-h5 t-meta text-ink" data-i18n="hero.client.value">Transportistas</p>
+          <p class="t-h5 t-meta text-ink" data-i18n="hero.client.value"><span class="ff-term" tabindex="0">Transportistas<span class="ff-tip" role="tooltip"><span class="ff-tip-h">Transportistas</span>Empresas de logística que organizan los envíos de importadores y exportadores. En Freightos comparan y reservan tarifas aéreas y marítimas, gestionan cotizaciones y reservas y siguen los envíos de sus clientes.</span></span></p>
         </div>
         <div>
           <p class="t-s-m uppercase tracking-[2px] text-slate mb-1 sm:mb-2" data-i18n="hero.year.label">Año</p>
@@ -311,9 +315,7 @@
       </div>
       <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="s01.heading">Por qué necesitábamos un nuevo enfoque</h2>
       <div class="reveal mb-8 md:mb-14">
-        <p class="t-p text-slate" data-i18n="s01.p1">
-          Los <span class="ff-term" tabindex="0">transportistas<span class="ff-tip" role="tooltip"><span class="ff-tip-h">Transportistas</span>Empresas de logística que organizan los envíos de importadores y exportadores. En Freightos comparan y reservan tarifas aéreas y marítimas, gestionan cotizaciones y reservas y siguen los envíos de sus clientes.</span></span> trabajaban con varios productos de Freightos, cada uno con su propia navegación. No encontraban lo que necesitaban, cada cambio de navegación tardaba semanas entre equipos y pasar de un producto a otro parecía usar empresas distintas. ¿Cómo podíamos darles una forma única y clara de moverse por toda la plataforma?
-        </p>
+        <p class="t-p text-slate" data-i18n="s01.p1">Nuestros <span class="ff-term" tabindex="0">transportistas<span class="ff-tip" role="tooltip"><span class="ff-tip-h">Transportistas</span>Empresas de logística que organizan los envíos de importadores y exportadores. En Freightos comparan y reservan tarifas aéreas y marítimas, gestionan cotizaciones y reservas y siguen los envíos de sus clientes.</span></span> son usuarios muy ocupados en su día a día y necesitan acceder a la información de la forma más rápida y eficiente posible. Eso no ocurría en <a href="https://www.freightos.com/forwarders/" target="_blank" rel="noopener noreferrer" class="text-ink underline decoration-ink/30 underline-offset-4 hover:decoration-ink transition-colors">Freightos for Freight Forwarders</a>, nuestro producto estrella.</p>
       </div>
       <div class="reveal md:hidden rounded-2xl mb-8 border border-ink/15 bg-paper p-6 md:p-8">
         <h3 class="t-h4 t-medium mb-3" data-i18n="s02.ff.h">¿Quiénes son los transportistas?</h3>
@@ -358,66 +360,67 @@
         <span class="t-h6 text-slate" data-i18n="s02.eyebrow">Research</span>
       </div>
       <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="s02.heading">Cómo investigué antes de tocar el diseño</h2>
-
       <div class="reveal mb-8 md:mb-14">
         <p class="t-p text-slate" data-i18n="s02.p1">Antes de plantear una solución global, necesitaba entender cómo pensaban los usuarios sobre la información de cada producto. Combiné card sorting con árboles de arquitectura de la información para comparar cómo agrupaban el contenido frente a cómo estaba estructurado en cada plataforma.</p>
       </div>
-
-      <div class="reveal grid sm:grid-cols-3 gap-x-8 gap-y-10 md:gap-x-10 mb-10 md:mb-16">
-        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8 sm:-ml-px">
-          <h3 class="t-h4 t-medium mb-2" data-i18n="s02.card2.heading">Árboles de arquitectura de la información</h3>
-          <p class="t-p text-slate" data-i18n="s02.card2.p">Comparé la estructura actual de cada producto con la ideal, para transportistas, carriers y shippers.</p>
-        </div>
-        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="t-h4 t-medium mb-2" data-i18n="s02.card1.heading">Card sorting con usuarios reales</h3>
-          <p class="t-p text-slate" data-i18n="s02.card1.p">Durante una semana, 10 usuarios agruparon 20 conceptos clave en un card sorting remoto.</p>
-        </div>
-        <div class="sm:border-l sm:border-ink/[0.08] sm:pl-8">
-          <h3 class="t-h4 t-medium mb-2" data-i18n="s02.card3.heading">Síntesis y validación de patrones</h3>
-          <p class="t-p text-slate" data-i18n="s02.card3.p">Con los resultados y sesiones con producto y dirección, fijé los patrones de la nueva arquitectura.</p>
-        </div>
-      </div>
       <div class="reveal mb-10 md:mb-16">
+        <p class="t-p text-slate" data-i18n="s02.methods">Usé tres métodos: <strong class="font-medium text-ink">árboles de arquitectura de la información</strong> para comparar la estructura actual de cada producto con la ideal; un <strong class="font-medium text-ink">card sorting</strong> remoto de una semana con 10 usuarios y 20 conceptos clave; y una <strong class="font-medium text-ink">síntesis de patrones</strong> con producto y dirección para convertir los resultados en la nueva arquitectura.</p>
+      </div>
+      <div class="reveal mb-6 md:mb-8">
         <h3 class="t-h4 t-medium mb-6" data-i18n="find.h">Qué reveló el card sorting</h3>
         <div class="grid md:grid-cols-3 gap-4 md:gap-6"><div class="rounded-2xl border border-ink/15 bg-paper p-6 md:p-8"><h3 class="t-h4 t-medium mb-3" data-i18n="find.c1.h">Los usuarios agrupan por tarea, no por producto</h3><p class="t-p text-slate" data-i18n="find.c1.p">Tracking, estadísticas, calculadoras y AWB acabaron juntos en «Tools» (hasta un 75 %), sin importar el modo de transporte. → Agrupé las utilidades en una única sección en lugar de repetirlas en cada producto.</p></div><div class="rounded-2xl border border-ink/15 bg-paper p-6 md:p-8"><h3 class="t-h4 t-medium mb-3" data-i18n="find.c2.h">Las tarifas no tenían un sitio claro</h3><p class="t-p text-slate" data-i18n="find.c2.p">La subida de tarifas, los cargos locales, los recargos y las condiciones se repartían al 50 % entre Quotes y Rate Management. → Reuní todo lo relacionado con tarifas y precios en una sola sección.</p></div><div class="rounded-2xl border border-ink/15 bg-paper p-6 md:p-8"><h3 class="t-h4 t-medium mb-3" data-i18n="find.c3.h">Las reservas son el ancla; la administración va aparte</h3><p class="t-p text-slate" data-i18n="find.c3.p">El panel de eBookings fue a My eBookings en el 100 % de los casos, mientras que usuarios y contactos iban a Accounts y Settings. → Las reservas quedan arriba del menú y la cuenta y la administración pasan a la parte inferior.</p></div></div>
       </div>
-      <div class="reveal mb-10 md:mb-16">
-        <h3 class="t-h4 t-medium mb-3" data-i18n="flows.h">Flujos y casos límite del menú</h3>
-        <p class="t-p text-slate mb-6 md:mb-8" data-i18n="flows.p">Mapeé cómo se movería un usuario por el menú en cada caso: sin nada seleccionado, con un elemento ya seleccionado o con un submenú abierto, además de los casos límite. Así detecté pronto qué niveles y estados tenía que cubrir el diseño.</p>
-        <div class="rounded-2xl overflow-hidden bg-[#E1E1E1] aspect-[16/9]"><img src="vertical-menus-usecases.webp" alt="Diagrama de los posibles casos de uso del menú vertical en su versión drill-down" data-i18n="s03.level1.img1.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-9" loading="lazy"></div>
-        <p class="t-s text-slate mt-3" data-i18n="flows.cap">Posibles casos de uso del menú vertical (versión drill-down).</p>
-      </div>
-
-
-
-      <div id="research-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
-        <div id="research-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
-          <img src="vertical-menus-cardsorting-4.png" alt="Detalle adicional de los resultados del card sorting" class="w-full h-full object-contain p-8 md:p-12 shrink-0" data-i18n="s02.research.img1.alt" data-i18n-attr="alt">
+      <div id="findings-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+        <div id="findings-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
           <img src="vertical-menus-cardsorting-1.png" alt="Resultados generales de la sesión de card sorting: respuestas completadas, tiempo empleado y ubicación de los participantes" class="w-full h-full object-contain p-8 md:p-12 shrink-0" data-i18n="s02.research.img2.alt" data-i18n-attr="alt">
           <img src="vertical-menus-cardsorting-2.png" alt="Matrices de resultados del card sorting mostrando cómo los usuarios agruparon cada tarjeta y los emplazamientos más populares" class="w-full h-full object-contain p-8 md:p-12 shrink-0" data-i18n="s02.research.img3.alt" data-i18n-attr="alt">
-          <img src="vertical-menus-cardsorting-3.png" alt="Árbol de arquitectura de la información resultante, con la navegación completa organizada por secciones" class="w-full h-full object-cover shrink-0" data-i18n="s02.research.img4.alt" data-i18n-attr="alt">
         </div>
-
-        <button type="button" id="research-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="findings-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <button type="button" id="research-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+        <button type="button" id="findings-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </button>
-
         <div class="absolute bottom-4 inset-x-0 hidden sm:flex items-center justify-center gap-2">
-          <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
-          <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
-          <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
-          <button type="button" class="research-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="3" aria-label="Ir a la imagen 4"></button>
+          <button type="button" class="findings-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="findings-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
         </div>
       </div>
-      <p class="reveal t-s text-slate mt-3" data-i18n="s02.research.caption">Resultados de las sesiones de card sorting y árbol de arquitectura de la información resultante.</p>
+      <p class="reveal t-s text-slate mt-3" data-i18n="find.cap">Resultados del card sorting: resumen de participación y matrices de resultados.</p>
+    </section>
 
+    <!-- ===== 04 · MENU FLOWS ===== -->
+    <section id="flows" class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20">
+      <div class="reveal flex items-center gap-4 mb-5">
+        <span class="t-h5 text-latte-dark" data-i18n="flows.index">04</span>
+        <span class="t-h6 text-slate" data-i18n="flows.eyebrow">Flujos del menú</span>
+      </div>
+      <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="flows.heading">Flujos y casos límite del menú</h2>
+      <div class="reveal mb-10 md:mb-16">
+        <p class="t-p text-slate" data-i18n="flows.p">Mapeé cómo se movería un usuario por el menú en cada caso: sin nada seleccionado, con un elemento ya seleccionado o con un submenú abierto, además de los casos límite. Así detecté pronto qué niveles y estados tenía que cubrir el diseño.</p>
+      </div>
+      <div id="flows-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
+        <div id="flows-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="vertical-menus-usecases.webp" alt="Diagrama de los posibles casos de uso del menú vertical en su versión drill-down" data-i18n="s03.level1.img1.alt" data-i18n-attr="alt" class="w-full h-full object-contain p-6 md:p-9 shrink-0">
+          <img src="vertical-menus-cardsorting-4.png" alt="Detalle adicional de los resultados del card sorting" class="w-full h-full object-contain p-8 md:p-12 shrink-0" data-i18n="s02.research.img1.alt" data-i18n-attr="alt">
+          <img src="vertical-menus-cardsorting-3.png" alt="Árbol de arquitectura de la información resultante, con la navegación completa organizada por secciones" class="w-full h-full object-cover shrink-0" data-i18n="s02.research.img4.alt" data-i18n-attr="alt">
+        </div>
+        <button type="button" id="flows-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="flows-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+        <div class="absolute bottom-4 inset-x-0 hidden sm:flex items-center justify-center gap-2">
+          <button type="button" class="flows-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="flows-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+          <button type="button" class="flows-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+        </div>
+      </div>
+      <p class="reveal t-s text-slate mt-3" data-i18n="flows.cap">Posibles casos de uso del menú vertical, el tablero de research y el árbol de arquitectura de la información resultante.</p>
       <div class="reveal mb-10 md:mb-16 mt-10 md:mt-20">
         <p class="t-p text-slate" data-i18n="s02.p2">Con las conclusiones en la mano, pasé dos semanas en workshops con el equipo de producto y mi manager, construyendo una arquitectura de la información que funcionara tanto para los stakeholders como para los usuarios finales.</p>
       </div>
-
       <div id="workshops-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-mist">
         <div id="workshops-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
           <img src="vertical-menus-workshop-team.jpeg" alt="Equipo de producto celebrando frente al whiteboard con la arquitectura de la información del workshop" class="w-full h-full object-cover shrink-0" data-i18n="s02.workshops.img1.alt" data-i18n-attr="alt">
@@ -448,7 +451,7 @@
     <!-- ===== 03 · DEL PAPEL A LA PANTALLA ===== -->
     <section id="s03" class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20">
       <div class="reveal flex items-center gap-4 mb-5">
-        <span class="t-h5 text-latte-dark" data-i18n="s03.index">04</span>
+        <span class="t-h5 text-latte-dark" data-i18n="s03.index">05</span>
         <span class="t-h6 text-slate" data-i18n="s03.eyebrow">Del papel a la pantalla</span>
       </div>
       <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="s03.heading">De los primeros bocetos a las decisiones finales</h2>
@@ -568,7 +571,7 @@
     <!-- ===== 04 · INTERACCIONES Y PROTOTIPOS ===== -->
     <section id="s04" class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20">
       <div class="reveal flex items-center gap-4 mb-5">
-        <span class="t-h5 text-latte-dark" data-i18n="s04.index">05</span>
+        <span class="t-h5 text-latte-dark" data-i18n="s04.index">06</span>
         <span class="t-h6 text-slate" data-i18n="s04.eyebrow">Interacciones / Prototipos</span>
       </div>
       <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="s04.heading">
@@ -587,7 +590,7 @@
     <!-- ===== 05 · SOLUTION ===== -->
     <section id="s05" class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20">
       <div class="reveal flex items-center gap-4 mb-5">
-        <span class="t-h5 text-latte-dark" data-i18n="s05.index">06</span>
+        <span class="t-h5 text-latte-dark" data-i18n="s05.index">07</span>
         <span class="t-h6 text-slate" data-i18n="s05.eyebrow">Solución</span>
       </div>
       <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="s05.heading">
@@ -653,7 +656,7 @@
     <!-- ===== IMPACT ===== -->
     <section id="impact" class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20">
       <div class="reveal flex items-center gap-4 mb-5">
-        <span class="t-h5 text-latte-dark" data-i18n="impact.index">07</span>
+        <span class="t-h5 text-latte-dark" data-i18n="impact.index">08</span>
         <span class="t-h6 text-slate" data-i18n="impact.eyebrow">Impacto</span>
       </div>
       <h2 class="reveal t-h2 mb-4 md:mb-6" data-i18n="impact.heading">Qué cambió tras el lanzamiento</h2>
@@ -679,7 +682,7 @@
     <!-- ===== 06 · KEY LEARNINGS ===== -->
     <section id="s06" class="max-w-[1680px] mx-auto px-6 sm:px-16 py-12 md:py-20">
       <div class="reveal flex items-center gap-4 mb-5">
-        <span class="t-h5 text-latte-dark" data-i18n="s06.index">08</span>
+        <span class="t-h5 text-latte-dark" data-i18n="s06.index">09</span>
         <span class="t-h6 text-slate" data-i18n="s06.eyebrow">Aprendizajes clave</span>
       </div>
       <h2 class="reveal t-h2 mb-4" data-i18n="s06.heading">
@@ -714,14 +717,18 @@
   <script>
     const translations = {
       es: {
-        'flows.h': `Flujos y casos límite del menú`,
+        'flows.heading': `Flujos y casos límite del menú`,
+        'flows.eyebrow': `Flujos del menú`,
+        'flows.index': `04`,
+        'find.cap': `Resultados del card sorting: resumen de participación y matrices de resultados.`,
+        's02.methods': `Usé tres métodos: <strong class="font-medium text-ink">árboles de arquitectura de la información</strong> para comparar la estructura actual de cada producto con la ideal; un <strong class="font-medium text-ink">card sorting</strong> remoto de una semana con 10 usuarios y 20 conceptos clave; y una <strong class="font-medium text-ink">síntesis de patrones</strong> con producto y dirección para convertir los resultados en la nueva arquitectura.`,
         'flows.p': `Mapeé cómo se movería un usuario por el menú en cada caso: sin nada seleccionado, con un elemento ya seleccionado o con un submenú abierto, además de los casos límite. Así detecté pronto qué niveles y estados tenía que cubrir el diseño.`,
-        'flows.cap': `Posibles casos de uso del menú vertical (versión drill-down).`,
+        'flows.cap': `Posibles casos de uso del menú vertical, el tablero de research y el árbol de arquitectura de la información resultante.`,
         'diff.li': `<ul class="list-disc pl-5 space-y-2"><li>Replantear muchos aspectos de la UI que vinieron condicionados por otros equipos.</li><li>Añadir pequeñas funcionalidades de IA para buscar páginas y saltar entre secciones de forma mucho más eficiente que la propuesta actual.</li><li>Reducir el número de CTAs del header e ir al grano con el más importante.</li></ul>`,
         'diff.h': `Qué haría diferente`,
         'impact.heading': `Qué cambió tras el lanzamiento`,
         'impact.eyebrow': `Impacto`,
-        'impact.index': `07`,
+        'impact.index': `08`,
         'ba.after': `Después`,
         'ba.before': `Antes`,
         'dec.why': `Por qué`,
@@ -768,7 +775,7 @@
         'hero.client.label': `Usuario`,
         's02.ff.h': `¿Quiénes son los transportistas?`,
         's02.ff.p': `Son las empresas de logística que organizan los envíos de mercancía en nombre de importadores y exportadores. En Freightos comparan y reservan tarifas de transporte aéreo y marítimo con las navieras y aerolíneas, gestionan cotizaciones y reservas y hacen el seguimiento de los envíos de sus propios clientes. Eran nuestros usuarios principales.`,
-        'hero.client.value': `Transportistas`,
+        'hero.client.value': `<span class="ff-term" tabindex="0">Transportistas<span class="ff-tip" role="tooltip"><span class="ff-tip-h">Transportistas</span>Empresas de logística que organizan los envíos de importadores y exportadores. En Freightos comparan y reservan tarifas aéreas y marítimas, gestionan cotizaciones y reservas y siguen los envíos de sus clientes.</span></span>`,
         'hero.year.label': `Año`,
         'hero.year.value': `2023`,
         'hero.team.label': `Equipo`,
@@ -785,7 +792,7 @@
         's01.eyebrow': `Problem statement`,
         's01.heading': `Por qué necesitábamos un nuevo enfoque`,
         's01.label1': `Contexto`,
-        's01.p1': `Los <span class="ff-term" tabindex="0">transportistas<span class="ff-tip" role="tooltip"><span class="ff-tip-h">Transportistas</span>Empresas de logística que organizan los envíos de importadores y exportadores. En Freightos comparan y reservan tarifas aéreas y marítimas, gestionan cotizaciones y reservas y siguen los envíos de sus clientes.</span></span> trabajaban con varios productos de Freightos, cada uno con su propia navegación. No encontraban lo que necesitaban, cada cambio de navegación tardaba semanas entre equipos y pasar de un producto a otro parecía usar empresas distintas. ¿Cómo podíamos darles una forma única y clara de moverse por toda la plataforma?`,
+        's01.p1': `Nuestros <span class="ff-term" tabindex="0">transportistas<span class="ff-tip" role="tooltip"><span class="ff-tip-h">Transportistas</span>Empresas de logística que organizan los envíos de importadores y exportadores. En Freightos comparan y reservan tarifas aéreas y marítimas, gestionan cotizaciones y reservas y siguen los envíos de sus clientes.</span></span> son usuarios muy ocupados en su día a día y necesitan acceder a la información de la forma más rápida y eficiente posible. Eso no ocurría en <a href="https://www.freightos.com/forwarders/" target="_blank" rel="noopener noreferrer" class="text-ink underline decoration-ink/30 underline-offset-4 hover:decoration-ink transition-colors">Freightos for Freight Forwarders</a>, nuestro producto estrella.`,
         's01.card1.heading': `Los usuarios no encontraban la información que necesitaban`,
         's01.card1.p': `Muchas quejas a soporte: no lograban completar sus tareas porque el producto no era intuitivo.`,
         's01.card2.heading': `Costes de mantenimiento`,
@@ -798,19 +805,12 @@
         's02.index': `03`,
         's02.eyebrow': `Research`,
         's02.heading': `Cómo investigué antes de tocar el diseño`,
-        's02.card1.heading': `Card sorting con usuarios reales`,
-        's02.card1.p': `Durante una semana, 10 usuarios agruparon 20 conceptos clave en un card sorting remoto.`,
-        's02.card2.heading': `Árboles de arquitectura de la información`,
-        's02.card2.p': `Comparé la estructura actual de cada producto con la ideal, para transportistas, carriers y shippers.`,
-        's02.card3.heading': `Síntesis y validación de patrones`,
-        's02.card3.p': `Con los resultados y sesiones con producto y dirección, fijé los patrones de la nueva arquitectura.`,
         's02.label1': `Técnicas de investigación`,
         's02.p1': `Antes de plantear una solución global, necesitaba entender cómo pensaban los usuarios sobre la información de cada producto. Combiné card sorting con árboles de arquitectura de la información para comparar cómo agrupaban el contenido frente a cómo estaba estructurado en cada plataforma.`,
         's02.research.img1.alt': `Detalle adicional de los resultados del card sorting`,
         's02.research.img2.alt': `Resultados generales de la sesión de card sorting: respuestas completadas, tiempo empleado y ubicación de los participantes`,
         's02.research.img3.alt': `Matrices de resultados del card sorting mostrando cómo los usuarios agruparon cada tarjeta y los emplazamientos más populares`,
         's02.research.img4.alt': `Árbol de arquitectura de la información resultante, con la navegación completa organizada por secciones`,
-        's02.research.caption': `Resultados de las sesiones de card sorting y árbol de arquitectura de la información resultante.`,
         's02.label2': `Workshops con equipos internos`,
         's02.p2': `Con las conclusiones en la mano, pasé dos semanas en workshops con el equipo de producto y mi manager, construyendo una arquitectura de la información que funcionara tanto para los stakeholders como para los usuarios finales.`,
         's02.workshops.img1.alt': `Equipo de producto celebrando frente al whiteboard con la arquitectura de la información del workshop`,
@@ -820,7 +820,7 @@
         's02.workshops.img5.alt': `Workshop con equipos internos sobre el nuevo sistema de navegación`,
         's02.workshops.caption': `Workshops presenciales con los equipos internos de producto.`,
 
-        's03.index': `04`,
+        's03.index': `05`,
         's03.eyebrow': `Decisiones de diseño clave`,
         's03.heading': `De los primeros bocetos a las decisiones finales`,
         's03.label1': `Enfoque`,
@@ -849,14 +849,14 @@
         's03.footer.img2.alt': `Footer del menú colapsado y expandido con Legal Notice, Terms of service, EU Design Patent y copyright`,
         's03.footer.caption': `Referencias de la propuesta final del footer.`,
 
-        's04.index': `05`,
+        's04.index': `06`,
         's04.eyebrow': `Prototipos`,
         's04.heading': `Cómo tomó forma la interacción final`,
         's04.label1': `Del boceto al prototipo`,
         's04.p1': `Cuando validé la UX y la UI, construí prototipos en Figma para que stakeholders y dirección probaran el nuevo menú y dieran feedback: uno por tipo de usuario y producto, más de 8–10 en total.`,
         's04.userflow.alt': `User flows del menú vertical para Hybrid Platform, Enterprise Shippers y Sky eBookings`,
 
-        's05.index': `06`,
+        's05.index': `07`,
         's05.eyebrow': `Solución`,
         's05.heading': `Un sistema de navegación unificado y fresco`,
         's05.label1': `Visión`,
@@ -879,7 +879,7 @@
         's05.stat3.p': `Las carpetas y los servicios ahora están mucho mejor organizados, y la navegación resultó más clara y coherente tanto para el equipo como para los usuarios.`,
         's05.footnote': `*Cifras aproximadas, medidas por el equipo de Product Management.`,
 
-        's06.index': `08`,
+        's06.index': `09`,
         's06.eyebrow': `Aprendizajes clave`,
         's06.heading': `Qué me dejó este proyecto`,
         's06.p1': `Este fue, hasta la fecha, el proyecto más completo de mi etapa en Freightos. Me permitió tocar prácticamente todos los ámbitos de la experiencia de usuario y el diseño de producto digital: desde la comunicación interna dentro de la empresa y las conversaciones directas con distintos directivos, hasta un proceso de research bastante complejo a nivel de UX, interacción e interfaz, apoyado en metodologías como card sorting y workshops con los distintos equipos de la empresa. Ese recorrido me permitió llegar a una solución mucho más actualizada y fresca que la de otros proyectos que había diseñado antes para la empresa.`,
@@ -889,14 +889,18 @@
         'cta.back': `Volver a todos los proyectos`,
       },
       en: {
-        'flows.h': `Menu flows and edge cases`,
+        'flows.heading': `Menu flows and edge cases`,
+        'flows.eyebrow': `Menu flows`,
+        'flows.index': `04`,
+        'find.cap': `Card sorting results: participation overview and results matrices.`,
+        's02.methods': `I used three methods: <strong class="font-medium text-ink">information architecture trees</strong> to compare each product’s current structure with the ideal one; a week-long remote <strong class="font-medium text-ink">card sorting</strong> with 10 users and 20 key concepts; and <strong class="font-medium text-ink">pattern synthesis</strong> with product and leadership to turn the results into the new architecture.`,
         'flows.p': `I mapped how a user would move through the menu in every case: with nothing selected, with an item already selected or with a submenu open, plus the edge cases. This showed early which levels and states the design had to cover.`,
-        'flows.cap': `Possible use cases for the vertical menu (drill-down version).`,
+        'flows.cap': `Possible use cases for the vertical menu, the research board and the resulting information architecture tree.`,
         'diff.li': `<ul class="list-disc pl-5 space-y-2"><li>Rework many UI decisions that were shaped by other teams’ constraints.</li><li>Add small AI features to search pages and jump between sections far more efficiently than the current proposal.</li><li>Cut down the number of CTAs in the header and lead with the most important one.</li></ul>`,
         'diff.h': `What I’d do differently`,
         'impact.heading': `What changed after launch`,
         'impact.eyebrow': `Impact`,
-        'impact.index': `07`,
+        'impact.index': `08`,
         'ba.after': `After`,
         'ba.before': `Before`,
         'dec.why': `Why`,
@@ -943,7 +947,7 @@
         'hero.client.label': `User`,
         's02.ff.h': `Who are freight forwarders?`,
         's02.ff.p': `They are the logistics companies that organise shipments on behalf of importers and exporters. On Freightos they compare and book air and ocean rates from carriers, manage quotes and bookings, and track shipments for their own customers. They were our main users.`,
-        'hero.client.value': `Freight Forwarders`,
+        'hero.client.value': `<span class="ff-term" tabindex="0">Freight Forwarders<span class="ff-tip" role="tooltip"><span class="ff-tip-h">Freight forwarders</span>Logistics companies that organise shipments for importers and exporters. On Freightos they compare and book air and ocean rates, manage quotes and bookings, and track their customers’ shipments.</span></span>`,
         'hero.year.label': `Year`,
         'hero.year.value': `2023`,
         'hero.team.label': `Team`,
@@ -960,7 +964,7 @@
         's01.eyebrow': `Problem statement`,
         's01.heading': `Why we needed a new approach`,
         's01.label1': `Context`,
-        's01.p1': `<span class="ff-term" tabindex="0">Freight forwarders<span class="ff-tip" role="tooltip"><span class="ff-tip-h">Freight forwarders</span>Logistics companies that organise shipments for importers and exporters. On Freightos they compare and book air and ocean rates, manage quotes and bookings, and track their customers’ shipments.</span></span> worked across several Freightos products, each with its own navigation. They couldn’t find what they needed, every navigation change took weeks across teams, and moving between products felt like using different companies. How might we give them one clear, shared way to move around the whole platform?`,
+        's01.p1': `Our <span class="ff-term" tabindex="0">freight forwarders<span class="ff-tip" role="tooltip"><span class="ff-tip-h">Freight forwarders</span>Logistics companies that organise shipments for importers and exporters. On Freightos they compare and book air and ocean rates, manage quotes and bookings, and track their customers’ shipments.</span></span> are very busy users who need to get to information as quickly and efficiently as possible. That wasn’t happening in <a href="https://www.freightos.com/forwarders/" target="_blank" rel="noopener noreferrer" class="text-ink underline decoration-ink/30 underline-offset-4 hover:decoration-ink transition-colors">Freightos for Freight Forwarders</a>, our flagship product.`,
         's01.card1.heading': `Users couldn't find the information they needed`,
         's01.card1.p': `Lots of support complaints: users couldn’t complete their tasks because the product wasn’t intuitive.`,
         's01.card2.heading': `Maintenance costs`,
@@ -973,19 +977,12 @@
         's02.index': `03`,
         's02.eyebrow': `Research`,
         's02.heading': `How I researched before touching the design`,
-        's02.card1.heading': `Card sorting with real users`,
-        's02.card1.p': `For a week, 10 users grouped 20 key concepts in a remote card sorting exercise.`,
-        's02.card2.heading': `Information architecture trees`,
-        's02.card2.p': `I compared each product’s current structure with the ideal one, for freight forwarders, carriers and shippers.`,
-        's02.card3.heading': `Pattern synthesis and validation`,
-        's02.card3.p': `With the results and sessions with product and leadership, I set the patterns of the new architecture.`,
         's02.label1': `Research techniques`,
         's02.p1': `Before proposing a global solution, I needed to understand how users thought about each product’s information. I combined card sorting with information architecture trees to compare how they grouped content with how each platform was actually structured.`,
         's02.research.img1.alt': `Additional detail from the card sorting results`,
         's02.research.img2.alt': `Overall results of the card sorting session: completed responses, time spent, and participant locations`,
         's02.research.img3.alt': `Card sorting result matrices showing how users grouped each card and the most popular placements`,
         's02.research.img4.alt': `The resulting information architecture tree, with the full navigation organized by section`,
-        's02.research.caption': `Results from the card sorting sessions and the resulting information architecture tree.`,
         's02.label2': `Workshops with internal teams`,
         's02.p2': `With the findings in hand, I spent two weeks in workshops with the product team and my manager, building an information architecture that worked for both stakeholders and end users.`,
         's02.workshops.img1.alt': `Product team celebrating in front of the whiteboard with the workshop's information architecture`,
@@ -995,7 +992,7 @@
         's02.workshops.img5.alt': `Workshop with internal teams on the new navigation system`,
         's02.workshops.caption': `In-person workshops with the internal product teams.`,
 
-        's03.index': `04`,
+        's03.index': `05`,
         's03.eyebrow': `Key design decisions`,
         's03.heading': `From first sketches to final decisions`,
         's03.label1': `Approach`,
@@ -1024,14 +1021,14 @@
         's03.footer.img2.alt': `Footer of the collapsed and expanded menu with Legal Notice, Terms of service, EU Design Patent, and copyright`,
         's03.footer.caption': `References of the footer's final proposal.`,
 
-        's04.index': `05`,
+        's04.index': `06`,
         's04.eyebrow': `Prototypes`,
         's04.heading': `How the final interaction took shape`,
         's04.label1': `From sketch to prototype`,
         's04.p1': `Once the UX and UI were validated, I built Figma prototypes so stakeholders and leadership could try the new menu and give feedback: one per user type and product, more than 8–10 in total.`,
         's04.userflow.alt': `User flows for the vertical menu across Hybrid Platform, Enterprise Shippers, and Sky eBookings`,
 
-        's05.index': `06`,
+        's05.index': `07`,
         's05.eyebrow': `Solution`,
         's05.heading': `A unified, refreshed navigation system`,
         's05.label1': `Vision`,
@@ -1054,7 +1051,7 @@
         's05.stat3.p': `Folders and services are now much better organized, and navigation felt clearer and more consistent for both the team and users.`,
         's05.footnote': `*Approximate figures, measured by the Product Management team.`,
 
-        's06.index': `08`,
+        's06.index': `09`,
         's06.eyebrow': `Key learnings`,
         's06.heading': `What this project taught me`,
         's06.p1': `This was, to date, the most complete project of my time at Freightos. It let me touch on virtually every area of user experience and digital product design: from internal communication within the company and direct conversations with various executives, to a fairly complex research process spanning UX, interaction, and interface, supported by methodologies like card sorting and workshops with the company's different teams. That journey led me to a far more current and fresh solution than other projects I had previously designed for the company.`,
@@ -1274,12 +1271,23 @@
       inactiveDotClass: 'bg-paper/60',
     });
 
+
     initCarousel({
-      containerId: 'research-carousel',
-      trackId: 'research-carousel-track',
-      prevId: 'research-carousel-prev',
-      nextId: 'research-carousel-next',
-      dotClass: 'research-carousel-dot',
+      containerId: 'findings-carousel',
+      trackId: 'findings-carousel-track',
+      prevId: 'findings-carousel-prev',
+      nextId: 'findings-carousel-next',
+      dotClass: 'findings-carousel-dot',
+      activeDotClass: 'bg-ink',
+      inactiveDotClass: 'bg-ink/25',
+    });
+
+    initCarousel({
+      containerId: 'flows-carousel',
+      trackId: 'flows-carousel-track',
+      prevId: 'flows-carousel-prev',
+      nextId: 'flows-carousel-next',
+      dotClass: 'flows-carousel-dot',
       activeDotClass: 'bg-ink',
       inactiveDotClass: 'bg-ink/25',
     });
