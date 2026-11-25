@@ -511,35 +511,10 @@
       </div>
       <p class="reveal t-s text-slate mt-3" data-i18n="s03.header.caption">Referencias de los diferentes headers que estudiamos y sus soluciones finales.</p>
 
-      <div class="reveal mt-10 md:mt-20 mb-6 md:mb-8 max-w-4xl">
-        <div class="flex items-center gap-4 mb-3"><span class="shrink-0 w-10 h-10 rounded-full bg-ink text-paper t-h5 flex items-center justify-center" aria-hidden="true">3</span><h3 class="t-h3" data-i18n="dec3.h">Un menú plegable con estados claros</h3></div>
-        <p class="t-p text-slate"><span class="text-ink font-medium" data-i18n="dec.why">Por qué</span>: <span data-i18n="dec3.p">Los estados abierto, plegado y hover permiten apartar el menú en pantallas con muchos datos sin perder de vista dónde estás.</span></p>
-      </div>
 
-      <div id="level1-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-[#E1E1E1]">
-        <div id="level1-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
-          <img src="vertical-menus-level1-1.png" alt="Comportamiento del primer nivel de información del menú vertical" class="w-full h-full object-contain p-6 md:p-9 shrink-0" data-i18n="s03.level1.img2.alt" data-i18n-attr="alt">
-          <img src="vertical-menus-level1-2.png" alt="Comportamiento del primer nivel de información del menú vertical" class="w-full h-full object-contain p-6 md:p-9 shrink-0" data-i18n="s03.level1.img3.alt" data-i18n-attr="alt">
-          <img src="vertical-menus-level1-3.png" alt="Comportamiento del primer nivel de información del menú vertical" class="w-full h-full object-contain p-6 md:p-9 shrink-0" data-i18n="s03.level1.img4.alt" data-i18n-attr="alt">
-        </div>
-
-        <button type="button" id="level1-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <button type="button" id="level1-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-
-        <div class="absolute bottom-4 inset-x-0 hidden sm:flex items-center justify-center gap-2">
-          <button type="button" class="level1-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
-          <button type="button" class="level1-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
-          <button type="button" class="level1-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
-        </div>
-      </div>
-      <p class="reveal t-s text-slate mt-3" data-i18n="s03.level1.caption">Referencias del comportamiento del menú vertical.</p>
 
       <div class="reveal mt-10 md:mt-20 mb-6 md:mb-8 max-w-4xl">
-        <div class="flex items-center gap-4 mb-3"><span class="shrink-0 w-10 h-10 rounded-full bg-ink text-paper t-h5 flex items-center justify-center" aria-hidden="true">4</span><h3 class="t-h3" data-i18n="dec4.h">El footer vive dentro del menú</h3></div>
+        <div class="flex items-center gap-4 mb-3"><span class="shrink-0 w-10 h-10 rounded-full bg-ink text-paper t-h5 flex items-center justify-center" aria-hidden="true">3</span><h3 class="t-h3" data-i18n="dec4.h">El footer vive dentro del menú</h3></div>
         <p class="t-p text-slate"><span class="text-ink font-medium" data-i18n="dec.why">Por qué</span>: <span data-i18n="dec4.p">Un menú a altura completa dejaba un footer suelto en algunas pantallas, así que integré sus enlaces en el menú, accesibles abierto o plegado.</span></p>
       </div>
 
@@ -581,6 +556,32 @@
       <div class="reveal aspect-[16/9] rounded-2xl mb-8 md:mb-14 overflow-hidden bg-[#f5f5f5]">
         <img src="vertical-menus-prototype-userflow.webp" alt="User flows del menú vertical para Hybrid Platform, Enterprise Shippers y Sky eBookings" class="w-full h-full object-contain p-6 md:p-9" data-i18n="s04.userflow.alt" data-i18n-attr="alt">
       </div>
+
+      <div class="reveal mt-10 md:mt-20 mb-6 md:mb-8">
+        <h3 class="t-h4 t-medium mb-3" data-i18n="states.h">Estados del menú</h3>
+        <p class="t-p text-slate" data-i18n="states.p"><strong class="font-medium text-ink">Por defecto</strong>, el menú está plegado y solo muestra los iconos, para dejar todo el ancho al contenido. <strong class="font-medium text-ink">Al pasar el ratón</strong> o pulsar el icono se abre el primer nivel con sus nombres, y el elemento señalado se resalta con una flecha hacia su submenú. <strong class="font-medium text-ink">Al apartar el ratón</strong> o volver a pulsar, se cierra de nuevo.</p>
+      </div>
+      <div id="level1-carousel" class="reveal group relative aspect-[16/9] rounded-2xl overflow-hidden bg-[#E1E1E1]">
+        <div id="level1-carousel-track" class="flex h-full transition-transform duration-500 ease-out">
+          <img src="vertical-menus-level1-1.png" alt="Comportamiento del primer nivel de información del menú vertical" class="w-full h-full object-contain p-6 md:p-9 shrink-0" data-i18n="s03.level1.img2.alt" data-i18n-attr="alt">
+          <img src="vertical-menus-level1-2.png" alt="Comportamiento del primer nivel de información del menú vertical" class="w-full h-full object-contain p-6 md:p-9 shrink-0" data-i18n="s03.level1.img3.alt" data-i18n-attr="alt">
+          <img src="vertical-menus-level1-3.png" alt="Comportamiento del primer nivel de información del menú vertical" class="w-full h-full object-contain p-6 md:p-9 shrink-0" data-i18n="s03.level1.img4.alt" data-i18n-attr="alt">
+        </div>
+
+        <button type="button" id="level1-carousel-prev" aria-label="Imagen anterior" class="focus-ring absolute top-1/2 left-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" id="level1-carousel-next" aria-label="Imagen siguiente" class="focus-ring absolute top-1/2 right-4 -translate-y-1/2 w-9 h-9 hidden sm:flex items-center justify-center rounded-full bg-paper/90 backdrop-blur-sm text-ink hover:bg-paper transition-opacity opacity-0 group-hover:opacity-100 focus-visible:opacity-100 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="absolute bottom-4 inset-x-0 hidden sm:flex items-center justify-center gap-2">
+          <button type="button" class="level1-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink transition-colors" data-index="0" aria-label="Ir a la imagen 1"></button>
+          <button type="button" class="level1-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="1" aria-label="Ir a la imagen 2"></button>
+          <button type="button" class="level1-carousel-dot focus-ring w-2 h-2 rounded-full bg-ink/25 transition-colors" data-index="2" aria-label="Ir a la imagen 3"></button>
+        </div>
+      </div>
+      <p class="reveal t-s text-slate mt-3" data-i18n="s03.level1.caption">Estados del menú vertical: plegado, abierto y con un elemento señalado.</p>
     </section>
 
     <!-- ===== 05 · SOLUTION ===== -->
@@ -713,6 +714,8 @@
   <script>
     const translations = {
       es: {
+        'states.p': `<strong class="font-medium text-ink">Por defecto</strong>, el menú está plegado y solo muestra los iconos, para dejar todo el ancho al contenido. <strong class="font-medium text-ink">Al pasar el ratón</strong> o pulsar el icono se abre el primer nivel con sus nombres, y el elemento señalado se resalta con una flecha hacia su submenú. <strong class="font-medium text-ink">Al apartar el ratón</strong> o volver a pulsar, se cierra de nuevo.`,
+        'states.h': `Estados del menú`,
         'flows.heading': `Flujos y casos límite del menú`,
         'flows.eyebrow': `Flujos del menú`,
         'flows.index': `04`,
@@ -730,8 +733,6 @@
         'dec.why': `Por qué`,
         'dec4.p': `Un menú a altura completa dejaba un footer suelto en algunas pantallas, así que integré sus enlaces en el menú, accesibles abierto o plegado.`,
         'dec4.h': `El footer vive dentro del menú`,
-        'dec3.p': `Los estados abierto, plegado y hover permiten apartar el menú en pantallas con muchos datos sin perder de vista dónde estás.`,
-        'dec3.h': `Un menú plegable con estados claros`,
         'dec2.p': `Un solo header para toda la plataforma, en el que cada producto muestra solo los elementos que necesita.`,
         'dec2.h': `Un header global que se adapta a cada producto`,
         'dec1.p': `Un único menú lateral tiene sitio para todos los productos y crece hacia abajo, mientras que cada menú horizontal se había quedado sin espacio.`,
@@ -836,7 +837,7 @@
         's03.level1.img2.alt': `Comportamiento del primer nivel de información del menú vertical`,
         's03.level1.img3.alt': `Comportamiento del primer nivel de información del menú vertical`,
         's03.level1.img4.alt': `Comportamiento del primer nivel de información del menú vertical`,
-        's03.level1.caption': `Referencias del comportamiento del menú vertical.`,
+        's03.level1.caption': `Estados del menú vertical: plegado, abierto y con un elemento señalado.`,
         's03.label4': `Footer`,
         's03.p4': `Al ser un menú vertical que ocupaba toda la altura de la página, en algunas pantallas del sistema quedaba un pequeño footer suelto, desconectado del resto de la navegación. A partir de la investigación realizada, decidimos integrarlo directamente dentro del propio menú, de forma que sus elementos fueran accesibles tanto con el menú abierto como cerrado.`,
         's03.footer.img1.alt': `Estados del menú colapsado con acceso a ayuda, términos de servicio, patente y copyright, incluyendo el hover de Terms of service`,
@@ -883,6 +884,8 @@
         'cta.back': `Volver a todos los proyectos`,
       },
       en: {
+        'states.p': `<strong class="font-medium text-ink">By default</strong>, the menu is collapsed to icons, so content gets the full width. <strong class="font-medium text-ink">On hover</strong> or when the icon is clicked, the first level opens with its labels, and the hovered item is highlighted with an arrow to its submenu. <strong class="font-medium text-ink">Moving the pointer away</strong> or clicking again closes it.`,
+        'states.h': `Menu states`,
         'flows.heading': `Menu flows and edge cases`,
         'flows.eyebrow': `Menu flows`,
         'flows.index': `04`,
@@ -900,8 +903,6 @@
         'dec.why': `Why`,
         'dec4.p': `A full-height menu left a loose footer on some screens, so I moved its links into the menu, reachable whether it is open or collapsed.`,
         'dec4.h': `The footer lives inside the menu`,
-        'dec3.p': `Open, collapsed and hover states keep the menu out of the way on data-heavy screens without losing track of where you are.`,
-        'dec3.h': `A collapsible menu with clear states`,
         'dec2.p': `One header for the whole platform, where each product shows only the elements it needs.`,
         'dec2.h': `A global header that scales down per product`,
         'dec1.p': `A single side menu has room for every product and grows downwards, while each horizontal menu had run out of space.`,
@@ -1006,7 +1007,7 @@
         's03.level1.img2.alt': `Behavior of the vertical menu's first information level`,
         's03.level1.img3.alt': `Behavior of the vertical menu's first information level`,
         's03.level1.img4.alt': `Behavior of the vertical menu's first information level`,
-        's03.level1.caption': `References of the vertical menu's behavior.`,
+        's03.level1.caption': `Vertical menu states: collapsed, open and hovering an item.`,
         's03.label4': `Footer`,
         's03.p4': `Since the vertical menu took up the full height of the page, some screens in the system were left with a small, loose footer, disconnected from the rest of the navigation. Based on the research we carried out, we decided to integrate it directly within the menu itself, so its elements would be accessible whether the menu was open or closed.`,
         's03.footer.img1.alt': `States of the collapsed menu with access to help, terms of service, patent, and copyright, including the hover state of Terms of service`,
