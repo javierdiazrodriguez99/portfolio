@@ -48,11 +48,11 @@
 
 <style>
   /* ===== Tema claro / oscuro ===== */
-  :root { --c-ink: 26 25 23; --c-slate: 110 106 100; --c-paper: 255 255 255; --c-mist: 250 249 247; --c-latte: 229 217 197; --c-latte-dark: 212 196 183; color-scheme: light; }
-  :root[data-theme="dark"] { --c-ink: 237 234 228; --c-slate: 163 158 150; --c-paper: 18 17 16; --c-mist: 28 27 25; --c-latte: 46 42 37; --c-latte-dark: 90 80 70; color-scheme: dark; }
-  :root[data-theme="dark"] ::selection { background-color: #5A5046; color: #EDEAE4; }
+  :root { --c-ink: 26 25 23; --c-slate: 110 106 100; --c-paper: 255 255 255; --c-mist: 250 249 247; --c-latte: 232 232 232; --c-latte-dark: 170 170 170; color-scheme: light; }
+  :root[data-theme="dark"] { --c-ink: 237 234 228; --c-slate: 163 158 150; --c-paper: 18 17 16; --c-mist: 28 27 25; --c-latte: 46 46 46; --c-latte-dark: 115 115 115; color-scheme: dark; }
+  :root[data-theme="dark"] ::selection { background-color: #4A4A4A; color: #EDEAE4; }
   /* El footer de "Let's talk" mantiene su contraste: gris oscuro con texto claro */
-  :root[data-theme="dark"] #contact { --c-ink: 34 33 31; --c-paper: 237 234 228; --c-latte: 214 205 190; --c-slate: 120 115 108; }
+  :root[data-theme="dark"] #contact { --c-ink: 34 33 31; --c-paper: 237 234 228; --c-latte: 214 214 214; --c-slate: 120 115 108; }
   :root[data-theme="dark"] h3 img.w-5 { filter: brightness(0) invert(1) opacity(.85) !important; }
   :root[data-theme="dark"] .logo-marquee img { filter: grayscale(1) invert(1) opacity(0.45); }
   :root[data-theme="dark"] main img:not(.logo-marquee img) { filter: brightness(0.8) contrast(1.02); transition: filter .3s ease; }
@@ -79,7 +79,7 @@
   #contact :is(a, button).rounded-full { --ring: rgb(var(--c-paper) / .85); }
   :is(a, button).rounded-full:not(.theme-btn):not(.lang-btn):not([class*="dot"]):not(.w-2):is(:hover, :focus-visible) { border-color: var(--ring) !important; box-shadow: 0 0 0 1px var(--ring); }
   html { font-family: 'Inter', sans-serif; }
-  ::selection { background-color: #E5D9C5; color: #1A1917; }
+  ::selection { background-color: #E5E5E5; color: #1A1917; }
 
   @media (prefers-reduced-motion: no-preference) {
     .reveal {
@@ -103,7 +103,7 @@
 
   .card-img {
     background-image:
-      linear-gradient(135deg, #F0EBE1 0%, #E5D9C5 100%);
+      linear-gradient(135deg, #F2F2F2 0%, #E5E5E5 100%);
     position: relative;
     overflow: hidden;
   }
